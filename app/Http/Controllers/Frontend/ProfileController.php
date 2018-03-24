@@ -42,6 +42,7 @@ class ProfileController extends Controller
         }
 
         $myFavorites = Auth::user()->favorites()->whereBetween('rating', array($min, $max))->get();
+      
         $id = $profileuser->id;
 
         if ($id === auth()->id()) {
@@ -53,12 +54,10 @@ class ProfileController extends Controller
         return view('frontend.profile.show', compact('profileuser', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
     }
     public function edit($name){
-        $profileuser = User::where('userName', $name)->first();
+
         $user = Auth::user();
-        if (!$profileuser) {
-          return back();
-        }
-        return view('frontend.profile.edit', compact('profileuser'));
+
+        return view('frontend.profile.edit', compact('user'));
     }
     public function update(Request $request){
 
@@ -109,7 +108,7 @@ class ProfileController extends Controller
             }
             $path = public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename);
 
-            Image::make($avatar)->resize(600, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename));
+            Image::make($avatar)->resize(285, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename));
 
             $user = Auth::user();
             $user->pictureName = $filename;
