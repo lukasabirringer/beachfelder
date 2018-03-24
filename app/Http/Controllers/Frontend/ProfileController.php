@@ -108,7 +108,7 @@ class ProfileController extends Controller
             }
             $path = public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename);
 
-            Image::make($avatar)->resize(600, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename));
+            Image::make($avatar)->resize(285, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename));
 
             $user = Auth::user();
             $user->pictureName = $filename;

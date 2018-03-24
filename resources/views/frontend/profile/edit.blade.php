@@ -42,7 +42,7 @@
   </div>
 
   <div class="row -spacing-a">
-    <form action="#" class="form form--edit-profile">
+    <form action="{{ URL::route('profile.update') }}" class="form form--edit-profile">
       <div class="column column--12 column--m-3 profile-edit__column">
         <p class="-typo-copy -text-color-gray-01"><a href="#common" class="profile-edit__link link-text">Allgemeine Informationen</a></p>
         <p class="-typo-copy -text-color-gray-01 -spacing-b"><a href="#password" class="profile-edit__link link-text">Passwort</a></p>
@@ -57,7 +57,7 @@
         <div class="row">
           <div class="column column--12 column--m-6">
             <label class="input -spacing-b">
-              <input type="text" class="input__field" name="" value="{{ $user->userName }}">
+              <input type="text" class="input__field" name="userName" value="{{ $user->userName }}">
               <span class="input__label">Username</span>
             </label>
           </div>
@@ -66,17 +66,17 @@
           <div class="column column--12 column--m-6">
             
             <label class="input -spacing-b">
-              <input type="text" class="input__field" name="" value="{{ $user->firstName }}">
+              <input type="text" class="input__field" name="firstName" value="{{ $user->firstName }}">
               <span class="input__label">Vorname</span>
             </label>
 
             <label class="input -spacing-b">
-              <input type="text" class="input__field" name="" value="{{ $user->postalCode }}">
+              <input type="text" class="input__field" name="postalCode" value="{{ $user->postalCode }}">
               <span class="input__label">PLZ</span>
             </label>
 
             <label class="input -spacing-b">
-              <input type="text" class="input__field input__field--date datepicker-here" data-position="top left" placeholder="Geburtstag" name="" value="{{ $user->birthdate }}">
+              <input type="text" class="input__field input__field--date datepicker-here" data-position="top left" placeholder="Geburtstag" name="birthdate" value="{{ $user->birthdate }}">
               <span class="input__label">Geburstag</span>
             </label>
             
@@ -84,12 +84,12 @@
           <div class="column column--12 column--m-6">
 
             <label class="input -spacing-b">
-              <input type="text" class="input__field" name="" value="{{ $user->lastName }}">
+              <input type="text" class="input__field" name="lastName" value="{{ $user->lastName }}">
               <span class="input__label">Nachname</span>
             </label>
 
             <label class="input -spacing-b">
-              <input type="text" class="input__field" name="" value="{{ $user->city }}">
+              <input type="text" class="input__field" name="city" value="{{ $user->city }}">
               <span class="input__label">Ort</span>
             </label>
 
@@ -97,15 +97,15 @@
               Geschlecht
             </p>
             <label class="input-radio -spacing-b">
-              <input type="radio" class="input-radio__field" name="gender" value="man" checked="checked">
+              <input type="radio" class="input-radio__field" name="sex" value="man" checked="checked">
               <span class="input-radio__label">männlich</span>
             </label>
             <label class="input-radio -spacing-b">
-              <input type="radio" class="input-radio__field" name="gender" value="woman">
+              <input type="radio" class="input-radio__field" name="sex" value="woman">
               <span class="input-radio__label">weiblich</span>
             </label>
             <label class="input-radio -spacing-b">
-              <input type="radio" class="input-radio__field" name="gender" value="neutral">
+              <input type="radio" class="input-radio__field" name="sex" value="neutral">
               <span class="input-radio__label">neutral</span>
             </label>
           </div>
@@ -124,13 +124,13 @@
           </div>
           <div class="column column--12">
             <label class="input -spacing-b">
-              <input type="email" class="input__field" name="" value="{{ $user->email }}">
+              <input type="email" class="input__field" name="password" value="{{ $user->email }}">
               <span class="input__label">E-Mail Adresse</span>
             </label>
           </div>
           <div class="column column--12 column--m-6">
             <label class="input -spacing-b">
-              <input type="password" class="input__field" name="" value="{{ $user->password }}">
+              <input type="password" class="input__field" name="password" value="{{ $user->password }}">
               <span class="input__label">Passwort</span>
             </label>
 
@@ -142,6 +142,14 @@
             </label>
           </div>
         </div>
+        <div class="row -spacing-a" id="submit">
+          <div class="column column--12">
+            <button class="button-primary profile-edit__button" type="submit">
+              <span class="button-primary__label">Profil speichern</span>
+            </button>
+          </div>
+        </div>
+      </form>
         <div id="profile-image"></div>
         
         <div class="row -spacing-a">
@@ -150,36 +158,48 @@
           </div>
         </div>
 
-        <div class="row -spacing-a">
-          <div class="column column--12">
-            <h4 class="-typo-headline-04 -text-color-petrol">Dein Profilbild</h4>
-          </div>
-          <div class="column column--12 column--m-6 -spacing-b">
-            <p class="-typo-copy -text-color-gray-01">Dein aktuelles Profilbild</p>
-            <div class="image-profile -spacing-d">
-              <img src="/uploads/profilePictures/{{ $user->pictureName }}" class="profile-user__image">
+        <form method="POST" action="{{ url('profil/uploadprofilepicture/') }}" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="row -spacing-a">
+            <div class="column column--12">
+              <h4 class="-typo-headline-04 -text-color-petrol">Dein Profilbild</h4>
             </div>
-          </div>
-          <div class="column column--12 column--m-6 -spacing-b">
-            <p class="-typo-copy -text-color-gray-01">Dein neues Profilbild</p>
-            <div class="dropzone -spacing-d" id="user-profile-image-upload">
-              <span class="dropzone__hint dz-message">Ziehe hier dein neues Profilbild rein</span>
-              <div class="image-profile fallback">
-                <input type="file" name="file" />
+            <div class="column column--12 column--m-6 -spacing-b">
+              <p class="-typo-copy -text-color-gray-01">Dein aktuelles Profilbild</p>
+              <div class="image-profile -spacing-d">
+                <img src="/uploads/profilePictures/{{ $user->pictureName }}" class="profile-user__image">
               </div>
             </div>
+            <div class="column column--12 column--m-6 -spacing-b">
+              <p class="-typo-copy -text-color-gray-01">Dein neues Profilbild</p>
+              <label class="input-fileupload">
+                <input type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
+              </label>
+              <!-- <div class="dropzone -spacing-d" id="user-profile-image-upload">
+                <span class="dropzone__hint dz-message">Ziehe hier dein neues Profilbild rein</span>
+                <div class="image-profile fallback">
+                  <input type="file" name="file" />
+                </div>
+              </div> -->
+            </div>
           </div>
-        </div>
-        <div id="your-account"></div>
-
-        <div class="row -spacing-a" id="submit">
-          <div class="column column--12">
-            <button class="button-primary profile-edit__button">
-              <span class="button-primary__label">Profil speichern</span>
-            </button>
+          <div class="row">
+            <div class="column column--12 column--m-6 -spacing-b">
+              <button type="button" class="button-primary button-primary--red" onclick="window.location.href='{{ url('') }}/profile/profilbild-loeschen'" >
+                <span class="button-primary__label">Profilbild löschen</span>
+              </button>
+            </div>
           </div>
-        </div>
+          <div id="your-account"></div>
 
+          <div class="row -spacing-a" id="submit">
+            <div class="column column--12">
+              <button class="button-primary profile-edit__button" type="submit">
+                <span class="button-primary__label">Profil speichern</span>
+              </button>
+            </div>
+          </div>
+        </form>
         <div class="row -spacing-a">
           <div class="column column--12">
             <hr class="divider">
@@ -212,6 +232,7 @@
               <span class="button-primary__label">Profil speichern</span>
             </button>
           </div>
+
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-a">Deinen Account löschen</p>
             <p class="-typo-copy -text-color-gray-01">
@@ -225,7 +246,7 @@
           </div>
         </div>
       </div>
-    </form>
+    
   </div>
 
 </div><!-- .content__main ENDE -->
@@ -336,9 +357,6 @@
 
           </div>
         </div>
-
-
-
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary">Speichern</button>
@@ -348,8 +366,6 @@
       </form>
 
       <p>Letztes Update: {{ $user->updated_at }}</p>
-
-
     </div>
 </div>
 

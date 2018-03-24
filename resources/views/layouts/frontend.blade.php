@@ -15,18 +15,18 @@
       <a href="{{ url('/') }}"><img class="sidebar__logo" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
       <ul class="navigation">
         <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span></a></li>
-        <li class="navigation__item"><a href="your-profile.html" class="navigation__link"><span data-feather="user"></span></a></li>
+        @if (Auth::check())
+        <li class="navigation__item"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a></li>
+        @else
+        <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
+        @endif
+
         @if (Auth::check())
           <li class="navigation__item"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="star"></span></a></li>
         @endif
       </ul>
     </div>
     <div id="app">
-     <!--  <form action="{{ route('logout') }}" method="POST">
-    {{ csrf_field() }}
-    <button type="submit">Logout</button>
-    </form>
-    --> 
     <div class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
@@ -60,13 +60,20 @@
           @if (Auth::check())
             <div class="profile-user">
               <div class="profile-user__info">
-                <a href="your-profile.html" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
-                <a href="your-profile.html" class="link-text profile-user__subtitle">Profil bearbeiten</a>
+                <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
+                <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
+                  {{ csrf_field() }}
+                  <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="link-text profile-user__subtitle">Abmelden</a>
+                </form>
               </div>
               <div class="profile-user__image">
                 <img src="images/profile-image.jpg" width="60">
               </div>
             </div>
+          @else 
+            <button class="button-secondary" onclick="window.location.href='{{URL::route('login')}}'">
+              <span class="button-secondary__label">Anmelden / Registrieren</span>
+            </button>
           @endif
         </div>
       </header>
