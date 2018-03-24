@@ -37,6 +37,8 @@ class BeachcourtController extends Controller
              $pictures = 'true';
         }
 
+        //icon nacme nach owm id
+
         return view('frontend.beachcourt.show', compact('beachcourt', 'weather', 'pictures'));
     }
     public function rate($cityslug, $latitude, $longitude)

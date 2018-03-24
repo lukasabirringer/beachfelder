@@ -37,6 +37,7 @@ class CreateBeachcourtsTable extends Migration
             $table->double('ratingEnvironment')->nullable();
             $table->string('submitState')->nullable();
             $table->string('operator')->nullable();
+            $table->string('operatorUrl')->nullable();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
