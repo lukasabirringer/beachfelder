@@ -1,5 +1,3 @@
-feather.replace();
-
 $(document).ready(function(){
   var owlFrontpage = $('.owl-carousel--frontpage');
 	var owlDetailpage = $('.owl-carousel--detailpage');

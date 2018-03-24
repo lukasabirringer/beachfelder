@@ -11,9 +11,4 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.scripts([
-    'resources/assets/js/datepicker.min.js',
-    'resources/assets/js/owl.carousel.min.js',
-    'resources/assets/js/password.strength.js',
-    'resources/assets/js/tab.rating.js',
-], 'public/js/app.js');
+ mix.js('resources/assets/js/app.js', 'public/js');
