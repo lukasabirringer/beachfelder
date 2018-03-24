@@ -1,13 +1,20 @@
 @extends('layouts.frontend')
 
-<title>{{ $page->headline }}</title>
 @section('content')
-<div class="row">
-  <div class="col">
-    <h1>{{ $page->headline }}</h1>
-    <p>{{ $page->content }}</p>
-  </div>
-</div>
-</div>
+
+      <div class="content__main">
+        <div class="row">
+          <div class="column column--12">
+            <h2 class="title-page__title">{{ $page->headline }}</h2>
+          </div>
+        </div>
+        <div class="row -spacing-a">
+          <div class="column column--12">
+            <hr class="divider">
+          </div>
+        </div>
+        {!! html_entity_decode($page->content) !!}
+        </div>
+
 
 @endsection

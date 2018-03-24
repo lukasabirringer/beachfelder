@@ -13,6 +13,7 @@ class SearchController extends Controller
 {
     public function show(Request $request)
     {
+
         $plz = $request->postcode;
         $distance = $request->distance ?? '15';
 
@@ -38,6 +39,7 @@ class SearchController extends Controller
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
            ->whereBetween('rating', array($ratingmin, $ratingmax ))
            ->get();
+
 
         return view('frontend.search.show', compact('results', 'plz', 'distance', 'ratingmin', 'ratingmax'));
     }
