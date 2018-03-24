@@ -195,50 +195,53 @@
 </div>
 
 </div>
-        <div class="page-login__half page-login__half--right">
-            <h3 class="page-login__title"><span class="page-login__title-icon" data-feather="user"></span>Melde dich an</h3>
+    <div class="page-login__half page-login__half--right">
+        <h3 class="page-login__title"><span class="page-login__title-icon" data-feather="user"></span>Melde dich an</h3>
 
-            <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-            <div class="page-login__content">
-                <div class="row -spacing-a">
-                    <div class="column column--12 -spacing-b">
-                        <label class="input">
-                            <input type="email" class="input__field" name="email" value="{{ old('email') }}" placeholder="Deine E-Mail Adresse">
-                            <span class="input__label">Deine E-Mail Adresse</span>
-                            <div class="input__border"></div>
-                        </label>
-                        @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    <div class="column column--12 -spacing-a">
-                        <label class="input">
-                            <input type="password" name="password" class="input__field input__field--password" placeholder="Passwort wiederholen">
-                            <span class="input__label">Passwort</span>
-                            <div class="input__border"></div>
-                            <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
-                            <span class="input__icon input__icon--eye-off input__icon--not-visible" data-feather="eye-off" onclick="togglePassword()"></span>
-                        </label>
-                        @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+        {{ csrf_field() }}
+        <div class="page-login__content">
+            <div class="row -spacing-a">
+                <div class="column column--12 -spacing-b">
+                    <label class="input">
+                        <input type="email" class="input__field" name="email" value="{{ old('email') }}" placeholder="Deine E-Mail Adresse">
+                        <span class="input__label">Deine E-Mail Adresse</span>
+                        <div class="input__border"></div>
+                    </label>
+                    @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                     @endif
-                    </div>
-                    <div class="column column--12 -spacing-b">
-                        <button class="button-primary">
-                            <span class="button-primary__label">Anmelden</span>
-                        </button>
-                    </div>
                 </div>
-                </form>
+                <div class="column column--12 -spacing-a">
+                    <label class="input">
+                        <input type="password" name="password" class="input__field input__field--password" placeholder="Passwort wiederholen">
+                        <span class="input__label">Passwort</span>
+                        <div class="input__border"></div>
+                        <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
+                        <span class="input__icon input__icon--eye-off input__icon--not-visible" data-feather="eye-off" onclick="togglePassword()"></span>
+                    </label>
+                    @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+                </div>
+                <div class="column column--12 -spacing-b">
+                    <button class="button-primary">
+                        <span class="button-primary__label">Anmelden</span>
+                    </button>
+                </div>
             </div>
-             <a class="btn btn-link" href="{{ route('password.request') }}">
-                        Forgot Your Password?
-                    </a>
+        </form>
+        <div class="row">
+            <div class="column column--12 -spacing-b">
+                <p class="-typo-copy -text-color-gray-01">
+                    <a class="link-text" href="{{ route('password.request') }}">Passwort vergessen?</a>
+                </p>
+            </div>
+        </div>
         </div>
     </div>
 </div>
