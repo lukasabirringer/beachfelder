@@ -20,12 +20,13 @@
       </ul>
     </div>
     <div id="app">
-     <!--  <form action="{{ route('logout') }}" method="POST">
+
+    <a href="{{ URL::route('beachcourtsubmit.submit') }}">Beachfeld einreichen</a>
+    <div class="content">
+      <form action="{{ route('logout') }}" method="POST">
     {{ csrf_field() }}
     <button type="submit">Logout</button>
     </form>
-    <a href="{{ URL::route('beachcourtsubmit.submit') }}">Beachfeld einreichen</a>
-    --> <div class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
           <script src="https://cdn.jsdelivr.net/npm/places.js@1.4.15"></script>
