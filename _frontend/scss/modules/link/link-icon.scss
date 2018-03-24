@@ -1,0 +1,21 @@
+@import '../../mixins/text-color.mixin';
+@import '../../common/animation';
+
+.link-icon {
+	cursor: pointer;
+	display: inline-block;
+	transition: all .5s;
+
+	&--rotate {
+		&:hover {
+			transform: rotate(45deg);
+		}	
+	}
+
+	&--shake {
+		&:hover {
+			animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+}

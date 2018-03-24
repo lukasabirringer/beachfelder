@@ -1,0 +1,47 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/align.mixin';
+@import '../../mixins/flex.mixin';
+@import '../../mixins/typo.mixin';
+
+@import 'step.setup';
+
+.step {
+
+	@include -flex;
+	@include -flex-justify-content(space-evenly);
+
+	&__item {
+		@include -align-center;
+		
+		display: inline-block;
+		position: relative;
+	}
+
+	&__dot {
+		@include -background-color-gray-02;
+
+		height: $step-dot-dimension;
+		width: $step-dot-dimension;
+		margin: auto;
+	  	border-radius: $step-dot-border-radius;
+	  	transition: background .2s ease-in-out;
+	  	display: block;
+	  	opacity: .2;
+
+	  &--active {
+	  	@include -background-color-petrol;
+
+	  	opacity: 1;
+	  }
+	}
+
+	&__title {
+		@include -spacing-outer(7px);
+		@include -typo-headline-04;
+		@include -text-color-petrol;
+
+		display: block;
+	}
+}

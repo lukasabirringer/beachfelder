@@ -1,0 +1,68 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/align.mixin';
+
+@import 'owl-carousel.setup';
+
+.owl-dots {
+	@include -align-center;
+
+	position: absolute;
+	bottom: $owl-dots-position-bottom;
+	left: $owl-dots-position-left;
+	width: $owl-dots-width;
+}
+
+.owl-dot {
+	@include -background-color-gray-03;
+
+	width: $owl-dot-dimension;
+	height: $owl-dot-dimension;
+	margin: $owl-dot-spacing-outer-vertical $owl-dot-spacing-outer-horizontal;
+	border-radius: $owl-dot-border-radius;
+	opacity: $owl-dot-opacity;
+	display: inline-block;
+	cursor: pointer;
+
+	@include breakpoint('m') {
+		width: $owl-dot-dimension-m;
+		height: $owl-dot-dimension-m;
+	}
+}
+
+.owl-drag {
+	cursor: grabbing;
+}
+
+.owl-dot.active {
+	@include -background-color-petrol;
+}
+
+.owl-navigation-item {
+	@include -background-color-petrol;
+	@include -text-color-white;
+
+	width: $owl-navigation-item-dimension;
+	height: $owl-navigation-item-dimension;
+	top: $owl-navigation-item-position-top;
+	transform: translateY(-$owl-navigation-item-position-top);
+	cursor: pointer;
+	z-index: 1;
+
+	@include breakpoint('m') {
+		width: $owl-navigation-item-dimension-m;
+		height: $owl-navigation-item-dimension-m;
+	}
+
+	&--left {
+		left: $owl-navigation-item-left-position-reset;
+		position: absolute;
+	}
+
+	&--right {
+		right: $owl-navigation-item-left-position-reset;
+		position: absolute;
+	}
+}

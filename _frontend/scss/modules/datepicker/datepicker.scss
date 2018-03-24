@@ -1,0 +1,14 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+
+.datepicker--day-name {
+	@include -text-color-petrol;
+}
+
+.datepicker--cell.-selected-, .datepicker--cell.-selected-.-current- {
+	@include -background-color-green;
+}
+
+.datepicker--cell.-current- {
+	@include -text-color-green;
+}

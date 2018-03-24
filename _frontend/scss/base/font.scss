@@ -1,0 +1,13 @@
+@import '../mixins/fonts.mixin';
+
+.-font {
+
+  &-primary {
+    @include -font-primary;
+  }
+
+  &-secondary {
+    @include -font-secondary;
+    font-weight: 400;
+  }
+}

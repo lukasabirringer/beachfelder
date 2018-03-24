@@ -1,0 +1,61 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+
+@import 'flyout.setup';
+
+.flyout {
+	@include -background-color-white;
+	@include -spacing-inner(null, 20px);
+	@include -spacing-inner('right', 45px);
+	@include -border-radius(4px);
+
+	position: absolute;
+	top: $flyout-position-reset;
+	left: $flyout-position-reset;
+	width: $flyout-width;
+	height: $flyout-height;
+	z-index: $flyout-z-index;
+	box-shadow: $flyout-box-shadow-values $flyout-box-shadow-color;
+	
+	visibility: hidden;
+	opacity: $flyout-opacity-hidden;
+	transition: transform .4s ease-in-out;
+
+	@include breakpoint('s') {
+		width: auto;
+		height: auto;
+		top: inherit;
+		left: inherit;
+	}
+
+	&--from-right {
+		transform: translateX($flyout-position-hidden);
+	}
+
+	&--open {
+		visibility: visible;
+		opacity: $flyout-opacity;
+		transform: translateX($flyout-position-reset);
+	}
+
+	&__icon {
+		@include -background-color-white;
+		@include -text-color-gray-03;
+		@include -spacing-inner(null, 7px);
+
+		position: absolute;
+		right: $flyout-icon-position-right;
+		top: $flyout-icon-position-top;
+		cursor: pointer;
+		width: $flyout-icon-dimension;
+		height: $flyout-icon-dimension;
+		transition: color .2s ease-in-out;
+
+		&:hover {
+			@include -text-color-petrol;
+		}
+	}
+}

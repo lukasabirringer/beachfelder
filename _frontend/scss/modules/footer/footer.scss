@@ -1,0 +1,52 @@
+@import '../../mixins/typo.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/align.mixin';
+@import '../../mixins/spacing.mixin';
+
+@import 'footer.setup';
+
+.footer {
+	@include -align-right;
+	@include -spacing-outer(50px);
+	@include -spacing-inner('bottom', 20px);
+	
+	&__item {
+		@include -typo-copy;
+
+		font-size: $footer-font-size;
+		display: inline-block;
+		position: relative;
+
+		&::after {
+			@include -background-color-gray-01;
+
+			content: '';
+			position: absolute;
+			height: $footer-item-after-height;
+			width: $footer-item-after-width;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+		}
+
+		&:last-of-type {
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	&__link {
+		@include -text-color-gray-01;
+
+		text-decoration: none;
+		@include -spacing-inner(null, 5px);
+	}
+
+	&__paragraph {
+		@include -typo-copy;
+		@include -text-color-gray-01;
+		font-size: $footer-font-size;
+	}
+}

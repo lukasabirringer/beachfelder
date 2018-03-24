@@ -1,0 +1,50 @@
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+
+@import 'button-circle.setup';
+
+.button-circle {
+  @include -spacing-inner(null, 0);
+
+  $bem-block: &;
+  
+  border: none;
+  border: $button-circle-border-width #457b8c solid;
+  border-radius: $button-circle-border-radius;
+  width: $button-circle-dimensions;
+  height: $button-circle-dimensions;
+  position: relative;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:hover #{$bem-block}__icon {
+    animation-name: walk-right;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  &__icon {
+    @include -text-color-petrol;
+
+    line-height: $button-circle-icon-line-height;
+    position: absolute;
+    left: $button-circle-icon-position-left;
+    top: $button-circle-icon-position-top;
+    transform: translate(-$button-circle-icon-position-left, -$button-circle-icon-position-top);
+  }
+}
+
+@keyframes walk-right {
+  0% {
+    left: 0%;
+  }
+  
+  50% {
+    left: 50%;
+  }
+  
+  100% {
+    left: 130%;
+  }
+}

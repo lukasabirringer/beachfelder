@@ -1,0 +1,147 @@
+@import '../../mixins/breakpoint.mixin';
+
+.column {
+  min-height: 1px; // prevents layout even when column is empty
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  float: left;
+  box-sizing: border-box;
+
+  &--reverse {
+    float: right;
+
+    &-xs { @include breakpoint('xs') { float: right; } }
+    &-s { @include breakpoint('s') { float: right; } }
+    &-m { @include breakpoint('m') { float: right; } }
+    &-l { @include breakpoint('l') { float: right; } }
+  }
+
+  &--auto { width: auto; }
+  &--1    { width: 8.333333%; }
+  &--2    { width: 16.666667%; }
+  &--3    { width: 25%; }
+  &--4    { width: 33.333333%; }
+  &--5    { width: 41.666667%; }
+  &--6    { width: 50%; }
+  &--7    { width: 58.333333%; }
+  &--8    { width: 66.666667%; }
+  &--9    { width: 75%; }
+  &--10   { width: 83.333333%; }
+  &--11   { width: 91.666667%; }
+  &--12   { width: 100%; }
+
+  @include breakpoint('xs') {
+    &--xs-auto  { width: auto; }
+    &--xs-1     { width: 8.333333%; }
+    &--xs-2     { width: 16.666667%; }
+    &--xs-3     { width: 25%; }
+    &--xs-4     { width: 33.333333%; }
+    &--xs-5     { width: 41.666667%; }
+    &--xs-6     { width: 50%; }
+    &--xs-7     { width: 58.333333%; }
+    &--xs-8     { width: 66.666667%; }
+    &--xs-9     { width: 75%; }
+    &--xs-10    { width: 83.333333%; }
+    &--xs-11    { width: 91.666667%; }
+    &--xs-12    { width: 100%; }
+  }
+
+  @include breakpoint('s') {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    &--s-auto  { width: auto; }
+    &--s-1     { width: 8.333333%; }
+    &--s-2     { width: 16.666667%; }
+    &--s-3     { width: 25%; }
+    &--s-4     { width: 33.333333%; }
+    &--s-5     { width: 41.666667%; }
+    &--s-6     { width: 50%; }
+    &--s-7     { width: 58.333333%; }
+    &--s-8     { width: 66.666667%; }
+    &--s-9     { width: 75%; }
+    &--s-10    { width: 83.333333%; }
+    &--s-11    { width: 91.666667%; }
+    &--s-12    { width: 100%; }
+  }
+
+  @include breakpoint('m') {
+    &--m-auto { width: auto; }
+    &--m-1    { width: 8.333333%; }
+    &--m-2    { width: 16.666667%; }
+    &--m-3    { width: 25%; }
+    &--m-4    { width: 33.333333%; }
+    &--m-5    { width: 41.666667%; }
+    &--m-6    { width: 50%; }
+    &--m-7    { width: 58.333333%; }
+    &--m-8    { width: 66.666667%; }
+    &--m-9    { width: 75%; }
+    &--m-10   { width: 83.333333%; }
+    &--m-11   { width: 91.666667%; }
+    &--m-12   { width: 100%; }
+  }
+
+  @include breakpoint('l') {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    &--l-auto { width: auto; }
+    &--l-1    { width: 8.333333%; }
+    &--l-2    { width: 16.666667%; }
+    &--l-3    { width: 25%; }
+    &--l-4    { width: 33.333333%; }
+    &--l-5    { width: 41.666667%; }
+    &--l-6    { width: 50%; }
+    &--l-7    { width: 58.333333%; }
+    &--l-8    { width: 66.666667%; }
+    &--l-9    { width: 75%; }
+    &--l-10   { width: 83.333333%; }
+    &--l-11   { width: 91.666667%; }
+    &--l-12   { width: 100%; }
+  }
+
+  &--flex-centered {
+    display: flex;
+    align-items: center;
+  }
+
+  &--zero {
+    padding-left: 0;
+    padding-right: 0;
+
+    &-xxs-only {
+      @include breakpoint('xxs','xs') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &-xs-only {
+      @include breakpoint('xs','s') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &-s-only {
+      @include breakpoint('s','m') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &-m-only {
+      @include breakpoint('m','l') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &-l-only {
+      @include breakpoint('l') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

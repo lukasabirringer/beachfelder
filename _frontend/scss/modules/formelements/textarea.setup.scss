@@ -1,0 +1,14 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$textarea-width: 100% !default;
+$textarea-min-height: rem(100px) !default;
+
+$textarea-field-height: $textarea-min-height !default;
+$textarea-field-width: $textarea-width !default;
+$textarea-field-border-width: 1px !default;
+$textarea-field-border-color: $color-palette-gray-03 !default;
+
+$textarea-label-position-top: 1px !default;
+$textarea-label-position-left: 1px !default;
+$textarea-label-position-right: 2px !default;

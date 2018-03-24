@@ -1,0 +1,8 @@
+@import '../../setup/pxtorem';
+
+$button-circle-border-width: 2px !default;
+$button-circle-border-radius: 50% !default;
+$button-circle-dimensions: rem(40px) !default;
+$button-circle-icon-line-height: $button-circle-dimensions !default;
+$button-circle-icon-position-left: 50% !default;
+$button-circle-icon-position-top: 50% !default;

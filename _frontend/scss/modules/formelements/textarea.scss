@@ -1,0 +1,43 @@
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/typo.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/background-color.mixin';
+@import 'textarea.setup';
+
+.textarea {
+	@include -typo-copy;
+	@include -text-color-gray-01;
+
+	position: relative;
+	width: $textarea-width;
+	min-height: $textarea-min-height;
+	display: block;
+	
+	&__field {
+		@include -spacing-inner('left', 10px);
+		@include -spacing-inner('right', 10px);
+		@include -spacing-inner('top', 35px);
+		@include -spacing-inner('bottom', 20px);
+		@include -typo-copy;
+		@include -text-color-gray-02;
+
+		resize: none;
+		outline: none;
+		appearance: none;
+		width: $textarea-field-width;
+		height: $textarea-field-height;
+		border: $textarea-field-border-width $textarea-field-border-color solid;
+	}
+
+	&__label {
+		@include -spacing-inner('left', 10px);
+		@include -spacing-inner('top', 10px);
+		@include -background-color-white;
+
+		position: absolute;
+		display: block;
+		top: $textarea-label-position-top;
+		left: $textarea-label-position-left;
+		right: $textarea-label-position-right;
+	}
+}

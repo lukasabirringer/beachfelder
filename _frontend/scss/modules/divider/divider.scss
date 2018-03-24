@@ -1,0 +1,6 @@
+@import 'divider.setup';
+
+.divider {
+	border: none;
+	border-top: $divider-border-width $divider-border-color solid;
+}

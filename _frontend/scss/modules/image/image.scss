@@ -1,0 +1,13 @@
+.image {
+	position: relative;
+	
+	&--max-width {
+		width: 100%;
+		height: auto;
+	}
+
+	&--max-height {
+		height: 100%;
+		width: auto;
+	}
+}

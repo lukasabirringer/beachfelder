@@ -1,0 +1,37 @@
+@import '../../mixins/typo.mixin';
+@import 'icon-text.setup';
+
+.icon-text {
+	
+	display: inline-block;
+	
+
+	&__icon {
+		@include -text-color-green;
+
+		width: $icon-text-icon-dimension;
+		height: $icon-text-icon-dimension;
+		float: left;
+		margin-top: $icon-text-icon-spacing-outer-top;
+	}
+
+	&__text {
+		@include -typo-copy;
+		@include -text-color-gray-01;
+
+		float: left;
+		margin-left: $icon-text-text-outer-spacing-left;
+	}
+
+	&--hoverable {
+		padding: 10px;
+		transition: all .2s ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			background: #FFF;
+			box-shadow: 0 0 20px 0px rgba(0,0,0,.3);
+			border-radius: 4px;
+		}
+	}
+}

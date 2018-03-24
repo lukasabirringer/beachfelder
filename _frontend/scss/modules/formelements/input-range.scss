@@ -1,0 +1,102 @@
+@import 'input-range.setup';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/align.mixin';
+@import '../../mixins/typo.mixin';
+
+.input-range {
+	display: inline-block;
+	width: $input-range-width;
+	
+	&__field {
+		@include -border-radius(4px);
+		@include -background-color-gray-03;
+
+		appearance: none;
+		width: $input-range-field-width;
+		height: $input-range-field-height;
+		outline: none;
+
+		&::-webkit-slider-thumb {
+			@include -background-color-petrol;
+
+		    appearance: none;
+		    width: $input-range-handle-dimension;
+		    height: $input-range-handle-dimension;
+		    border-radius: $input-range-handle-border-radius;
+		    transition: background .15s ease-in-out;
+		    cursor: pointer;
+
+		    &:hover {
+		    	@include -background-color-green;
+		    }
+		}
+
+		&:active::-webkit-slider-thumb {
+			@include -background-color-green;
+		}
+
+		&::-moz-range-thumb {
+			@include -background-color-petrol;
+
+			width: $input-range-handle-dimension;
+		    height: $input-range-handle-dimension;
+		    border: $input-range-handle-border-reset;
+		    border-radius: $input-range-handle-border-radius;
+		    transition: background .15s ease-in-out;
+		    cursor: pointer;
+
+			&:hover {
+		    	@include -background-color-green;
+			}
+		}
+
+	  	&:active::-moz-range-thumb {
+	  		@include -background-color-green;
+	  	}
+	}
+
+	&__value {
+		@include -border-radius(3px);
+		@include -background-color-petrol;
+		@include -text-color-white;
+		@include -typo-copy;
+		@include -spacing-inner('top', 5px);
+		@include -spacing-inner('bottom', 5px);
+		@include -spacing-inner('left', 10px);
+		@include -spacing-inner('right', 10px);
+		@include -align-center;
+
+		display: inline-block;
+		position: relative;
+		width: $input-range-value-width;
+		line-height: $input-range-value-line-height;
+		margin-left: $input-range-value-spacing-left;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: $input-range-value-arrow-position-top;
+			left: -$input-range-value-arrow-position-left;
+			width: $input-range-value-arrow-dimension;
+			height: $input-range-value-arrow-dimension;
+			border-top: $input-range-value-arrow-border-width solid transparent;
+			border-right: $input-range-value-arrow-border-width solid $input-range-value-arrow-color;
+			border-bottom: $input-range-value-arrow-border-width solid transparent;
+		}
+	}
+}
+
+// Firefox Overrides
+::-moz-range-track {
+	@include -background-color-gray-03;
+	
+    border: $input-range-handle-border-reset;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer { 
+  border: $input-range-handle-border-reset; 
+}

@@ -1,0 +1,66 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/flex.mixin';
+
+@import 'list-beachcourt.setup';
+
+.list-beachcourt {
+	width: $list-beachcourt-width;
+
+	&__item {
+		@include -spacing-inner(null, 30px);
+		@include -spacing-outer(15px);
+		@include -border-radius(6px);
+		@include -flex;
+		@include -flex-direction(column);
+		@include -background-color-white;
+
+		position: relative;
+		box-shadow: $list-beachcourt-item-box-shadow-values $list-beachcourt-item-box-shadow-color;
+
+		@include breakpoint('s') {
+			@include -flex-direction(row);
+			@include -spacing-outer(30px);
+		}
+
+		&:first-of-type {
+			@include -spacing-outer(0);
+		}
+	}
+
+	&__image {
+		@include -border-radius(4px);
+
+		width: $list-beachcourt-item-image-width;
+		height: $list-beachcourt-item-image-height;
+		overflow: hidden;
+	}
+
+	&__info {
+		@include -spacing-outer(30px);
+			
+		width: $list-beachcourt-info-width;
+
+		@include breakpoint('s') {
+			@include -spacing-outer(0);
+			@include -spacing-inner('left', 50px);
+			
+			width: $list-beachcourt-info-width-s;
+		}
+	}
+
+	&__icon {
+		@include -text-color-gray-01;
+
+		position: absolute;
+		right: $list-beachcourt-icon-position-right;
+		top: $list-beachcourt-icon-position-top;
+
+		&:hover {
+			@include -text-color-gray-01;
+		}
+	}
+}

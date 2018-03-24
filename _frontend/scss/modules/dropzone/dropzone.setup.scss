@@ -1,0 +1,6 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$dropzone-border-width: 2px !default;
+$dropzone-border-color: $color-palette-petrol-blue !default;
+$dropzone-dimension: rem(285px) !default;

@@ -1,0 +1,73 @@
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/fonts.mixin';
+
+@import 'button-secondary.setup';
+
+.button-secondary {
+  border: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  border: $button-secondary-border-width solid $button-secondary-border-color;
+  height: $button-secondary-height;
+  width: $button-secondary-width;
+  max-width: $button-secondary-max-width;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  padding: {
+    left: $button-secondary-inner-spacing-horizontal;
+    right: $button-secondary-inner-spacing-horizontal; 
+  }
+  
+  &::before,
+  &::after {
+    @include -background-color-gray-01;
+
+    content: '';
+    position: absolute;
+    width: $button-secondary-before-after-width;
+    height: $button-secondary-before-after-height;
+    transition: width .3s ease-in-out;
+  }
+  
+  &::before {
+    top: -$button-secondary-before-position-top;
+    left: $button-secondary-before-position-reset;
+  }
+  
+  &::after {
+    bottom: -$button-secondary-before-position-bottom;
+    right: $button-secondary-after-position-reset;
+  }
+  
+  &:hover {
+    border-right-width: $button-secondary-border-width-right-hovered;
+    border-left-width: $button-secondary-border-width-left-hovered;
+  
+    &::after,
+    &::before {
+      width: $button-secondary-before-after-width-hovered;
+    }
+  }
+  
+  &__icon {
+    @include -text-color-gray-01;
+
+    width: $button-secondary-icon-dimension;
+    height: $button-secondary-icon-dimension;
+    margin-right: $button-secondary-icon-outer-spacing-right;
+    vertical-align: middle;
+  }
+  
+  &__label {
+    @include -text-color-gray-01;
+    @include -font-secondary;
+    
+    font-size: $button-secondary-label-font-size;
+    vertical-align: middle;
+  }
+}

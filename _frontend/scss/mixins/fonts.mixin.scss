@@ -1,0 +1,10 @@
+@import '../setup/font.setup';
+@import '../setup/sizes';
+
+@mixin -font-primary {
+	font-family: $font-primary;
+}
+
+@mixin -font-secondary {
+	font-family: $font-secondary;
+}

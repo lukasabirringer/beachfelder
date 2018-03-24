@@ -1,0 +1,69 @@
+@import '../../mixins/align.mixin';
+@import '../../mixins/flex.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/typo.mixin';
+@import '../../mixins/breakpoint.mixin';
+
+@import 'profile-user.setup';
+
+.profile-user {
+	@include -flex;
+	@include -flex-align-items(center);
+
+	&__info {
+		@include -align-right;
+		
+	}
+
+	&__title {
+		@include -typo-copy-bold;
+		@include -text-color-gray-01;
+
+		display: block;
+		font-size: $profile-user-font-size;
+		text-decoration: none;
+	}
+
+	&__subtitle {
+		@include -text-color-gray-01;
+		@include -typo-copy;
+
+		text-decoration: underline;
+		line-height: $profile-user-line-height;
+		font-size: $profile-user-font-size;
+	}
+
+	&__image {
+		overflow: hidden;
+		margin-left: $profile-user-image-spacing-outer-left;
+		width: $profile-user-image-dimension;
+		height: $profile-user-image-dimension;
+		border-radius: $profile-user-image-border-radius;
+		position: relative;
+
+		img {
+			position: absolute;
+			left: $profile-user-image-position;
+			top: $profile-user-image-position;
+			transform: translate(-$profile-user-image-position, -$profile-user-image-position);
+
+		}
+	}
+
+	&__column {
+		position: relative;
+	}
+
+	&__flyout {
+		@include breakpoint('s') {
+			top: $profile-user-flyout-position-top-s;
+			right: $profile-user-flyout-position-right-s;
+		}
+	}
+
+	&__edit-icon {
+		position: absolute;
+		right: $profile-user-edit-icon-position-right;
+		top: $profile-user-edit-icon-position-top;
+	}
+}

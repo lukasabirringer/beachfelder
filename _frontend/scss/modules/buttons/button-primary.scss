@@ -1,0 +1,54 @@
+@import '../../mixins/typo.mixin';
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/align.mixin';
+@import 'button-primary.setup';
+
+.button-primary {
+  @include -background-color-petrol;
+  @include -align-center;
+
+  border: none;
+  appearance: none;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background .2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: $button-primary-border-radius;
+  width: $button-primary-width;
+  padding: {
+    top: $button-primary-inner-spacing-vertical;
+    bottom: $button-primary-inner-spacing-vertical;
+    left: $button-primary-inner-spacing-horizontal;
+    right: $button-primary-inner-spacing-horizontal;
+  }
+  
+  &:hover {
+    background: $button-primary-background-color-hovered;
+  }
+
+  &:disabled {
+    @include -background-color-gray-02;
+    cursor: default;
+  }
+
+  &--red {
+    @include -background-color-red;
+  }
+
+  &--dark-gray {
+    @include -background-color-gray-01;
+  }
+
+  &__label {
+    @include -typo-copy;
+    @include -text-color-white;
+    
+    font-size: $button-primary-label-font-size;
+  }
+
+}

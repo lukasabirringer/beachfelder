@@ -1,0 +1,16 @@
+@import 'image-profile.setup';
+
+.image-profile {
+	width: $image-profile-dimension;
+	height: $image-profile-dimension;
+	border-radius: $image-profile-border-radius;
+	overflow: hidden;
+	position: relative;
+
+	img {
+		position: absolute;
+		top: $image-profile-image-position;
+		left: $image-profile-image-position;
+		transform: translate(-$image-profile-image-position,-$image-profile-image-position);
+	}
+}

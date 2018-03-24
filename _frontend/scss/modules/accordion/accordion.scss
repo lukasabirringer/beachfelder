@@ -1,0 +1,49 @@
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/typo.mixin';
+
+@import 'accordion.setup';
+
+.accordion {
+	
+	&__title-bar {
+		@include -spacing-inner('bottom', 13px);
+
+		border-bottom: $accordion-title-bar-border-width $accordion-title-bar-border-color solid;
+	}
+
+	&__title {
+		@include -typo-headline-04;
+		@include -text-color-gray-01;
+		@include -spacing-inner('right', 10px);
+
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+
+		&--active {
+			@include -text-color-petrol;
+			
+
+			@include breakpoint('s') {
+				&::after {
+					@include -background-color-petrol;
+
+					content: '';
+					width: $accordion-title-active-state-border-width;
+					height: $accordion-title-active-state-border-height;
+					position: absolute;
+					left: $accordion-title-active-state-border-position-left;
+					bottom: -$accordion-title-active-state-border-position-bottom;
+				}
+			}
+
+		}
+	}
+
+	&__content {
+		@include -spacing-outer(20px);
+	}
+}

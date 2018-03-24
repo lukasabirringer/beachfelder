@@ -1,0 +1,11 @@
+@import '../../setup/pxtorem';
+
+$sidebar-height: 100vh !default;
+$sidebar-width: rem(70px) !default;
+$sidebar-position-reset: 0 !default;
+$sidebar-z-index: 5 !default;
+
+$sidebar-logo-dimension: rem(45px) !default;
+$sidebar-logo-position-top: rem(20px) !default;
+$sidebar-logo-position-left: rem(10px) !default;
+$sidebar-logo-position-right: $sidebar-logo-position-left !default;

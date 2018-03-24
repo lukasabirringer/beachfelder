@@ -1,0 +1,67 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+
+.icon {
+	
+	&--gray-01 {
+		@include -text-color-gray-01;
+	}
+
+	&--gray-02 {
+		@include -text-color-gray-02;	
+	}
+
+	&--gray-03 {
+		@include -text-color-gray-03;	
+	}
+
+	&--petrol {
+		@include -text-color-petrol;	
+	}
+
+	&--green {
+		@include -text-color-green;	
+	}
+
+	&--red {
+		@include -text-color-red;	
+	}
+
+	&--white {
+		@include -text-color-white;
+	}
+}
+
+.icon-background {
+	@include -spacing-inner(null, 5px);
+	border-radius: 50%;
+
+	&--gray-01 {
+		@include -background-color-gray-01;
+	}
+
+	&--gray-02 {
+		@include -background-color-gray-02;
+	}
+
+	&--gray-03 {
+		@include -background-color-gray-03;
+	}
+
+	&--petrol {
+		@include -background-color-petrol;
+	}
+
+	&--green {
+		@include -background-color-green;
+	}
+
+	&--red {
+		@include -background-color-red;
+	}
+
+	&--white {
+		@include -background-color-white;
+	}
+}

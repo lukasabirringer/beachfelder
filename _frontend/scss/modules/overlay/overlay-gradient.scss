@@ -1,0 +1,35 @@
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/flex.mixin';
+@import 'overlay-gradient.setup';
+
+.overlay-gradient {
+	position: absolute;
+	width: $overlay-gradient-width;
+	height: $overlay-gradient-height;
+	top: $overlay-gradient-position-reset;
+	z-index: 100;
+	display: none;
+
+	@include breakpoint('m') {
+		@include -flex;
+		@include -flex-justify-content(center);
+		@include -flex-align-items(flex-start);
+		@include -flex-direction(column);
+	}
+	
+	&--left {
+		left: $overlay-gradient-position-reset;
+		background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+		background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+	}	
+	
+	&--right {
+		right: -$overlay-gradient-position-right;
+		background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+		background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+	}
+}

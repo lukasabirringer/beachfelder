@@ -1,0 +1,39 @@
+@import '../mixins/typo.mixin';
+
+.-typo {
+	&-headline-01 {
+		@include -typo-headline-01;
+	}
+
+	&-headline-02 {
+		@include -typo-headline-02;
+	}
+
+	&-headline-03 {
+		@include -typo-headline-03;
+	}
+
+	&-headline-04 {
+		@include -typo-headline-04;
+	}
+
+	&-headline-05 {
+		
+	}
+
+	&-headline-06 {
+		
+	}
+
+	&-copy {
+		@include -typo-copy;
+	}
+
+	&-copy--bold {
+		@include -typo-copy-bold;
+	}
+
+	&-copy--small {
+		@include -typo-copy-small;
+	}
+}

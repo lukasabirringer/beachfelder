@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>beachfelder.de // PAGE click dummy</title>
+		<link rel="stylesheet" href="css/main.css">
+		<script src="node_modules/feather-icons//dist/feather.min.js"></script>
+
+	</head>
+	<body class="has-bg">
+		<div class="sidebar">
+			<a href="index.html"><img class="sidebar__logo" src="images/signet-beachfelder.de_white.png"></a>
+			<ul class="navigation">
+				<li class="navigation__item"><a href="index.html" class="navigation__link"><span data-feather="home"></span></a></li>
+				<li class="navigation__item"><a href="your-profile.html" class="navigation__link"><span data-feather="user"></span></a></li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<header class="header row">
+				<div class="column column--12 column--m-6">
+					<label class="input">
+				      <input type="email" class="input__field input__field--email" placeholder="PLZ oder Ort">
+				      <span class="input__icon" data-feather="search"></span>
+				      <span class="input__label">PLZ oder Ort</span> 
+				      <div class="input__border"></div>
+				    </label>
+				</div>
+				<div class="column column--12 column--m-6 header__column">
+				    <div class="profile-user">
+			        	<div class="profile-user__info">
+			        		<a href="your-profile.html" class="profile-user__title">Fabian Pecher</a>
+			        		<a href="#" class="link-text profile-user__subtitle link-logout">Abmelden</a>	
+			        	</div>
+			        	<div class="profile-user__image">
+			        		<img src="images/profile-image.jpg" width="60">
+			        	</div>
+
+			        	<div class="flyout profile-user__flyout">
+			        		<span class="flyout__icon" data-feather="x-circle"></span>
+			        		<h4 class="-typo-headline-04 -text-color-gray-01">
+			        			Willst du dich wirklich abmelden?
+			        		</h4>
+			        		<p class="-typo-copy -text-color-gray-01 -spacing-b">
+			        			<a href="#" class="link-text">Ja, ich muss leider.</a>
+			        		</p>
+
+			        		<p class="-typo-copy -text-color-gray-01">
+			        			<a href="#" class="link-text">Nein, war ein Fehler von mir.</a>
+			        		</p>
+			        	</div>
+			        </div>
+				</div>
+			</header>
+			<div class="content__main">
+				<div class="row">
+					<div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
+						<img 
+							src="images/dummy-01.jpg" class="image image--max-width"
+							srcset="images/dummy-01-retina.jpg 2x">
+					</div>
+					<div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
+						<h2 class="title-page__title">Bewerte das Beachvolleyballfeld</h2>
+						<h4 class="title-page__subtitle">in Tiefenbronn-Mühlhausen</h4>
+						<div class="row">
+							<div class="column column--12 column--m-6">
+								<div class="icon-text -spacing-b">
+									<span class="icon-text__icon" data-feather="map-pin"></span>
+									<span class="icon-text__text">32491 East Virginie<br>Langworth Flat 30147</span>
+								</div>
+							</div>
+							<div class="column column--12 column--m-6">
+								<div class="icon-text -spacing-b">
+									<span class="icon-text__icon" data-feather="navigation"></span>
+									<span class="icon-text__text">-42.672459<br>-146.800413</span>
+								</div>
+							</div>
+						</div>
+						<p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+							Nicht das richtige Feld?
+							<a href="search.html" class="link-text">Beachvolleyballfeld ändern</a>
+						</p>
+					</div>
+				</div>
+				<div class="row -spacing-a">
+					<div class="column column--12">
+						<hr class="divider">
+					</div>
+				</div>
+				<div class="row">
+					<form action="#" id="form-rating" method="post">
+						<div class="tab -spacing-a" id="sand">
+							<div class="column column--12">
+								<div class="row">
+									<div class="column column--12">
+										<h3 class="-typo-headline-03 -text-color-gray-01">Sand</h3>
+										<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Qualität des Sandes?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">sehr gut</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">gut</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">schlecht</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Ist die Spielfläche eben?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-playground">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Ja</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-playground">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">es geht so</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-playground">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Nein</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Wie tief ist der Sand an der flachsten Stelle des Feldes?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-deepness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">mehr als 30cm</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-deepness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">20-30cm</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-deepness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">weniger als 20cm</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12 ">
+										<p class="-typo-copy -text-color-gray-01">Ist ein Staubschutz, wie zum Beispiel eine Bewässerungsanlage vorhanden?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-dust">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Keine Staubentwicklung und/oder Wasseranschluss vorhanden</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-dust">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Leichte Staubentwicklung, kein Wasseranschluss</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="sand-dust">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Starke Staubentwicklung, kein Wasseranschluss</span>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab -spacing-a" id="net">
+							<div class="column column--12">
+								<div class="row">
+									<div class="column column--12 -spacing-b">
+										<h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Netz</h3>
+										<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist die Netzhöhe frei wählbar?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-height">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Ja, man kann alle Höhen von 2m bis 2,43m wählen</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-height">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Die Höhe stimmt, ist aber nicht verstellbar</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-height">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Nein, leider ist die Höhe nicht veränderbar</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Wie ist die Beschaffenheit des Netzes?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Stabiles Beachnetz mit fester Einfassung</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Provisorisches Netz (zum Beispiel Hallen-Netz), Beachnetz mit Mängeln</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-quality">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Schnur oder Kettennetz oder Netz fehlt</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Sind Antennen vorhanden?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-antennas">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Ja</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-antennas">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Ja, aber die Befestigung ist mangelhaft</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-antennas">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Nein</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Lässt sich das Netz korrekt spannen?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-tightness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Spannseil und Abspannung intakt</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-tightness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Zu wenig Spannung, nicht justierbar</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="net-tightness">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Netz hängt durch, bzw. schwingt stark</span>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab -spacing-a" id="playground">
+							<div class="column column--12">
+								<div class="row">
+									<div class="column column--12 -spacing-b">
+										<h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Spielfeld</h3>
+										<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Beschaffenheit der Linien?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-lines">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">5 cm breit, im Boden verankert</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-lines">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Falsche Breite oder Verankerung lose</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-lines">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Keine Linien oder Linien nicht verankert</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Sind die Spielfeldmaße regelkonform?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-size">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">8 x 16 m +/- 5 cm, rechteckig</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-size">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Abweichung 5-25 cm oder nicht rechteckig gespannt</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-size">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Abweichung >25 cm oder geringe Abweichung + nicht rechteckig</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Besteht eine ausreichende Sicherheitszone um das Spielfeld?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-safety">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">3m ringsum oder mehr</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-safety">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">2 - 3m</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="playground-safety">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Unter 2m</span>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab -spacing-a" id="environment">
+							<div class="column column--12">
+								<div class="row">
+									<div class="column column--12 -spacing-b">
+										<h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Umgebung</h3>
+										<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie gut ist das Spielfeld gegen Wind geschützt?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-wind">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Gut windgeschützt</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-wind">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Windanfällig bei schlechtem Wetter</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-wind">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Eigentlich immer windig, ohne Schutzmaßnahmen</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<hr class="divider">
+									</div>
+								</div>
+
+								<div class="row -spacing-a">
+									<div class="column column--12">
+										<p class="-typo-copy -text-color-gray-01">Beeinträchtigen andere Spielfelder das Spielgeschehen?</p>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-disorder">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="sun"></span>
+												<span class="input-radio-icon__label">Einzelfeld, bzw. Schutz durch Ballfangzaun</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-disorder">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud"></span>
+												<span class="input-radio-icon__label">Maximal 2 Felder nebeneinander ohne Ballfangzaun</span>
+											</div>
+										</label>
+									</div>
+									<div class="column column--12 column--m-4 -spacing-d">
+										<label class="input-radio-icon">
+											<input type="radio" class="input-radio-icon__field" name="environment-disorder">
+											<div class="input-radio-icon__container">
+												<span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
+												<span class="input-radio-icon__label">Mehrere Felder direkt nebeneinander ohne Ballfangzaung</span>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="column column--12 column--m-6 -spacing-b">
+							<button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
+								<span class="button-primary__label">Schritt zurück</span>
+							</button>
+						</div>
+						<div class="column column--12 column--m-6 -spacing-b">
+							<button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)">
+								<span class="button-primary__label">Schritt weiter</span>
+							</button>
+						</div>
+					</form>
+				</div>
+				
+			</div><!-- .content__main ENDE -->
+			<footer class="footer row">
+				<div class="column column--12">
+					<ul class="footer__navigation">
+						<li class="footer__item"><a href="impressum.html" class="footer__link">Impressum</a></li>
+						<li class="footer__item"><a href="kontakt.html" class="footer__link">Kontakt</a></li>
+					</ul>
+				</div>
+				<div class="column column--12">
+					<p class="footer__paragraph">© 2018 beachfelder.de</p>
+				</div>
+			</footer>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/datepicker.min.js"></script>
+		<script src="js/i18n/datepicker.de.js"></script>
+		<script src="js/dropzone.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/tab.rating.js"></script>
+	</body>
+</html>

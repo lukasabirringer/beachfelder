@@ -1,0 +1,19 @@
+@mixin -flex {
+	display: flex;
+}
+
+@mixin -flex-justify-content($alignmentContent) {
+	justify-content: $alignmentContent;
+}
+
+@mixin -flex-align-items($alignment) {
+	align-items: $alignment;
+}
+
+@mixin -flex-direction($direction) {
+	flex-direction: $direction;
+}
+
+@mixin -flex-wrap($wrap) {
+	flex-wrap: $wrap;
+}

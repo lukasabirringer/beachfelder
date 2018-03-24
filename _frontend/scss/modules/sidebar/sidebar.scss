@@ -1,0 +1,28 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/flex.mixin';
+
+@import 'sidebar.setup';
+
+.sidebar {
+	@include -background-color-petrol;
+	@include -flex;
+	@include -flex-justify-content(center);
+	@include -flex-align-items(center);
+	@include -flex-direction(column);
+
+	height: $sidebar-height;
+	width: $sidebar-width;
+	position: fixed;
+	left: $sidebar-position-reset;
+	top: $sidebar-position-reset;
+	z-index: $sidebar-z-index;
+
+	&__logo {
+		position: absolute;
+		width: $sidebar-logo-dimension;
+		height: $sidebar-logo-dimension;
+		top: $sidebar-logo-position-top;
+		left: $sidebar-logo-position-left;
+		right: $sidebar-logo-position-right;
+	}
+}

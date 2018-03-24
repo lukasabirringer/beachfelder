@@ -1,0 +1,108 @@
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/typo.mixin';
+@import 'input.setup';
+
+.input {
+  
+  $bem-block: &;
+  
+  width: $input-width;
+  height: $input-height;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  
+  &__field {
+    @include -text-color-gray-02;
+    @include -typo-copy;
+
+    width: $input-field-width;
+    height: $input-field-height;
+    background: transparent;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-bottom: $input-field-border-width $input-field-border-color solid;
+    padding: {
+      top: $input-field-inner-spacing-horizontal;
+      left: $input-field-inner-spacing-left;
+      bottom: $input-field-inner-spacing-horizontal;
+      right: $input-field-inner-spacing-right;
+    };
+  }
+  
+  ::-webkit-input-placeholder {
+    @include -text-color-gray-01;
+  }
+  
+  &__icon {
+    @include -text-color-gray-01;
+
+    position: absolute;
+    right: $input-icon-position-right;
+    top: $input-icon-position-top;
+    height: $input-icon-height;
+    transform: translateY(-$input-icon-position-top);
+    user-select: none;
+    opacity: $input-icon-opacity;
+    cursor: pointer;
+    
+    &--not-visible {
+      opacity: $input-icon-not-visible-opacity;
+      transition: opacity .2s ease;
+    }
+  }
+  
+  &__label {
+    @include -typo-copy;
+    @include -text-color-gray-01;
+
+    position: absolute;
+    font-size: $input-label-font-size;
+    top: $input-label-position-top;
+    left: $input-label-position-left;
+    transform: translateY(-$input-label-position-top);
+    opacity: $input-label-opacity;
+    transition: all .2s;
+    display: block;
+  }
+  
+  &__border {
+    @include -background-color-green;
+
+    width: $input-border-width;
+    position: absolute;
+    height: $input-border-height;
+    bottom: $input-border-position-reset;
+    left: $input-border-position-reset;
+    transition: width .2s ease-in-out;
+  }
+  
+  &__field:focus ~ &__border {
+    width: $input-border-width-focused;
+  }
+  
+  &__field:not(:placeholder-shown) {
+    padding-top: $input-field-inner-spacing-top-placeholder-show;
+  }
+  
+  &__field:not(:placeholder-shown) ~ &__border {
+    width: $input-border-width-focused;
+  }
+  
+  &__field:focus:not(:placeholder-shown) ~ &__label {
+    top: $input-label-position-top-focused;
+    font-size: $input-label-font-size-focused;
+    opacity: $input-label-opcaity-focused;
+  }
+  
+  &__field:not(:placeholder-shown) ~ &__label {
+    top: $input-label-position-top-focused;
+    font-size: $input-label-font-size-focused;
+    opacity: $input-label-opcaity-focused;
+  }
+  
+  &__field:not(:placeholder-shown) ~ &__icon {
+    @include -text-color-green;
+  }
+}

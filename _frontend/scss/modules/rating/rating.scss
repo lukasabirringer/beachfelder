@@ -1,0 +1,33 @@
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/typo.mixin';
+@import 'rating.setup';
+
+.rating {
+	position: relative;
+
+	&__item {
+		display: inline-block;
+		width: $rating-item-dimension;
+		height: $rating-item-dimension;
+
+		img {
+			width: $rating-item-image-dimension;
+			height: $rating-item-image-dimension;
+		}
+	}
+
+	&__count {
+		@include -typo-copy;
+		@include -text-color-gray-01;
+
+		vertical-align: text-bottom;
+		line-height: $rating-count-line-height;
+		display: block;
+
+		@include breakpoint('s') {
+			margin-left: $rating-count-spacing-outer-left-m;
+			display: inline;
+		}
+	}
+}

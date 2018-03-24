@@ -1,0 +1,17 @@
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/align.mixin';
+@import 'profile-edit.setup';
+
+.profile-edit {
+
+	&__column {
+		display: none;
+		border-right: $profile-edit-column-border-width $profile-edit-column-border-color solid;
+
+		@include breakpoint('m') {
+			@include -align-right;
+			
+			display: block;
+		}
+	}
+}

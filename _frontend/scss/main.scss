@@ -1,0 +1,14 @@
+@import 'base/index';
+@import 'common/index';
+
+@import 'modules/index';
+
+
+
+.home__title {
+	@include -spacing-outer(50);
+
+	@include breakpoint('s') {
+		@include -spacing-outer(130);
+	}
+}

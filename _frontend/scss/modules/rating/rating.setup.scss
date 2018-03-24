@@ -1,0 +1,7 @@
+@import '../../setup/pxtorem';
+
+$rating-item-dimension: rem(40px) !default;
+$rating-item-image-dimension: 100% !default;
+
+$rating-count-spacing-outer-left-m: rem(12px) !default;
+$rating-count-line-height: $rating-item-dimension !default;

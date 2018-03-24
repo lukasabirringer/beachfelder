@@ -1,0 +1,39 @@
+@import '../../mixins/flex.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/background-color.mixin';
+
+@import 'header.setup';
+
+.header {
+	@include -flex;
+	@include -flex-align-items(center);
+	@include -flex-justify-content(space-between);
+	@include -flex-direction(column);
+	@include -spacing-inner(top, 20px);
+
+	@include breakpoint('s') {
+		@include -flex-direction(row);
+	}
+
+	&__column {
+		@include -spacing-outer(20px);
+		@include -flex;
+		@include -flex-justify-content(flex-end);
+
+		@include breakpoint('s') {
+			@include -spacing-outer(0);
+		}
+	}
+
+	&--fixed {
+		@include -background-color-white;
+		@include -spacing-inner(null, 15px);
+
+		position: fixed;
+		left: $header-position-left-fixed;
+		top: $header-position-top-fixed;
+		right: $header-position-right-fixed;
+		z-index: $header-z-index-fixed;
+	}
+}

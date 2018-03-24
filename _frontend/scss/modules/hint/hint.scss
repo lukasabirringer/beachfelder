@@ -1,0 +1,32 @@
+@import '../../mixins/breakpoint.mixin';
+@import 'hint.setup';
+
+.hint {
+	position: relative;
+
+	&__container {
+		position: absolute;
+		right: -$hint-position-right;
+		top: -$hint-position-top;
+
+		@include breakpoint('s') {
+			right: -$hint-position-right-s;
+	    	top: -$hint-position-top-s;
+		}
+
+		@include breakpoint('m') {
+			right: $hint-position-right-m;
+			top: -$hint-position-top-m;
+		}
+	}
+
+	
+
+	&__image {
+		width: $hint-image-width;
+
+		@include breakpoint('m') {
+			width: $hint-image-width-m;
+		}
+	}
+}

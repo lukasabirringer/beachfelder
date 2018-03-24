@@ -1,0 +1,13 @@
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/flex.mixin';
+
+.form {
+	&--edit-profile {
+		@include -flex;
+		@include -flex-direction(column);
+
+		@include breakpoint('m') {
+			@include -flex-direction(row);
+		}
+	}
+}

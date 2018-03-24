@@ -1,0 +1,7 @@
+@import '../mixins/align.mixin';
+
+.-align {
+	&-left {@include -align-left;}
+	&-center {@include -align-center;}
+	&-right {@include -align-right;}
+}

@@ -1,0 +1,15 @@
+@import '../mixins/overflow.mixin';
+
+.-overflow {
+	&--hidden {
+		@include -overflow-hidden;
+	}
+
+	&--hidden-y {
+		@include -overflow-hidden-y;
+	}
+
+	&--hidden-x {
+		@include -overflow-hidden-x;
+	}
+}

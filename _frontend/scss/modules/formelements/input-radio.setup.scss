@@ -1,0 +1,9 @@
+@import '../../setup/pxtorem';
+@import '../../setup/color-palette.setup';
+
+$input-radio-before-position-left: 0 !default;
+$input-radio-before-position-top: 50% !default;
+$input-radio-before-dimension: rem(16px) !default;
+$input-radio-before-border-radius-checked: 50% !default;
+$input-radio-border-width: 1px !default;
+$input-radio-border-color: $color-palette-gray-01 !default;

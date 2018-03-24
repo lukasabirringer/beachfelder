@@ -1,0 +1,40 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$beachcourt-item-height: 100% !default;
+$beachcourt-item-width: 100% !default;
+$beachcourt-item-min-width: rem(300px) !default;
+$beachcourt-item-border-radius: rem(6px) !default;
+$beachcourt-item-spacing-outer-left: rem(100px) !default;
+$beachcourt-item-spacing-outer-left-reset: 0 !default;
+$beachcourt-item-image-height: rem(180px) !default;
+$beachcourt-item-image-width: 100% !default;
+$beachcourt-item-box-shadow-values: 0px 0px 100px 10px !default;
+$beachcourt-item-box-shadow-color: rgba(0,0,0,0.1) !default;
+
+$beachcourt-item-favorite-icon-dimension: rem(28px) !default;
+$beachcourt-item-favorite-border-radius: 50% !default;
+$beachcourt-item-favorite-position: rem(10px) !default;
+$beachcourt-item-favorite-svg-dimension: rem(15px) !default;
+
+$beachcourt-item-distance-position-reset: 0 !default;
+$beachcourt-item-distance-inner-spacing-vertical: rem(10px) !default;
+$beachcourt-item-distance-inner-spacing-left: rem(10px) !default;
+$beachcourt-item-distance-inner-spacing-right: rem(20px) !default;
+$beachcourt-item-distance-svg-dimension: rem(16px) !default;
+
+$beachcourt-item-title-font-size: rem(20px) !default;
+$beachcourt-item-title-line-height: 1.2 !default;
+
+$beachcourt-item-rating-width: 100% !default;
+
+$beachcourt-item-info-inner-spacing-top: rem(25px) !default;
+$beachcourt-item-info-inner-spacing-left: rem(20px) !default;
+$beachcourt-item-info-inner-spacing-right: $beachcourt-item-info-inner-spacing-left !default;
+$beachcourt-item-info-inner-spacing-bottom: $beachcourt-item-info-inner-spacing-left !default; 
+
+$beachcourt-item-info-icon-position-right: rem(10px) !default;
+$beachcourt-item-info-icon-position-top: rem(5px) !default;
+$beachcourt-item-info-icon-dimension: rem(18px) !default;
+
+$beachcourt-item-info-flyout-height: 100% !default;

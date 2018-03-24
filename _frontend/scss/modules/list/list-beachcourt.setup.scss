@@ -1,0 +1,15 @@
+@import '../../setup/pxtorem';
+@import '../../setup/color-palette.setup';
+
+$list-beachcourt-width: 100% !default;
+$list-beachcourt-item-box-shadow-values: 0px 0px 100px 10px !default;
+$list-beachcourt-item-box-shadow-color: rgba(0,0,0,0.1) !default;
+
+$list-beachcourt-icon-position-right: rem(20px) !default;
+$list-beachcourt-icon-position-top: rem(20px) !default;
+
+$list-beachcourt-item-image-width: rem(212px) !default;
+$list-beachcourt-item-image-height: rem(150px) !default;
+
+$list-beachcourt-info-width: 100% !default;
+$list-beachcourt-info-width-s: 70% !default;

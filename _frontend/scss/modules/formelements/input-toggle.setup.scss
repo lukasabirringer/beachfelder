@@ -1,0 +1,18 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+
+$input-toggle-switch-box-shadow-color: $color-palette-gray-03 !default;
+$input-toggle-switch-box-shadow-position: 0 0 0px 1px !default;
+$input-toggle-switch-height: rem(30px) !default;
+$input-toggle-switch-width: rem(50px) !default;
+
+$input-toggle-switch-dimension: rem(30px) !default;
+$input-toggle-switch-position-reset: 0 !default;
+$input-toggle-switch-width-checked: rem(50px) !default;
+
+$input-toggle-label-spacing-outer-left: rem(10px) !default;
+
+$input-toggle-switch-box-shadow-position-checked: 0 0 0 1px !default;
+$input-toggle-switch-box-shadow-color-checked: $color-palette-green !default;
+

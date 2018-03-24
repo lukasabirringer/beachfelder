@@ -1,0 +1,25 @@
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/typo.mixin';
+
+.title-page {
+	&__title {
+		@include -typo-headline-01;
+		@include -text-color-gray-01;
+	}
+
+	&__subtitle {
+		@include -typo-copy;
+		@include -text-color-gray-01;
+		@include -spacing-outer(10px);
+		
+		@include breakpoint('s') {
+			@include -spacing-outer(20px);
+		}
+
+		@include breakpoint('m') {
+			@include -spacing-outer(30px);			
+		}
+	}
+}

@@ -1,0 +1,15 @@
+@import '../../setup/pxtorem';
+
+$profile-user-line-height: 1 !default;
+$profile-user-image-dimension: rem(50px) !default;
+$profile-user-image-border-radius: 50% !default;
+$profile-user-image-spacing-outer-left: rem(20px) !default;
+$profile-user-image-position: 50% !default;
+
+$profile-user-font-size: rem(14) !default;
+
+$profile-user-flyout-position-top-s: rem(20px) !default;
+$profile-user-flyout-position-right-s: rem(30px) !default;
+
+$profile-user-edit-icon-position-right: rem(10px) !default;
+$profile-user-edit-icon-position-top: rem(30px) !default;

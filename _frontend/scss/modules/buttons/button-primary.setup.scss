@@ -1,0 +1,9 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$button-primary-background-color-hovered: darken($color-palette-petrol-blue, 10%);
+$button-primary-border-radius: rem(4px) !default;
+$button-primary-width: 100% !default;
+$button-primary-inner-spacing-vertical: rem(10px) !default;
+$button-primary-inner-spacing-horizontal: rem(20px) !default;
+$button-primary-label-font-size: rem(14px) !default;

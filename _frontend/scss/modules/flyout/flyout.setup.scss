@@ -1,0 +1,18 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$flyout-width: 100% !default;
+$flyout-height: $flyout-width !default;
+$flyout-z-index: 50 !default;
+
+$flyout-position-hidden: 150% !default;
+$flyout-position-reset: 0 !default;
+
+$flyout-opacity-hidden: 0 !default;
+$flyout-opacity: 1 !default;
+
+$flyout-box-shadow-values: 0px 0px 100px 10px !default;
+$flyout-box-shadow-color: rgba(0,0,0,0.1) !default;
+$flyout-icon-position-right: rem(5px) !default;
+$flyout-icon-position-top: rem(5px) !default;
+$flyout-icon-dimension: rem(35px) !default;

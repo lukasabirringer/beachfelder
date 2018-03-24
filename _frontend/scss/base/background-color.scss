@@ -1,0 +1,11 @@
+@import '../mixins/background-color.mixin';
+
+.-background-color {
+	&-white {@include -background-color-white;}
+	&-petrol {@include -background-color-petrol;}
+	&-green {@include -background-color-green;}
+	&-red {@include -background-color-red;}
+	&-gray-01 {@include -background-color-gray-01;}
+	&-gray-02 {@include -background-color-gray-02;}
+	&-gray-03 {@include -background-color-gray-03;}
+}

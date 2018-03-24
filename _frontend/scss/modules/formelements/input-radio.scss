@@ -1,0 +1,46 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/typo.mixin';
+@import 'input-radio.setup';
+
+.input-radio {
+	@include -spacing-inner('right', 10px);
+	display: block;
+
+	&__field {
+		display: none;
+		appearance: none;
+	}
+
+	&__label {
+		@include -text-color-gray-01;
+		@include -typo-copy;
+		@include -spacing-inner('left', 25px);
+
+		position: relative;
+		cursor: pointer;
+		
+
+		&::before {
+			@include -border-radius(2px);
+
+			content: '';
+			left: $input-radio-before-position-left;
+			top: $input-radio-before-position-top;
+			width: $input-radio-before-dimension;
+			height: $input-radio-before-dimension;
+			position: absolute;
+			transform: translateY(-$input-radio-before-position-top);
+			transition: all 0.3s ease;
+			border-bottom: $input-radio-border-width $input-radio-border-color solid;
+		}
+	}
+
+	&__field:checked + &__label::before{
+		@include -background-color-green;
+		
+		border-radius: $input-radio-before-border-radius-checked;
+	}
+}

@@ -1,0 +1,14 @@
+@import '../../setup/pxtorem';
+@import '../../setup/color-palette.setup';
+
+$page-login-half-width: 100% !default;
+$page-login-half-width-s: 50% !default;
+$page-login-half-active-grow-value: 2 !default;
+$page-login-half-active-width: 100% !default;
+$page-login-half-border-width: 3px !default;
+$page-login-half-border-color: $color-palette-gray-03 !default;
+
+$page-login-content-height: 0 !default;
+$page-login-title-icon-height: rem(20px) !default;
+$page-login-title-icon-height-s: rem(30px) !default;
+$page-login-title-icon-spacing-right: rem(10px) !default;

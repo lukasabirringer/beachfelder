@@ -1,0 +1,6 @@
+@import '../../setup/pxtorem';
+
+$header-position-left-fixed: rem(82px) !default;
+$header-position-top-fixed: 0 !default;
+$header-position-right-fixed: $header-position-top-fixed !default;
+$header-z-index-fixed: 100 !default;

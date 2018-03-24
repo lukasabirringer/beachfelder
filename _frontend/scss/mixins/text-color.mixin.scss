@@ -1,0 +1,29 @@
+@import '../setup/color-palette.setup';
+
+@mixin -text-color-white {
+	color: $color-palette-white;
+}
+
+@mixin -text-color-petrol {
+	color: $color-palette-petrol-blue;
+}
+
+@mixin -text-color-green {
+	color: $color-palette-green;
+}
+
+@mixin -text-color-red {
+	color: $color-palette-red;
+}
+
+@mixin -text-color-gray-01 {
+	color: $color-palette-gray-01;
+}
+
+@mixin -text-color-gray-02 {
+	color: $color-palette-gray-02;
+}
+
+@mixin -text-color-gray-03 {
+	color: $color-palette-gray-03;
+}

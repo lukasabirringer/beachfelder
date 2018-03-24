@@ -1,0 +1,12 @@
+@mixin -overflow-hidden {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+@mixin -overflow-hidden-y {
+	overflow-y: hidden;
+}
+
+@mixin -overflow-hidden-x {
+	overflow-x: hidden;
+}

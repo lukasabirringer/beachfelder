@@ -1,0 +1,26 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$button-secondary-height: rem(50px) !default;
+$button-secondary-width: 100% !default;
+$button-secondary-max-width: rem(205px) !default;
+
+$button-secondary-border-width: 1px !default;
+$button-secondary-border-color: $color-palette-gray-01 !default;
+
+$button-secondary-inner-spacing-horizontal: rem(20px) !default;
+$button-secondary-before-after-width: 0 !default;
+$button-secondary-before-after-height: 2px !default;
+$button-secondary-before-position-top: 1px !default;
+$button-secondary-before-position-reset: 0 !default;
+
+$button-secondary-after-position-reset: $button-secondary-before-position-reset !default;
+$button-secondary-before-position-bottom: $button-secondary-before-position-top !default;
+
+$button-secondary-border-width-left-hovered: 2px !default;
+$button-secondary-border-width-right-hovered: 2px !default;
+$button-secondary-before-after-width-hovered: 100% !default;
+
+$button-secondary-icon-dimension: rem(16px) !default;
+$button-secondary-icon-outer-spacing-right: rem(8px) !default;
+$button-secondary-label-font-size: rem(14px) !default;

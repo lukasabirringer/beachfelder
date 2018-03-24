@@ -1,0 +1,10 @@
+@import '../../setup/color-palette.setup';
+@import '../../setup/pxtorem';
+
+$accordion-title-bar-border-width: 3px !default;
+$accordion-title-bar-border-color: $color-palette-petrol-blue !default;
+
+$accordion-title-active-state-border-width: 100% !default;
+$accordion-title-active-state-border-height: 3px !default;
+$accordion-title-active-state-border-position-left: 0 !default;
+$accordion-title-active-state-border-position-bottom: rem(15px) !default;

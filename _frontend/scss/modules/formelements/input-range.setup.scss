@@ -1,0 +1,20 @@
+@import '../../setup/pxtorem';
+@import '../../setup/color-palette.setup';
+
+$input-range-width: 100% !default;
+$input-range-field-height: rem(10px) !default;
+$input-range-field-width: 65% !default;
+
+$input-range-handle-dimension: rem(20px) !default;
+$input-range-handle-border-radius: 50% !default;
+$input-range-handle-border-reset: 0 !default;
+
+$input-range-value-width: rem(45px) !default;
+$input-range-value-spacing-left: rem(13px) !default;
+$input-range-value-line-height: rem(20px) !default;
+
+$input-range-value-arrow-color: $color-palette-petrol-blue !default;
+$input-range-value-arrow-position-top: rem(8px) !default;
+$input-range-value-arrow-position-left: rem(7px) !default;
+$input-range-value-arrow-dimension: 0 !default;
+$input-range-value-arrow-border-width: rem(7px) !default;

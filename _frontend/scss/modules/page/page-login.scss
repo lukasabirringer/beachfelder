@@ -1,0 +1,87 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/breakpoint.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/flex.mixin';
+@import '../../mixins/typo.mixin';
+
+@import 'page-login.setup';
+
+.page-login {
+	$bem-block: &;
+
+	@include -flex;
+	@include -flex-direction(column);
+	position: relative;
+
+	@include breakpoint('s') {
+		@include -flex-direction(row);
+	}
+
+	&__title {
+		@include -typo-headline-03;
+		@include -background-color-gray-03;
+		@include -text-color-petrol;
+		@include -spacing-inner(null, 10px);
+		cursor: pointer;
+
+		@include breakpoint('s') {
+			@include -text-color-gray-01;
+			background: none;
+			@include -spacing-inner(null, 0);
+		}
+	}
+
+	&__title-icon {
+		height: $page-login-title-icon-height;
+		margin-right: $page-login-title-icon-spacing-right;
+
+		@include breakpoint('s') {
+			height: $page-login-title-icon-height-s;
+		}
+	}
+
+	&__content {
+		height: $page-login-content-height;
+		overflow: hidden;
+
+		&--open {
+			@include -spacing-inner('bottom', 20px);
+			height: auto;
+		}
+
+		@include breakpoint('s') {
+			height: auto;
+		}
+	}
+
+	&__half {
+		@include -spacing-inner('right', 20px);
+		@include -spacing-inner('left', 20px);
+
+		width: $page-login-half-width;
+		transition: all .3s ease-in-out;
+		
+		@include breakpoint('s') {
+			border-right: $page-login-half-border-width $page-login-half-border-color solid;
+			width: $page-login-half-width-s;
+
+			&:last-of-type {
+				border-right: none;
+			}
+		}
+
+		&--active {
+			flex-grow: $page-login-half-active-grow-value;
+			width: $page-login-half-active-width;
+		}
+
+		&--right {
+			@include -spacing-outer(3px);
+
+			@include breakpoint('s') {
+				@include -spacing-outer(0);				
+			}
+		}
+	}
+}

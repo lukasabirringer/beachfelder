@@ -1,0 +1,10 @@
+@import '../../setup/pxtorem';
+
+$link-icon-text-before-width: 0 !default;
+$link-icon-text-before-height: 50% !default;
+$link-icon-text-before-position-reset: 0 !default;
+$link-icon-text-before-z-index: 1 !default;
+
+$link-icon-text-before-width-hovered: 100% !default;
+$link-icon-text-icon-dimension: rem(16px) !default;
+$link-icon-text-icon-spacing-right: rem(5px) !default;

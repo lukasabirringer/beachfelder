@@ -1,0 +1,7 @@
+@import '../../setup/pxtorem';
+@import '../../setup/color-palette.setup';
+
+$navigation-width: 100% !default;
+$navigation-outer-spacing-top: rem(40px) !default;
+$navigation-outer-spacing-reset: 0 !default;
+$navigation-link-stroke-color-hovered: $color-palette-green !default;

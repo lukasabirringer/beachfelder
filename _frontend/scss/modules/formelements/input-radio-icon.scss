@@ -1,0 +1,82 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/align.mixin';
+@import '../../mixins/typo.mixin';
+@import 'input-radio-icon.setup';
+
+.input-radio-icon {
+	$bem-block: &;
+
+	@include -align-center;
+
+	display: inline-block;
+	width: $input-radio-icon-width;
+	cursor: pointer;
+
+	&__field {
+		display: none;
+	}
+
+	&__icon {
+		@include -text-color-gray-01;
+
+		width: $input-radio-icon-icon-dimension;
+		height: $input-radio-icon-icon-dimension;
+		transition: color .3s ease-in-out;
+		display: block;
+		margin: auto;
+	}
+
+	&__container {
+	  	@include -background-color-gray-03;
+	  	@include -spacing-inner(null, 15px);
+	  	@include -border-radius(4px);
+
+	  	transition: background .3s ease-in-out;
+  	}
+
+  	&__label {
+  		@include -typo-copy;
+  		@include -text-color-gray-01;
+  		@include -spacing-outer(5px);
+		
+		display: block;
+  		transition: color .3s ease-in-out;
+  	}
+
+	&:hover &__field:not(:checked):not(:disabled) {
+		& ~ #{$bem-block}__container {
+			@include -background-color-gray-01;
+		}
+
+		& ~ #{$bem-block}__container #{$bem-block}__icon {
+			@include -text-color-white;
+		}
+
+		& ~ #{$bem-block}__container #{$bem-block}__label {
+			@include -text-color-white;
+		}
+	}
+
+	&__field:checked {
+		& ~ #{$bem-block}__container {
+			@include -background-color-petrol;
+		}
+
+		& ~ #{$bem-block}__container #{$bem-block}__icon {
+			@include -text-color-white;
+		}
+
+		& ~ #{$bem-block}__container #{$bem-block}__label {
+			@include -text-color-white;
+		}
+	}
+
+	&:hover &__field:checked:not(:disabled) {
+		& ~ #{$bem-block}__container {
+			@include -background-color-petrol;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+
+@import 'link-icon-text.setup';
+
+.link-icon-text {
+
+	text-decoration: underline;
+	color: inherit;
+	transition: color .2s ease-in-out;
+	position: relative;
+	cursor: pointer;
+
+	&::before {
+		@include -background-color-gray-03;
+		content: '';
+		width: $link-icon-text-before-width;
+		height: $link-icon-text-before-height;
+		position: absolute;
+		left: $link-icon-text-before-position-reset;
+		bottom: $link-icon-text-before-position-reset;
+		transition: width .3s ease-in-out;
+		z-index: -$link-icon-text-before-z-index;
+	}
+
+	&:hover {
+		@include -text-color-gray-01;
+
+		&::before {
+			width: $link-icon-text-before-width-hovered;
+		}
+	}
+
+	&__icon {
+		width: $link-icon-text-icon-dimension;
+		height: $link-icon-text-icon-dimension;
+		display: inline-block;
+		vertical-align: text-top;
+		margin-right: $link-icon-text-icon-spacing-right;
+	}
+
+	&__copy {
+		display: inline-block;
+	}
+}

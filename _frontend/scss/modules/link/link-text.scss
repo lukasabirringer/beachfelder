@@ -1,0 +1,32 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/text-color.mixin';
+
+@import 'link-text.setup';
+
+.link-text {
+	text-decoration: underline;
+	color: inherit;
+	transition: color .2s ease-in-out;
+	position: relative;
+	cursor: pointer;
+
+	&::before {
+		@include -background-color-gray-03;
+		content: '';
+		width: $link-text-before-width;
+		height: $link-text-before-height;
+		position: absolute;
+		left: $link-text-before-position-reset;
+		bottom: $link-text-before-position-reset;
+		transition: width .3s ease-in-out;
+		z-index: -$link-text-before-z-index;
+	}
+
+	&:hover {
+		@include -text-color-gray-01;
+
+		&::before {
+			width: $link-text-before-width-hovered;
+		}
+	}
+}

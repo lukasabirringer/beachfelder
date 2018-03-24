@@ -1,0 +1,18 @@
+@import '../../setup/pxtorem';
+
+$owl-dots-position-bottom: rem(7px) !default;
+$owl-dots-position-left: 0 !default;
+$owl-dots-width: 100% !default;
+
+$owl-dot-dimension: rem(10px) !default;
+$owl-dot-dimension-m: rem(13px) !default;
+$owl-dot-spacing-outer-vertical: 0 !default;
+$owl-dot-spacing-outer-horizontal: rem(3px) !default;
+$owl-dot-border-radius: 50% !default;
+$owl-dot-opacity: 1 !default;
+
+
+$owl-navigation-item-position-top: 50% !default;
+$owl-navigation-item-dimension: rem(30px) !default;
+$owl-navigation-item-dimension-m: rem(40px) !default;
+$owl-navigation-item-left-position-reset: 0 !default;

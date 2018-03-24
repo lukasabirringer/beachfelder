@@ -1,0 +1,51 @@
+@import '../../mixins/background-color.mixin';
+@import '../../mixins/border-radius.mixin';
+@import '../../mixins/text-color.mixin';
+@import '../../mixins/spacing.mixin';
+@import '../../mixins/flex.mixin';
+@import '../../mixins/typo.mixin';
+
+@import 'infobox.setup';
+
+.infobox {
+	@include -flex;
+	@include -flex-align-items(center);
+	@include -flex-direction(column);
+	@include -background-color-petrol;
+	@include -spacing-inner(null, 15px);
+	@include -border-radius(6px);
+
+	width: $infobox-width;
+	position: relative;
+	overflow: hidden;
+
+	&__icon {
+		@include -text-color-white;
+
+		width: $infobox-icon-dimension;
+		height: $infobox-icon-dimension;
+		opacity: $infobox-icon-opacity;
+		display: block;
+		position: absolute;
+		right: -$infobox-icon-position-right;
+		top: $infobox-icon-position-top;
+		transform: translateY(-$infobox-icon-position-top) scaleX(-$infobox-icon-scale-x);
+	}
+
+	&__title {
+		@include -typo-headline-04;
+		@include -text-color-white;
+		@include -spacing-outer(10px);
+
+		display: block;
+	}
+
+	&__text {
+		@include -typo-copy;
+		@include -text-color-white;
+		@include -spacing-outer(5px);
+
+		font-size: $infobox-text-font-size;
+		display: block;
+	}
+}

@@ -1,0 +1,11 @@
+@import '../mixins/text-color.mixin';
+
+.-text-color {
+	&-white {@include -text-color-white;}
+	&-petrol {@include -text-color-petrol;}
+	&-green {@include -text-color-green;}
+	&-red {@include -text-color-red;}
+	&-gray-01 {@include -text-color-gray-01;}
+	&-gray-02 {@include -text-color-gray-02;}
+	&-gray-03 {@include -text-color-gray-03;}
+}
