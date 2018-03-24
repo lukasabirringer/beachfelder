@@ -1,5 +1,6 @@
 feather.replace();
 
+
 $(document).ready(function(){
   var owlFrontpage = $('.owl-carousel--frontpage');
 	var owlDetailpage = $('.owl-carousel--detailpage');
@@ -137,7 +138,7 @@ $(document).ready(function(){
     return false;
   });
 
-
+    
   $('.profile-edit__button').hide();
 
   $('input').on('keyup', function() {
@@ -158,7 +159,7 @@ $(document).keyup(function(e) {
 });
 
 //fixed header on scroll
-$(window).scroll(function() {
+$(window).scroll(function() {    
   var scroll = $(window).scrollTop();
 
   if (scroll >= 50) {
@@ -176,12 +177,12 @@ var rangeSlider = function(){
   var slider = $('.input-range'),
       range = $('.input-range__field'),
       value = $('.input-range__value');
-
+    
   slider.each(function(){
 
     value.each(function(){
       var value = $(this).prev().attr('value');
-
+  
       $(this).html(value);
     });
 
