@@ -32,9 +32,9 @@
           </div>
           <div class="column column--12 column--s-6 column--m-3">
             <div class="infobox">
-              <span class="infobox__icon" data-feather="cloud-drizzle"></span>
+              <span class="infobox__icon" data-feather="{{ $icon }}"></span>
               <span class="infobox__title">Aktuell <br>({{ $weather->lastUpdate->format('d.m.Y H:i') }})</span>
-              <span class="infobox__text">{{ $weather->temperature->now }}</span>
+              <span class="infobox__text">{{ $roundedWheater }} {{ $weather->temperature->getUnit() }}</span>
             </div>
           </div>
         </div>
@@ -52,22 +52,87 @@
         <div class="row">
           <div class="column column--12 column--m-9">
             <div class="rating">
-              {{ $beachcourt->rating }} von 5
-              <div class="rating__item">
-                <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-              </div>
-              <div class="rating__item">
-                <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-              </div>
-              <div class="rating__item">
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-              </div>
-              <div class="rating__item">
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-              </div>
-              <div class="rating__item">
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-              </div>
+              @if($beachcourt->rating == 1)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+              @elseif($beachcourt->rating == 2)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+              @elseif($beachcourt->rating == 3)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+              @elseif($beachcourt->rating == 4)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+              @elseif($beachcourt->rating == 5)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+              @endif
 
               @if ($beachcourt ->ratingCount >= 1)
                 <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
