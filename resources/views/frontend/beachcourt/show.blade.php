@@ -181,6 +181,4 @@
         </div>
       </div>
     </div>
-
-  </div><!-- .content__main ENDE -->
 @endsection
