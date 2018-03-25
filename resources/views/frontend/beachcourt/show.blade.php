@@ -72,8 +72,8 @@
               @if ($beachcourt ->ratingCount >= 1)
                 <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
-
-              <a href="#" class="rating__count link-icon-text">
+              
+              <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
                 <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
               </a>
             </div>

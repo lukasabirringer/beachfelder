@@ -16,8 +16,6 @@ function showTab(n) {
   } else {
     document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>weiter</span>";
   }
-  // ... and run a function that displays the correct step indicator:
-  // fixStepIndicator(n)
 }
 
 function nextPrev(n) {
@@ -31,19 +29,9 @@ function nextPrev(n) {
   if (currentTab >= x.length) {
     //...the form gets submitted:
     document.getElementById("form-rating").submit();
+
     return false;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
-
-// function fixStepIndicator(n) {
-//   // This function removes the "active" class of all steps...
-//   var i, x = document.getElementsByClassName("step__dot");
-
-//   for (i = 0; i < x.length; i++) {
-//     x[i].className = x[i].className.replace(" step__dot--active", "");
-//   }
-//   //... and adds the "active" class to the current step:
-//   x[n].className += " step__dot--active";
-// }

@@ -96,7 +96,7 @@
         </ul>
       </div>
       <div class="column column--12">
-        <p class="footer__paragraph">© 2018 beachfelder.de</p>
+        <p class="footer__paragraph">© 2018 World of Beachsport GbR</p>
       </div>
     </footer>
 

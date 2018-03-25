@@ -944,6 +944,24 @@ $(document).ready(function () {
   $('input').on('change', function () {
     $('.profile-edit__button').fadeIn();
   });
+
+  //tabs navigation
+  $('.accordion__content').hide();
+  $('.accordion__content').first().show();
+
+  $('.accordion__title').click(function (e) {
+    e.preventDefault();
+    var $this = $(this),
+        tabgroup = '#' + $this.parents('.accordion__title-bar').data('tabgroup'),
+        target = $this.attr('href');
+
+    $('.accordion__title').removeClass('accordion__title--active');
+
+    $this.addClass('accordion__title--active');
+
+    $(tabgroup).children('.accordion__content').hide();
+    $(target).show();
+  });
 });
 
 //removes active class from login page half
