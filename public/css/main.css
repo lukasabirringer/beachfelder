@@ -1,6 +1,46 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Oswald");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 .row {
   margin-left: -0.25rem;
   margin-right: -0.25rem; }
@@ -419,7 +459,7 @@
     display: none;
     visibility: hidden; } }
 
-/* http://meyerweb.com/eric/tools/css/reset/
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -547,14 +587,24 @@ table {
   transition: background .2s ease-in-out;
   display: inline-block;
   text-decoration: none;
+  -webkit-transform: none;
+          transform: none;
   border-radius: 0.25rem;
   width: 100%;
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem; }
-  .button-primary:hover {
-    background: #345d6a; }
+  .button-primary:hover .button-primary__label {
+    color: #FFF;
+    opacity: 0;
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%); }
+  .button-primary:hover .button-primary__label--hover {
+    opacity: 1;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
   .button-primary:disabled {
     background-color: #595556;
     cursor: default; }
@@ -567,7 +617,19 @@ table {
     font-size: 1rem;
     line-height: 1.5;
     color: #FFF;
-    font-size: 0.875rem; }
+    font-size: 0.875rem;
+    display: block;
+    width: 100%;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out; }
+    .button-primary__label--hover {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+      z-index: 1; }
 
 .button-secondary {
   border: none;
@@ -588,25 +650,29 @@ table {
   overflow: hidden;
   padding-left: 1.25rem;
   padding-right: 1.25rem; }
-  .button-secondary::before, .button-secondary::after {
+  .button-secondary::after {
     background-color: #798796;
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
-    -webkit-transition: width .3s ease-in-out;
-    transition: width .3s ease-in-out; }
-  .button-secondary::before {
-    top: -1px;
-    left: 0; }
-  .button-secondary::after {
-    bottom: -1px;
-    right: 0; }
-  .button-secondary:hover {
-    border-right-width: 2px;
-    border-left-width: 2px; }
-    .button-secondary:hover::after, .button-secondary:hover::before {
-      width: 100%; }
+    left: -1.25rem;
+    bottom: -150%;
+    width: 110%;
+    height: 3.125rem;
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+    -webkit-transition: all .7s;
+    transition: all .7s; }
+  .button-secondary:hover::after {
+    bottom: 0;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  .button-secondary:hover .button-secondary__icon {
+    color: #FFF;
+    z-index: 1; }
+  .button-secondary:hover .button-secondary__label {
+    color: #FFF;
+    z-index: 1; }
   .button-secondary__icon {
     color: #798796;
     width: 1rem;
@@ -617,7 +683,8 @@ table {
     color: #798796;
     font-family: "PT Sans";
     font-size: 0.875rem;
-    vertical-align: middle; }
+    vertical-align: middle;
+    position: relative; }
 
 .button-circle {
   padding: 0rem;
@@ -1639,7 +1706,8 @@ input::-moz-focus-outer {
   margin-top: 1.25rem; }
 
 .icon-text {
-  display: inline-block; }
+  display: inline-block;
+  width: 100%; }
   .icon-text__icon {
     color: #08b8b8;
     width: 1rem;

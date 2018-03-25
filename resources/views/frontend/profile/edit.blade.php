@@ -146,6 +146,7 @@
           <div class="column column--12">
             <button class="button-primary profile-edit__button" type="submit">
               <span class="button-primary__label">Profil speichern</span>
+              <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
             </button>
           </div>
         </div>
@@ -184,21 +185,20 @@
             </div>
           </div>
           <div class="row">
-            <div class="column column--12 column--m-6 -spacing-b">
-              <button type="button" class="button-primary button-primary--red" onclick="window.location.href='{{ url('') }}/profile/profilbild-loeschen'" >
+            <div class="column column--12 column--m-6">
+              <button type="button" class="button-primary button-primary--red -spacing-b" onclick="window.location.href='{{ url('') }}/profile/profilbild-loeschen'" >
                 <span class="button-primary__label">Profilbild löschen</span>
+                <span class="button-primary__label button-primary__label--hover">Profilbild löschen</span>
+              </button>
+            </div>
+            <div class="column column--12 column--m-6">
+              <button class="button-primary profile-edit__button -spacing-b" type="submit">
+                <span class="button-primary__label">Profil speichern</span>
+                <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
               </button>
             </div>
           </div>
           <div id="your-account"></div>
-
-          <div class="row -spacing-a" id="submit">
-            <div class="column column--12">
-              <button class="button-primary profile-edit__button" type="submit">
-                <span class="button-primary__label">Profil speichern</span>
-              </button>
-            </div>
-          </div>
         </form>
         <div class="row -spacing-a">
           <div class="column column--12">
@@ -230,6 +230,7 @@
           <div class="column column--12 column--m-6 -spacing-a">
             <button class="button-primary profile-edit__button">
               <span class="button-primary__label">Profil speichern</span>
+              <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
             </button>
           </div>
 
@@ -242,6 +243,7 @@
           <div class="column column--12 column--m-6 -spacing-b">
             <a class="button-primary button-primary--red">
               <span class="button-primary__label">Ja, ich möchte meinen Account wirklich löschen</span>
+              <span class="button-primary__label button-primary__label--hover">Ja, ich möchte meinen Account wirklich löschen</span>
             </a>
           </div>
         </div>

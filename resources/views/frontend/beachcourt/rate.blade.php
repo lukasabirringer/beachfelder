@@ -549,11 +549,13 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
                 <span class="button-primary__label">Schritt zurück</span>
+                <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
               </button>
             </div>
             <div class="column column--12 column--m-6 -spacing-b">
               <button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)">
                 <span class="button-primary__label">Schritt weiter</span>
+                <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
               </button>
             </div>
           </form>

@@ -130,7 +130,10 @@
               @forelse ($myFavorites as $myFavorite)
                 <li class="list-beachcourt__item">
                   <div class="list-beachcourt__image">
-                    <img src="images/dummy-01.jpg" class="image image--max-height">
+                    <img
+                      src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg"
+                      srcset="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg 2x"
+                      alt="Feld in {{ $myFavorite->city }}" class="image iamge--max-height">
                   </div>
                   <div class="list-beachcourt__info">
                     <div class="row">
@@ -163,8 +166,10 @@
                     </div>
                     <div class="row -spacing-b">
                       <div class="column column--12 column--s-5">
-                        <a href="{{ URL::route('beachcourts.show', array('city'=>$myFavorite->citySlug,'latitude'=>$myFavorite->latitude,'longitude'=>$myFavorite->longitude)) }}" class="button-primary">
+
+                        <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($myFavorite->city),'latitude'=>$myFavorite->latitude,'longitude'=>$myFavorite->longitude)) }}" class="button-primary">
                           <span class="button-primary__label">Feld ansehen</span>
+                          <span class="button-primary__label button-primary__label--hover">Feld ansehen</span>
                         </a>
                       </div>
                     </div>

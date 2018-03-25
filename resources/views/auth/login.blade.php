@@ -188,6 +188,7 @@
     <div class="column column--12 -spacing-b">
         <button class="button-primary">
             <span class="button-primary__label">Jetzt kostenlos registrieren</span>
+            <span class="button-primary__label button-primary__label--hover">Jetzt kostenlos registrieren</span>
         </button>
     </div>
 </form>
@@ -231,6 +232,7 @@
                 <div class="column column--12 -spacing-b">
                     <button class="button-primary">
                         <span class="button-primary__label">Anmelden</span>
+                        <span class="button-primary__label button-primary__label--hover">Anmelden</span>
                     </button>
                 </div>
             </div>
