@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>
+    <style>
+      .disabled {
+        display: none;
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body class="has-bg">
     <div class="sidebar">
@@ -26,8 +34,7 @@
         @endif
       </ul>
     </div>
-    <div id="app">
-    <div class="content">
+    <div id="app" class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
           <script src="https://cdn.jsdelivr.net/npm/places.js@1.4.15"></script>
@@ -67,7 +74,9 @@
                 </form>
               </div>
               <div class="profile-user__image">
-                <img src="images/profile-image.jpg" width="60">
+                <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+                  <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
+                </a>
               </div>
             </div>
           @else 
@@ -93,17 +102,11 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="{{!! asset('js/main.js') !!}}"></script>
-    <script type="text/javascript" src="{!! asset('js/owl.carousel.min.js') !!}"></script>
-    <script type="text/javascript" src="{!! asset('js/password.strength.js') !!}"></script>
-    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
-    <script type="text/javascript" src="{!! asset('js/tab.rating.js') !!}"></script>
+    <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script>
       feather.replace();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-  </div>
   </body>
 </html>
