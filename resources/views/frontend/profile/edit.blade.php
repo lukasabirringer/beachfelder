@@ -167,7 +167,7 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <p class="-typo-copy -text-color-gray-01">Dein aktuelles Profilbild</p>
               <div class="image-profile -spacing-d">
-                <img src="/uploads/profilePictures/{{ $user->pictureName }}" class="profile-user__image">
+                <img src="../../uploads/profilePictures/{{ $user->id }}/{{ $user->pictureName }}">
               </div>
             </div>
             <div class="column column--12 column--m-6 -spacing-b">
