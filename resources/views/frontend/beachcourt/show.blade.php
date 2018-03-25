@@ -138,19 +138,14 @@
     <div class="row ">
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
-          @if($pictures === 'false')
-            <img src="https://beachfelder.de/img/beachcourt-summary-bg-dummy.jpg" class="beachcourt-summary__image">
-          @else
             <div class="owl-carousel owl-carousel--detailpage">
-              <img class="owl-lazy" data-src="images/slide-image-01.jpg" data-src-retina="images/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
-              <img class="owl-lazy" data-src="images/slide-image-01.jpg" data-src-retina="images/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
-              <img class="owl-lazy" data-src="images/slide-image-01.jpg" data-src-retina="images/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
-              <img class="owl-lazy" data-src="images/slide-image-01.jpg" data-src-retina="images/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
             </div>
             
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
-          @endif
         </div>
       </div>
 
@@ -165,9 +160,9 @@
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
         <p class="-typo-copy -text-color-gray-01 -spacing-b">
           {{ $beachcourt->operator }}<br>
-          75233 Tiefenbronn-Mühlhausen
+          <span class="-text-color-red">75233 Tiefenbronn-Mühlhausen</span>
         </p>
-        <p class="-text-color-green -typo-copy">
+        <p class="-text-color-green -typo-copy -text-color-red">
           <a href="https://tsvmuehlhausen.de/" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">https://tsvmuehlhausen.de</span></a>
         </p>
       </div>

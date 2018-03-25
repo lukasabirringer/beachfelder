@@ -216,7 +216,7 @@
                 </div>
                 <div class="column column--12 -spacing-a">
                     <label class="input">
-                        <input type="password" name="password" class="input__field input__field--password" placeholder="Passwort wiederholen">
+                        <input type="password" name="password" class="input__field input__field--password" placeholder="Passwort">
                         <span class="input__label">Passwort</span>
                         <div class="input__border"></div>
                         <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
@@ -245,5 +245,4 @@
         </div>
     </div>
 </div>
-
 @endsection
