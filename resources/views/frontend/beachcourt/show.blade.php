@@ -52,7 +52,23 @@
         <div class="row">
           <div class="column column--12 column--m-9">
             <div class="rating">
-              @if($beachcourt->rating == 1)
+              @if($beachcourt->rating <= 1)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                </div>
+              @elseif($beachcourt->rating == 1)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>

@@ -35,19 +35,31 @@ class BeachcourtController extends Controller
         $icon = substr($weather->weather->icon, 0, -1);
         $iconTime = substr($weather->weather->icon, 2);
 
-        if($icon === '01') {
-            $icon = 'sun';
-            if ($iconTime === 'n') {
-                $icon = 'moon';
-            }
-        }elseif($icon === '02' || $icon === '03' || $icon === '04') {
-            $icon = 'cloud';
-        }elseif ($icon === '09' || === '10') {
-            $icon = 'cloud-rain';
-        }elseif ($icon === '11') {
-            $icon = 'cloud-lightning';
-        }elseif ($icon === '13') {
-            $icon = 'cloud-snow';
+        switch ($icon) {
+            case '01':
+                $icon = 'sun';
+                break;
+            case '02':
+                $icon = 'cloud';
+                break;
+            case '03':
+                $icon = 'cloud';
+                break;
+            case '04':
+                $icon = 'cloud';
+                break;
+            case '09':
+                $icon = 'cloud-rain';
+                break;
+            case '10':
+                $icon = 'cloud-rain';
+                break;
+            case '11':
+                $icon = 'cloud-lightning';
+                break;
+            case '13':
+                $icon = 'cloud-snow';
+                break;
         }
 
         if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/1.jpg'))) {

@@ -1689,7 +1689,8 @@ input::-moz-focus-outer {
   padding-right: 0.625rem;
   display: inline-block;
   cursor: pointer;
-  position: relative; }
+  position: relative;
+  text-decoration: none; }
   .accordion__title--active {
     color: #457b8c; }
     @media (min-width: 768px) {
@@ -1703,7 +1704,10 @@ input::-moz-focus-outer {
         bottom: -0.9375rem; } }
 
 .accordion__content {
-  margin-top: 1.25rem; }
+  margin-top: 1.25rem;
+  display: none; }
+  .accordion__content:first-of-type {
+    display: block; }
 
 .icon-text {
   display: inline-block;
@@ -2070,7 +2074,8 @@ input::-moz-focus-outer {
   border-radius: 50%;
   opacity: 1;
   display: inline-block;
-  cursor: pointer; }
+  cursor: pointer;
+  border: none; }
   @media (min-width: 992px) {
     .owl-dot {
       width: 0.8125rem;
