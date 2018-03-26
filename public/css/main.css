@@ -41,6 +41,8 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 .row {
   margin-left: -0.25rem;
   margin-right: -0.25rem; }
@@ -662,6 +664,10 @@ table {
             transform: rotate(10deg);
     -webkit-transition: all .7s;
     transition: all .7s; }
+  .button-secondary--white {
+    border-color: #FFF; }
+    .button-secondary--white::after {
+      background-color: #FFF; }
   .button-secondary:hover::after {
     bottom: 0;
     left: 0;
@@ -670,21 +676,29 @@ table {
   .button-secondary:hover .button-secondary__icon {
     color: #FFF;
     z-index: 1; }
+    .button-secondary:hover .button-secondary__icon--white {
+      color: #798796; }
   .button-secondary:hover .button-secondary__label {
     color: #FFF;
     z-index: 1; }
+    .button-secondary:hover .button-secondary__label--white {
+      color: #798796; }
   .button-secondary__icon {
     color: #798796;
     width: 1rem;
     height: 1rem;
     margin-right: 0.5rem;
     vertical-align: middle; }
+    .button-secondary__icon--white {
+      color: #FFF; }
   .button-secondary__label {
     color: #798796;
     font-family: "PT Sans";
     font-size: 0.875rem;
     vertical-align: middle;
     position: relative; }
+    .button-secondary__label--white {
+      color: #FFF; }
 
 .button-circle {
   padding: 0rem;
@@ -2117,6 +2131,64 @@ input::-moz-focus-outer {
 
 .datepicker--cell.-current- {
   color: #08b8b8; }
+
+.notification {
+  background-color: #08b8b8;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+  .notification__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 5rem;
+    padding-right: 1.875rem;
+    text-align: center; }
+    @media (min-width: 768px) {
+      .notification__item {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        text-align: left; } }
+  .notification__icon {
+    color: #FFF;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    margin: auto; }
+    @media (min-width: 768px) {
+      .notification__icon {
+        margin: unset; } }
+  .notification__text {
+    font-family: "PT Sans";
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #FFF;
+    margin-top: 1.25rem; }
+    @media (min-width: 768px) {
+      .notification__text {
+        margin-top: 0rem;
+        padding-left: 1.875rem;
+        padding-right: 1.875rem; } }
+  .notification__button {
+    margin-top: 0.625rem; }
+    @media (min-width: 768px) {
+      .notification__button {
+        margin-top: 0rem; } }
 
 .page-login {
   display: -webkit-box;
