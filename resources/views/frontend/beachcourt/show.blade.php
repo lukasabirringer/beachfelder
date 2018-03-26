@@ -233,9 +233,9 @@
       <div class="column column--12 column--m-6 -spacing-a">
         <h4 class="-typo-headline-04 -text-color-petrol">Kann ich auf diesem Feld kostenlos spielen?</h4>
         @if ($beachcourt->isChargeable == 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, dieses Feld ist kostenpflichtig. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
         @else 
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, dieses Feld ist kostenfrei. Geh gleich los und spiele eine Runde oder zwei.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
