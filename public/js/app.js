@@ -946,9 +946,6 @@ $(document).ready(function () {
   });
 
   //tabs navigation
-  $('.accordion__content').hide();
-  $('.accordion__content').first().show();
-
   $('.accordion__title').click(function (e) {
     e.preventDefault();
     var $this = $(this),

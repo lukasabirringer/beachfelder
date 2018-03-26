@@ -30,6 +30,37 @@ class BeachcourtController extends Controller
         } catch(\Exception $e) {
             echo 'General exception: ' . $e->getMessage() . ' (Code ' . $e->getCode() . ').';
         }
+        
+        $roundedWheater = number_format($weather->temperature->getValue(), 1);
+        $icon = substr($weather->weather->icon, 0, -1);
+        $iconTime = substr($weather->weather->icon, 2);
+
+        switch ($icon) {
+            case '01':
+                $icon = 'sun';
+                break;
+            case '02':
+                $icon = 'cloud';
+                break;
+            case '03':
+                $icon = 'cloud';
+                break;
+            case '04':
+                $icon = 'cloud';
+                break;
+            case '09':
+                $icon = 'cloud-rain';
+                break;
+            case '10':
+                $icon = 'cloud-rain';
+                break;
+            case '11':
+                $icon = 'cloud-lightning';
+                break;
+            case '13':
+                $icon = 'cloud-snow';
+                break;
+        }
 
         if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/1.jpg'))) {
              $pictures = 'false';
@@ -37,9 +68,7 @@ class BeachcourtController extends Controller
              $pictures = 'true';
         }
 
-        //icon nacme nach owm id
-
-        return view('frontend.beachcourt.show', compact('beachcourt', 'weather', 'pictures'));
+        return view('frontend.beachcourt.show', compact('beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
     }
     public function rate($cityslug, $latitude, $longitude)
     {
