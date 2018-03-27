@@ -95,7 +95,7 @@
         <div class="row">
             <div class="column column--12 column--s-5 -spacing-a">
                 <label class="input">
-                    <input type="text" cname="postalCode" value="{{ old('postalCode') }}" class="input__field" placeholder="Deine Postleitzahl">
+                    <input type="text" name="postalCode" value="{{ old('postalCode') }}" class="input__field" placeholder="Deine Postleitzahl">
                     <span class="input__label">Deine Postleitzahl</span>
                     <div class="input__border"></div>
                 </label>
@@ -127,13 +127,13 @@
             </div>
             <div class="column column--12 column--s-4">
                 <label class="input-radio">
-                    <input type="radio" class="input-radio__field" name="sex" value="man">
+                    <input type="radio" class="input-radio__field" name="sex" value="male">
                     <span class="input-radio__label">männlich</span>
                 </label>
             </div>
             <div class="column column--12 column--s-4">
                 <label class="input-radio">
-                    <input type="radio" class="input-radio__field" name="sex" value="woman">
+                    <input type="radio" class="input-radio__field" name="sex" value="female">
                     <span class="input-radio__label">weiblich</span>
                 </label>
             </div>
@@ -186,7 +186,7 @@
     </div>
 
     <div class="column column--12 -spacing-b">
-        <button class="button-primary">
+        <button class="button-primary btn-register">
             <span class="button-primary__label">Jetzt kostenlos registrieren</span>
             <span class="button-primary__label button-primary__label--hover">Jetzt kostenlos registrieren</span>
         </button>

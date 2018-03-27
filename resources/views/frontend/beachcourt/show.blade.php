@@ -149,8 +149,10 @@
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
               @endif
-
-              @if ($beachcourt ->ratingCount >= 1)
+              
+              @if ($beachcourt->ratingCount = 1)
+                <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertung</p>
+              @elseif ($beachcourt->ratingCount > 1)
                 <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
               

@@ -46,9 +46,9 @@
     <div class="column column--12 column--m-4">
       <div class="image-profile">
         @if($user->pictureName !== 'placeholder-user.png' )
-          <img src="/uploads/profilePictures/{{ $profilepicture }}">
+          <img src="/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
         @else
-          <img src="/uploads/profilePictures/fallback/placeholder-user.png">
+          <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
         @endif
       </div>
     </div>

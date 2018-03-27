@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255'
         ]);
     }
 
@@ -87,7 +87,7 @@ class RegisterController extends Controller
         $email = $data['email'];
         $name = $data['name'];
         Mail::send('email.verify', $confirmation_code, function($message) use ($email, $name) {
-            $message->to($email, $name)->subject('beachfelder.de // Registrierung abschließen');
+            $message->to($email, $name)->from('noreply@beachfelder.de', 'beachfelder.de')->replyTo('noreply@beachfelder.de', 'beachfelder.de')->subject('Registrierung abschließen');
         });
 
           //create user
@@ -97,6 +97,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
+            'postalCode' => $data['postalCode'],
+            'city' => $data['city'],
+            'sex' => $data['sex'],
+            'birthdate' => $data['birthdate'],
             'confirmationToken' => $code,
         ]);
 
