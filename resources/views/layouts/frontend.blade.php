@@ -74,9 +74,15 @@
                 </form>
               </div>
               <div class="profile-user__image">
-                <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
-                  <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
-                </a>
+                @if(Auth::user()->pictureName !== 'placeholder-user.png' )
+                  <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+                    <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
+                  </a>
+                @else
+                  <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+                    <img src="{{ url('/') }}/uploads/profilePictures/fallback/placeholder-user.png" width="60">
+                  </a>
+                @endif
               </div>
             </div>
           @else 

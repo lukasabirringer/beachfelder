@@ -130,14 +130,14 @@
           </div>
           <div class="column column--12 column--m-6">
             <label class="input -spacing-b">
-              <input type="password" class="input__field" name="password" value="{{ $user->password }}">
+              <input type="password" class="input__field" name="password" value="">
               <span class="input__label">Passwort</span>
             </label>
 
           </div>
           <div class="column column--12 column--m-6">
             <label class="input -spacing-b">
-              <input type="password" class="input__field">
+              <input type="password" class="input__field" value="" name="password_confirmation">
               <span class="input__label">Passwort wiederholen</span>
             </label>
           </div>
@@ -168,7 +168,12 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <p class="-typo-copy -text-color-gray-01">Dein aktuelles Profilbild</p>
               <div class="image-profile -spacing-d">
-                <img src="../../uploads/profilePictures/{{ $user->id }}/{{ $user->pictureName }}">
+                @if($user->pictureName !== 'placeholder-user.png' )
+                  <img src="../../uploads/profilePictures/{{ $user->id }}/{{ $user->pictureName }}">
+                @else
+                  <img src="../../uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
+                @endif
+                
               </div>
             </div>
             <div class="column column--12 column--m-6 -spacing-b">
@@ -242,8 +247,8 @@
           </div>
           <div class="column column--12 column--m-6 -spacing-b">
             <a class="button-primary button-primary--red">
-              <span class="button-primary__label">Ja, ich möchte meinen Account wirklich löschen</span>
-              <span class="button-primary__label button-primary__label--hover">Ja, ich möchte meinen Account wirklich löschen</span>
+              <span class="button-primary__label">Ja, ich möchte meinen Account löschen</span>
+              <span class="button-primary__label button-primary__label--hover">Bist du dir ganz sicher?</span>
             </a>
           </div>
         </div>
