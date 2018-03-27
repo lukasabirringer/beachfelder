@@ -248,7 +248,7 @@
           <div class="column column--12 column--m-6 -spacing-b">
             <a class="button-primary button-primary--red">
               <span class="button-primary__label">Ja, ich möchte meinen Account löschen</span>
-              <span class="button-primary__label button-primary__label--hover">Bist du dir ganz sicher?</span>
+              <span class="button-primary__label button-primary__label--hover">Bist du dir wirklich sicher?</span>
             </a>
           </div>
         </div>
