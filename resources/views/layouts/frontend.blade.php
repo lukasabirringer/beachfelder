@@ -85,7 +85,7 @@
                 @endif
               </div>
             </div>
-          @else 
+          @else
             <button class="button-secondary" onclick="window.location.href='{{URL::route('login')}}'">
               <span class="button-secondary__label">Anmelden / Registrieren</span>
             </button>
@@ -105,7 +105,7 @@
         <p class="footer__paragraph">© 2018 World of Beachsport GbR</p>
       </div>
     </footer>
-
+    @include('cookieConsent::index')
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>

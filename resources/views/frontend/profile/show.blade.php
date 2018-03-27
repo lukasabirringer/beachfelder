@@ -26,7 +26,7 @@
         <div class="column column--12 column--s-6 column--m-4">
           <div class="icon-text -spacing-b">
             <span class="icon-text__icon" data-feather="info"></span>
-            <span class="icon-text__text">Favoriten: X<br>Eingereichte Felder: X</span>
+            <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@
                   <div class="list-beachcourt__info">
                     <div class="row">
                       <div class="column column--12">
-                        <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $myFavorite->city }}</h4>   
+                        <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $myFavorite->city }}</h4>
                       </div>
                     </div>
 
@@ -187,9 +187,9 @@
           <div id="tab2" class="accordion__content">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder eingereicht.</p>
             <p class="-typo-copy -text-color-green"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="link-text">Jetzt Feld einreichen</a></p>
-          </div>  
+          </div>
         </div>
-        
+
       </div>
     </div>
   </div>

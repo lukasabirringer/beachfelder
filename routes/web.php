@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
   Route::get('/user/{name}', 'ProfileController@show')->middleware('auth')->name('profile.show');
   Route::get('/user/{name}/edit', 'ProfileController@edit')->middleware('auth')->name('profile.edit');
-  Route::post('/bah', 'ProfileController@update')->middleware('auth')->name('profile.update');
+  Route::post('/user/update', 'ProfileController@update')->middleware('auth')->name('profile.update');
   Route::get('/profile/profilbild-loeschen', 'ProfileController@destroy')->middleware('auth')->name('profile.deleteimage');
   Route::post('/profil/uploadprofilepicture', 'ProfileController@storeimage')->middleware('auth')->name('profile.uploadprofilepicture');
 

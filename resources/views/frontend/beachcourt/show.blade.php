@@ -2,7 +2,8 @@
 @extends('layouts.frontend')
 
 @section('content')
-  <div class="content__main">
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5aba9ef91fff98001395a6c0&product=inline-share-buttons' async='async'></script>
+<div class="content__main">
     <div class="row">
       <div class="column column--12">
         <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h1>
@@ -52,7 +53,8 @@
         <div class="row">
           <div class="column column--12 column--m-9">
             <div class="rating">
-              @if($beachcourt->rating <= 1)
+
+              @if($beachcourt->rating <1)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
@@ -68,7 +70,7 @@
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-              @elseif($beachcourt->rating == 1)
+              @elseif($beachcourt->rating >=1 && $beachcourt->rating <2)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
@@ -84,7 +86,7 @@
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-              @elseif($beachcourt->rating == 2)
+              @elseif($beachcourt->rating >=2 && $beachcourt->rating <3)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
@@ -100,7 +102,7 @@
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-              @elseif($beachcourt->rating == 3)
+              @elseif($beachcourt->rating >=3 && $beachcourt->rating <4)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
@@ -116,7 +118,7 @@
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-              @elseif($beachcourt->rating == 4)
+              @elseif($beachcourt->rating >=4 && $beachcourt->rating <5)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
@@ -132,7 +134,7 @@
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-              @elseif($beachcourt->rating == 5)
+              @elseif($beachcourt->rating =5)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
@@ -149,13 +151,13 @@
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
               @endif
-              
+
               @if ($beachcourt->ratingCount = 1)
-                <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertung</p>
-              @elseif ($beachcourt->ratingCount > 1)
+                <p class="rating__count">Diese Bewertung stammt von beachfelder.de <span class="icon-text__icon" data-feather="info"></span></p>
+              @elseif ($beachcourt->ratingCount > 10)
                 <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
-              
+
               <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
                 <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
               </a>
@@ -226,7 +228,7 @@
               <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
               <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
             </div>
-            
+
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
         </div>
@@ -236,7 +238,7 @@
         <h4 class="-typo-headline-04 -text-color-petrol">Kann ich auf diesem Feld kostenlos spielen?</h4>
         @if ($beachcourt->isChargeable == 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
-        @else 
+        @else
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
         @endif
 
