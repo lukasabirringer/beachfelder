@@ -12,9 +12,8 @@ let mix = require('laravel-mix');
  */
 
  mix.js('resources/assets/js/app.js', 'public/js')
- 	.scripts([ 	'public/js/datepicker.min.js',
- 				'public/js/i18n/datepicker.de.js',
- 				'public/js/dropzone.js',
- 				'public/js/tab.rating.js',
+ 	.scripts([ 	'resources/assets/js/datepicker.min.js',
+ 				'resources/assets/js/i18n/datepicker.de.js',
+ 				'resources/assets/js/dropzone.js'
  				],
 	'public/js/vendors.js');

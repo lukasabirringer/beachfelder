@@ -39,11 +39,11 @@
           </div>
         </div>
         <div class="row">
-<form action="{{ url('/rating/new') }}" method="POST" class="form-rating" id="form-rating" enctype="multipart/form-data">
-              {{ csrf_field() }}
+        <form action="{{ url('/rating/new') }}" method="POST" class="form-rating" id="form-rating" enctype="multipart/form-data">
+        {{ csrf_field() }}
 
               <input type="hidden" value="{{ $beachcourt->id }}" content="text" name="beachcourtname">
-<div class="tab -spacing-a" id="sand">
+              <div class="tab -spacing-a" id="sand">
               <div class="column column--12">
                 <div class="row">
                   <div class="column column--12">
@@ -559,6 +559,44 @@
               </button>
             </div>
           </form>
+          <script>
+            //TABS
+            var currentTab = 0; // Current tab is set to be the first tab (0)
+            showTab(currentTab); // Display the current tab
 
+            function showTab(n) {
+              // This function will display the specified tab of the form ...
+              var x = document.getElementsByClassName("tab");
+              x[n].style.display = "block";
+              // ... and fix the Previous/Next buttons:
+              if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+              } else {
+                document.getElementById("prevBtn").style.display = "inline";
+              }
+              if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>Deine Bewertung abgeben</span>";
+              } else {
+                document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>weiter</span>";
+              }
+            }
 
+            function nextPrev(n) {
+              // This function will figure out which tab to display
+              var x = document.getElementsByClassName("tab");
+              // Hide the current tab:
+              x[currentTab].style.display = "none";
+              // Increase or decrease the current tab by 1:
+              currentTab = currentTab + n;
+              // if you have reached the end of the form... :
+              if (currentTab >= x.length) {
+                //...the form gets submitted:
+                document.getElementById("form-rating").submit();
+
+                return false;
+              }
+              // Otherwise, display the correct tab:
+              showTab(currentTab);
+            }
+          </script>
 @endsection

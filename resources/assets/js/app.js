@@ -271,4 +271,3 @@ function togglePassword() {
         eyeOff.classList.add('input__icon--not-visible');
     }
 };
-
