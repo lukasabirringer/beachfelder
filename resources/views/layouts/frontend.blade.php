@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'beachfelder.de - Frontend') }}</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>
@@ -102,7 +103,7 @@
         </ul>
       </div>
       <div class="column column--12">
-        <p class="footer__paragraph">© 2018 World of Beachsport GbR</p>
+        <p class="footer__paragraph">© {{ date('Y') }} World of Beachsport GbR</p>
       </div>
     </footer>
     @include('cookieConsent::index')
