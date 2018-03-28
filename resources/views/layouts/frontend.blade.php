@@ -81,19 +81,20 @@
         </div>
       </header>
       @yield('content')
+
+      <footer class="footer row">
+        <div class="column column--12">
+          <ul class="footer__navigation">
+            <li class="footer__item"><a href="impressum.html" class="footer__link">Impressum</a></li>
+            <li class="footer__item"><a href="kontakt.html" class="footer__link">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="column column--12">
+          <p class="footer__paragraph">© {{ date('Y') }} World of Beachsport GbR</p>
+        </div>
+      </footer>
       
-    </div>
-    <footer class="footer row">
-      <div class="column column--12">
-        <ul class="footer__navigation">
-          <li class="footer__item"><a href="impressum.html" class="footer__link">Impressum</a></li>
-          <li class="footer__item"><a href="kontakt.html" class="footer__link">Kontakt</a></li>
-        </ul>
-      </div>
-      <div class="column column--12">
-        <p class="footer__paragraph">© {{ date('Y') }} World of Beachsport GbR</p>
-      </div>
-    </footer>
+    </div> <!-- .content ENDE -->
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -101,7 +102,7 @@
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 
     @stack('scripts')
-    
+
     <script>
       feather.replace();
 

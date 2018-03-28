@@ -3542,6 +3542,7 @@ $(document).ready(function(){
   owlFrontpage.owlCarousel({
     margin: 100,
     nav: false,
+    dots: false,
     loop: true,
     center: true,
     autowidth: true,
@@ -3645,42 +3646,10 @@ $(document).ready(function(){
     $(this).next($('.flyout')).addClass('flyout--open');
   });
 
-  //dropzone
-  Dropzone.autoDiscover = false;
-  $('#user-profile-image-upload').dropzone({
-    url: '/file/post',
-    acceptedFiles: '.jpg, .png',
-    addRemoveLinks: true,
-    dictResponseError: 'Leider gab es einen Server-Fehler.',
-    dictRemoveFile: 'Bild entfernen',
-    dictCancelUpload: 'Upload abbrechen'
-  });
-
-  $('.profile-edit__link').on('click', function(e){
-    var href = $(this).attr('href');
-
-    $('html, body').animate({
-      scrollTop:$(href).offset().top
-    },'slow');
-
-    e.preventDefault();
-  });
-
   //scroll to top at the rating form
   $('#nextBtn, #prevBtn').click(function(){
     $('html, body').animate({ scrollTop: 200 }, 600);
     return false;
-  });
-
-    
-  $('.profile-edit__button').hide();
-
-  $('input').on('keyup', function() {
-      $('.profile-edit__button').fadeIn();
-  });
-
-  $('input').on('change', function() {
-      $('.profile-edit__button').fadeIn();
   });
 
   //tabs navigation

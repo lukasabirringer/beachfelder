@@ -53,7 +53,8 @@
       <div class="column column--12 column--m-9">
         <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
         
-        <form action="{{ URL::route('profile.update') }}" class="form form--edit-profile">
+        <form action="{{ URL::route('profile.update') }}" class="form">
+          {{ csrf_field() }}
           <div class="row">
             <div class="column column--12 column--m-6">
               <label class="input -spacing-b">
@@ -140,7 +141,7 @@
 
             <div class="row -spacing-a" id="submit">
               <div class="column column--12">
-                <button class="button-primary profile-edit__button" type="submit">
+                <button class="button-primary profile-edit__button" type="submit" disabled="disabled">
                   <span class="button-primary__label">Profil speichern</span>
                   <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
                 </button>
@@ -157,7 +158,7 @@
           </div>
         </div>
 
-        <form method="POST" action="{{ url('profil/uploadprofilepicture/') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('profil/uploadprofilepicture') }}" enctype="multipart/form-data" id="dropzone">
           {{ csrf_field() }}
 
           <div class="row -spacing-a">
@@ -168,13 +169,11 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <p class="-typo-copy -text-color-gray-01">Dein aktuelles Profilbild</p>
 
-              <div class="image-profile -spacing-d">
-                @if($user->pictureName !== 'placeholder-user.png' )
-                  <img src="../../uploads/profilePictures/{{ $user->id }}/{{ $user->pictureName }}">
-                @else
-                  <img src="../../uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
-                @endif
-              </div>
+              @if($user->pictureName !== 'placeholder-user.png' )
+                <img src="../../uploads/profilePictures/{{ $user->id }}/{{ $user->pictureName }}" class="image image--max-width -spacing-d">
+              @else
+                <img src="../../uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width -spacing-d">
+              @endif
             </div>
 
             <div class="column column--12 column--m-6 -spacing-b">
@@ -201,7 +200,7 @@
               </button>
             </div>
             <div class="column column--12 column--m-6">
-              <button class="button-primary profile-edit__button -spacing-b" type="submit">
+              <button class="button-primary profile-edit__button -spacing-b" type="submit" disabled="disabled">
                 <span class="button-primary__label">Profil speichern</span>
                 <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
               </button>
@@ -238,7 +237,7 @@
             </label>
           </div>
           <div class="column column--12 column--m-6 -spacing-a">
-            <button class="button-primary profile-edit__button">
+            <button class="button-primary profile-edit__button" disabled="disabled">
               <span class="button-primary__label">Profil speichern</span>
               <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
             </button>
@@ -261,3 +260,36 @@
     </div>
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+  <script>
+    //dropzone
+    Dropzone.autoDiscover = false;
+    $('#user-profile-image-upload').dropzone({
+      url: '/profil/uploadprofilepicture',
+      acceptedFiles: '.jpg, .png',
+      addRemoveLinks: true,
+      dictResponseError: 'Leider gab es einen Server-Fehler.',
+      dictRemoveFile: 'Bild entfernen',
+      dictCancelUpload: 'Upload abbrechen'
+    });
+
+    $('.profile-edit__link').on('click', function(e){
+      var href = $(this).attr('href');
+
+      $('html, body').animate({
+        scrollTop:$(href).offset().top
+      },'slow');
+
+      e.preventDefault();
+    });
+
+    $('input').on('keyup', function() {
+        $('.profile-edit__button').attr('disabled', false);
+    });
+
+    $('input').on('change', function() {
+        $('.profile-edit__button').attr('disabled', false);
+    });
+  </script>
+@endpush

@@ -45,18 +45,19 @@
 
     <div class="row -spacing-a">
       <div class="column column--12 column--m-4">
-        <div class="image-profile">
-          @if($user->pictureName !== 'placeholder-user.png' )
-            <img src="/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
-          @else
-            <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
-          @endif
-        </div>
+        @if($user->pictureName !== 'placeholder-user.png' )
+          <img src="/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
+        @else
+          <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
+        @endif
       </div>
 
       <div class="column column--12 column--m-8">
-        <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
-
+        <div class="row">
+          <div class="column column--12">
+            <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
+          </div>
+        </div>
         <div class="row">
           <div class="column column--12 column--m-6">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
@@ -146,21 +147,21 @@
                       </div>
 
                       <div class="row  -spacing-b">
-                        <div class="column column--12 column--m-4">
+                        <div class="column column--12">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="map-pin"></span>
                             <span class="icon-text__text">{{ $myFavorite->postalCode }} {{ $myFavorite->city }} <br>{{ $myFavorite->street }} {{ $myFavorite->houseNumber }}</span>
                           </div>
                         </div>
 
-                        <div class="column column--12 column--m-4">
+                        <div class="column column--12 column--m-6">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="navigation"></span>
                             <span class="icon-text__text">{{ $myFavorite->longitude }}<br>{{ $myFavorite->latitude }}</span>
                           </div>
                         </div>
 
-                        <div class="column column--12 column--m-4">
+                        <div class="column column--12 column--m-6">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="info"></span>
                             <span class="icon-text__text">Felder outdoor: {{ $myFavorite->courtCountOutdoor }}<br>Felder indoor: {{ $myFavorite->courtCountIndoor }}</span>

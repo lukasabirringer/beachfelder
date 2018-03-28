@@ -94,10 +94,10 @@
     </div>
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
-      <div class="column column--12 column--s-6 column--m-4 -spacing-b -flex">
-        @foreach ($results as $beachcourt)
+      @foreach ($results as $beachcourt)
+        <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
           <div class="beachcourt-item">
-            <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/1.jpg); background-size: cover;">
+            <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
               <div class="beachcourt-item__distance">
                 <span class="beachcourt-item__icon" data-feather="navigation"></span>
                 <span class="beachcourt-item__paragraph">{{ $distance }}km entfernt</span>
@@ -144,8 +144,8 @@
               </a>
             </div>
           </div>
-        @endforeach
-      </div>
+        </div>
+      @endforeach
     </div>
   </div> <!-- .content__main ENDE -->
 @endsection
