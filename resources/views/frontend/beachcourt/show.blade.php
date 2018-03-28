@@ -218,7 +218,7 @@
       </div>
     </div>
 
-    <div class="row ">
+    <div class="row">
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
             <div class="owl-carousel owl-carousel--detailpage">
@@ -264,4 +264,6 @@
         </div>
       </div>
     </div>
+
+  </div> <!-- .content__main ENDE -->
 @endsection

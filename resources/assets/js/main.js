@@ -1,36 +1,33 @@
-feather.replace();
-
-
 $(document).ready(function(){
   var owlFrontpage = $('.owl-carousel--frontpage');
-	var owlDetailpage = $('.owl-carousel--detailpage');
+  var owlDetailpage = $('.owl-carousel--detailpage');
 
-	owlFrontpage.owlCarousel({
-  	margin: 100,
-  	nav: false,
-  	loop: true,
-  	center: true,
-  	autowidth: true,
-  	responsive: {
-  		0: {
-  			items: 1
-  		},
-  		500: {
-  			items: 2
-  		},
-  		1000: {
-  			items: 2
-  		}
-  	}
-	});
+  owlFrontpage.owlCarousel({
+    margin: 100,
+    nav: false,
+    loop: true,
+    center: true,
+    autowidth: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      500: {
+        items: 2
+      },
+      1000: {
+        items: 2
+      }
+    }
+  });
 
-	$('.button-circle--left').click(function() {
-    owlFrontpage.trigger('prev.owl.carousel');
-	});
+  $('.button-circle--left').click(function() {
+      owlFrontpage.trigger('next.owl.carousel');
+  })
 
-	$('.button-circle--right').click(function() {
+  $('.button-circle--right').click(function() {
     owlFrontpage.trigger('next.owl.carousel');
-	});
+  });
 
   //owl carousel on beachcourt detail page
   owlDetailpage.owlCarousel({
@@ -50,21 +47,21 @@ $(document).ready(function(){
       owlDetailpage.trigger('next.owl.carousel');
     });
 
-	$('.link-logout').click(function() {
-		$('.profile-user__flyout').addClass('flyout--open');
+  $('.link-logout').click(function() {
+    $('.profile-user__flyout').addClass('flyout--open');
     $('body').addClass('-overflow--hidden');
-	});
+  });
 
-	$('.flyout__icon').click(function() {
+  $('.flyout__icon').click(function() {
     $(this).parent('.flyout').removeClass('flyout--open');
     $('body').removeClass('-overflow--hidden');
-	});
+  });
 
-	$('.list-beachcourt__icon').click(function() {
-		$(this).parent('.list-beachcourt__item').hide();
+  $('.list-beachcourt__icon').click(function() {
+    $(this).parent('.list-beachcourt__item').hide();
 
-		return false;
-	});
+    return false;
+  });
 
   $('.trigger-flyout').click(function() {
     $('.flyout').removeClass('flyout--open');
@@ -149,6 +146,20 @@ $(document).ready(function(){
       $('.profile-edit__button').fadeIn();
   });
 
+  //tabs navigation
+  $('.accordion__title').click(function(e){
+    e.preventDefault();
+      var $this = $(this),
+          tabgroup = '#'+$this.parents('.accordion__title-bar').data('tabgroup'),
+          target = $this.attr('href');
+
+      $('.accordion__title').removeClass('accordion__title--active');
+
+      $this.addClass('accordion__title--active');
+
+      $(tabgroup).children('.accordion__content').hide();
+      $(target).show();
+  });
 });
 
 //removes active class from login page half
