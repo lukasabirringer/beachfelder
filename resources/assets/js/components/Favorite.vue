@@ -12,7 +12,7 @@
 
     export default {
         props: ['beachcourt', 'favorited'],
-
+        
         data: function() {
             return {
                 isFavorited: '',
