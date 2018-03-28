@@ -27,9 +27,8 @@
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="info"></span>
-              <span class="icon-text__text">Favoriten: X<br>Eingereichte Felder: X</span>
+              <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
             </div>
-          </div>
         </div>
       </div>
       <div class="column column--4 profile-user__column">
@@ -120,7 +119,7 @@
         <hr class="divider">
       </div>
     </div>
-
+    
     <div class="row -spacing-a">
       <div class="column column--12">
         <div class="accordion">

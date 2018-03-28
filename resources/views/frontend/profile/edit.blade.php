@@ -8,7 +8,13 @@
         <h2 class="title-page__title">Bearbeite dein Profil</h2>
       </div>
     </div>
-
+    <div class="flash-message">
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+      @endforeach
+    </div>
     <div class="row">
       <div class="column column--8">
         <div class="row">
@@ -27,7 +33,7 @@
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="info"></span>
-              <span class="icon-text__text">Favoriten: X<br>Eingereichte Felder: X</span>
+              <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
             </div>
           </div>
         </div>
@@ -39,7 +45,7 @@
         <hr class="divider">
       </div>
     </div>
-
+    
     <div class="row -spacing-a">
       <div class="column column--12 column--m-3 profile-edit__column">
         <p class="-typo-copy -text-color-gray-01"><a href="#common" class="profile-edit__link link-text">Allgemeine Informationen</a></p>
@@ -151,7 +157,7 @@
         </form>
 
         <div id="profile-image"></div>
-        
+
         <div class="row -spacing-a">
           <div class="column column--12">
             <hr class="divider">
@@ -242,7 +248,7 @@
               <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
             </button>
           </div>
-
+          
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-a">Deinen Account löschen</p>
             <p class="-typo-copy -text-color-gray-01">

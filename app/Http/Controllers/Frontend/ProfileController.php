@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Favorites;
+use App\Beachcourt;
 use App\Footernavigation;
 use App\Submittedbeachcourt;
 use DB;
@@ -42,7 +43,7 @@ class ProfileController extends Controller
         }
 
         $myFavorites = Auth::user()->favorites()->whereBetween('rating', array($min, $max))->get();
-      
+
         $id = $profileuser->id;
 
         if ($id === auth()->id()) {
@@ -51,42 +52,50 @@ class ProfileController extends Controller
             $eigenesprofil = 'false';
         }
 
-        return view('frontend.profile.show', compact('profileuser', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
+        $user_id = Auth::id();
+        $countSubmits = Beachcourt::where('user_id', $user_id)->count();
+        $countFavorites = Auth::user()->favorites()->count();
+
+
+        return view('frontend.profile.show', compact('profileuser', 'countFavorites', 'countSubmits', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
     }
     public function edit($name){
 
         $user = Auth::user();
+        $user_id = Auth::id();
+        $countSubmits = Beachcourt::where('user_id', $user_id)->count();
+        $countFavorites = Auth::user()->favorites()->count();
 
-        return view('frontend.profile.edit', compact('user'));
+        return view('frontend.profile.edit', compact('user', 'countFavorites', 'countSubmits' ));
     }
     public function update(Request $request){
+        dd($request->input($publicProfile));
+        $v = Validator::make($request->all(), [
+            'userName' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        // $v = Validator::make($request->all(), [
-        // 'userName' => 'required',
-        // 'firstName' => 'required',
-        //  'lastName' => 'required',
-        //  'email' => 'required|email',
-        //  'role' => 'required|numeric',
-        // ]);
-
-        // if ($v->fails())
-        // {
-        //     return redirect()->back()->withErrors($v->errors());
-        // }
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
 
         $birthdate = $request->input('birthdate');
-        $birthdate = date('d.m.Y', strtotime($dob));
+        $birthdate = date('d.m.Y', strtotime($birthdate));
 
         $user = Auth::user();
         $user->userName = $request->input('userName');
         $user->firstName = $request->input('firstName');
         $user->lastName = $request->input('lastName');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->postalCode = $request->input('postalCode');
         $user->city = $request->input('city');
         $user->birthdate = $birthdate;
-        $user->publicProfile = $request->input('publicProfile');
+        $user->publicProfile = $request->input($publicProfile);
 
         $user->save();
 
@@ -119,17 +128,9 @@ class ProfileController extends Controller
     public function destroy()
     {
         $user = Auth::user();
-        $filename = $user->pictureName;
+        $user->forceDelete();
 
-        $file = public_path('uploads/profilePictures/' . auth()->id() . '/' . $filename);
-
-        File::delete($file);
-
-        $user = Auth::user();
-        $user->pictureName = 'placeholder-user.png';
-        $user->save();
-
-        return back();
+        return redirect('/');
     }
     public function confirmRegistration($confirmationCode)
         {

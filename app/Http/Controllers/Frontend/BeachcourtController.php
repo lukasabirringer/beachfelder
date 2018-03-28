@@ -30,7 +30,7 @@ class BeachcourtController extends Controller
         } catch(\Exception $e) {
             echo 'General exception: ' . $e->getMessage() . ' (Code ' . $e->getCode() . ').';
         }
-        
+
         $roundedWheater = number_format($weather->temperature->getValue(), 1);
         $icon = substr($weather->weather->icon, 0, -1);
         $iconTime = substr($weather->weather->icon, 2);

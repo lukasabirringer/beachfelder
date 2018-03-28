@@ -95,7 +95,7 @@
       </footer>
       
     </div> <!-- .content ENDE -->
-
+    @include('cookieConsent::index')
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
