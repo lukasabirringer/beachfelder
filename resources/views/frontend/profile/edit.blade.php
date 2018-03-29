@@ -256,10 +256,10 @@
             </p>
           </div>
           <div class="column column--12 column--m-6 -spacing-b">
-            <a class="button-primary button-primary--red">
+            <button class="button-primary button-primary--red" onclick="window.location.href='{{ url('') }}/profile/profil-loeschen'">
               <span class="button-primary__label">Ja, ich möchte meinen Account löschen</span>
               <span class="button-primary__label button-primary__label--hover">Bist du dir wirklich sicher?</span>
-            </a>
+            </button>
           </div>
         </div>
       </div><!-- .column .column__12 .column__m-9 ENDE -->
@@ -291,11 +291,15 @@
     });
 
     $('input').on('keyup', function() {
-        $('.profile-edit__button').attr('disabled', false);
+      $('.profile-edit__button').attr('disabled', false);
     });
 
     $('input').on('change', function() {
-        $('.profile-edit__button').attr('disabled', false);
+      $('.profile-edit__button').attr('disabled', false);
+    });
+
+    $('.profile-edit__column').stick_in_parent({
+      offset_top: 100
     });
   </script>
 @endpush

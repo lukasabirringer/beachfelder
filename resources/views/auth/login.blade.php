@@ -13,13 +13,20 @@
       </div>
     </div>
 
-    <div class="flash-message">
+    <ul class="notification">
       @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))
-          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+          <li class="notification__item">
+            <span class="notification__icon" data-feather="info"></span>
+            <p class="notification__text alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+
+            <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+              <span class="button-secondary__label">OK</span>
+            </button>
+          </li>
         @endif
       @endforeach
-    </div>
+    </ul>
 
     <div class="page-login -spacing-a">
       <div class="page-login__half page-login__half--left">
@@ -286,5 +293,28 @@
         length.classList.add('password-strength--invalid');
       }
     }
+
+    //toggle password
+    var input = document.querySelector('.input__field--password'),
+        eye = document.querySelector('.input__icon--eye'),
+        eyeOff = document.querySelector('.input__icon--eye-off');
+
+    // Toggle Password Field
+    function togglePassword() {
+        if (input.type === 'password') {
+            input.type = 'text';
+            eye.classList.add('input__icon--not-visible');
+            eyeOff.classList.remove('input__icon--not-visible');
+        } else {
+            input.type = 'password';
+            eye.classList.remove('input__icon--not-visible');
+            eyeOff.classList.add('input__icon--not-visible');
+        }
+    };
+
+    //hide the notification
+    $('.notification__button').click(function() {
+      $(this).parent('.notification__item').parent('.notification').hide();
+    });
   </script>
 @endpush

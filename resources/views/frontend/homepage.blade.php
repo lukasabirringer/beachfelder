@@ -69,7 +69,6 @@
           <div class="overlay-gradient overlay-gradient--right"> </div>
         </div>
       </div>
-    </div>
   </div> <!-- .content__main ENDE -->
 @endsection
  

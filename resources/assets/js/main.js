@@ -58,12 +58,6 @@ $(document).ready(function(){
     $('body').removeClass('-overflow--hidden');
   });
 
-  $('.list-beachcourt__icon').click(function() {
-    $(this).parent('.list-beachcourt__item').hide();
-
-    return false;
-  });
-
   $('.trigger-flyout').click(function() {
     $('.flyout').removeClass('flyout--open');
     $('body').removeClass('-overflow--hidden');
@@ -173,22 +167,3 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
-
-
-//toggle password
-var input = document.querySelector('.input__field--password'),
-    eye = document.querySelector('.input__icon--eye'),
-    eyeOff = document.querySelector('.input__icon--eye-off');
-
-// Toggle Password Field
-function togglePassword() {
-    if (input.type === 'password') {
-        input.type = 'text';
-        eye.classList.add('input__icon--not-visible');
-        eyeOff.classList.remove('input__icon--not-visible');
-    } else {
-        input.type = 'password';
-        eye.classList.remove('input__icon--not-visible');
-        eyeOff.classList.add('input__icon--not-visible');
-    }
-};

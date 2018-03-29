@@ -2,8 +2,10 @@
 @extends('layouts.frontend')
 
 @section('content')
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5aba9ef91fff98001395a6c0&product=inline-share-buttons' async='async'></script>
-<div class="content__main">
+  @push('scripts')
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5aba9ef91fff98001395a6c0&product=inline-share-buttons' async='async'></script>
+  @endpush
+  <div class="content__main">
     <div class="row">
       <div class="column column--12">
         <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h1>
@@ -152,15 +154,15 @@
                 </div>
               @endif
 
-              @if ($beachcourt->ratingCount = 1)
-                <p class="rating__count">Diese Bewertung stammt von beachfelder.de <span class="icon-text__icon" data-feather="info"></span></p>
-              @elseif ($beachcourt->ratingCount > 10)
-                <p class="rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
-              @endif
-
               <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
                 <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
               </a>
+              <br>
+              @if ($beachcourt->ratingCount = 1)
+                <p class="-typo-copy -text-color-gray-01">Diese Bewertung stammt von beachfelder.de</p>
+              @elseif ($beachcourt->ratingCount > 10)
+                <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->ratingCount }} Bewertungen</p>
+              @endif
             </div>
           </div>
 

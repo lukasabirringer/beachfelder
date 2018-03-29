@@ -18,19 +18,23 @@
               <span class="icon-text__text">{{ $user->firstName }} {{ $user->lastName }} <br> {{ $user->birthdate }} </span>
             </div>
           </div>
+
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="map-pin"></span>
               <span class="icon-text__text">{{ $user->postalCode }} <br> {{ $user->city }}</span>
             </div>
           </div>
+
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="info"></span>
               <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
             </div>
+          </div>
         </div>
       </div>
+
       <div class="column column--4 profile-user__column">
         <a href="/user/{{ $user->userName }}/edit" class="link-icon link-icon--rotate -text-color-gray-01 profile-user__edit-icon"><span data-feather="settings"></span></a>
       </div>
@@ -119,7 +123,7 @@
         <hr class="divider">
       </div>
     </div>
-    
+
     <div class="row -spacing-a">
       <div class="column column--12">
         <div class="accordion">

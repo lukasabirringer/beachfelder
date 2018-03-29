@@ -1,10 +1,10 @@
 <template>
     <span>
         <a href="#" v-if="isFavorited" @click.prevent="unFavorite(beachcourt)" class="rating__count link-icon-text">
-            <span class="link-icon-text__icon" data-feather="heart"></span><span class="link-icon-text__copy" title="Dieses Feld befindet sich schon in deinen Favoriten" >aus Favoriten entfernen</span>
+            <span class="link-icon-text__icon" data-feather="heart"></span><span class="favorite-link link-icon-text__copy" title="Dieses Feld befindet sich schon in deinen Favoriten" >aus Favoriten entfernen</span>
         </a>
         <a href="#" v-else @click.prevent="favorite(beachcourt)" class="rating__count link-icon-text">
-            <span class="link-icon-text__icon" data-feather="heart"></span><span class="link-icon-text__copy">zu Favoriten hinzufügen</span>
+            <span class="link-icon-text__icon" data-feather="heart"></span><span class="favorite-link link-icon-text__copy">zu Favoriten hinzufügen</span>
         </a>
     </span>
 </template>

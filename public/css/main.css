@@ -1794,12 +1794,20 @@ input::-moz-focus-outer {
         padding-left: 3.125rem;
         width: 70%; } }
   .list-beachcourt__icon {
+    padding: 0.375rem;
+    background-color: #FFF;
     color: #798796;
     position: absolute;
     right: 1.25rem;
-    top: 1.25rem; }
+    top: 1.25rem;
+    border-radius: 50%; }
     .list-beachcourt__icon:hover {
       color: #798796; }
+    @media (min-width: 992px) {
+      .list-beachcourt__icon {
+        padding: 0rem;
+        border-radius: 0rem;
+        background: transparent; } }
 
 .flyout {
   background-color: #FFF;
@@ -2055,7 +2063,8 @@ input::-moz-focus-outer {
     color: #798796;
     text-transform: uppercase;
     line-height: 1.2;
-    font-size: 1.25rem; }
+    font-size: 1.25rem;
+    min-height: 3rem; }
   .beachcourt-item__info {
     position: relative;
     padding-top: 1.5625rem;
@@ -2139,6 +2148,13 @@ input::-moz-focus-outer {
   top: 0;
   left: 0;
   z-index: 1000; }
+  .notification--light {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 0 9px 20px 7px rgba(89, 85, 86, 0.6);
+            box-shadow: 0 9px 20px 7px rgba(89, 85, 86, 0.6); }
+  .notification--bottom {
+    top: unset;
+    bottom: 0; }
   .notification__item {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2173,6 +2189,8 @@ input::-moz-focus-outer {
     @media (min-width: 768px) {
       .notification__icon {
         margin: unset; } }
+    .notification__icon--light {
+      color: #798796; }
   .notification__text {
     font-family: "PT Sans";
     font-size: 1rem;
@@ -2184,6 +2202,8 @@ input::-moz-focus-outer {
         margin-top: 0rem;
         padding-left: 1.875rem;
         padding-right: 1.875rem; } }
+    .notification__text--light {
+      color: #595556; }
   .notification__button {
     margin-top: 0.625rem; }
     @media (min-width: 768px) {

@@ -45,7 +45,7 @@
               <input type="hidden" class="form-control" id="form-postcode" name="postcode">
               <input type="text" placeholder="Gib eine PLZ oder einen Ort ein" id="address-input" name="searchQuery" class="input__field ap-input">
               {{ $errors->postcode->first('postcode') }}
-              <span class="input__icon" data-feather="search"></span>
+              <!-- <span class="input__icon" data-feather="search"></span> -->
               <span class="input__label">PLZ oder Ort</span>
               <div class="input__border"></div>
             </label>
@@ -81,7 +81,7 @@
         </div>
       </header>
       @yield('content')
-
+      
       <footer class="footer row">
         <div class="column column--12">
           <ul class="footer__navigation">
@@ -97,6 +97,7 @@
     </div> <!-- .content ENDE -->
     @include('cookieConsent::index')
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

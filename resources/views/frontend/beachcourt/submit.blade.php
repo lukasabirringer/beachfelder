@@ -31,12 +31,23 @@
         <p class="-typo-copy -text-color-gray-01 -spacing-d">Dann hilf' uns doch einfach und reiche das Feld ein, damit wir es hier aufnehmen können. Somit hilfst du uns dabei, dass <span class="-typo-copy--bold">beachfelder.de</span> die größste und umfangreichste Suchmaschine für Beachvolleyballfelder wird.
         </p>
 
-        <p class="-typo-copy -text-color-gray-01 -spacing-d">Du musst nicht alle Felder ausfüllen. Wichtig für uns sind allerdings die <span class="-typo-copy--bold">Koordinaten</span> des Feldes.
+        <p class="-typo-copy -text-color-gray-01 -spacing-d">Du musst nicht alle Felder ausfüllen. Wichtig für uns sind allerdings die <span class="-typo-copy--bold">Koordinaten</span> des Feldes. Denn mit Hilfe dieser können wir das Feld bei unserer Recherche am Optimalsten orten.
         </p>
+      </div>
+    </div>
+    
+    <div class="row -spacing-a">
+      <div class="column column--12">
+        <hr class="divider">
       </div>
     </div>
 
     <div class="row -spacing-a">
+      <div class="column column--12">
+        <h4 class="-typo-headline-04 -text-color-green">Allgemeines</h4>
+      </div>
+    </div>
+    <div class="row -spacing-b">
       <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="myform" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="column column--12 column--s-6 -spacing-b">
@@ -82,7 +93,15 @@
             <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
           @endif
         </div>
-        
+      </div>
+      
+      <div class="row -spacing-a">
+        <div class="column column--12">
+          <h4 class="-typo-headline-04 -text-color-green">Das Feld</h4>
+        </div>  
+      </div>
+      
+      <div class="row">
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld frei zugänglich?</p>
           <label class="input-radio -spacing-d">
@@ -138,7 +157,7 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
-            <input type="range" name="courtCountIndoor" class="input-range__field" value="1" min="1" max="10">
+            <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="10">
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountIndoor'))
@@ -149,14 +168,22 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Outdoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
-            <input type="range" name="courtCountOutdoor" class="input-range__field" value="1" min="1" max="10">
+            <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="10">
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountOutdoor'))
             <div class="alert alert-danger">{{ $errors->first('courtCountOutdoor', ':message') }}</div>
           @endif
         </div>
+      </div>
+      
+      <div class="row -spacing-a row--fullwidth">
+        <div class="column column--12">
+          <h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
+        </div>  
+      </div>
 
+      <div class="row">
         <div class="column column--12 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
           <label class="textarea">
