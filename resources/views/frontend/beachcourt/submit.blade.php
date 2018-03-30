@@ -197,7 +197,8 @@
 
         <div class="column column--12 -spacing-a">
           <button type="submit" class="button-primary">
-            <span class="button-primary__label">Absenden</span>
+            <span class="button-primary__label">Feld einreichen</span>
+            <span class="button-primary__label button-primary__label--hover">Feld einreichen</span>
           </button>
         </div>
       </form>

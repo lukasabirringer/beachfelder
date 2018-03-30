@@ -200,10 +200,6 @@
 
           <div class="row">
             <div class="column column--12 column--m-6">
-              <button type="button" class="button-primary button-primary--red -spacing-b" onclick="window.location.href='{{ url('') }}/profile/profilbild-loeschen'" >
-                <span class="button-primary__label">Profilbild löschen</span>
-                <span class="button-primary__label button-primary__label--hover">Profilbild löschen</span>
-              </button>
             </div>
             <div class="column column--12 column--m-6">
               <button class="button-primary profile-edit__button -spacing-b" type="submit" disabled="disabled">
