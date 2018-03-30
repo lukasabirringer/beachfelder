@@ -104,6 +104,16 @@ class ProfileController extends Controller
     public function storeimage(Request $request){
 
         if ($request->hasFile('profilePicture')) {
+
+            $v = Validator::make($request->all(), [
+            'profilePicture' => 'required | mimes:jpeg,jpg,png | max:1000',
+            ]);
+
+            if ($v->fails())
+            {
+                return redirect()->back()->withErrors($v->errors());
+            }
+
             $avatar = request()->file('profilePicture');
             $dt = Carbon::now();
             $current = $dt->toDateTimeString();

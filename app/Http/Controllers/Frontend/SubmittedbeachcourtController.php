@@ -47,11 +47,8 @@ class SubmittedbeachcourtController extends Controller
 
         $v = Validator::make($request->all(), [
         'postalCode' => 'required',
-        'city' => 'required',
          'latitude' => 'required',
          'longitude' => 'required',
-         'isChargeable' => 'boolean',
-         'isPublic' => 'boolean',
         ]);
 
         if ($v->fails())
