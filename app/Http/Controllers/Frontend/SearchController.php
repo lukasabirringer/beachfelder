@@ -34,6 +34,7 @@ class SearchController extends Controller
 
         $ratingmin = $request->ratingmin ?? '1';
         $ratingmax = $request->ratingmax ?? '5';
+
         $results = Beachcourt::where('submitState', 'approved')
            ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
@@ -41,7 +42,7 @@ class SearchController extends Controller
            ->get();
 
 
-        return view('frontend.search.show', compact('results', 'plz', 'distance', 'ratingmin', 'ratingmax'));
+        return view('frontend.search.show', compact('results', 'plz', 'latitude', 'longitude', 'distance', 'ratingmin', 'ratingmax'));
     }
 
 }

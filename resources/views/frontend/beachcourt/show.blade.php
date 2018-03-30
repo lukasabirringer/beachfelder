@@ -53,103 +53,18 @@
         <div class="row">
           <div class="column column--12 column--m-9">
             <div class="rating">
-
-              @if($beachcourt->rating <1)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-              @elseif($beachcourt->rating >=1 && $beachcourt->rating <2)
+              @for ($i = 1; $i <= $beachcourt->rating; $i++)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
                 </div>
+              @endfor
+              <?php $starsLeft = 5 - $beachcourt->rating; ?>
+              @if (count($starsLeft) > 0)
+                @for ($i = 1; $i <= $starsLeft; $i++)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-              @elseif($beachcourt->rating >=2 && $beachcourt->rating <3)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-              @elseif($beachcourt->rating >=3 && $beachcourt->rating <4)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-              @elseif($beachcourt->rating >=4 && $beachcourt->rating <5)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
-                </div>
-              @elseif($beachcourt->rating =5)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
+                @endfor
               @endif
 
               @if ($beachcourt->ratingCount = 1)
@@ -178,42 +93,58 @@
         <div class="row">
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Sand {{ $beachcourt->ratingSand }} von 34 Punkten</span>
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+              <span class="-typo-copy--bold">Sand {{ $beachcourt->ratingSand }} von 5 Punkten</span>
+              @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @endfor
+              <?php $starsLeft = 5 - $beachcourt->ratingSand;     ?>
+              @if (count($starsLeft) > 0)
+                @for ($i = 1; $i <= $starsLeft; $i++)
+                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                @endfor
+              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Netz {{ $beachcourt->ratingNet }} von 28 Punkten</span>
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+              <span class="-typo-copy--bold">Netz {{ $beachcourt->ratingNet }} von 5 Punkten</span>
+              @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @endfor
+              <?php $starsLeft = 5 - $beachcourt->ratingNet;     ?>
+              @if (count($starsLeft) > 0)
+                @for ($i = 1; $i <= $starsLeft; $i++)
+                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                @endfor
+              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Feld {{ $beachcourt->ratingCourt }} von 27 Punkten</span>
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+              <span class="-typo-copy--bold">Feld {{ $beachcourt->ratingCourt }} von 5 Punkten</span>
+              @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @endfor
+              <?php $starsLeft = 5 - $beachcourt->ratingCourt;     ?>
+              @if (count($starsLeft) > 0)
+                @for ($i = 1; $i <= $starsLeft; $i++)
+                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                @endfor
+              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Umgebung {{ $beachcourt->ratingEnvironment }} von 11 Punkten</span>
-              <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-              <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+              <span class="-typo-copy--bold">Umgebung {{ $beachcourt->ratingEnvironment }} von 5 Punkten</span>
+              @for ($i = 1; $i <= $beachcourt->ratingEnvironment; $i++)
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @endfor
+              <?php $starsLeft = 5 - $beachcourt->ratingEnvironment; ?>
+              @if (count($starsLeft) > 0)
+                @for ($i = 1; $i <= $starsLeft; $i++)
+                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                @endfor
+              @endif
             </p>
           </div>
         </div>
@@ -245,10 +176,10 @@
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
         <p class="-typo-copy -text-color-gray-01 -spacing-b">
           {{ $beachcourt->operator }}<br>
-          <span class="-text-color-red">75233 Tiefenbronn-Mühlhausen</span>
+          {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
         </p>
-        <p class="-text-color-green -typo-copy -text-color-red">
-          <a href="https://tsvmuehlhausen.de/" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">https://tsvmuehlhausen.de</span></a>
+        <p class="-text-color-green -typo-copy">
+          <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
         </p>
       </div>
     </div>

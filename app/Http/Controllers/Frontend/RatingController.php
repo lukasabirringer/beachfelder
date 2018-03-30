@@ -59,31 +59,66 @@ class RatingController extends Controller
             $securityZoneAverage = $beachcourt->ratings()->avg('securityZone');
             $windProtectionAverage = $beachcourt->ratings()->avg('windProtection');
             $interferenceCourtAverage = $beachcourt->ratings()->avg('interferenceCourt');
-            //dd($fieldDimensionsAverage);
-            $newSandRating = ($sandQualityAverage +
-                          $courtTopographyAverage +
-                          $sandDepthAverage +
-                          $irrigationSystemAverage);
 
-            $newNetRating = ($netHeightAverage +
-                          $netTypeAverage +
-                          $netAntennasAverage +
-                          $netTensionAverage);
+            $newSandRating = ($sandQualityAverage + $courtTopographyAverage + $sandDepthAverage + $irrigationSystemAverage);
+            if ($newSandRating >= 30.6 && $newSandRating <= 34) {$newSandRating = 5;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingSand' => $newSandRating]);
+            } elseif ($newSandRating >= 27.2 && $newSandRating <= 30.6) {$newSandRating = 4;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingSand' => $newSandRating]);
+            } elseif ($newSandRating >= 23.8 && $newSandRating <= 27.2) {$newSandRating = 3;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingSand' => $newSandRating]);
+            } elseif ($newSandRating >= 20.4 && $newSandRating <= 23.8) {$newSandRating = 2;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingSand' => $newSandRating]);
+            } elseif ($newSandRating >= 17 && $newSandRating <= 20.4) {$newSandRating = 1;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingSand' => $newSandRating]);
+            } elseif ($newSandRating >= 0 && $newSandRating <= 17) {$newSandRating = 0;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['rating' => $newSandRating]);
+            }
 
-            $newCourtRating = ($boundaryLinesAverage +
-                          $fieldDimensionsAverage +
-                          $securityZoneAverage);
+            $newNetRating = ($netHeightAverage + $netTypeAverage + $netAntennasAverage + $netTensionAverage);
+            if ($newNetRating >= 25.2 && $newNetRating <= 28) {$newNetRating = 5;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            } elseif ($newNetRating >= 22.4 && $newNetRating <= 25.2) {$newNetRating = 4;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            } elseif ($newNetRating >= 19.6 && $newNetRating <= 22.4) {$newNetRating = 3;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            } elseif ($newNetRating >= 16.8 && $newNetRating <= 19.6) {$newNetRating = 2;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            } elseif ($newNetRating >= 14 && $newNetRating <= 16.8) {$newNetRating = 1;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            } elseif ($newNetRating >= 0 && $newNetRating <= 14) {$newNetRating = 0;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingNet' => $newNetRating]);
+            }
 
-            $newEnvironmentRating = ($windProtectionAverage +
-                          $interferenceCourtAverage);
+            $newCourtRating = ($boundaryLinesAverage + $fieldDimensionsAverage + $securityZoneAverage);
+            if ($newCourtRating >= 24.3 && $newCourtRating <= 27) {$newCourtRating = 5;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            } elseif ($newCourtRating >= 21.6 && $newCourtRating <= 24.3) {$newCourtRating = 4;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            } elseif ($newCourtRating >= 18.9 && $newCourtRating <= 21.6) {$newCourtRating = 3;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            } elseif ($newCourtRating >= 16.2 && $newCourtRating <= 18.9) {$newCourtRating = 2;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            } elseif ($newCourtRating >= 13.5 && $newCourtRating <= 16.2) {$newCourtRating = 1;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            } elseif ($newCourtRating >= 0 && $newCourtRating <= 13.5) {$newCourtRating = 0;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingCourt' => $newCourtRating]);
+            }
 
-            DB::table('beachcourts')->where('id', $beachcourtid)
-                                    ->update([
-                                        'ratingSand' => $newSandRating,
-                                        'ratingNet' => $newNetRating,
-                                        'ratingCourt' => $newCourtRating,
-                                        'ratingEnvironment' => $newEnvironmentRating
-                                    ]);
+            $newEnvironmentRating = ($windProtectionAverage + $interferenceCourtAverage);
+            if ($newCourtRating >= 9.9 && $newCourtRating <= 11) {$newCourtRating = 5;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            } elseif ($newEnvironmentRating >= 8.8 && $newEnvironmentRating <= 9.9) {$newEnvironmentRating = 4;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            } elseif ($newEnvironmentRating >= 7.7 && $newEnvironmentRating <= 8.8) {$newEnvironmentRating = 3;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            } elseif ($newEnvironmentRating >= 6.6 && $newEnvironmentRating <= 7.7) {$newEnvironmentRating = 2;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            } elseif ($newEnvironmentRating >= 5.5 && $newEnvironmentRating <= 6.6) {$newEnvironmentRating = 1;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            } elseif ($newEnvironmentRating >= 0 && $newEnvironmentRating <= 5.5) {$newEnvironmentRating = 0;
+                DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
+            }
 
             $newRating = ($sandQualityAverage +
                           $courtTopographyAverage +

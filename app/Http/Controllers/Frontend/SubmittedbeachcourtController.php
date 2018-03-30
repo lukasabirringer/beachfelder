@@ -47,18 +47,14 @@ class SubmittedbeachcourtController extends Controller
 
         $v = Validator::make($request->all(), [
         'postalCode' => 'required',
-        'city' => 'required',
          'latitude' => 'required',
          'longitude' => 'required',
-         'isChargeable' => 'boolean',
-         'isPublic' => 'boolean',
         ]);
 
         if ($v->fails())
         {
             return redirect()->back()->withErrors($v->errors());
         }
-
         DB::table('beachcourts')->insert(
             ['user_id' => $user_id,
              'postalCode' => $request->postalCode,

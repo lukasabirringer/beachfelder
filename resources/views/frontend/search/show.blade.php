@@ -36,7 +36,9 @@
         <div class="column column--12 column--s-6 column--m-4">
           <div class="icon-text icon-text--hoverable trigger-flyout">
             <span class="icon-text__icon" data-feather="crosshair"></span>
-            <span class="icon-text__text">{{$distance}} <span class="output__value"></span> km <br> entfernt</span>
+            <span class="icon-text__text">{{$distance}} <span class="output__value"></span> km <br> entfernt
+            </span>
+
           </div>
 
           <div class="flyout flyout--rating-search">
@@ -98,7 +100,22 @@
               <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/1.jpg); background-size: cover;">
                 <div class="beachcourt-item__distance">
                   <span class="beachcourt-item__icon" data-feather="navigation"></span>
-                  <span class="beachcourt-item__paragraph">{{ $distance }}km entfernt</span>
+                  <span class="beachcourt-item__paragraph">
+
+                  <?php
+                    $pi80 = M_PI / 180;
+                    $lat1 = $latitude; $lat1 *= $pi80;
+                    $lng1 = $longitude; $lng1 *= $pi80;
+                    $lat2 = $beachcourt->latitude; $lat2 *= $pi80;
+                    $lng2 = $beachcourt->longitude; $lng2 *= $pi80;
+                    $r = 6372.797; // mean radius of Earth in km
+                    $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
+                    $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                    $dis = $r * $c * 0.621371192 * 2;
+                    echo floor($dis);
+                   ?>
+                  km entfernt</span>
                 </div>
                 <div class="beachcourt-item__favorite">
                   <span data-feather="heart"></span>

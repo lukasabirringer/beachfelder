@@ -261,14 +261,12 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <p class="-typo-copy -text-color-gray-01">Dein neues Profilbild</p>
               <label class="input-fileupload">
-                <input type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
+                <input id="profile-img" type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
               </label>
-              <!-- <div class="dropzone -spacing-d" id="user-profile-image-upload">
-                <span class="dropzone__hint dz-message">Ziehe hier dein neues Profilbild rein</span>
-                <div class="image-profile fallback">
-                  <input type="file" name="file" />
-                </div>
-              </div> -->
+              @if ($errors->has('profilePicture'))
+                <div class="alert alert-danger">{{ $errors->first('profilePicture', ':message') }}</div>
+              @endif
+              <img src="" class="image image--max-width" id="profile-img-tag"/>
             </div>
           </div>
           <div class="row">
@@ -280,7 +278,7 @@
             </div>
             <div class="column column--12 column--m-6">
               <button class="button-primary profile-edit__button -spacing-b" type="submit">
-                <span class="button-primary__label">Profil speichern</span>
+                <span class="button-primary__label">Profilbild speichern</span>
                 <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
               </button>
             </div>
@@ -309,4 +307,21 @@
         </div>
       </div>
   </div>
+  <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+</script>
+
+
 @endsection
