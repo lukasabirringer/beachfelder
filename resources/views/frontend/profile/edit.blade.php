@@ -225,18 +225,14 @@
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">Deine Privatsphären-Einstellungen</p>
           </div>
           <div class="column column--12 -spacing-d">
-            <label class="input-toggle">
-              <input type="checkbox" class="input-toggle__field">
+            <label class="input-toggle -spacing-d">
+              <input type="checkbox" class="input-toggle__field" name="isPubic" value="{{ $user->publicProfile }}">
               <span class="input-toggle__switch"></span>
-              <span class="input-toggle__label">Meine Favoriten öffentlich machen</span>
+              <span class="input-toggle__label">Privates Profil</span>
             </label>
           </div>
-          <div class="column column--12 -spacing-d">
-            <label class="input-toggle">
-              <input type="checkbox" class="input-toggle__field">
-              <span class="input-toggle__switch"></span>
-              <span class="input-toggle__label">Meine eingereichten Felder öffentlich machen</span>
-            </label>
+          <div class="column column--12 -spacing-b">
+            <p class="-typo-copy -text-color-gray-01 hint">Bei einem <span class="-typo-copy -typo-copy--bold">öffentlichen Profil</span> zeigst du anderen Benutzern, welche Beachvolleyballfelder du schon eingereicht hast, welche Felder du favorisiert hast und deine Basis-Informationen wie <span class="-typo-copy -typo-copy--bold">Username, Postleitzahl</span> und dein <span class="-typo-copy -typo-copy--bold">Geschlecht.</span> </p>
           </div>
           <div class="column column--12 column--m-6 -spacing-a">
             <button class="button-primary profile-edit__button" disabled="disabled">
@@ -296,6 +292,20 @@
 
     $('.profile-edit__column').stick_in_parent({
       offset_top: 100
+    });
+
+    $('.hint').hide();
+
+    $('.input-toggle__field').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('Öffentliches Profil');
+        $(this).val(1);
+        $('.hint').slideToggle();
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Privates Profil');
+        $(this).val(0);
+        $('.hint').slideToggle();
+      }
     });
   </script>
 @endpush

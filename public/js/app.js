@@ -30508,7 +30508,7 @@ var render = function() {
             _c(
               "span",
               {
-                staticClass: "link-icon-text__copy",
+                staticClass: "favorite-link link-icon-text__copy",
                 attrs: {
                   title: "Dieses Feld befindet sich schon in deinen Favoriten"
                 }
@@ -30534,7 +30534,7 @@ var render = function() {
               staticClass: "link-icon-text__icon",
               attrs: { "data-feather": "heart" }
             }),
-            _c("span", { staticClass: "link-icon-text__copy" }, [
+            _c("span", { staticClass: "favorite-link link-icon-text__copy" }, [
               _vm._v("zu Favoriten hinzufügen")
             ])
           ]
