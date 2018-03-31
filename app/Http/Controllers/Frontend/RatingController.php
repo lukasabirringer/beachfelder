@@ -156,11 +156,6 @@ class RatingController extends Controller
 
             DB::table('beachcourts')->where('id', $beachcourtid)->increment('ratingCount');
 
-            $request->session()->flash(
-                            'alert-success',
-                            'Danke für das Bewerten des Beachfeldes :)'
-                            );
-            return back();
-
+            return redirect()->back()->with('success', 'Danke für das Bewerten des Beachfeldes :)');
         }
 }

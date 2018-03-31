@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Storage;
 use File;
+use Mail;
 use Image;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -54,10 +55,11 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
         $countSubmits = Beachcourt::where('user_id', $user_id)->count();
+        $submittedCourts = Beachcourt::where('user_id', $user_id)->get();
         $countFavorites = Auth::user()->favorites()->count();
 
 
-        return view('frontend.profile.show', compact('profileuser', 'countFavorites', 'countSubmits', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
+        return view('frontend.profile.show', compact('submittedCourts', 'profileuser', 'countFavorites', 'countSubmits', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
     }
     public function edit($name){
 
@@ -69,13 +71,14 @@ class ProfileController extends Controller
         return view('frontend.profile.edit', compact('user', 'countFavorites', 'countSubmits' ));
     }
     public function update(Request $request){
-        dd($request->input($publicProfile));
+
         $v = Validator::make($request->all(), [
             'userName' => 'required',
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
         ]);
 
         if ($v->fails())
@@ -95,11 +98,11 @@ class ProfileController extends Controller
         $user->postalCode = $request->input('postalCode');
         $user->city = $request->input('city');
         $user->birthdate = $birthdate;
-        $user->publicProfile = $request->input($publicProfile);
+        $user->publicProfile = $request->input('publicProfile');
 
         $user->save();
 
-        return back();
+        return redirect()->back()->with('success', 'Du hast dein Profil erfolgreich geändert!');
     }
     public function storeimage(Request $request){
 
@@ -138,9 +141,19 @@ class ProfileController extends Controller
     public function destroy()
     {
         $user = Auth::user();
+        $email = $user->email;
+        $name = $user->firstName;
+        $code = str_random(30);
+
+        Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
+            $message->from('hello@beachfelder.de', 'Beachfelder.de');
+            $message->bcc('lukas.a.birringer@gmail.com', $name = null);
+            $message->to($email, $name)->subject('beachfelder.de // Profil gelöscht');
+        });
+
         $user->forceDelete();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Beachfeld wurde eingereicht');
     }
     public function confirmRegistration($confirmationCode)
         {

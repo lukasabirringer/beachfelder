@@ -2,9 +2,7 @@
 @extends('layouts.frontend')
 
 @section('content')
-  @push('scripts')
-    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5aba9ef91fff98001395a6c0&product=inline-share-buttons' async='async'></script>
-  @endpush
+
   <div class="content__main">
     <div class="row">
       <div class="column column--12">

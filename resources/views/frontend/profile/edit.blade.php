@@ -8,13 +8,13 @@
         <h2 class="title-page__title">Bearbeite dein Profil</h2>
       </div>
     </div>
-    <div class="flash-message">
-      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-        @if(Session::has('alert-' . $msg))
-          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif
-      @endforeach
-    </div>
+    @if (\Session::has('success'))
+      <div class="alert alert-success">
+        <ul>
+          <li>{!! \Session::get('success') !!}</li>
+        </ul>
+      </div>
+    @endif
     <div class="row">
       <div class="column column--8">
         <div class="row">
@@ -45,7 +45,7 @@
         <hr class="divider">
       </div>
     </div>
-    
+
     <div class="row -spacing-a">
       <div class="column column--12 column--m-3 profile-edit__column">
         <p class="-typo-copy -text-color-gray-01"><a href="#common" class="profile-edit__link link-text">Allgemeine Informationen</a></p>
@@ -58,8 +58,8 @@
 
       <div class="column column--12 column--m-9">
         <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
-        
-        <form action="{{ URL::route('profile.update') }}" class="form">
+
+        <form method="POST" action="{{ url('/user/update') }}" class="form" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="row">
             <div class="column column--12 column--m-6">
@@ -67,6 +67,9 @@
                 <input type="text" class="input__field" name="userName" value="{{ $user->userName }}">
                 <span class="input__label">Username</span>
               </label>
+                @if ($errors->has('userName'))
+                <div class="alert alert-danger">{{ $errors->first('userName', ':message') }}</div>
+              @endif
             </div>
           </div>
 
@@ -76,6 +79,9 @@
                 <input type="text" class="input__field" name="firstName" value="{{ $user->firstName }}">
                 <span class="input__label">Vorname</span>
               </label>
+                @if ($errors->has('firstName'))
+                <div class="alert alert-danger">{{ $errors->first('firstName', ':message') }}</div>
+              @endif
 
               <label class="input -spacing-b">
                 <input type="text" class="input__field" name="postalCode" value="{{ $user->postalCode }}">
@@ -93,6 +99,9 @@
                 <input type="text" class="input__field" name="lastName" value="{{ $user->lastName }}">
                 <span class="input__label">Nachname</span>
               </label>
+                @if ($errors->has('lastName'))
+                <div class="alert alert-danger">{{ $errors->first('lastName', ':message') }}</div>
+              @endif
 
               <label class="input -spacing-b">
                 <input type="text" class="input__field" name="city" value="{{ $user->city }}">
@@ -127,24 +136,31 @@
               </div>
               <div class="column column--12">
                 <label class="input -spacing-b">
-                  <input type="email" class="input__field" name="password" value="{{ $user->email }}">
+                  <input type="email" class="input__field" name="email" value="{{ $user->email }}">
                   <span class="input__label">E-Mail Adresse</span>
                 </label>
+                @if ($errors->has('email'))
+                <div class="alert alert-danger">{{ $errors->first('email', ':message') }}</div>
+              @endif
               </div>
               <div class="column column--12 column--m-6">
                 <label class="input -spacing-b">
-                  <input type="password" class="input__field" name="password" value="">
+                  <input type="password" class="input__field" name="password" value="*********">
                   <span class="input__label">Passwort</span>
                 </label>
+                @if ($errors->has('password'))
+                <div class="alert alert-danger">{{ $errors->first('password', ':message') }}</div>
+              @endif
               </div>
               <div class="column column--12 column--m-6">
                 <label class="input -spacing-b">
-                  <input type="password" class="input__field" value="" name="password_confirmation">
+                  <input type="password" class="input__field" name="password_confirmation" value="*********">
                   <span class="input__label">Passwort wiederholen</span>
                 </label>
               </div>
             </div>
 
+          
             <div class="row -spacing-a" id="submit">
               <div class="column column--12">
                 <button class="button-primary profile-edit__button" type="submit" disabled="disabled">
@@ -186,8 +202,15 @@
               <p class="-typo-copy -text-color-gray-01">Dein neues Profilbild</p>
 
               <label class="input-fileupload">
-                <input type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
+                <input id="profile-img" type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
               </label>
+
+              @if ($errors->has('profilePicture'))
+                <div class="alert alert-danger">{{ $errors->first('profilePicture', ':message') }}</div>
+              @endif
+              <img src="" class="image image--max-width" id="profile-img-tag"/>
+
+
             </div>
           </div>
 
@@ -203,7 +226,7 @@
           </div>
           <div id="your-account"></div>
         </form>
-        
+
         <div class="row -spacing-a">
           <div class="column column--12">
             <hr class="divider">
@@ -214,6 +237,7 @@
           <div class="column column--12">
             <h4 class="-typo-headline-04 -text-color-petrol">Dein Account</h4>
           </div>
+
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">Deine Privatsphären-Einstellungen</p>
           </div>
@@ -235,6 +259,7 @@
             </button>
           </div>
           
+
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-a">Deinen Account löschen</p>
             <p class="-typo-copy -text-color-gray-01">
@@ -277,6 +302,25 @@
       $('.profile-edit__button').attr('disabled', false);
     });
 
+
+    $('.profile-edit__column').stick_in_parent({
+      offset_top: 100
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+
     // $(document).ready(function() {
     //   var checkbox = $('.input-toggle__field');
     //   var hint = $('.hint').hide();
@@ -305,5 +349,6 @@
     // //     $('.hint').slideToggle();
     // //   }
     // // });
+
   </script>
 @endpush
