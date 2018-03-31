@@ -164,7 +164,7 @@
           </div>
         </div>
 
-        <form method="POST" action="{{ url('profil/uploadprofilepicture') }}" enctype="multipart/form-data" id="dropzone">
+        <form method="POST" action="{{ url('profil/uploadprofilepicture') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
 
           <div class="row -spacing-a">
@@ -188,13 +188,6 @@
               <label class="input-fileupload">
                 <input type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
               </label>
-
-              <div class="dropzone -spacing-d" id="user-profile-image-upload">
-                <span class="dropzone__hint dz-message">Ziehe hier dein neues Profilbild rein</span>
-                <div class="image-profile fallback">
-                  <input type="file" name="file">
-                </div>
-              </div> <!-- .dropzone ENDE -->
             </div>
           </div>
 
@@ -226,9 +219,10 @@
           </div>
           <div class="column column--12 -spacing-d">
             <label class="input-toggle -spacing-d">
-              <input type="checkbox" class="input-toggle__field" name="isPubic" value="{{ $user->publicProfile }}">
+              <input type="checkbox" class="input-toggle__field" name="publicProfile" value="{{ $user->publicProfile }}">
               <span class="input-toggle__switch"></span>
               <span class="input-toggle__label">Privates Profil</span>
+              {{ $user->publicProfile }}
             </label>
           </div>
           <div class="column column--12 -spacing-b">
@@ -261,17 +255,6 @@
 
 @push('scripts')
   <script>
-    //dropzone
-    Dropzone.autoDiscover = false;
-    $('#user-profile-image-upload').dropzone({
-      url: '/profil/uploadprofilepicture',
-      acceptedFiles: '.jpg, .png',
-      addRemoveLinks: true,
-      dictResponseError: 'Leider gab es einen Server-Fehler.',
-      dictRemoveFile: 'Bild entfernen',
-      dictCancelUpload: 'Upload abbrechen'
-    });
-
     $('.profile-edit__link').on('click', function(e){
       var href = $(this).attr('href');
 
@@ -282,6 +265,10 @@
       e.preventDefault();
     });
 
+    $('.profile-edit__column').stick_in_parent({
+      offset_top: 100
+    });
+
     $('input').on('keyup', function() {
       $('.profile-edit__button').attr('disabled', false);
     });
@@ -290,22 +277,33 @@
       $('.profile-edit__button').attr('disabled', false);
     });
 
-    $('.profile-edit__column').stick_in_parent({
-      offset_top: 100
-    });
+    // $(document).ready(function() {
+    //   var checkbox = $('.input-toggle__field');
+    //   var hint = $('.hint').hide();
 
-    $('.hint').hide();
 
-    $('.input-toggle__field').click(function() {
-      if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('Öffentliches Profil');
-        $(this).val(1);
-        $('.hint').slideToggle();
-      } else {
-        $(this).parent().find('.input-toggle__label').text('Privates Profil');
-        $(this).val(0);
-        $('.hint').slideToggle();
-      }
-    });
+    //   if(checkbox.val(1)) {
+    //     checkbox.attr('checked', true);
+    //     checkbox.parent().find('.input-toggle__label').text('Öffentliches Profil');
+    //     console.log(checkbox.val());
+    //     hint.slideToggle();
+    //   } else if(checkbox.val(0)) {
+    //     checkbox.attr('checked', false);
+    //     checkbox.parent().find('.input-toggle__label').text('Privates Profil');
+    //     console.log(checkbox.val());
+    //   }
+    // });
+
+    // // $('.input-toggle__field').click(function() {
+    // //   if($(this).is(':checked')) {
+    // //     $(this).parent().find('.input-toggle__label').text('Öffentliches Profil');
+    // //     $(this).val(1);
+    // //     $('.hint').slideToggle();
+    // //   } else {
+    // //     $(this).parent().find('.input-toggle__label').text('Privates Profil');
+    // //     $(this).val(0);
+    // //     $('.hint').slideToggle();
+    // //   }
+    // // });
   </script>
 @endpush
