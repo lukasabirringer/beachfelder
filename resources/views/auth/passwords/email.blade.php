@@ -1,47 +1,55 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+    <div class="content__main">
+        <div class="row">
+          <div class="column column--12">
+            <h2 class="title-page__title">Passwort zurücksetzen</h2>
+          </div>
+        </div>
+        <div class="row -spacing-a">
+          <div class="column column--12">
+            <hr class="divider">
+          </div>
+        </div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+        @if (session('status'))
+            <ul class="notification">
+                <li class="notification__item">
+                    <span class="notification__icon" data-feather="info"></span>
+                    <p class="notification__text">{{ session('status') }}</p>
+
+                    <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+                      <span class="button-secondary__label">OK</span>
+                    </button>
+                </li>
+            </ul>
+        @endif
+        
+        <form method="POST" action="{{ route('password.email') }}">
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="column column--12 column--m-6">
+                    <label class="input">
+                        <input type="email" class="input__field" name="email" value="{{ old('email') }}" required placeholder="Deine E-Mail Adresse">
+                        <span class="input__label">Deine E-Mail Adresse</span>
+                        <div class="input__border"></div>
+                    </label>
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
                     @endif
+                </div>
 
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="column column--12 column--m-6">
+                    <button type="submit" class="button-primary">
+                        <span class="button-primary__label">Link zusenden</span>
+                        <span class="button-primary__label button-primary__label--hover">Link zusenden</span>
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </form>
+    </div> <!-- .container__main ENDE -->
 @endsection

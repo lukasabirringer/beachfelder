@@ -48,13 +48,14 @@
       </div>
     </div>
     <div class="row -spacing-b">
-      <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="myform" enctype="multipart/form-data">
+      <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="form--submit-beachcourt" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="column column--12 column--s-6 -spacing-b">
           <p class="-typo-copy -text-color-petrol">Bitte gib' die Postleitzahl des Feldes an.</p>
           <label class="input">
             <input type="text" name="postalCode" class="input__field" placeholder="Postleitzahl">
             <span class="input__label">Postleitzahl</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('postalCode'))
             <div class="alert alert-danger">{{ $errors->first('postalCode', ':message') }}</div>
@@ -66,6 +67,7 @@
           <label class="input">
             <input type="text" name="street" class="input__field" placeholder="Straße">
             <span class="input__label">Straße</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('street'))
             <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
@@ -77,6 +79,7 @@
           <label class="input">
             <input type="text" name="operator" class="input__field" placeholder="Stadt, Gemeinde oder Verein">
             <span class="input__label">Stadt, Gemeinde oder Verein</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('operator'))
             <div class="alert alert-danger">{{ $errors->first('operator', ':message') }}</div>
@@ -88,6 +91,7 @@
           <label class="input">
             <input type="url" name="operatorURL" class="input__field" placeholder="Gib' hier die URL an">
             <span class="input__label">Gib' hier die URL an</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('operatorURL'))
             <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
@@ -104,32 +108,26 @@
       <div class="row">
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld frei zugänglich?</p>
-          <label class="input-radio -spacing-d">
-            <input type="radio" class="input-radio__field" name="isPublic" value="1">
-            <span class="input-radio__label">frei zugänglich</span>
+          <label class="input-toggle -spacing-d">
+            <input type="checkbox" class="input-toggle__field" name="isPublic" value="0">
+            <span class="input-toggle__switch"></span>
+            <span class="input-toggle__label">Nein</span>
           </label>
-          <label class="input-radio -spacing-d">
-            <input type="radio" class="input-radio__field" name="isPublic" value="1">
-            <span class="input-radio__label">privat</span>
-          </label>
-            @if ($errors->has('isPublic'))
-              <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
-            @endif
+          @if ($errors->has('isPublic'))
+            <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+          @endif
         </div>
 
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist der Zugang zum Feld kostenlos?</p>
-          <label class="input-radio -spacing-d">
-            <input type="radio" class="input-radio__field" name="isChargeable" value="0">
-            <span class="input-radio__label">kostenlos bespielbar</span>
+          <label class="input-toggle -spacing-d">
+            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="0">
+            <span class="input-toggle__switch"></span>
+            <span class="input-toggle__label">Nein</span>
           </label>
-          <label class="input-radio -spacing-d">
-            <input type="radio" class="input-radio__field" name="isChargeable" value="1">
-            <span class="input-radio__label">kostenpflichtig bespielbar</span>
-          </label>
-            @if ($errors->has('isChargeable'))
-              <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
-            @endif
+          @if ($errors->has('isChargeable'))
+            <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
+          @endif
         </div>
 
         <div class="column column--12 column--s-6 -spacing-a">
@@ -137,6 +135,7 @@
           <label class="input">
             <input type="text" name="latitude" class="input__field" placeholder="Breitengrad des Feldes">
             <span class="input__label">Breitengrad des Feldes</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('latitude'))
             <div class="alert alert-danger">{{ $errors->first('latitude', ':message') }}</div>
@@ -148,6 +147,7 @@
           <label class="input">
             <input type="text" name="longitude" class="input__field" placeholder="Längengrad des Feldes">
             <span class="input__label">Längengrad des Feldes</span>
+            <div class="input__border"></div>
           </label>
           @if ($errors->has('longitude'))
             <div class="alert alert-danger">{{ $errors->first('longitude', ':message') }}</div>
@@ -186,7 +186,7 @@
       <div class="row">
         <div class="column column--12 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
-          <label class="textarea">
+          <label class="textarea -spacing-b">
             <textarea name="notes" class="textarea__field"></textarea>
             <span class="textarea__label">Deine Nachricht an uns</span>
           </label>
@@ -195,10 +195,13 @@
           @endif
         </div>
 
-        <div class="column column--12 -spacing-a">
-          <button type="submit" class="button-primary">
-            <span class="button-primary__label">Absenden</span>
-          </button>
+        <div class="column column--12 column--m-7"></div>
+
+        <div class="column column--12 column--m-5 -spacing-a">
+          <a href="javascript:;" onclick="document.getElementById('form--submit-beachcourt').submit();" class="button-primary">
+            <span class="button-primary__label">Feld einreichen</span>
+            <span class="button-primary__label button-primary__label--hover">Feld einreichen</span>
+          </a>
         </div>
       </form>
     </div>
@@ -285,3 +288,40 @@
     </div>
   </div> <!-- .content__main ENDE -->
 @endsection
+
+
+@push('scripts')
+  <script>
+    //grab the values of input slider
+    var rangeSlider = function(){
+      var slider = $('.input-range'),
+          range = $('.input-range__field'),
+          value = $('.input-range__value');
+        
+      slider.each(function(){
+
+        value.each(function(){
+          var value = $(this).prev().attr('value');
+          $(this).html(value);
+        });
+
+        range.on('input', function(){
+          $(this).next(value).html(this.value);
+          $(this).attr({'value':parseInt(this.value)});
+        });
+      });
+    };
+
+    rangeSlider();
+
+    $('.input-toggle__field').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('Ja');
+        $(this).val(1);
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Nein');
+        $(this).val(0);
+      }
+    });
+  </script>
+@endpush

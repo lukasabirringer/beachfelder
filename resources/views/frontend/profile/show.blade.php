@@ -9,6 +9,21 @@
       </div>
     </div>
 
+    <ul class="notification">
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+          <li class="notification__item">
+            <span class="notification__icon" data-feather="info"></span>
+            <p class="notification__text alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+
+            <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+              <span class="button-secondary__label">OK</span>
+            </button>
+          </li>
+        @endif
+      @endforeach
+    </ul>
+
     <div class="row">
       <div class="column column--8">
         <div class="row">
@@ -181,9 +196,12 @@
                         </div>
                       </div>
                     </div>
-                    <a href="#" class="link-icon link-icon--shake list-beachcourt__icon">
-                      <span data-feather="trash-2"></span>
-                    </a>
+                    <form action="{{ url('unfavorite/'.$myFavorite->id) }}" method="POST" id="form--delete-favorite">
+                      <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                      <a href="javascript:;" class="link-icon link-icon--shake list-beachcourt__icon" onclick="document.getElementById('form--delete-favorite').submit();">
+                        <span data-feather="trash-2"></span>
+                      </a>
+                    </form>
                   </li>
                 @empty
                   <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder in deinen Favoriten.</p>

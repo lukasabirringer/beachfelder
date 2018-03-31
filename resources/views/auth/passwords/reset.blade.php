@@ -1,70 +1,70 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+    <div class="content__main">
+        <div class="row">
+          <div class="column column--12">
+            <h2 class="title-page__title">Passwort zurücksetzen</h2>
+          </div>
+        </div>
+        <div class="row -spacing-a">
+          <div class="column column--12">
+            <hr class="divider">
+          </div>
+        </div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+        <form action="{{ route('password.request') }}" method="POST">
+            {{ csrf_field() }}
+            <input type="hidden" name="token" value="{{ $token }}" />
 
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="row -spacing-a">
+                <div class="column column--12 column--m-6">
+                    <label class="input">
+                        <input type="email" class="input__field" name="email" value="{{ $email or old('email') }}" required placeholder="Deine E-Mail Adresse" />
+                        <span class="input__label">Deine E-Mail Adresse</span>
+                        <div class="input__border"></div>
+                    </label>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="row">
+                <div class="column column--12 column--m-6 -spacing-b">
+                    <label class="input">
+                        <input type="password" class="input__field" name="password" required placeholder="Dein Passwort">
+                        <span class="input__label">Dein Passwort</span>
+                        <div class="input__border"></div>
+                    </label>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="column column--12 column--m-6 -spacing-b">
+                    <label class="input">
+                        <input type="password" class="input__field" name="password_confirmation" required placeholder="Passwort wiederholen">
+                        <span class="input__label">Passwort wiederholen</span>
+                        <div class="input__border"></div>
+                    </label>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column--12 column--m-6">
+                    <button type="submit" class="button-primary">
+                        <span class="button-primary__label">Passwort zurücksetzen</span>
+                        <span class="button-primary__label button-primary__label--hover">Passwort zurücksetzen</span> 
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div> <!-- .container__main ENDE -->
 @endsection
