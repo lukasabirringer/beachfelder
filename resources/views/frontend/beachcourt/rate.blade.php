@@ -5,14 +5,23 @@
 
 <div class="content__main">
   <div class="row">
+    @if (\Session::has('success'))
+      <div class="alert alert-success">
+        <ul>
+          <li>{!! \Session::get('success') !!}</li>
+        </ul>
+      </div>
+    @endif
     <div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
-      <img 
+      <img
         src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" class="image image--max-width"
         srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x">
     </div>
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
+
       <h2 class="title-page__title">Bewerte das Beachvolleyballfeld</h2>
       <h4 class="title-page__subtitle">in {{ $beachcourt->city }}</h4>
+
       <div class="row">
         <div class="column column--12 column--m-6">
           <div class="icon-text -spacing-b">
@@ -29,7 +38,8 @@
       </div>
       <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
         Nicht das richtige Feld?
-        <a href="../../search" class="link-text">Beachvolleyballfeld ändern</a>
+        <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück</a>
+        </a>
       </p>
     </div>
   </div>
@@ -549,7 +559,7 @@
           </div>
         </div>
       </div> <!-- .tab #environment ENDE -->
-      
+
       <div class="column column--12 column--m-6 -spacing-b">
         <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
           <span class="button-primary__label">Schritt zurück</span>
