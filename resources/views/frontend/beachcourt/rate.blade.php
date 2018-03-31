@@ -6,11 +6,12 @@
 <div class="content__main">
   <div class="row">
     @if (\Session::has('success'))
-      <div class="alert alert-success">
-        <ul>
-          <li>{!! \Session::get('success') !!}</li>
-        </ul>
-      </div>
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('success') !!}</p>
+        </li>
+      </ul>
     @endif
     <div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
       <img

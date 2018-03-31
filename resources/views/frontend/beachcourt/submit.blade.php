@@ -109,6 +109,7 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld frei zugänglich?</p>
           <label class="input-toggle -spacing-d">
+            <input type="hidden" class="input-toggle__hidden" name="isPublic" value="0">
             <input type="checkbox" class="input-toggle__field" name="isPublic" value="0">
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
@@ -121,6 +122,7 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist der Zugang zum Feld kostenlos?</p>
           <label class="input-toggle -spacing-d">
+            <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="0">
             <input type="checkbox" class="input-toggle__field" name="isChargeable" value="0">
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
@@ -157,6 +159,7 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
+            <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
             <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="10">
             <span class="input-range__value">1</span>
           </label>
@@ -168,6 +171,7 @@
         <div class="column column--12 column--s-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Outdoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
+            <input type="hidden" name="courtCountOutdoor" class="input-range__hidden" value="0">
             <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="10">
             <span class="input-range__value">1</span>
           </label>
@@ -308,6 +312,7 @@
         range.on('input', function(){
           $(this).next(value).html(this.value);
           $(this).attr({'value':parseInt(this.value)});
+          $(this).parent().find('.input-range__hidden').val(this.value);
         });
       });
     };
@@ -317,9 +322,11 @@
     $('.input-toggle__field').click(function() {
       if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('Ja');
+        $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
       } else {
         $(this).parent().find('.input-toggle__label').text('Nein');
+        $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
       }
     });

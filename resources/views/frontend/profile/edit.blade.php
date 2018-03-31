@@ -241,24 +241,26 @@
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">Deine Privatsphären-Einstellungen</p>
           </div>
-          <div class="column column--12 -spacing-d">
-            <label class="input-toggle -spacing-d">
-              <input type="checkbox" class="input-toggle__field" name="publicProfile" value="{{ $user->publicProfile }}">
-              <span class="input-toggle__switch"></span>
-              <span class="input-toggle__label">Privates Profil</span>
-              {{ $user->publicProfile }}
-            </label>
-          </div>
-          <div class="column column--12 -spacing-b">
-            <p class="-typo-copy -text-color-gray-01 hint">Bei einem <span class="-typo-copy -typo-copy--bold">öffentlichen Profil</span> zeigst du anderen Benutzern, welche Beachvolleyballfelder du schon eingereicht hast, welche Felder du favorisiert hast und deine Basis-Informationen wie <span class="-typo-copy -typo-copy--bold">Username, Postleitzahl</span> und dein <span class="-typo-copy -typo-copy--bold">Geschlecht.</span> </p>
-          </div>
-          <div class="column column--12 column--m-6 -spacing-a">
-            <button class="button-primary profile-edit__button" disabled="disabled">
-              <span class="button-primary__label">Profil speichern</span>
-              <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
-            </button>
-          </div>
-          
+          <form method="POST" action="{{ url('/user/update') }}" class="form" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="column column--12 -spacing-d">
+              <label class="input-toggle -spacing-d">
+                <input type="hidden" class="input-toggle__hidden" name="publicProfile" value="{{ $user->publicProfile }}">
+                <input type="checkbox" class="input-toggle__field" name="publicProfile" value="{{ $user->publicProfile }}">
+                <span class="input-toggle__switch"></span>
+                <span class="input-toggle__label">Privates Profil</span>
+              </label>
+            </div>
+            <div class="column column--12 -spacing-b">
+              <p class="-typo-copy -text-color-gray-01 hint">Bei einem <span class="-typo-copy -typo-copy--bold">öffentlichen Profil</span> zeigst du anderen Benutzern, welche Beachvolleyballfelder du schon eingereicht hast, welche Felder du favorisiert hast und deine Basis-Informationen wie <span class="-typo-copy -typo-copy--bold">Username, Postleitzahl</span> und dein <span class="-typo-copy -typo-copy--bold">Geschlecht.</span> </p>
+            </div>
+            <div class="column column--12 column--m-6 -spacing-a">
+              <button type="submit" class="button-primary profile-edit__button" disabled="disabled">
+                <span class="button-primary__label">Profil speichern</span>
+                <span class="button-primary__label button-primary__label--hover">Profil speichern</span>
+              </button>
+            </div>
+          </form>
 
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-a">Deinen Account löschen</p>
@@ -321,34 +323,30 @@
         readURL(this);
     });
 
-    // $(document).ready(function() {
-    //   var checkbox = $('.input-toggle__field');
-    //   var hint = $('.hint').hide();
+    $(document).ready(function() {
+      var checkbox = $('.input-toggle__field');
+      var hint = $('.hint').hide();
 
+      if(checkbox.val() == 1) {
+        checkbox.attr('checked', true);
+        checkbox.parent().find('.input-toggle__label').text('Öffentliches Profil');
+        hint.slideToggle();
+      }
+    });
 
-    //   if(checkbox.val(1)) {
-    //     checkbox.attr('checked', true);
-    //     checkbox.parent().find('.input-toggle__label').text('Öffentliches Profil');
-    //     console.log(checkbox.val());
-    //     hint.slideToggle();
-    //   } else if(checkbox.val(0)) {
-    //     checkbox.attr('checked', false);
-    //     checkbox.parent().find('.input-toggle__label').text('Privates Profil');
-    //     console.log(checkbox.val());
-    //   }
-    // });
-
-    // // $('.input-toggle__field').click(function() {
-    // //   if($(this).is(':checked')) {
-    // //     $(this).parent().find('.input-toggle__label').text('Öffentliches Profil');
-    // //     $(this).val(1);
-    // //     $('.hint').slideToggle();
-    // //   } else {
-    // //     $(this).parent().find('.input-toggle__label').text('Privates Profil');
-    // //     $(this).val(0);
-    // //     $('.hint').slideToggle();
-    // //   }
-    // // });
+    $('.input-toggle__field').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('Öffentliches Profil');
+        $(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
+        $('.hint').slideToggle();
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Privates Profil');
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0);
+        $('.hint').slideToggle();
+      }
+    });
 
   </script>
 @endpush
