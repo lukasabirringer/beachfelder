@@ -7,12 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'beachfelder.de - Frontend') }}</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.4.15"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
     <style>
       .disabled {
         display: none;
@@ -39,16 +40,20 @@
     <div id="app" class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
-          <form action="/search" method="POST">
-            <label class="input">
+          <form action="/search" method="POST" class="form--search">
+            <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" class="form-control" id="form-postcode" name="postcode">
-              <input type="text" placeholder="Gib eine PLZ oder einen Ort ein" id="address-input" name="searchQuery" class="input__field ap-input">
-              {{ $errors->postcode->first('postcode') }}
-              <!-- <span class="input__icon" data-feather="search"></span> -->
+
+              <input type="search" class="input__field" id="address-input" placeholder="PLZ oder Ort" />
+              <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
               <span class="input__label">PLZ oder Ort</span>
               <div class="input__border"></div>
+              {{ $errors->postcode->first('postcode') }}
             </label>
+            <!-- <label class="input">
+              <input type="text" placeholder="Gib eine PLZ oder einen Ort ein" id="address-input" name="searchQuery" class="input__field ap-input">
+            </label> -->
           </form>
         </div>
         <div class="column column--12 column--m-6 header__column">
@@ -85,8 +90,10 @@
       <footer class="footer row">
         <div class="column column--12">
           <ul class="footer__navigation">
-            <li class="footer__item"><a href="impressum.html" class="footer__link">Impressum</a></li>
-            <li class="footer__item"><a href="kontakt.html" class="footer__link">Kontakt</a></li>
+            <li class="footer__item"><a href="{{ url('/') }}/page/impressum" class="footer__link">Impressum</a></li>
+            <li class="footer__item"><a href="{{ url('/') }}/page/datenschutzerklaerung" class="footer__link">Datenschutz</a></li>
+            <li class="footer__item"><a href="{{ url('/') }}/page/agb" class="footer__link">AGB</a></li>
+            <li class="footer__item"><a href="{{ url('/') }}/page/kontakt" class="footer__link">Kontakt</a></li>
           </ul>
         </div>
         <div class="column column--12">
@@ -110,6 +117,8 @@
       var placesAutocomplete = places({
         type: 'city',
         countries: 'de',
+        language: 'de_DE',
+        useDeviceLocation: true,
         container: document.querySelector('#address-input')
       });
 

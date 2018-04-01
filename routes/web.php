@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::get('/profile/profil-loeschen', 'ProfileController@destroy')->middleware('auth')->name('profile.deleteuser');
   Route::post('/profil/uploadprofilepicture', 'ProfileController@storeimage')->middleware('auth')->name('profile.uploadprofilepicture');
 
-  Route::get('/i/{slug}', 'PagesController@show')->name('page.show');
+  Route::get('/page/{slug}', 'PagesController@show')->name('page.show');
 });
 
 

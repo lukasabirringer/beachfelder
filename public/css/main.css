@@ -568,7 +568,7 @@ table {
     left: 5.125rem;
     top: 0;
     right: 0;
-    z-index: 100; }
+    z-index: 101; }
 
 .button-primary {
   background-color: #457b8c;
@@ -1459,7 +1459,7 @@ input::-moz-focus-outer {
   width: 12.5rem;
   height: 100%;
   top: 0;
-  z-index: 100;
+  z-index: 10;
   display: none; }
   @media (min-width: 992px) {
     .overlay-gradient {
