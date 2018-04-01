@@ -155,7 +155,7 @@
                       <img
                         src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg"
                         srcset="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg 2x"
-                        alt="Feld in {{ $myFavorite->city }}" class="image iamge--max-height">
+                        alt="Feld in {{ $myFavorite->city }}" class="image image--max-height">
                     </div>
                     <div class="list-beachcourt__info">
                       <div class="row">

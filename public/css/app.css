@@ -1,3 +1,15 @@
+.beachcourt-item .favorite-link {
+  display: none;
+}
+
+.beachcourt-item .rating__count {
+  margin-left: 0;
+}
+
+.beachcourt-item .link-icon-text__icon {
+  margin-right: 0;
+}
+
 .algolia-places {
   width: 100%;
 }

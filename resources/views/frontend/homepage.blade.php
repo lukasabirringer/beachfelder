@@ -28,7 +28,6 @@
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
                   <div class="beachcourt-item__favorite">
-                    <span data-feather="heart"></span>
                     @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                     @endif

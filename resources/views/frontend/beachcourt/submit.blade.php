@@ -10,11 +10,16 @@
     </div>
 
     @if (\Session::has('success'))
-      <div class="alert alert-success">
-        <ul>
-          <li>{!! \Session::get('success') !!}</li>
-        </ul>
-      </div>
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('success') !!}</p>
+
+          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label">OK</span>
+          </button>
+        </li>
+      </ul>
     @endif
 
     <div class="row -spacing-a">
@@ -47,38 +52,63 @@
         <h4 class="-typo-headline-04 -text-color-green">Allgemeines</h4>
       </div>
     </div>
-    <div class="row -spacing-b">
-      <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="form--submit-beachcourt" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <div class="column column--12 column--s-6 -spacing-b">
-          <p class="-typo-copy -text-color-petrol">Bitte gib' die Postleitzahl des Feldes an.</p>
-          <label class="input">
-            <input type="text" name="postalCode" class="input__field" placeholder="Postleitzahl">
-            <span class="input__label">Postleitzahl</span>
-            <div class="input__border"></div>
-          </label>
-          @if ($errors->has('postalCode'))
-            <div class="alert alert-danger">{{ $errors->first('postalCode', ':message') }}</div>
-          @endif
-        </div>
+    
+    <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="form--submit-beachcourt" enctype="multipart/form-data">
+      {{ csrf_field() }}
+      <div class="row">
+        <div class="row row--zero">
+          <div class="column column--12 column--s-6 column--m-2 -spacing-a">
+            <label class="input">
+              <input type="text" name="postalCode" class="input__field" placeholder="Postleitzahl">
+              <span class="input__label">Postleitzahl</span>
+              <div class="input__border"></div>
+            </label>
+            @if ($errors->has('postalCode'))
+              <div class="alert alert-danger">{{ $errors->first('postalCode', ':message') }}</div>
+            @endif
+          </div>
 
-        <div class="column column--12 column--s-6 -spacing-b">
-          <p class="-typo-copy -text-color-petrol">In welcher Straße befindet sich das Feld?</p>
-          <label class="input">
-            <input type="text" name="street" class="input__field" placeholder="Straße">
-            <span class="input__label">Straße</span>
-            <div class="input__border"></div>
-          </label>
-          @if ($errors->has('street'))
-            <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
-          @endif
-        </div>
+          <div class="column column--12 column--s-6 column--m-4 -spacing-a">
+            <label class="input">
+              <input type="text" name="city" class="input__field" placeholder="Ort">
+              <span class="input__label">Ort</span>
+              <div class="input__border"></div>
+            </label>
+            @if ($errors->has('city'))
+              <div class="alert alert-danger">{{ $errors->first('city', ':message') }}</div>
+            @endif
+          </div>
 
-        <div class="column column--12 column--s-6 -spacing-b">
-          <p class="-typo-copy -text-color-petrol">Wer ist der Betreiber des Feldes?</p>
+          <div class="column column--12 column--s-6 column--m-4 -spacing-a">
+            <label class="input">
+              <input type="text" name="street" class="input__field" placeholder="Straße">
+              <span class="input__label">Straße</span>
+              <div class="input__border"></div>
+            </label>
+            @if ($errors->has('street'))
+              <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
+            @endif
+          </div>
+
+          <div class="column column--12 column--s-6 column--m-2 -spacing-a">
+            <label class="input">
+              <input type="text" name="houseNumber" class="input__field" placeholder="Nr.">
+              <span class="input__label">Nr.</span>
+              <div class="input__border"></div>
+            </label>
+            @if ($errors->has('street'))
+              <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-a">
           <label class="input">
-            <input type="text" name="operator" class="input__field" placeholder="Stadt, Gemeinde oder Verein">
-            <span class="input__label">Stadt, Gemeinde oder Verein</span>
+            <input type="text" name="operator" class="input__field" placeholder="Betreiber des Feldes">
+            <span class="input__label">Betreiber des Feldes</span>
             <div class="input__border"></div>
           </label>
           @if ($errors->has('operator'))
@@ -86,11 +116,10 @@
           @endif
         </div>
 
-        <div class="column column--12 column--s-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Wie lautet die Website des Betreibers?</p>
+        <div class="column column--12 column--m-6 -spacing-a">
           <label class="input">
-            <input type="url" name="operatorURL" class="input__field" placeholder="Gib' hier die URL an">
-            <span class="input__label">Gib' hier die URL an</span>
+            <input type="url" name="operatorURL" class="input__field" placeholder="Website des Betreiber">
+            <span class="input__label">Website des Betreiber</span>
             <div class="input__border"></div>
           </label>
           @if ($errors->has('operatorURL'))
@@ -106,11 +135,11 @@
       </div>
 
       <div class="row">
-        <div class="column column--12 column--s-6 -spacing-a">
+        <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld frei zugänglich?</p>
           <label class="input-toggle -spacing-d">
-            <input type="hidden" class="input-toggle__hidden" name="isPublic" value="0">
-            <input type="checkbox" class="input-toggle__field" name="isPublic" value="0">
+            <input type="hidden" class="input-toggle__hidden" name="isPublic" value="1">
+            <input type="checkbox" class="input-toggle__field" name="isPublic" value="1">
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
           </label>
@@ -119,11 +148,11 @@
           @endif
         </div>
 
-        <div class="column column--12 column--s-6 -spacing-a">
+        <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist der Zugang zum Feld kostenlos?</p>
           <label class="input-toggle -spacing-d">
-            <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="0">
-            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="0">
+            <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="1">
+            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="1">
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
           </label>
@@ -131,32 +160,10 @@
             <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
           @endif
         </div>
+      </div>
 
-        <div class="column column--12 column--s-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Bitte gib' den Breitengrad des Feldes an.</p>
-          <label class="input">
-            <input type="text" name="latitude" class="input__field" placeholder="Breitengrad des Feldes">
-            <span class="input__label">Breitengrad des Feldes</span>
-            <div class="input__border"></div>
-          </label>
-          @if ($errors->has('latitude'))
-            <div class="alert alert-danger">{{ $errors->first('latitude', ':message') }}</div>
-          @endif
-        </div>
-
-        <div class="column column--12 column--s-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Bitte gib' den Längengrad des Feldes an.</p>
-          <label class="input">
-            <input type="text" name="longitude" class="input__field" placeholder="Längengrad des Feldes">
-            <span class="input__label">Längengrad des Feldes</span>
-            <div class="input__border"></div>
-          </label>
-          @if ($errors->has('longitude'))
-            <div class="alert alert-danger">{{ $errors->first('longitude', ':message') }}</div>
-          @endif
-        </div>
-
-        <div class="column column--12 column--s-6 -spacing-a">
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
@@ -168,7 +175,7 @@
           @endif
         </div>
 
-        <div class="column column--12 column--s-6 -spacing-a">
+        <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Outdoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountOutdoor" class="input-range__hidden" value="0">
@@ -181,7 +188,31 @@
         </div>
       </div>
 
-      <div class="row -spacing-a row--fullwidth">
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-a">
+          <label class="input">
+            <input type="text" name="latitude" class="input__field" placeholder="Breitengrad des Feldes">
+            <span class="input__label">Breitengrad des Feldes</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('latitude'))
+            <div class="alert alert-danger">{{ $errors->first('latitude', ':message') }}</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-6 -spacing-a">
+          <label class="input">
+            <input type="text" name="longitude" class="input__field" placeholder="Längengrad des Feldes">
+            <span class="input__label">Längengrad des Feldes</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('longitude'))
+            <div class="alert alert-danger">{{ $errors->first('longitude', ':message') }}</div>
+          @endif
+        </div>
+      </div>
+
+      <div class="row -spacing-a">
         <div class="column column--12">
           <h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
         </div>
@@ -199,16 +230,14 @@
           @endif
         </div>
 
-        <div class="column column--12 column--m-7"></div>
-
         <div class="column column--12 column--m-5 -spacing-a">
           <a href="javascript:;" onclick="document.getElementById('form--submit-beachcourt').submit();" class="button-primary">
             <span class="button-primary__label">Feld einreichen</span>
             <span class="button-primary__label button-primary__label--hover">Feld einreichen</span>
           </a>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -329,12 +358,12 @@
     $('.input-toggle__field').click(function() {
       if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('Ja');
-        $(this).parent().find('.input-toggle__hidden').val(1);
-        $(this).val(1);
-      } else {
-        $(this).parent().find('.input-toggle__label').text('Nein');
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Nein');
+        $(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
       }
     });
 
@@ -352,5 +381,9 @@
         $(tabgroup).children('.accordion__content').hide();
         $(target).show();
     });
+
+    $('.notification__button').click(function() {
+      $(this).parent().parent('.notification').slideUp();
+    })
   </script>
 @endpush

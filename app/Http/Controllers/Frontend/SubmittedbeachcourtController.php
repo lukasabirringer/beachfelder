@@ -82,13 +82,12 @@ class SubmittedbeachcourtController extends Controller
           //send confirmationen mail
         $confirmation_code = ['foo' => $code];
 
-        Mail::send('email.deleteProfile', $confirmation_code, function($message) use ($email, $name) {
+        Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
             $message->from('hello@beachfelder.de', 'Beachfelder.de');
-            $message->bcc('lukas.a.birringer@gmail.com', $name = null);
             $message->to($email, $name)->subject('beachfelder.de // Beachfeld eingereicht');
         });
 
-       return redirect()->back()->with('success', 'Beachfeld wurde eingereicht');
+       return redirect()->back()->with('success', 'Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast!');
 
     }
 }
