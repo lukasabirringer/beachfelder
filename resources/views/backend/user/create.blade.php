@@ -92,8 +92,8 @@
                     <select class="form-control" name="role" class="selectpicker">
 
 
-                            <option value="registrated">registrated</option>
-                            <option value="operator">betreiber</option>
+                            <option value="registered">registered</option>
+                            <option value="operator">Betreiber</option>
                             <option value="admin">admin</option>
 
                         </select>

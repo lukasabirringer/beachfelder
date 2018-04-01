@@ -11,7 +11,7 @@
 <input type="hidden" name="_method" value="PATCH">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
-          <label for="userName" class="col-sm-2 control-label">Name</label>
+          <label for="userName" class="col-sm-2 control-label">Username</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="userName" value="{{ $user->userName }}">
             @if ($errors->has('userName'))
@@ -76,7 +76,16 @@
         <div class="form-group">
           <label for="sex" class="col-sm-2 control-label">Geschlecht</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="sex" value="{{ $user->sex }}">
+            <select class="form-control" name="sex" class="selectpicker">
+              <optgroup label="aktuelle Rolle">
+                <option>{{ $user->sex }}</option>
+              </optgroup>
+              <optgroup label="neues Geschlecht">
+                <option value="male">männlich</option>
+                <option value="female">weiblich</option>
+                <option value="neutral">neutral</option>
+              </optgroup>
+            </select>
             @if ($errors->has('sex'))
               <div class="alert alert-danger">{{ $errors->first('sex', ':message') }}</div>
             @endif
@@ -92,9 +101,9 @@
                 <option>{{ $user->role }}</option>
               </optgroup>
               <optgroup label="neue Rolle">
-                <option value="registrated">registrated</option>
-                <option value="betreiber">betreiber</option>
-                <option value="admin">admin</option>
+                <option value="registered">registered</option>
+                <option value="operator">Betreiber</option>
+                <option value="admin">Admin</option>
               </optgroup>
             </select>
 
