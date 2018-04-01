@@ -213,19 +213,18 @@
               @forelse ($submittedCourts as $submittedCourt)
               <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
-
                       @if ($submittedCourt->submitState === 'approved')
-                      <img
-                        src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg"
-                        srcset="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg 2x"
-                        alt="Feld in {{ $submittedCourt->city }}" class="image image--max-height">
-                        @else
-                      <img
-                        src="{{ url('') }}/images/dummy-01-retina.jpg"
-                        srcset="{{ url('') }}/images/dummy-01-retina.jpg"
-                        alt="Feld in {{ $submittedCourt->city }}" class="image image--max-height">
+                        <img
+                          src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg"
+                          srcset="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg 2x"
+                          alt="Feld in {{ $submittedCourt->city }}" class="image image--max-width">
+                      @else
+                        <img
+                          src="{{ url('') }}/uploads/beachcourts/dummy-image-submitted.jpg"
+                          srcset="{{ url('') }}/uploads/beachcourts/dummy-image-submitted-retina.jpg 2x"
+                          alt="Feld in {{ $submittedCourt->city }}" class="image image--max-width">
 
-                        @endif
+                      @endif
                     </div>
                     <div class="list-beachcourt__info">
                       <div class="row">
@@ -250,10 +249,13 @@
                         </div>
 
                         <div class="column column--12 column--m-6">
-                          <div class="icon-text">
-                            <span class="icon-text__icon" data-feather="info"></span>
-                            <span class="icon-text__text">Einreichungsstatus: {{ $submittedCourt->submitState }}</span>
-                          </div>
+                          @if($submittedCourt->submitState === 'approved')
+                            <span class="icon-text__icon" data-feather="check-circle"></span>
+                            <span class="icon-text__text">Einreichungsstatus:<br>genehmigt</span>
+                          @else
+                            <span class="icon-text__icon" data-feather="clock"></span>
+                            <span class="icon-text__text">Einreichungsstatus:<br>in Überprüfung</span>
+                          @endif
                         </div>
                       </div>
                       @if ($submittedCourt->submitState === 'approved')
