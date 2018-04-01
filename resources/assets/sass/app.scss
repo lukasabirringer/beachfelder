@@ -2,6 +2,9 @@
 .beachcourt-item .rating__count {margin-left: 0;}
 .beachcourt-item .link-icon-text__icon {margin-right: 0;}
 
+@media screen and (max-width: 768px) {
+	.hide-on-mobile {display: none; visibility: hidden;}
+}
 
 //ALGOLIA
 // Main input wrapper

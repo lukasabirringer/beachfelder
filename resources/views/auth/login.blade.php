@@ -192,9 +192,9 @@
       <div class="page-login__half page-login__half--right">
         <h3 class="page-login__title"><span class="page-login__title-icon" data-feather="user"></span>Melde dich an</h3>
 
-        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-          {{ csrf_field() }}
-          <div class="page-login__content">
+        <div class="page-login__content">
+          <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
             <div class="row -spacing-a">
               <div class="column column--12 -spacing-b">
                 <label class="input">
@@ -235,8 +235,8 @@
                 <p class="-typo-copy -text-color-gray-01"> <a class="link-text" href="{{ route('password.request') }}">Passwort vergessen?</a> </p>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div> <!-- .right side ENDE -->
     </div>
   </div> <!-- .content__main ENDE -->
@@ -311,6 +311,25 @@
             eyeOff.classList.add('input__icon--not-visible');
         }
     };
+
+    $('.page-login__half').click(function() {
+
+      if($('.page-login__half').hasClass('page-login__half--active')) {
+
+        $('.page-login__half').removeClass('page-login__half--active');
+        $(this).addClass('page-login__half--active');
+        $('.page-login__overlay').addClass('page-login__overlay--open');
+      }
+      else {
+
+        $(this).addClass('page-login__half--active');
+        $('.page-login__overlay').addClass('page-login__overlay--open');
+      }
+    });
+
+    $('.page-login__title').click(function() {
+      $(this).next($('.page-login__content')).toggleClass('page-login__content--open');
+    });
 
     //hide the notification
     $('.notification__button').click(function() {

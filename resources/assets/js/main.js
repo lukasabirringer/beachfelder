@@ -82,25 +82,6 @@ $(document).ready(function(){
     autoClose: true
   });
 
-  $('.page-login__half').click(function() {
-
-    if($('.page-login__half').hasClass('page-login__half--active')) {
-
-      $('.page-login__half').removeClass('page-login__half--active');
-      $(this).addClass('page-login__half--active');
-      $('.page-login__overlay').addClass('page-login__overlay--open');
-    }
-    else {
-
-      $(this).addClass('page-login__half--active');
-      $('.page-login__overlay').addClass('page-login__overlay--open');
-    }
-  });
-
-  $('.page-login__title').click(function() {
-    $(this).next($('.page-login__content')).toggleClass('page-login__content--open');
-  });
-
   //show tooltip how we rate at beachcourt item
   $('.beachcourt-item__info-icon').click(function() {
     $(this).next($('.flyout')).addClass('flyout--open');

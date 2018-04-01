@@ -37,6 +37,16 @@
         @if (Auth::check())
           <li class="navigation__item"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="star"></span></a></li>
         @endif
+
+        @if (Auth::check())
+          <li class="navigation__item">
+            <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
+              {{ csrf_field() }}
+              <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="navigation__link">  <span data-feather="log-out"></span>
+              </a>
+            </form>
+          </li>
+        @endif
       </ul>
     </div>
     <div id="app" class="content">
@@ -60,7 +70,7 @@
         </div>
         <div class="column column--12 column--m-6 header__column">
           @if (Auth::check())
-            <div class="profile-user">
+            <div class="profile-user hide-on-mobile">
               <div class="profile-user__info">
                 <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
                 <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
@@ -68,7 +78,7 @@
                   <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="link-text profile-user__subtitle">Abmelden</a>
                 </form>
               </div>
-              <div class="profile-user__image">
+              <div class="profile-user__image ">
                 @if(Auth::user()->pictureName !== 'placeholder-user.png' )
                   <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
                     <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
@@ -81,7 +91,7 @@
               </div>
             </div>
           @else
-            <button class="button-secondary" onclick="window.location.href='{{URL::route('login')}}'">
+            <button class="button-secondary hide-on-mobile" onclick="window.location.href='{{URL::route('login')}}'">
               <span class="button-secondary__label">Anmelden / Registrieren</span>
             </button>
           @endif

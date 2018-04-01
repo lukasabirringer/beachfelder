@@ -6,7 +6,7 @@
   <div class="content__main">
     <div class="row">
         <div class="column column--12 column--s-6 column--m-4">
-            <h1 class="title-page__title home__title">Willkommen</h1>
+            <h1 class="title-page__title home__title">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
             <p class="title-page__subtitle">
             <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern.</p>
 

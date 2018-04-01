@@ -10,6 +10,13 @@
   margin-right: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 .algolia-places {
   width: 100%;
 }
