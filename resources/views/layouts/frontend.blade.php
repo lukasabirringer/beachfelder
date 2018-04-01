@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/progressively/dist/progressively.min.css">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
+    <script src="https://unpkg.com/progressively/dist/progressively.min.js"></script>
     <style>
       .disabled {
         display: none;
@@ -113,6 +115,7 @@
     
     <script>
       feather.replace();
+      progressively.init();
 
       var placesAutocomplete = places({
         type: 'city',

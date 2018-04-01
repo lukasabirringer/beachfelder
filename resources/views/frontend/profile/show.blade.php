@@ -214,16 +214,13 @@
               <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
                       @if ($submittedCourt->submitState === 'approved')
-                        <img
-                          src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg"
-                          srcset="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg 2x"
-                          alt="Feld in {{ $submittedCourt->city }}" class="image image--max-width">
+                        <figure class="progressive">
+                          <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01.jpg" alt="Feld in {{ $submittedCourt->city }}">
+                        </figure>
                       @else
-                        <img
-                          src="{{ url('') }}/uploads/beachcourts/dummy-image-submitted.jpg"
-                          srcset="{{ url('') }}/uploads/beachcourts/dummy-image-submitted-retina.jpg 2x"
-                          alt="Feld in {{ $submittedCourt->city }}" class="image image--max-width">
-
+                        <figure class="progressive">
+                          <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('') }}/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="{{ url('') }}/uploads/beachcourts/dummy-image-submitted.jpg">
+                        </figure>
                       @endif
                     </div>
                     <div class="list-beachcourt__info">

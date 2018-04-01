@@ -26,7 +26,11 @@
           <div class="owl-carousel owl-carousel--frontpage">
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
-                <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
+                <div class="beachcourt-item__image">
+                  <figure class="progressive">
+                    <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+                  </figure>
+
                   <div class="beachcourt-item__favorite">
                     @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>

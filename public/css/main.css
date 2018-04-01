@@ -2001,7 +2001,8 @@ input::-moz-focus-outer {
     background-size: cover;
     height: 11.25rem;
     width: 100%;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
   .beachcourt-item__favorite {
     background-color: #FFF;
     display: -webkit-box;

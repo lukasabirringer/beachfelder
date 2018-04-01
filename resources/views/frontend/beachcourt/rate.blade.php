@@ -14,9 +14,12 @@
       </ul>
     @endif
     <div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
-      <img
+      <figure class="progressive">
+        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+      </figure>
+      <!-- <img
         src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" class="image image--max-width"
-        srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x">
+        srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x"> -->
     </div>
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
 

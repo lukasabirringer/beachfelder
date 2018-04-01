@@ -14,6 +14,9 @@ $(document).ready(function(){
         items: 1
       },
       500: {
+        items: 1
+      },
+      700: {
         items: 2
       },
       1000: {
