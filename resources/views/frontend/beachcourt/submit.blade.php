@@ -114,18 +114,23 @@
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-b">
           <label class="input">
-            <input type="text" id="form-state" class="input__field" placeholder="Bundesland">
+            <input type="text" id="form-state" class="input__field" name="state" placeholder="Bundesland">
             <span class="input__label">Bundesland</span>
             <div class="input__border"></div>
           </label>
-          
+          @if ($errors->has('state'))
+            <div class="alert alert-danger">{{ $errors->first('state', ':message') }}</div>
+          @endif
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
           <label class="input">
-            <input type="text" id="form-country" class="input__field" placeholder="Land">
+            <input type="text" id="form-country" class="input__field" name="country" placeholder="Land">
             <span class="input__label">Land</span>
             <div class="input__border"></div>
           </label>
+          @if ($errors->has('country'))
+            <div class="alert alert-danger">{{ $errors->first('country', ':message') }}</div>
+          @endif
         </div>
       </div>
 
@@ -161,7 +166,7 @@
 
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Ist das Feld frei zugänglich?</p>
+          <p class="-typo-copy -text-color-petrol">Ist das Feld ein öffentliches?</p>
           <label class="input-toggle -spacing-d">
             <input type="hidden" class="input-toggle__hidden" name="isPublic" value="1">
             <input type="checkbox" class="input-toggle__field" name="isPublic" value="1">
@@ -174,7 +179,7 @@
         </div>
 
         <div class="column column--12 column--m-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Ist der Zugang zum Feld kostenlos?</p>
+          <p class="-typo-copy -text-color-petrol">Kann man dort kostenlos spielen?</p>
           <label class="input-toggle -spacing-d">
             <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="1">
             <input type="checkbox" class="input-toggle__field" name="isChargeable" value="1">

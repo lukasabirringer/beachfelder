@@ -61,6 +61,8 @@ class SubmittedbeachcourtController extends Controller
              'city' => $request->city,
              'street' => $request->street,
              'houseNumber' => $request->houseNumber,
+             'state' => $request->state,
+             'country' => $request->country,
              'latitude' => $request->latitude,
              'longitude' => $request->longitude,
              'operator' => $request->operator,
