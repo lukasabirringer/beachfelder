@@ -56,10 +56,19 @@
     <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="form--submit-beachcourt" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="row">
+        <div class="column column--12">
+          <label class="input" style="overflow: visible;">
+            <input type="search" class="input__field" id="form-address" placeholder="Wo befindet sich das Feld?" />
+            <span class="input__label">Wo befindet sich das Feld?</span>
+            <div class="input__border"></div>
+          </label>
+        </div>
+      </div>
+      <div class="row">
         <div class="row row--zero">
           <div class="column column--12 column--s-6 column--m-2 -spacing-a">
             <label class="input">
-              <input type="text" name="postalCode" class="input__field" placeholder="Postleitzahl">
+              <input type="text" name="postalCode" class="input__field" placeholder="Postleitzahl" id="form-zip">
               <span class="input__label">Postleitzahl</span>
               <div class="input__border"></div>
             </label>
@@ -70,7 +79,7 @@
 
           <div class="column column--12 column--s-6 column--m-4 -spacing-a">
             <label class="input">
-              <input type="text" name="city" class="input__field" placeholder="Ort">
+              <input type="text" name="city" class="input__field" placeholder="Ort" id="form-city">
               <span class="input__label">Ort</span>
               <div class="input__border"></div>
             </label>
@@ -81,7 +90,7 @@
 
           <div class="column column--12 column--s-6 column--m-4 -spacing-a">
             <label class="input">
-              <input type="text" name="street" class="input__field" placeholder="Straße">
+              <input type="text" name="street" class="input__field" placeholder="Straße" id="form-street">
               <span class="input__label">Straße</span>
               <div class="input__border"></div>
             </label>
@@ -92,7 +101,7 @@
 
           <div class="column column--12 column--s-6 column--m-2 -spacing-a">
             <label class="input">
-              <input type="text" name="houseNumber" class="input__field" placeholder="Nr.">
+              <input type="text" name="houseNumber" class="input__field" id="form-number" placeholder="Nr.">
               <span class="input__label">Nr.</span>
               <div class="input__border"></div>
             </label>
@@ -101,7 +110,23 @@
             @endif
           </div>
         </div>
-        
+      </div>
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-b">
+          <label class="input">
+            <input type="text" id="form-state" class="input__field" placeholder="Bundesland">
+            <span class="input__label">Bundesland</span>
+            <div class="input__border"></div>
+          </label>
+          
+        </div>
+        <div class="column column--12 column--m-6 -spacing-b">
+          <label class="input">
+            <input type="text" id="form-country" class="input__field" placeholder="Land">
+            <span class="input__label">Land</span>
+            <div class="input__border"></div>
+          </label>
+        </div>
       </div>
 
       <div class="row">
@@ -317,8 +342,6 @@
                       </div>
                     </li>
                 @empty
-                <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder eingereicht.</p>
-                <p class="-typo-copy -text-color-green"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="link-text">Jetzt Feld einreichen</a></p>
                 @endforelse
               </ul>
             </div>
@@ -384,6 +407,36 @@
 
     $('.notification__button').click(function() {
       $(this).parent().parent('.notification').slideUp();
-    })
+    });
+
+
+    (function() {
+      var placesAutocomplete = places({
+        container: document.querySelector('#form-address'),
+        type: 'address',
+        countries: 'de',
+        language: 'de_DE',
+        templates: {
+          value: function(suggestion) {
+            return suggestion.name;
+          }
+        }
+      });
+      placesAutocomplete.on('change', function resultSelected(e) {
+
+        var address = e.suggestion.name || '';
+        var matches = address.split(/(\d+)/g);
+        var fullAddress = address.replace(matches[1],"");
+        var streetOnly = matches[0];
+        var numberOnly = matches[1];
+
+        document.querySelector('#form-street').value = streetOnly || '';
+        document.querySelector('#form-number').value = numberOnly || '';
+        document.querySelector('#form-state').value = e.suggestion.administrative || '';
+        document.querySelector('#form-city').value = e.suggestion.city || '';
+        document.querySelector('#form-country').value = e.suggestion.country || '';
+        document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+      });
+    })();
   </script>
 @endpush
