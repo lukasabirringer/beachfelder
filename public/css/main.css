@@ -43,6 +43,8 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 .row {
   margin-left: -0.25rem;
   margin-right: -0.25rem; }
@@ -2316,6 +2318,45 @@ input::-moz-focus-outer {
     line-height: 1.3;
     color: #457b8c;
     display: block; }
+
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0.125rem;
+  border: 1px #798796 solid; }
+  .message--error {
+    border-color: #ce4034; }
+  .message--success {
+    border-color: #08b8b8; }
+  .message__icon {
+    padding: 0.3125rem;
+    background-color: #798796;
+    color: #FFF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 1.25rem; }
+    .message__icon svg {
+      width: 0.625rem;
+      height: 0.625rem; }
+    .message__icon--error {
+      background-color: #ce4034; }
+    .message__icon--success {
+      background-color: #08b8b8; }
+  .message__text {
+    font-family: "PT Sans";
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #798796;
+    padding: 0.1875rem; }
+    .message__text--error {
+      color: #ce4034; }
+    .message__text--success {
+      color: #08b8b8; }
 
 .password-strength {
   font-family: "PT Sans";

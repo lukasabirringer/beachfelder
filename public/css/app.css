@@ -10,6 +10,19 @@
   margin-right: 0;
 }
 
+.tipso_bubble {
+  border-radius: 2px;
+}
+
+.tipso_style {
+  border-bottom: none;
+}
+
+.tipso_title,
+.tipso_content {
+  font-family: 'PT Sans', sans-serif;
+}
+
 @media screen and (max-width: 768px) {
   .hide-on-mobile {
     display: none;

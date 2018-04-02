@@ -8,6 +8,9 @@ $(document).ready(function(){
     dots: false,
     loop: true,
     center: true,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
     autowidth: true,
     responsive: {
       0: {

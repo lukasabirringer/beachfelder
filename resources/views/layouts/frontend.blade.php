@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'beachfelder.de - Frontend') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/tipso.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
@@ -16,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
     <script src="https://unpkg.com/progressively/dist/progressively.min.js"></script>
+    <script src="{{ asset('js/tipso.min.js') }}"></script>
     <style>
       .disabled {
         display: none;
@@ -29,13 +31,14 @@
       <ul class="navigation">
         <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span></a></li>
         @if (Auth::check())
-        <li class="navigation__item"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a></li>
+        <li class="navigation__item"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a>
+        </li>
         @else
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
 
         @if (Auth::check())
-          <li class="navigation__item"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="star"></span></a></li>
+          <li class="navigation__item tipso-add-field" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
         @endif
 
         @if (Auth::check())
@@ -63,9 +66,6 @@
               <div class="input__border"></div>
               {{ $errors->postcode->first('postcode') }}
             </label>
-            <!-- <label class="input">
-              <input type="text" placeholder="Gib eine PLZ oder einen Ort ein" id="address-input" name="searchQuery" class="input__field ap-input">
-            </label> -->
           </form>
         </div>
         <div class="column column--12 column--m-6 header__column">
@@ -75,7 +75,7 @@
                 <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
                 <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
                   {{ csrf_field() }}
-                  <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="link-text profile-user__subtitle">Abmelden</a>
+                  <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
                 </form>
               </div>
               <div class="profile-user__image ">
@@ -104,7 +104,7 @@
           <ul class="footer__navigation">
             <li class="footer__item"><a href="{{ url('/') }}/page/impressum" class="footer__link">Impressum</a></li>
             <li class="footer__item"><a href="{{ url('/') }}/page/datenschutzerklaerung" class="footer__link">Datenschutz</a></li>
-            <li class="footer__item"><a href="{{ url('/') }}/page/agb" class="footer__link">AGB</a></li>
+            <!-- <li class="footer__item"><a href="{{ url('/') }}/page/agb" class="footer__link">AGB</a></li> -->
             <li class="footer__item"><a href="{{ url('/') }}/page/kontakt" class="footer__link">Kontakt</a></li>
           </ul>
         </div>
@@ -124,8 +124,30 @@
     @stack('scripts')
     
     <script>
+      //icons
       feather.replace();
+      //progressive image preloading
       progressively.init();
+      //tooltips
+      $('.tipso-add-field').tipso({
+        speed : 200, 
+        offsetX : -30,
+        background : '#457b8c',
+        color : '#ffffff',
+        position : 'right',
+        showArrow : false,
+        tooltipHover : true
+      });
+
+      $('.tipso-user').tipso({
+        speed : 200, 
+        offsetX : -30,
+        background : '#457b8c',
+        color : '#ffffff',
+        position : 'right',
+        showArrow : false,
+        tooltipHover : true
+      });
 
       var placesAutocomplete = places({
         type: 'city',
