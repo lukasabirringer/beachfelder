@@ -40,7 +40,6 @@ class SubmittedbeachcourtController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
         $user_id = Auth::id();
         $date = Carbon::now()->toDateTimeString();
 
@@ -54,7 +53,7 @@ class SubmittedbeachcourtController extends Controller
         {
             return redirect()->back()->withErrors($v->errors());
         }
-        dd($request);
+
         DB::table('beachcourts')->insert(
             ['user_id' => $user_id,
              'postalCode' => $request->postalCode,

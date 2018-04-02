@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Beachcourt;
 use DB;
 use Auth;
+use App\Page;
 
 class HomepageController extends Controller
 {

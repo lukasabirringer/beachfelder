@@ -5,7 +5,11 @@
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
-        <h2 class="title-page__title">Dein Profil</h2>
+        @if (Auth::user()->userName === $profileuser->userName)
+          <h2 class="title-page__title">Dein Profil</h2>
+        @else
+          <h2 class="title-page__title">Profil von {{ $profileuser->userName }}</h2>
+        @endif
       </div>
     </div>
 
@@ -27,17 +31,24 @@
     <div class="row">
       <div class="column column--8">
         <div class="row">
+          @if (Auth::user()->userName === $profileuser->userName)
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="user"></span>
               <span class="icon-text__text">{{ $user->firstName }} {{ $user->lastName }} <br> {{ $user->birthdate }} </span>
             </div>
           </div>
+          @endif
 
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="map-pin"></span>
-              <span class="icon-text__text">{{ $user->postalCode }} <br> {{ $user->city }}</span>
+              <span class="icon-text__text">
+                {{ $user->postalCode }}
+                @if (Auth::user()->userName === $profileuser->userName)
+                <br> {{ $user->city }}
+                @endif
+              </span>
             </div>
           </div>
 
@@ -49,10 +60,11 @@
           </div>
         </div>
       </div>
-
+      @if (Auth::user()->userName === $profileuser->userName)
       <div class="column column--4 profile-user__column">
         <a href="/user/{{ $user->userName }}/edit" class="link-icon link-icon--rotate -text-color-gray-01 profile-user__edit-icon"><span data-feather="settings"></span></a>
       </div>
+      @endif
     </div>
 
     <div class="row">
@@ -76,6 +88,7 @@
             <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
           </div>
         </div>
+        @if (Auth::user()->userName === $profileuser->userName)
         <div class="row">
           <div class="column column--12 column--m-6">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
@@ -106,7 +119,30 @@
               {{ $user->birthdate }}
             </p>
           </div>
-
+          @else
+          <div class="row">
+          <div class="column column--12 column--m-6">
+            <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
+              Username
+            </p>
+            <p class="-typo-copy -text-color-gray-02">
+              {{ $user->userName }}
+            </p>
+            <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
+              PLZ
+            </p>
+            <p class="-typo-copy -text-color-gray-02">
+              {{ $user->postalCode }}
+            </p>
+            <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
+              Geschlecht
+            </p>
+            <p class="-typo-copy -text-color-gray-02">
+              {{ $user->sex }}
+            </p>
+          </div>
+          @endif
+          @if (Auth::user()->userName === $profileuser->userName)
           <div class="column column--12 column--m-6">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
               PLZ
@@ -128,7 +164,15 @@
             <p class="-typo-copy -text-color-gray-02">
               {{ $user->email }}
             </p>
+
+            <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
+              Geschlecht
+            </p>
+            <p class="-typo-copy -text-color-gray-02">
+              {{ $user->sex }}
+            </p>
           </div>
+          @endif
         </div>
       </div>
     </div>

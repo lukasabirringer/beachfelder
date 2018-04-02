@@ -160,7 +160,7 @@
               </div>
             </div>
 
-          
+
             <div class="row -spacing-a" id="submit">
               <div class="column column--12">
                 <button class="button-primary profile-edit__button" type="submit" disabled="disabled">
@@ -243,6 +243,12 @@
           </div>
           <form method="POST" action="{{ url('/user/update') }}" class="form" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input type="hidden" name="userName" value="{{ $user->userName }}">
+            <input type="hidden" name="firstName" value="{{ $user->firstName }}">
+            <input type="hidden" name="lastName" value="{{ $user->lastName }}">
+            <input type="hidden" name="email" value="{{ $user->email }}">
+            <input type="hidden" name="password" value="{{ $user->password }}">
+            <input type="hidden" name="password_confirmation" value="{{ $user->password }}">
             <div class="column column--12 -spacing-d">
               <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="publicProfile" value="{{ $user->publicProfile }}">
