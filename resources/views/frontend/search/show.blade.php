@@ -116,15 +116,12 @@
                    ?>
                 km entfernt</span>
               </div>
-              <div class="beachcourt-item__favorite">
-                <span data-feather="heart"></span>
-                @if (Auth::user())
-                  <favorite
-                      :beachcourt={{ $beachcourt->id }}
-                      :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-                  ></favorite>
-                  @endif
-              </div>
+              @if (Auth::user())
+                <favorite
+                    :beachcourt={{ $beachcourt->id }}
+                    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+                ></favorite>
+              @endif
             </div>
 
             <div class="beachcourt-item__info">

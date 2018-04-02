@@ -34,7 +34,7 @@
           <div class="column column--12 column--s-6 column--m-3">
             <div class="infobox">
               <span class="infobox__icon" data-feather="{{ $icon }}"></span>
-              <span class="infobox__title">Aktuell <br>({{ $weather->lastUpdate->format('d.m.Y H:i') }})</span>
+              <span class="infobox__title">Heute</span>
               <span class="infobox__text">{{ $roundedWheater }} {{ $weather->temperature->getUnit() }}</span>
             </div>
           </div>
@@ -92,7 +92,7 @@
         <div class="row">
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Sand {{ $beachcourt->ratingSand }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Sand</span>
               @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -106,7 +106,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Netz {{ $beachcourt->ratingNet }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Netz</span>
               @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -120,7 +120,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Feld {{ $beachcourt->ratingCourt }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Feld</span>
               @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -134,7 +134,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Umgebung {{ $beachcourt->ratingEnvironment }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Umgebung</span>
               @for ($i = 1; $i <= $beachcourt->ratingEnvironment; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
