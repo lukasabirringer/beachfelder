@@ -198,5 +198,15 @@
       </div>
     </div>
 
+    <div class="row -spacing-a">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+
+    <div class="row -spacing-a">
+      <h4 class="-typo-headline-04">HIER SOLLTEN WEITERE BEACHFELDER IN DER NÄHE ERSCHEINEN</h4>
+    </div>
+
   </div> <!-- .content__main ENDE -->
 @endsection
