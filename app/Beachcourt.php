@@ -8,6 +8,9 @@ use Auth;
 
 class Beachcourt extends Model
 {
+  protected $fillable = [
+    'longitude'
+    ];
   public function ratings()
   {
       return $this->hasMany('App\Rating');
