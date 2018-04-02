@@ -1,5 +1,5 @@
 
-@extends('layouts.frontend')
+@extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('content')
 

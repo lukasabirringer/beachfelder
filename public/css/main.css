@@ -522,7 +522,7 @@ table {
   position: relative; }
   @media (min-width: 768px) {
     .content {
-      padding: 0 7% 0 220px; } }
+      padding: 0 7% 0 100px; } }
   .content__main {
     margin-top: 3.125rem; }
 

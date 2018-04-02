@@ -1,5 +1,5 @@
 
-@extends('layouts.frontend')
+@extends('layouts.frontend', ['body_class' => 'home'])
 
 @section('content')
   <meta name="csrf-token" content="{{ csrf_token() }}" />

@@ -25,7 +25,7 @@
       }
     </style>
   </head>
-  <body class="has-bg">
+  <body @unless(empty($body_class)) class="{{$body_class}}" @endunless>
     <div class="sidebar">
       <a href="{{ url('/') }}"><img class="sidebar__logo" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
       <ul class="navigation">

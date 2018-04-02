@@ -220,6 +220,7 @@
 
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Wie ist der Breitengrad des Feldes?</p>
           <label class="input">
             <input type="text" name="latitude" class="input__field" placeholder="Breitengrad des Feldes">
             <span class="input__label">Breitengrad des Feldes</span>
@@ -231,6 +232,7 @@
         </div>
 
         <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Wie ist der Längengrad des Feldes?</p>
           <label class="input">
             <input type="text" name="longitude" class="input__field" placeholder="Längengrad des Feldes">
             <span class="input__label">Längengrad des Feldes</span>

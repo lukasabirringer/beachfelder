@@ -10,6 +10,16 @@
   margin-right: 0;
 }
 
+.home .content {
+  padding: 0 7% 0 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .home .content {
+    padding: 0 7% 0 100px;
+  }
+}
+
 .tipso_bubble {
   border-radius: 2px;
 }
