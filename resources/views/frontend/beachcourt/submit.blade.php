@@ -52,6 +52,7 @@
         <h4 class="-typo-headline-04 -text-color-green">Allgemeines</h4>
       </div>
     </div>
+
     
     <form method="POST" action="{{ URL::route('beachcourtsubmit.store') }}" id="form--submit-beachcourt" enctype="multipart/form-data">
       {{ csrf_field() }}
@@ -113,13 +114,16 @@
       </div>
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-b">
+
           <label class="input">
             <input type="text" id="form-state" class="input__field" name="state" placeholder="Bundesland">
             <span class="input__label">Bundesland</span>
             <div class="input__border"></div>
           </label>
+
           @if ($errors->has('state'))
             <div class="alert alert-danger">{{ $errors->first('state', ':message') }}</div>
+
           @endif
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
@@ -128,8 +132,10 @@
             <span class="input__label">Land</span>
             <div class="input__border"></div>
           </label>
+
           @if ($errors->has('country'))
             <div class="alert alert-danger">{{ $errors->first('country', ':message') }}</div>
+
           @endif
         </div>
       </div>
@@ -142,7 +148,7 @@
             <div class="input__border"></div>
           </label>
           @if ($errors->has('operator'))
-            <div class="alert alert-danger">{{ $errors->first('operator', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('operator', ':message') }}</div>
           @endif
         </div>
 
@@ -153,28 +159,29 @@
             <div class="input__border"></div>
           </label>
           @if ($errors->has('operatorURL'))
-            <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
           @endif
         </div>
-      </div>
 
-      <div class="row -spacing-a">
-        <div class="column column--12">
-          <h4 class="-typo-headline-04 -text-color-green">Das Feld</h4>
+        <div class="row -spacing-a">
+          <div class="column column--12">
+            <h4 class="-typo-headline-04 -text-color-green">Das Feld</h4>
+          </div>
         </div>
-      </div>
-
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld ein öffentliches?</p>
           <label class="input-toggle -spacing-d">
+
             <input type="hidden" class="input-toggle__hidden" name="isPublic" value="1">
             <input type="checkbox" class="input-toggle__field" name="isPublic" value="1">
+
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
+            <input type="hidden" class="hidden" name="isPublic" value="0">
           </label>
           @if ($errors->has('isPublic'))
-            <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
           @endif
         </div>
 
@@ -183,17 +190,21 @@
           <label class="input-toggle -spacing-d">
             <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="1">
             <input type="checkbox" class="input-toggle__field" name="isChargeable" value="1">
+
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
+            <input type="hidden" class="hidden" name="isChargeable" value="0">
           </label>
           @if ($errors->has('isChargeable'))
-            <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
           @endif
         </div>
+
       </div>
 
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
+
           <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
@@ -201,7 +212,7 @@
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountIndoor'))
-            <div class="alert alert-danger">{{ $errors->first('courtCountIndoor', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('courtCountIndoor', ':message') }}</div>
           @endif
         </div>
 
@@ -213,7 +224,7 @@
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountOutdoor'))
-            <div class="alert alert-danger">{{ $errors->first('courtCountOutdoor', ':message') }}</div>
+          <div class="alert alert-danger">{{ $errors->first('courtCountOutdoor', ':message') }}</div>
           @endif
         </div>
       </div>
@@ -250,17 +261,17 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="column column--12 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
-          <label class="textarea -spacing-b">
-            <textarea name="notes" class="textarea__field"></textarea>
-            <span class="textarea__label">Deine Nachricht an uns</span>
-          </label>
-          @if ($errors->has('notes'))
-            <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
-          @endif
-        </div>
+      <div class="column column--12 -spacing-a">
+        <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
+        <label class="textarea -spacing-b">
+          <textarea name="notes" class="textarea__field"></textarea>
+          <span class="textarea__label">Deine Nachricht an uns</span>
+        </label>
+        @if ($errors->has('notes'))
+        <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+        @endif
+      </div>
+
 
         <div class="column column--12 column--m-5 -spacing-a">
           <a href="javascript:;" onclick="document.getElementById('form--submit-beachcourt').submit();" class="button-primary">
@@ -270,6 +281,12 @@
         </div>
       </div>
     </form>
+
+
+
+
+
+
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -365,7 +382,7 @@
       var slider = $('.input-range'),
           range = $('.input-range__field'),
           value = $('.input-range__value');
-        
+
       slider.each(function(){
 
         value.each(function(){
@@ -384,14 +401,16 @@
     rangeSlider();
 
     $('.input-toggle__field').click(function() {
-      if($(this).is(':checked')) {
+      if($(this).val(0)) {
         $(this).parent().find('.input-toggle__label').text('Ja');
+
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
       } else {
         $(this).parent().find('.input-toggle__label').text('Nein');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
+
       }
     });
 
