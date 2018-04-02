@@ -145,15 +145,15 @@ class ProfileController extends Controller
         $name = $user->firstName;
         $code = str_random(30);
 
-        Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
-            $message->from('hello@beachfelder.de', 'Beachfelder.de');
+        Mail::send('email.deleteProfile', $confirmation_code, function($message) use ($email, $name) {
+            $message->from('hello@beachfelder.de', 'beachfelder.de');
             $message->bcc('lukas.a.birringer@gmail.com', $name = null);
             $message->to($email, $name)->subject('beachfelder.de // Profil gelöscht');
         });
 
         $user->forceDelete();
 
-        return redirect('/')->with('success', 'Beachfeld wurde eingereicht');
+        return redirect('/')->with('success', 'Dein Profil wurde erfolgreich gelöscht.');
     }
     public function confirmRegistration($confirmationCode)
         {

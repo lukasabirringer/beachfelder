@@ -43,7 +43,12 @@
                   <div class="input__border"></div>
                 </label>
                 @if ($errors->has('name'))
-                  <span class="help-block"> <strong>{{ $errors->first('name') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                  </div>
                 @endif
               </div>
 
@@ -54,7 +59,12 @@
                   <div class="input__border"></div>
                 </label>
                 @if ($errors->has('firstName'))
-                  <span class="help-block"> <strong>{{ $errors->first('firstName') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                  </div>
                 @endif
               </div>
 
@@ -65,7 +75,12 @@
                   <div class="input__border"></div>
                 </label>
                 @if ($errors->has('lastName'))
-                  <span class="help-block"> <strong>{{ $errors->first('lastName') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                  </div>
                 @endif
               </div>
               
@@ -77,7 +92,12 @@
                   <div class="input__border"></div>
                 </label>
                 @if ($errors->has('email'))
-                  <span class="help-block"> <strong>{{ $errors->first('email') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                  </div>
                 @endif
               </div>
 
@@ -87,9 +107,6 @@
                   <span class="input__label">Dein Geburtsdatum</span>
                   <div class="input__border"></div>
                 </label>
-                @if ($errors->has('birthdate'))
-                  <span class="help-block"> <strong>{{ $errors->first('birthdate') }}</strong> </span>
-                @endif
               </div>
 
               <div class="column column--12 column--s-12">
@@ -100,9 +117,6 @@
                       <span class="input__label">Deine Postleitzahl</span>
                       <div class="input__border"></div>
                     </label>
-                    @if ($errors->has('postalCode'))
-                      <span class="help-block"> <strong>{{ $errors->first('postalCode') }}</strong> </span>
-                    @endif
                   </div>
                   
                   <div class="column column--12 column--s-7 -spacing-a">
@@ -111,9 +125,6 @@
                       <span class="input__label">Dein Wohnort</span>
                       <div class="input__border"></div>
                     </label>
-                    @if ($errors->has('city'))
-                      <span class="help-block"> <strong>{{ $errors->first('city') }}</strong> </span>
-                    @endif
                   </div>
                 </div>
               </div>
@@ -142,7 +153,12 @@
                     </label>
                   </div>
                   @if ($errors->has('sex'))
-                    <span class="help-block"> <strong>{{ $errors->first('sex') }}</strong> </span>
+                    <div class="message message--error -spacing-d">
+                      <div class="message__icon message__icon--error">
+                        <span data-feather="alert-circle"></span>
+                      </div>
+                      <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    </div>
                   @endif
                 </div>
               </div>
@@ -157,7 +173,12 @@
                 </label>
 
                 @if ($errors->has('password'))
-                  <span class="help-block"> <strong>{{ $errors->first('password') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                  </div>
                 @endif
               </div>
 
@@ -192,9 +213,9 @@
       <div class="page-login__half page-login__half--right">
         <h3 class="page-login__title"><span class="page-login__title-icon" data-feather="user"></span>Melde dich an</h3>
 
-        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-          {{ csrf_field() }}
-          <div class="page-login__content">
+        <div class="page-login__content">
+          <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
             <div class="row -spacing-a">
               <div class="column column--12 -spacing-b">
                 <label class="input">
@@ -204,13 +225,18 @@
                 </label>
 
                 @if ($errors->has('email'))
-                  <span class="help-block"> <strong>{{ $errors->first('email') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Bitte gib' deine E-Mail Adresse ein</p> 
+                  </div>
                 @endif
               </div>
 
               <div class="column column--12 -spacing-a">
                 <label class="input">
-                  <input type="password" name="password" class="input__field input__field--password" placeholder="Passwort">
+                  <input type="password" name="password" class="input__field" placeholder="Passwort">
                   <span class="input__label">Passwort</span>
                   <div class="input__border"></div>
                   <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
@@ -218,7 +244,12 @@
                 </label>
 
                 @if ($errors->has('password'))
-                  <span class="help-block"> <strong>{{ $errors->first('password') }}</strong> </span>
+                  <div class="message message--error -spacing-d">
+                    <div class="message__icon message__icon--error">
+                      <span data-feather="alert-circle"></span>
+                    </div>
+                    <p class="message__text message__text--error">Bitte gib' dein Passwort ein</p> 
+                  </div>
                 @endif
               </div>
 
@@ -235,8 +266,8 @@
                 <p class="-typo-copy -text-color-gray-01"> <a class="link-text" href="{{ route('password.request') }}">Passwort vergessen?</a> </p>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div> <!-- .right side ENDE -->
     </div>
   </div> <!-- .content__main ENDE -->
@@ -311,6 +342,25 @@
             eyeOff.classList.add('input__icon--not-visible');
         }
     };
+
+    $('.page-login__half').click(function() {
+
+      if($('.page-login__half').hasClass('page-login__half--active')) {
+
+        $('.page-login__half').removeClass('page-login__half--active');
+        $(this).addClass('page-login__half--active');
+        $('.page-login__overlay').addClass('page-login__overlay--open');
+      }
+      else {
+
+        $(this).addClass('page-login__half--active');
+        $('.page-login__overlay').addClass('page-login__overlay--open');
+      }
+    });
+
+    $('.page-login__title').click(function() {
+      $(this).next($('.page-login__content')).toggleClass('page-login__content--open');
+    });
 
     //hide the notification
     $('.notification__button').click(function() {

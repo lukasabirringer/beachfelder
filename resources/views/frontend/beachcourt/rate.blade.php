@@ -6,16 +6,20 @@
 <div class="content__main">
   <div class="row">
     @if (\Session::has('success'))
-      <div class="alert alert-success">
-        <ul>
-          <li>{!! \Session::get('success') !!}</li>
-        </ul>
-      </div>
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('success') !!}</p>
+        </li>
+      </ul>
     @endif
     <div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
-      <img
+      <figure class="progressive">
+        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+      </figure>
+      <!-- <img
         src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" class="image image--max-width"
-        srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x">
+        srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x"> -->
     </div>
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
 

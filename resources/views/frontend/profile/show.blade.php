@@ -64,7 +64,7 @@
     <div class="row -spacing-a">
       <div class="column column--12 column--m-4">
         @if($user->pictureName !== 'placeholder-user.png' )
-          <img src="/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
+          <img src="{{url('/')}}/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
         @else
           <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
         @endif
@@ -152,10 +152,9 @@
                 @forelse ($myFavorites as $myFavorite)
                   <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
-                      <img
-                        src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg"
-                        srcset="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg 2x"
-                        alt="Feld in {{ $myFavorite->city }}" class="image iamge--max-height">
+                      <figure class="progressive">
+                        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg" src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg" alt="Feld in {{ $myFavorite->city }}" alt="Feld in {{ $myFavorite->city }}">
+                      </figure>
                     </div>
                     <div class="list-beachcourt__info">
                       <div class="row">
@@ -165,7 +164,7 @@
                       </div>
 
                       <div class="row  -spacing-b">
-                        <div class="column column--12">
+                        <div class="column column--12 column--m-6">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="map-pin"></span>
                             <span class="icon-text__text">{{ $myFavorite->postalCode }} {{ $myFavorite->city }} <br>{{ $myFavorite->street }} {{ $myFavorite->houseNumber }}</span>
@@ -178,17 +177,16 @@
                             <span class="icon-text__text">{{ $myFavorite->longitude }}<br>{{ $myFavorite->latitude }}</span>
                           </div>
                         </div>
-
+                      </div>
+                      <div class="row -spacing-b">
                         <div class="column column--12 column--m-6">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="info"></span>
                             <span class="icon-text__text">Felder outdoor: {{ $myFavorite->courtCountOutdoor }}<br>Felder indoor: {{ $myFavorite->courtCountIndoor }}</span>
                           </div>
                         </div>
-                      </div>
-                      <div class="row -spacing-b">
-                        <div class="column column--12 column--s-5">
 
+                        <div class="column column--12 column--s-6">
                           <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($myFavorite->city),'latitude'=>$myFavorite->latitude,'longitude'=>$myFavorite->longitude)) }}" class="button-primary">
                             <span class="button-primary__label">Feld ansehen</span>
                             <span class="button-primary__label button-primary__label--hover">Feld ansehen</span>
@@ -213,19 +211,15 @@
               @forelse ($submittedCourts as $submittedCourt)
               <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
-
                       @if ($submittedCourt->submitState === 'approved')
-                      <img
-                        src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg"
-                        srcset="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg 2x"
-                        alt="Feld in {{ $submittedCourt->city }}" class="image image--max-height">
-                        @else
-                      <img
-                        src="{{ url('') }}/images/dummy-01-retina.jpg"
-                        srcset="{{ url('') }}/images/dummy-01-retina.jpg"
-                        alt="Feld in {{ $submittedCourt->city }}" class="image image--max-height">
-
-                        @endif
+                        <figure class="progressive">
+                          <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('') }}/uploads/beachcourts/{{$submittedCourt->id}}/slider/slide-image-01.jpg" alt="Feld in {{ $submittedCourt->city }}">
+                        </figure>
+                      @else
+                        <figure class="progressive">
+                          <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('') }}/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="{{ url('') }}/uploads/beachcourts/dummy-image-submitted.jpg">
+                        </figure>
+                      @endif
                     </div>
                     <div class="list-beachcourt__info">
                       <div class="row">
@@ -234,8 +228,8 @@
                         </div>
                       </div>
 
-                      <div class="row  -spacing-b">
-                        <div class="column column--12">
+                      <div class="row -spacing-b">
+                        <div class="column column--12 column--m-6">
                           <div class="icon-text">
                             <span class="icon-text__icon" data-feather="map-pin"></span>
                             <span class="icon-text__text">{{ $submittedCourt->postalCode }} {{ $submittedCourt->city }} <br>{{ $submittedCourt->street }} {{ $submittedCourt->houseNumber }}</span>
@@ -249,24 +243,27 @@
                           </div>
                         </div>
 
-                        <div class="column column--12 column--m-6">
-                          <div class="icon-text">
-                            <span class="icon-text__icon" data-feather="info"></span>
-                            <span class="icon-text__text">Einreichungsstatus: {{ $submittedCourt->submitState }}</span>
-                          </div>
-                        </div>
                       </div>
-                      @if ($submittedCourt->submitState === 'approved')
                       <div class="row -spacing-b">
-                        <div class="column column--12 column--s-5">
-
-                          <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($submittedCourt->city),'latitude'=>$submittedCourt->latitude,'longitude'=>$submittedCourt->longitude)) }}" class="button-primary">
-                            <span class="button-primary__label">Feld ansehen</span>
-                            <span class="button-primary__label button-primary__label--hover">Feld ansehen</span>
-                          </a>
+                        <div class="column column--12 column--m-6">
+                          @if($submittedCourt->submitState === 'approved')
+                            <span class="icon-text__icon" data-feather="check-circle"></span>
+                            <span class="icon-text__text">Einreichungsstatus:<br>genehmigt</span>
+                          @else
+                            <span class="icon-text__icon" data-feather="clock"></span>
+                            <span class="icon-text__text">Einreichungsstatus:<br>in Überprüfung</span>
+                          @endif
                         </div>
+
+                        @if ($submittedCourt->submitState === 'approved')
+                          <div class="column column--12 column--m-6">
+                            <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($submittedCourt->city),'latitude'=>$submittedCourt->latitude,'longitude'=>$submittedCourt->longitude)) }}" class="button-primary">
+                              <span class="button-primary__label">Feld ansehen</span>
+                              <span class="button-primary__label button-primary__label--hover">Feld ansehen</span>
+                            </a>
+                          </div>
+                        @endif
                       </div>
-                      @endif
                     </div>
                   </li>
               @empty

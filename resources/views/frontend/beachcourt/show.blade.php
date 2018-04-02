@@ -1,5 +1,5 @@
 
-@extends('layouts.frontend')
+@extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('content')
 
@@ -80,14 +80,13 @@
           </div>
 
 
-          <div class="column column--12 column--m-3 -align-right">
-              <favorite
-              :beachcourt={{ $beachcourt->id }}
-              :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-              ></favorite>
-            <!-- <a href="#" class="rating__count link-icon-text">
-              <span class="link-icon-text__icon" data-feather="heart"></span><span class="link-icon-text__copy">zu Favoriten hinzufügen</span>
-            </a> -->
+          <div class="column column--12 column--m-3">
+              <div class="beachcourt-detail__favorite">
+                <favorite
+                :beachcourt={{ $beachcourt->id }}
+                :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+                ></favorite>
+              </div>
           </div>
         </div>
         <div class="row">
@@ -196,6 +195,16 @@
           <iframe width="100%" height="450" frameborder="0" zoom="5" style="border:0" allowfullscreen src="https://maps.google.de/maps?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}&hl=es;z=14&amp;output=embed"></iframe>
         </div>
       </div>
+    </div>
+
+    <div class="row -spacing-a">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+
+    <div class="row -spacing-a">
+      <h4 class="-typo-headline-04">HIER SOLLTEN WEITERE BEACHFELDER IN DER NÄHE ERSCHEINEN</h4>
     </div>
 
   </div> <!-- .content__main ENDE -->

@@ -28,9 +28,9 @@
           <tbody>
             @foreach ($beachcourts as $beachcourt)
               <tr>
-                <td><a href="/beachvolleyballfeld/{{ $beachcourt->id }}">{{ $beachcourt->id }}</a></td>
-                <td><a href="/beachvolleyballfeld/{{ $beachcourt->id }}">{{ $beachcourt->postalCode }}</a></td>
-                <td><a href="/beachvolleyballfeld-{{ $beachcourt->id }}">{{ $beachcourt->street }}</a></td>
+                <td><a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}">{{ $beachcourt->id }}</a></td>
+                <td><a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}">{{ $beachcourt->postalCode }}</a></td>
+                <td><a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}">{{ $beachcourt->street }}</a></td>
               </tr>
             @endforeach
           </tbody>

@@ -17,4 +17,6 @@ let mix = require('laravel-mix');
  				'resources/assets/js/dropzone.js',
  				'resources/assets/js/main.js',
  				],
-	'public/js/vendors.js');
+	'public/js/vendors.js')
+	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
+	.disableNotifications();

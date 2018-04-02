@@ -3545,12 +3545,18 @@ $(document).ready(function(){
     dots: false,
     loop: true,
     center: true,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
     autowidth: true,
     responsive: {
       0: {
         items: 1
       },
       500: {
+        items: 1
+      },
+      700: {
         items: 2
       },
       1000: {
@@ -3614,25 +3620,6 @@ $(document).ready(function(){
   $('.input__field--date').datepicker({
     language: 'de',
     autoClose: true
-  });
-
-  $('.page-login__half').click(function() {
-
-    if($('.page-login__half').hasClass('page-login__half--active')) {
-
-      $('.page-login__half').removeClass('page-login__half--active');
-      $(this).addClass('page-login__half--active');
-      $('.page-login__overlay').addClass('page-login__overlay--open');
-    }
-    else {
-
-      $(this).addClass('page-login__half--active');
-      $('.page-login__overlay').addClass('page-login__overlay--open');
-    }
-  });
-
-  $('.page-login__title').click(function() {
-    $(this).next($('.page-login__content')).toggleClass('page-login__content--open');
   });
 
   //show tooltip how we rate at beachcourt item

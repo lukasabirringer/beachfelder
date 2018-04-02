@@ -1,12 +1,12 @@
 
-@extends('layouts.frontend')
+@extends('layouts.frontend', ['body_class' => 'home'])
 
 @section('content')
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="content__main">
     <div class="row">
         <div class="column column--12 column--s-6 column--m-4">
-            <h1 class="title-page__title home__title">Willkommen</h1>
+            <h1 class="title-page__title home__title">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
             <p class="title-page__subtitle">
             <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern.</p>
 
@@ -26,13 +26,13 @@
           <div class="owl-carousel owl-carousel--frontpage">
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
-                <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
-                  <div class="beachcourt-item__favorite">
-                    <span data-feather="heart"></span>
-                    @if (Auth::user())
+                <div class="beachcourt-item__image">
+                  <figure class="progressive">
+                    <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+                  </figure>
+                  @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
-                    @endif
-                  </div>
+                  @endif
                 </div>
                 <div class="beachcourt-item__info">
                   <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h3>
