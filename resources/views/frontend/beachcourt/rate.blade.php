@@ -10,6 +10,9 @@
         <li class="notification__item">
           <span class="notification__icon" data-feather="info"></span>
           <p class="notification__text">{!! \Session::get('success') !!}</p>
+          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label">OK</span>
+          </button>
         </li>
       </ul>
     @endif
@@ -17,9 +20,6 @@
       <figure class="progressive">
         <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
       </figure>
-      <!-- <img
-        src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" class="image image--max-width"
-        srcset="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg 2x"> -->
     </div>
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
 
@@ -623,5 +623,10 @@
       // Otherwise, display the correct tab:
       showTab(currentTab);
     }
+
+    //hide the notification
+    $('.notification__button').click(function() {
+      $(this).parent('.notification__item').parent('.notification').hide();
+    });
   </script>
 @endpush
