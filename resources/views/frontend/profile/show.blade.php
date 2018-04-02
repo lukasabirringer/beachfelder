@@ -152,10 +152,9 @@
                 @forelse ($myFavorites as $myFavorite)
                   <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
-                      <img
-                        src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg"
-                        srcset="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg 2x"
-                        alt="Feld in {{ $myFavorite->city }}" class="image image--max-height">
+                      <figure class="progressive">
+                        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg" src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/slide-image-01-retina.jpg" alt="Feld in {{ $myFavorite->city }}" alt="Feld in {{ $myFavorite->city }}">
+                      </figure>
                     </div>
                     <div class="list-beachcourt__info">
                       <div class="row">

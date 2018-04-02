@@ -130,8 +130,8 @@
       progressively.init();
       //tooltips
       $('.tipso-add-field').tipso({
-        speed : 200, 
-        offsetX : -30,
+        speed : 50, 
+        offsetX : -20,
         background : '#457b8c',
         color : '#ffffff',
         position : 'right',
@@ -139,12 +139,12 @@
         tooltipHover : true
       });
 
-      $('.tipso-user').tipso({
-        speed : 200, 
-        offsetX : -30,
+      $('.tipso-favorite').tipso({
+        speed : 50,
+        offsetY: 5,
         background : '#457b8c',
         color : '#ffffff',
-        position : 'right',
+        position : 'top',
         showArrow : false,
         tooltipHover : true
       });

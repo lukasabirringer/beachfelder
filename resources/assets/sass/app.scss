@@ -5,7 +5,20 @@
 //TOOLTIP
 .tipso_bubble {border-radius: 2px;}
 .tipso_style {border-bottom: none;}
-.tipso_title, .tipso_content {font-family: 'PT Sans', sans-serif;}
+.tipso_title, .tipso_content {font-family: 'PT Sans', sans-serif; font-size: 14px;}
+
+.beachcourt-detail__favorite {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	float: right;
+}
+.beachcourt-detail__favorite .beachcourt-item__favorite {
+	width: 40px;
+	height: 40px;
+	right: 0;
+	top: 0;
+}
 
 @media screen and (max-width: 768px) {
 	.hide-on-mobile {display: none; visibility: hidden;}

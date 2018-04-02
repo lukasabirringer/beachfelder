@@ -30492,8 +30492,9 @@ var render = function() {
       ? _c(
           "a",
           {
-            staticClass: "rating__count link-icon-text",
-            attrs: { href: "#" },
+            staticClass:
+              "beachcourt-item__favorite beachcourt-item__favorite--is-favorited tipso-favorite",
+            attrs: { href: "#", "data-tipso": "Aus Favoriten entfernen" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -30501,28 +30502,13 @@ var render = function() {
               }
             }
           },
-          [
-            _c("span", {
-              staticClass: "link-icon-text__icon",
-              attrs: { "data-feather": "heart" }
-            }),
-            _c(
-              "span",
-              {
-                staticClass: "favorite-link link-icon-text__copy",
-                attrs: {
-                  title: "Dieses Feld befindet sich schon in deinen Favoriten"
-                }
-              },
-              [_vm._v("aus Favoriten entfernen")]
-            )
-          ]
+          [_c("span", { attrs: { "data-feather": "heart" } })]
         )
       : _c(
           "a",
           {
-            staticClass: "rating__count link-icon-text",
-            attrs: { href: "#" },
+            staticClass: "beachcourt-item__favorite tipso-favorite",
+            attrs: { href: "#", "data-tipso": "Zu Favoriten hinzufügen" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -30530,15 +30516,7 @@ var render = function() {
               }
             }
           },
-          [
-            _c("span", {
-              staticClass: "link-icon-text__icon",
-              attrs: { "data-feather": "heart" }
-            }),
-            _c("span", { staticClass: "favorite-link link-icon-text__copy" }, [
-              _vm._v("zu Favoriten hinzufügen")
-            ])
-          ]
+          [_c("span", { attrs: { "data-feather": "heart" } })]
         )
   ])
 }

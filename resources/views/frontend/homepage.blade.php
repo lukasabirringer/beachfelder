@@ -30,12 +30,9 @@
                   <figure class="progressive">
                     <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
                   </figure>
-
-                  <div class="beachcourt-item__favorite">
-                    @if (Auth::user())
+                  @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
-                    @endif
-                  </div>
+                  @endif
                 </div>
                 <div class="beachcourt-item__info">
                   <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h3>

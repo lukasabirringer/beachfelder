@@ -80,14 +80,13 @@
           </div>
 
 
-          <div class="column column--12 column--m-3 -align-right">
-              <favorite
-              :beachcourt={{ $beachcourt->id }}
-              :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-              ></favorite>
-            <!-- <a href="#" class="rating__count link-icon-text">
-              <span class="link-icon-text__icon" data-feather="heart"></span><span class="link-icon-text__copy">zu Favoriten hinzufügen</span>
-            </a> -->
+          <div class="column column--12 column--m-3">
+              <div class="beachcourt-detail__favorite">
+                <favorite
+                :beachcourt={{ $beachcourt->id }}
+                :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+                ></favorite>
+              </div>
           </div>
         </div>
         <div class="row">
