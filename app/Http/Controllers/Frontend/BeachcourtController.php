@@ -68,7 +68,13 @@ class BeachcourtController extends Controller
              $pictures = 'true';
         }
 
-        return view('frontend.beachcourt.show', compact('beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
+        $distance = '15';
+        $otherBeachcourts = Beachcourt::where('submitState', 'approved')
+           ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+           ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+           ->get();
+
+        return view('frontend.beachcourt.show', compact('otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
     }
     public function rate($cityslug, $latitude, $longitude)
     {

@@ -98,13 +98,13 @@
         </div>
       </header>
       @yield('content')
-      
+
       <footer class="footer row">
         <div class="column column--12">
           <ul class="footer__navigation">
-            <li class="footer__item"><a href="{{ url('/') }}/page/impressum" class="footer__link">Impressum</a></li>
-            <li class="footer__item"><a href="{{ url('/') }}/page/datenschutzerklaerung" class="footer__link">Datenschutz</a></li>
-            <!-- <li class="footer__item"><a href="{{ url('/') }}/page/agb" class="footer__link">AGB</a></li> -->
+            @foreach($footerLinks as $footerLink)
+            <li class="footer__item"><a href="{{ url('/') }}/page/{{ $footerLink->slug }}" class="footer__link">{{ $footerLink->name }}</a></li>
+            @endforeach
             <li class="footer__item"><a href="{{ url('/') }}/page/kontakt" class="footer__link">Kontakt</a></li>
           </ul>
         </div>
@@ -112,7 +112,7 @@
           <p class="footer__paragraph">© {{ date('Y') }} World of Beachsport GbR</p>
         </div>
       </footer>
-      
+
     </div> <!-- .content ENDE -->
     @include('cookieConsent::index')
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -122,7 +122,7 @@
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 
     @stack('scripts')
-    
+
     <script>
       //icons
       feather.replace();
@@ -130,7 +130,7 @@
       progressively.init();
       //tooltips
       $('.tipso-add-field').tipso({
-        speed : 50, 
+        speed : 50,
         offsetX : -20,
         background : '#457b8c',
         color : '#ffffff',

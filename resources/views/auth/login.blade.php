@@ -47,7 +47,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                   </div>
                 @endif
               </div>
@@ -63,7 +63,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                   </div>
                 @endif
               </div>
@@ -79,11 +79,11 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                   </div>
                 @endif
               </div>
-              
+
 
               <div class="column column--12 column--s-6 -spacing-a">
                 <label class="input">
@@ -96,7 +96,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                   </div>
                 @endif
               </div>
@@ -118,7 +118,7 @@
                       <div class="input__border"></div>
                     </label>
                   </div>
-                  
+
                   <div class="column column--12 column--s-7 -spacing-a">
                     <label class="input">
                       <input type="text" name="city" value="{{ old('city') }}" class="input__field" placeholder="Dein Wohnort">
@@ -136,13 +136,13 @@
                   </div>
                   <div class="column column--12 column--s-4">
                     <label class="input-radio">
-                      <input type="radio" class="input-radio__field" name="sex" value="male">
+                      <input type="radio" class="input-radio__field" name="sex" value="männlich">
                       <span class="input-radio__label">männlich</span>
                     </label>
                   </div>
                   <div class="column column--12 column--s-4">
                     <label class="input-radio">
-                      <input type="radio" class="input-radio__field" name="sex" value="female">
+                      <input type="radio" class="input-radio__field" name="sex" value="weiblich">
                       <span class="input-radio__label">weiblich</span>
                     </label>
                   </div>
@@ -157,7 +157,7 @@
                       <div class="message__icon message__icon--error">
                         <span data-feather="alert-circle"></span>
                       </div>
-                      <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                      <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                     </div>
                   @endif
                 </div>
@@ -177,7 +177,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p> 
+                    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
                   </div>
                 @endif
               </div>
@@ -229,7 +229,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Bitte gib' deine E-Mail Adresse ein</p> 
+                    <p class="message__text message__text--error">Bitte gib' deine E-Mail Adresse ein</p>
                   </div>
                 @endif
               </div>
@@ -248,7 +248,7 @@
                     <div class="message__icon message__icon--error">
                       <span data-feather="alert-circle"></span>
                     </div>
-                    <p class="message__text message__text--error">Bitte gib' dein Passwort ein</p> 
+                    <p class="message__text message__text--error">Bitte gib' dein Passwort ein</p>
                   </div>
                 @endif
               </div>
@@ -287,7 +287,7 @@
     myInput.onkeyup = function() {
       // Validate lowercase letters
       var lowerCaseLetters = /[a-z]/g;
-      if(myInput.value.match(lowerCaseLetters)) { 
+      if(myInput.value.match(lowerCaseLetters)) {
         letter.classList.remove('password-strength--invalid');
         letter.classList.add('password-strength--valid');
       } else {
@@ -297,7 +297,7 @@
 
       // Validate capital letters
       var upperCaseLetters = /[A-Z]/g;
-      if(myInput.value.match(upperCaseLetters)) { 
+      if(myInput.value.match(upperCaseLetters)) {
         capital.classList.remove('password-strength--invalid');
         capital.classList.add('password-strength--valid');
       } else {
@@ -307,7 +307,7 @@
 
       // Validate numbers
       var numbers = /[0-9]/g;
-      if(myInput.value.match(numbers)) { 
+      if(myInput.value.match(numbers)) {
         number.classList.remove('password-strength--invalid');
         number.classList.add('password-strength--valid');
       } else {
