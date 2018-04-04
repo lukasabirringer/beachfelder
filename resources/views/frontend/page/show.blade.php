@@ -4,7 +4,7 @@
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
-        <h2 class="title-page__title">{{ $page->headline }}</h2>
+        <h2 class="title-page__title">{{ $page['headline'] }}</h2>
       </div>
     </div>
     <div class="row -spacing-a">
@@ -13,7 +13,7 @@
       </div>
     </div>
     
-    {!! html_entity_decode($page->content) !!}
+    {!! html_entity_decode($page['content']) !!}
 
   </div> <!-- .content__main ENDE -->
 @endsection

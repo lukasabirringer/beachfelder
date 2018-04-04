@@ -53,3 +53,12 @@
         </form>
     </div> <!-- .container__main ENDE -->
 @endsection
+
+@push('scripts')
+    <script>
+        //hide the notification
+        $('.notification__button').click(function() {
+          $(this).parent('.notification__item').parent('.notification').hide();
+        });
+    </script>
+@endpush

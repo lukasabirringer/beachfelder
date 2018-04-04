@@ -9,11 +9,15 @@
       </div>
     </div>
     @if (\Session::has('success'))
-      <div class="alert alert-success">
-        <ul>
-          <li>{!! \Session::get('success') !!}</li>
-        </ul>
-      </div>
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('success') !!}</p>
+          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label">OK</span>
+          </button>
+        </li>
+      </ul>
     @endif
     <div class="row">
       <div class="column column--8">
@@ -110,11 +114,11 @@
 
               <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">Geschlecht</p>
               <label class="input-radio -spacing-b">
-                <input type="radio" class="input-radio__field" name="sex" value="man" checked="checked">
+                <input type="radio" class="input-radio__field" name="sex" value="male" checked="checked">
                 <span class="input-radio__label">männlich</span>
               </label>
               <label class="input-radio -spacing-b">
-                <input type="radio" class="input-radio__field" name="sex" value="woman">
+                <input type="radio" class="input-radio__field" name="sex" value="female">
                 <span class="input-radio__label">weiblich</span>
               </label>
               <label class="input-radio -spacing-b">
@@ -354,5 +358,9 @@
       }
     });
 
+    //hide the notification
+    $('.notification__button').click(function() {
+      $(this).parent('.notification__item').parent('.notification').hide();
+    });
   </script>
 @endpush

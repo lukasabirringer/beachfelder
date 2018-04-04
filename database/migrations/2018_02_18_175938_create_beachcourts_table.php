@@ -15,19 +15,19 @@ class CreateBeachcourtsTable extends Migration
     {
         Schema::create('beachcourts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('postalCode')->nullable()->default('keine Angabe');
-            $table->string('city')->nullable()->default('keine Angabe');
-            $table->string('street')->nullable()->default('keine Angabe');
-            $table->string('houseNumber')->nullable()->default('keine Angabe');
-            $table->string('country')->nullable()->default('keine Angabe');
-            $table->string('state')->nullable()->default('keine Angabe');
+            $table->string('postalCode')->nullable();
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('houseNumber')->nullable();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
             $table->text('latitude')->nullable();
             $table->text('longitude')->nullable();
-            $table->boolean('isChargeable')->nullable()->default('keine Angabe');
-            $table->text('notes')->nullable()->default('keine Angabe');
-            $table->integer('courtCountOutdoor')->nullable()->default('keine Angabe');
-            $table->integer('courtCountIndoor')->nullable()->default('keine Angabe');
-            $table->boolean('isPublic')->nullable()->default('keine Angabe');
+            $table->boolean('isChargeable')->nullable();
+            $table->text('notes')->nullable();
+            $table->integer('courtCountOutdoor')->nullable();
+            $table->integer('courtCountIndoor')->nullable();
+            $table->boolean('isPublic')->nullable();
             $table->double('rating')->nullable();
             $table->integer('ratingCount')->nullable();
             $table->string('ratingDate')->nullable();

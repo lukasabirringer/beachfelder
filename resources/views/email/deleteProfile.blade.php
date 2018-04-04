@@ -100,7 +100,7 @@
                 <p>
                 World of Beachsport GbR, Allmendäckerstr. 5/1, 75233 Tiefenbronn<br>
                 Inhaber: Andreas Engmann, Fabian Pecher, Lukas Birringer<br>
-                Kontaktiere uns hier: <a href="https://beachfelder.de/i/kontakt" target="_blank">https://beachfelder.de/i/kontakt</a>
+                Kontaktiere uns hier: <a href="https://beachfelder.de/page/kontakt" target="_blank">https://beachfelder.de/page/kontakt</a>
                 </p>
             </div>
         </div>

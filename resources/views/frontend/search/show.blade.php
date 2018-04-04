@@ -29,6 +29,7 @@
                 </label>
                 <button class="button-primary -spacing-b button__accept">
                   <span class="button-primary__label">bestätigen</span>
+                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
                 </button>
               </div>
             </div>
@@ -48,6 +49,7 @@
                 </label>
                 <button class="button-primary -spacing-b button__accept">
                   <span class="button-primary__label">bestätigen</span>
+                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
                 </button>
               </div>
             </div>
@@ -72,16 +74,11 @@
                 </label>
                 <button class="button-primary -spacing-b button__accept">
                   <span class="button-primary__label">bestätigen</span>
+                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
                 </button>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="column column--12 column--m-4">
-          <button type="submit" class="button-secondary -spacing-d">
-            <span class="button-secondary__label">Suche starten</span>
-          </button>
         </div>
 
       </form>
@@ -97,7 +94,10 @@
       @foreach ($results as $beachcourt)
         <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
           <div class="beachcourt-item">
-            <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
+            <div class="beachcourt-item__image">
+              <figure class="progressive">
+                <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+              </figure>
               <div class="beachcourt-item__distance">
                 <span class="beachcourt-item__icon" data-feather="navigation"></span>
                 <span class="beachcourt-item__paragraph">
@@ -116,15 +116,12 @@
                    ?>
                 km entfernt</span>
               </div>
-              <div class="beachcourt-item__favorite">
-                <span data-feather="heart"></span>
-                @if (Auth::user())
-                  <favorite
-                      :beachcourt={{ $beachcourt->id }}
-                      :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-                  ></favorite>
-                  @endif
-              </div>
+              @if (Auth::user())
+                <favorite
+                    :beachcourt={{ $beachcourt->id }}
+                    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+                ></favorite>
+              @endif
             </div>
 
             <div class="beachcourt-item__info">
@@ -163,3 +160,29 @@
     </div>
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+  <script>
+    //grab the values of input slider
+    var rangeSlider = function(){
+      var slider = $('.input-range'),
+          range = $('.input-range__field'),
+          value = $('.input-range__value');
+
+      slider.each(function(){
+
+        value.each(function(){
+          var value = $(this).prev().attr('value');
+          $(this).html(value);
+        });
+
+        range.on('input', function(){
+          $(this).next(value).html(this.value);
+          $(this).attr({'value':parseInt(this.value)});
+        });
+      });
+    };
+
+    rangeSlider();
+  </script>
+@endpush
