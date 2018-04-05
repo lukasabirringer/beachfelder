@@ -136,13 +136,13 @@
                   </div>
                   <div class="column column--12 column--s-4">
                     <label class="input-radio">
-                      <input type="radio" class="input-radio__field" name="sex" value="männlich">
+                      <input type="radio" class="input-radio__field" name="sex" value="male">
                       <span class="input-radio__label">männlich</span>
                     </label>
                   </div>
                   <div class="column column--12 column--s-4">
                     <label class="input-radio">
-                      <input type="radio" class="input-radio__field" name="sex" value="weiblich">
+                      <input type="radio" class="input-radio__field" name="sex" value="female">
                       <span class="input-radio__label">weiblich</span>
                     </label>
                   </div>

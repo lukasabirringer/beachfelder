@@ -34,7 +34,7 @@
           <div class="column column--12 column--s-6 column--m-3">
             <div class="infobox">
               <span class="infobox__icon" data-feather="{{ $icon }}"></span>
-              <span class="infobox__title">Aktuell <br>({{ $weather->lastUpdate->format('d.m.Y H:i') }})</span>
+              <span class="infobox__title">Heute</span>
               <span class="infobox__text">{{ $roundedWheater }} {{ $weather->temperature->getUnit() }}</span>
             </div>
           </div>
@@ -92,7 +92,7 @@
         <div class="row">
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Sand {{ $beachcourt->ratingSand }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Sand</span>
               @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -106,7 +106,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Netz {{ $beachcourt->ratingNet }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Netz</span>
               @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -120,7 +120,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Feld {{ $beachcourt->ratingCourt }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Feld</span>
               @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -134,7 +134,7 @@
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
-              <span class="-typo-copy--bold">Umgebung {{ $beachcourt->ratingEnvironment }} von 5 Punkten</span>
+              <span class="-typo-copy--bold">Umgebung</span>
               @for ($i = 1; $i <= $beachcourt->ratingEnvironment; $i++)
                   <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
               @endfor
@@ -154,9 +154,9 @@
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
             <div class="owl-carousel owl-carousel--detailpage">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03-retina.jpg" alt="Beachvolleyballfeld in Tiefenbronn-Mühlhausen">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
             </div>
 
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
@@ -204,13 +204,19 @@
     </div>
 
     <div class="row -spacing-a">
-      <h4 class="-typo-headline-04">Weitere Beachfelder in der Umgebung (15km)</h4>
+      <div class="column column--12">
+        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>  
+      </div>
     </div>
-    <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
+
+    <div class="row -spacing-b -flex -flex--direction-row -flex--wrap">
       @foreach ($otherBeachcourts as $otherBeachcourt)
         <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
           <div class="beachcourt-item">
-            <div class="beachcourt-item__image" style="background: url(/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01-retina.jpg); background-size: cover;">
+            <div class="beachcourt-item__image">
+                <figure class="progressive">
+                  <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01.jpg">
+                </figure>
                 @if (Auth::user())
                   <favorite
                       :beachcourt={{ $otherBeachcourt->id }}
