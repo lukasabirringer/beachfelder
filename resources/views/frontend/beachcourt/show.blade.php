@@ -204,9 +204,12 @@
     </div>
 
     <div class="row -spacing-a">
-      <h4 class="-typo-headline-04">Weitere Beachfelder in der Umgebung (15km)</h4>
+      <div class="column column--12">
+        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>  
+      </div>
     </div>
-    <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
+
+    <div class="row -spacing-b -flex -flex--direction-row -flex--wrap">
       @foreach ($otherBeachcourts as $otherBeachcourt)
         <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
           <div class="beachcourt-item">
