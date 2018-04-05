@@ -205,16 +205,22 @@
             <div class="column column--12 column--m-6 -spacing-b">
               <p class="-typo-copy -text-color-gray-01">Dein neues Profilbild</p>
 
-              <label class="input-fileupload">
+              <!-- <label class="input-fileupload">
                 <input id="profile-img" type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
+              </label> -->
+
+              <label class="input-upload -spacing-d">
+                <input type="file" class="input-upload__field" id="profile-img" name="profilePicture" data-multiple-caption="{count} Dateien ausgewählt">
+                <span class="input-upload__label">
+                  <span class="input-upload__icon" data-feather="upload"></span>  
+                  <span class="input-upload__text">Lade dein Profilbild hoch</span>
+                </span>
               </label>
 
               @if ($errors->has('profilePicture'))
                 <div class="alert alert-danger">{{ $errors->first('profilePicture', ':message') }}</div>
               @endif
-              <img src="" class="image image--max-width" id="profile-img-tag"/>
-
-
+              <img src="" class="image image--max-width -spacing-d" id="profile-img-tag"/>
             </div>
           </div>
 

@@ -45,6 +45,8 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 .row {
   margin-left: -0.25rem;
   margin-right: -0.25rem; }
@@ -1107,6 +1109,42 @@ input::-moz-focus-outer {
     color: #FFF; }
   .input-radio-icon:hover .input-radio-icon__field:checked:not(:disabled) ~ .input-radio-icon__container {
     background-color: #457b8c; }
+
+.input-upload {
+  display: inline-block;
+  cursor: pointer; }
+  .input-upload:hover .input-upload__label {
+    border-color: #08b8b8; }
+  .input-upload__field {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    display: none;
+    cursor: pointer; }
+  .input-upload__icon {
+    color: #798796;
+    margin-right: 0.625rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: text-bottom; }
+  .input-upload__label {
+    padding: 0.625rem;
+    border-radius: 0.125rem;
+    color: #798796;
+    font-family: "PT Sans";
+    font-size: 1rem;
+    line-height: 1.5;
+    display: inline-block;
+    border: 2px #f3f3f3 solid;
+    pointer-events: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    outline: none; }
+    .input-upload__label:hover {
+      background-color: #457b8c; }
+  .input-upload__text {
+    cursor: pointer; }
 
 .textarea {
   font-family: "PT Sans";
