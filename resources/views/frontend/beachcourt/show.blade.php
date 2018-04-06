@@ -51,7 +51,7 @@
     <div class="row">
       <div class="column column--12 -spacing-a">
         <div class="row">
-          <div class="column column--12 column--m-9">
+          <div class="column column--12">
             <div class="rating">
               @for ($i = 1; $i <= $beachcourt->rating; $i++)
                 <div class="rating__item">
@@ -67,26 +67,15 @@
                 @endfor
               @endif
 
-              <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
-                <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
-              </a>
-              <br>
               @if ($beachcourt->ratingCount = 1)
-                <p class="-typo-copy -text-color-gray-01">Diese Bewertung stammt von beachfelder.de</p>
+                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Diese Bewertung stammt von beachfelder.de</p>
               @elseif ($beachcourt->ratingCount > 10)
                 <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
+              <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
+                <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
+              </a>
             </div>
-          </div>
-
-
-          <div class="column column--12 column--m-3">
-              <div class="beachcourt-detail__favorite">
-                <favorite
-                :beachcourt={{ $beachcourt->id }}
-                :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-                ></favorite>
-              </div>
           </div>
         </div>
         <div class="row">
@@ -150,6 +139,12 @@
       </div>
     </div>
 
+    <div class="row -spacing-a">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+
     <div class="row">
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
@@ -165,7 +160,16 @@
       </div>
 
       <div class="column column--12 column--m-6 -spacing-a">
-        <h4 class="-typo-headline-04 -text-color-petrol">Kann ich auf diesem Feld kostenlos spielen?</h4>
+        @if(Auth::user())
+          <div class="beachcourt-detail__favorite">
+            <favorite
+            :beachcourt={{ $beachcourt->id }}
+            :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+            ></favorite>
+          </div>
+        @endif
+
+        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
         @if ($beachcourt->isChargeable == 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
         @else

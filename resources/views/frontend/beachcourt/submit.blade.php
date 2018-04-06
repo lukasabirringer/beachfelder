@@ -162,23 +162,24 @@
           <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
           @endif
         </div>
+      </div>
 
-        <div class="row -spacing-a">
-          <div class="column column--12">
-            <h4 class="-typo-headline-04 -text-color-green">Das Feld</h4>
-          </div>
+      <div class="row -spacing-a">
+        <div class="column column--12">
+          <h4 class="-typo-headline-04 -text-color-green">Das Feld</h4>
         </div>
+      </div>
+
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Ist das Feld ein öffentliches?</p>
+          <p class="-typo-copy -text-color-petrol">Ist das Feld öffentlich zugänglich?</p>
           <label class="input-toggle -spacing-d">
 
-            <input type="hidden" class="input-toggle__hidden" name="isPublic" value="1">
-            <input type="checkbox" class="input-toggle__field" name="isPublic" value="1">
+            <input type="hidden" class="input-toggle__hidden" name="isPublic" value="0">
+            <input type="checkbox" class="input-toggle__field" name="isPublic" value="0">
 
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
-            <input type="hidden" class="hidden" name="isPublic" value="0">
           </label>
           @if ($errors->has('isPublic'))
           <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
@@ -186,14 +187,13 @@
         </div>
 
         <div class="column column--12 column--m-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Kann man dort kostenlos spielen?</p>
+          <p class="-typo-copy -text-color-petrol">Ist das Spielen dort kostenpflichtig?</p>
           <label class="input-toggle -spacing-d">
-            <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="1">
-            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="1">
+            <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="0">
+            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="0">
 
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
-            <input type="hidden" class="hidden" name="isChargeable" value="0">
           </label>
           @if ($errors->has('isChargeable'))
           <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
@@ -260,19 +260,19 @@
           <h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
         </div>
       </div>
-
-      <div class="column column--12 -spacing-a">
-        <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
-        <label class="textarea -spacing-b">
-          <textarea name="notes" class="textarea__field"></textarea>
-          <span class="textarea__label">Deine Nachricht an uns</span>
-        </label>
-        @if ($errors->has('notes'))
-        <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
-        @endif
+      <div class="row">
+        <div class="column column--12 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
+          <label class="textarea -spacing-b">
+            <textarea name="notes" class="textarea__field"></textarea>
+            <span class="textarea__label">Deine Nachricht an uns</span>
+          </label>
+          @if ($errors->has('notes'))
+          <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+          @endif
+        </div>
       </div>
-
-
+      <div class="row">
         <div class="column column--12 column--m-5 -spacing-a">
           <a href="javascript:;" onclick="document.getElementById('form--submit-beachcourt').submit();" class="button-primary">
             <span class="button-primary__label">Feld einreichen</span>
@@ -281,12 +281,6 @@
         </div>
       </div>
     </form>
-
-
-
-
-
-
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -401,16 +395,14 @@
     rangeSlider();
 
     $('.input-toggle__field').click(function() {
-      if($(this).val(0)) {
+      if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('Ja');
-
-        $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0);
-      } else {
-        $(this).parent().find('.input-toggle__label').text('Nein');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
-
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Nein');
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0);
       }
     });
 
