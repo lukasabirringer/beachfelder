@@ -41,6 +41,8 @@ class PasswordReset extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                ->subject('Beachfelder.de - Passwort zurücksetzen')
+                ->from('no-reply@beachfelder.de', 'Beachfelder.de')
                 ->line('du hast vor Kurzem die Zurücksetzung des Passworts für Beachfelder.de angefordert. Klicke unten auf den Link, um den Vorgang abzuschließen.')
                 ->action('Jetzt zurücksetzen', url(config('app.url').route('password.reset', $this->token, false)))
                 ->line('');

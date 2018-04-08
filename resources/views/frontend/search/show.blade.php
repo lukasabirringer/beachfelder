@@ -78,6 +78,24 @@
                 </button>
               </div>
             </div>
+
+            <label class="input-toggle -spacing-d">
+
+                <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
+                <input type="checkbox" class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
+                <span class="input-toggle__switch"></span>
+                <span class="input-toggle__label">frei zugänglich</span>
+              </label>
+              <label class="input-toggle -spacing-d">
+                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
+                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
+                <span class="input-toggle__switch"></span>
+                <span class="input-toggle__label">nicht kostenpflichtig</span>
+              </label>
+              <button class="button-primary -spacing-b button__accept">
+                  <span class="button-primary__label">bestätigen</span>
+                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
+                </button>
           </div>
         </div>
 
@@ -163,6 +181,45 @@
 
 @push('scripts')
   <script>
+
+    $(document).ready(function() {
+      var checkbox = $('.public');
+      var checkboxchargeable = $('.chargeable');
+
+      if(checkbox.val() == 1) {
+        checkbox.attr('checked', true);
+        checkbox.parent().find('.input-toggle__label').text('frei zugänglich');
+      }
+      if(checkboxchargeable.val() == 1) {
+        checkboxchargeable.attr('checked', true);
+        checkboxchargeable.parent().find('.input-toggle__label').text('kostenpflichtig');
+      }
+    });
+
+     $('.public').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('frei zugänglich');
+        $(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
+      } else {
+        $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0)
+      }
+    });
+
+     $('.chargeable').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
+        $(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
+      } else {
+        $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0);
+      }
+    });
+
     //grab the values of input slider
     var rangeSlider = function(){
       var slider = $('.input-range'),
