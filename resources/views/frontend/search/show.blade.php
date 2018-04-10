@@ -7,13 +7,13 @@
         <h2 class="title-page__title">Dein Suchergebnis</h2>
       </div>
     </div>
-    <div class="row  -spacing-b">
-      <form action="/search" method="POST">
+    <form action="/search" method="POST" class="form--search">
+      <div class="row  -spacing-b">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <div class="column column--8">
+        <div class="column column--12 column--m-7">
           <div class="row">
-            <div class="column column--12 column--s-6 column--m-4">
+            <div class="column column--12 column--s-6 column--m-3">
               <div class="icon-text icon-text--hoverable trigger-flyout">
                 <span class="icon-text__icon" data-feather="map-pin"></span>
                 <span class="icon-text__text">PLZ: <br> <span class="output__value">{{ $plz }}</span></span>
@@ -34,7 +34,7 @@
               </div>
             </div>
 
-            <div class="column column--12 column--s-6 column--m-4">
+            <div class="column column--12 column--s-6 column--m-3">
               <div class="icon-text icon-text--hoverable trigger-flyout">
                 <span class="icon-text__icon" data-feather="crosshair"></span>
                 <span class="icon-text__text">{{$distance}} <span class="output__value"></span> km <br> entfernt</span>
@@ -60,7 +60,7 @@
               </div>
             </div>
 
-            <div class="column column--12 column--s-6 column--m-4">
+            <div class="column column--12 column--s-6 column--m-3">
               <div class="icon-text icon-text--hoverable trigger-flyout">
                 <span class="icon-text__icon" data-feather="award"></span>
                 <span class="icon-text__text">mindestens<br><span class="output__value">{{ $ratingmin }}</span> Beachbälle</span>
@@ -78,30 +78,35 @@
                 </button>
               </div>
             </div>
-
-            <label class="input-toggle -spacing-d">
-
+          </div>
+        </div>
+        <div class="column column--12 column--m-5">
+          <div class="row">
+            <div class="column column--12 column--m-6">
+              <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <input type="checkbox" class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <span class="input-toggle__switch"></span>
                 <span class="input-toggle__label">frei zugänglich</span>
               </label>
+            </div>
+            <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
                 <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
                 <span class="input-toggle__switch"></span>
                 <span class="input-toggle__label">nicht kostenpflichtig</span>
               </label>
-              <button class="button-primary -spacing-b button__accept">
-                  <span class="button-primary__label">bestätigen</span>
-                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-                </button>
+            </div>
           </div>
+          <!-- <button class="button-primary -spacing-b button__accept">
+            <span class="button-primary__label">bestätigen</span>
+            <span class="button-primary__label button-primary__label--hover">bestätigen</span>
+          </button> -->
         </div>
-
-      </form>
-    </div>
-
+      </div>
+    </form>
+    
     <div class="row">
       <div class="column column--12">
         <hr class="divider">
@@ -218,6 +223,10 @@
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
       }
+    });
+
+    $('input[type="checkbox"]').on('change', function() {
+      $('.form--search').submit();
     });
 
     //grab the values of input slider
