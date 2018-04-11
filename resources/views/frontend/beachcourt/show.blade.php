@@ -68,7 +68,7 @@
               @endif
 
               @if ($beachcourt->ratingCount = 1)
-                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Diese Bewertung stammt von beachfelder.de</p>
+                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
               @elseif ($beachcourt->ratingCount > 10)
                 <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
