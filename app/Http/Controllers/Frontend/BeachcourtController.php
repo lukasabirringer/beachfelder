@@ -80,7 +80,16 @@ class BeachcourtController extends Controller
     {
         $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();
 
-        return view('frontend.beachcourt.rate', compact('beachcourt'));
+        $beachcourt_id = $beachcourt->id;
+
+        $user_id = Auth::id();
+        $alreadyrated = Rating::where('user_id', $user_id)->where('beachcourt_id', $beachcourt_id)->first();
+
+        if ($alreadyrated == null) {
+         return view('frontend.beachcourt.rate', compact('beachcourt'));
+        }
+        return redirect()->back()->with('error', 'Du hast dieses Feld bereits bewertet - Falls das Feld verbessert wurde, informiere uns darüber und du kannst es erneut bewerten!');
+
     }
     public function favoriteBeachcourt(Beachcourt $beachcourt)
     {

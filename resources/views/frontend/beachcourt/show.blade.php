@@ -2,9 +2,21 @@
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('content')
+ @if (\Session::has('error'))
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('error') !!}</p>
 
+          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label">OK</span>
+          </button>
+        </li>
+      </ul>
+    @endif
   <div class="content__main">
     <div class="row">
+
       <div class="column column--12">
         <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h1>
       </div>
@@ -67,10 +79,10 @@
                 @endfor
               @endif
 
-              @if ($beachcourt->ratingCount = 1)
+              @if ($beachcourt->ratingCount < 10)
                 <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
-              @elseif ($beachcourt->ratingCount > 10)
-                <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->ratingCount }} Bewertungen</p>
+              @elseif ($beachcourt->ratingCount >= 10)
+                <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
               <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
                 <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
@@ -209,7 +221,7 @@
 
     <div class="row -spacing-a">
       <div class="column column--12">
-        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>  
+        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>
       </div>
     </div>
 
