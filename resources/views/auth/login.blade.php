@@ -1,6 +1,18 @@
 @extends('layouts.frontend')
 
 @section('content')
+@if (\Session::has('error'))
+      <ul class="notification">
+        <li class="notification__item">
+          <span class="notification__icon" data-feather="info"></span>
+          <p class="notification__text">{!! \Session::get('error') !!}</p>
+
+          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label">OK</span>
+          </button>
+        </li>
+      </ul>
+    @endif
   <div class="content__main">
     <div class="row">
       <div class="column column--12">

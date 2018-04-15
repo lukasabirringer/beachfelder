@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Beachcourt;
 use App\Rating;
+use Auth;
 
 class RatingController extends Controller
 {
@@ -29,8 +30,10 @@ class RatingController extends Controller
 
             $beachcourtid = $request->beachcourtname;
             $beachcourt = Beachcourt::where('id', $beachcourtid)->first();
+            $user_id = Auth::id();
 
             $newRating = $beachcourt->ratings()->create([
+                'user_id' => $user_id,
                 'sandQuality' => $sandQuality,
                 'courtTopography' => $courtTopography,
                 'sandDepth' => $sandDepth,
@@ -45,6 +48,37 @@ class RatingController extends Controller
                 'windProtection' => $windProtection,
                 'interferenceCourt' => $interferenceCourt,
             ]);
+
+            $userRating =    ($sandQuality +
+                                $courtTopography +
+                                $sandDepth +
+                                $irrigationSystem +
+                                $netHeight +
+                                $netType +
+                                $netAntennas +
+                                $netTension +
+                                $boundaryLines +
+                                $fieldDimensions +
+                                $securityZone +
+                                $windProtection +
+                                $interferenceCourt);
+
+            if ($userRating >= 90 && $userRating <= 100) {
+                $userRating = 5;
+            } elseif ($userRating >= 80 && $userRating <= 90) {
+                $userRating = 4;
+            } elseif ($userRating >= 70 && $userRating <= 80) {
+                $userRating = 3;
+            } elseif ($userRating >= 60 && $userRating <= 70) {
+                $userRating = 2;
+            } elseif ($userRating >= 50 && $userRating <= 60) {
+                $userRating = 1;
+            } elseif ($userRating >= 0 && $userRating <= 50) {
+                $userRating = 0;
+            }
+        DB::table('beachcourts')->whereid($beachcourtid)->increment('ratingCount');
+        $ratingcount = $beachcourt->ratingCount;
+        if ($ratingcount >= 10) {
 
             $sandQualityAverage = $beachcourt->ratings()->avg('sandQuality');
             $courtTopographyAverage = $beachcourt->ratings()->avg('courtTopography');
@@ -106,7 +140,7 @@ class RatingController extends Controller
             }
 
             $newEnvironmentRating = ($windProtectionAverage + $interferenceCourtAverage);
-            if ($newCourtRating >= 9.9 && $newCourtRating <= 11) {$newCourtRating = 5;
+            if ($newEnvironmentRating >= 9.9 && $newEnvironmentRating <= 11) {$newEnvironmentRating = 5;
                 DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
             } elseif ($newEnvironmentRating >= 8.8 && $newEnvironmentRating <= 9.9) {$newEnvironmentRating = 4;
                 DB::table('beachcourts')->where('id', $beachcourtid)->update(['ratingEnvironment' => $newEnvironmentRating]);
@@ -153,9 +187,9 @@ class RatingController extends Controller
                 $newRating = 0;
                 DB::table('beachcourts')->where('id', $beachcourtid)->update(['rating' => $newRating]);
             }
+        }
+            $newRating = $beachcourt->rating;
 
-            DB::table('beachcourts')->where('id', $beachcourtid)->increment('ratingCount');
-
-            return redirect()->back()->with('success', 'Danke für das Bewerten des Beachfeldes :)');
+            return view('frontend.beachcourt.thanksrate',compact('userRating', 'newRating', 'beachcourt'));
         }
 }

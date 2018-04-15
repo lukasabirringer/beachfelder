@@ -17,6 +17,7 @@ class Rating extends Model
     }
 
     protected $fillable = [
+    'user_id',
     'sandQuality',
     'courtTopography',
     'sandDepth',
