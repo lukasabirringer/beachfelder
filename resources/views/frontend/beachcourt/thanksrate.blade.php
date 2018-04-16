@@ -40,9 +40,8 @@
           </div>
         </div>
       </div>
-      <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-        Nicht das richtige Feld?
-        <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück</a>
+      <p class="-typo-copy -text-color-gray-01 -spacing-c">
+        <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück zum Feld</a>
         </a>
       </p>
     </div>
@@ -54,16 +53,51 @@
     </div>
   </div>
 
-  <div class="row">
-    Danke für das bewerten des Beachfeldes! Du hast es mit {{ $userRating }} von 5 Bällen bewertet!<br>
-    Insgesamt wurde das Feld mit {{ $newRating }} von 5 Bällen bewertet!
-    @if ($beachcourt->ratingCount < 10)
-      <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Dies ist eine vorläufige Bewertung durch beachfelder.de, da noch nicht genügend Bewertungen eingeganen sind, um einen repräsentativen Wert darzustellen.</p>
-    @endif
-
+  <div class="row -spacing-a">
+    <div class="column column--12">
+      <h4 class="-typo-headline-03 -text-color-green">Danke für das bewerten des Beachfeldes!</h4>
+    </div>
   </div>
-  <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück zum Beachfeld</a>
-        </a>
 
+  <div class="row -spacing-b">
+    <div class="column column--12 column--m-6">
+      <h4 class="-typo-headline-04 -text-color-gray-01 -spacing-b">Du hast es mit {{ $userRating }} von 5 Bällen bewertet!</h4>
+      @for ($i = 1; $i <= $userRating; $i++)
+        <div class="rating__item -spacing-b">
+          <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+        </div>
+      @endfor
+      <?php $starsLeft = 5 - $userRating; ?>
+      @if (count($starsLeft) > 0)
+        @for ($i = 1; $i <= $starsLeft; $i++)
+        <div class="rating__item -spacing-b">
+          <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+        </div>
+        @endfor
+      @endif
+    </div>
+    <div class="column column--12 column--m-6">
+      <h4 class="-typo-headline-04 -text-color-gray-01 -spacing-b">Insgesamt wurde das Feld mit {{ $newRating }} von 5 Bällen bewertet!</h4>
+
+      @for ($i = 1; $i <= $newRating; $i++)
+        <div class="rating__item -spacing-b">
+          <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+        </div>
+      @endfor
+      <?php $starsLeft = 5 - $newRating; ?>
+      @if (count($starsLeft) > 0)
+        @for ($i = 1; $i <= $starsLeft; $i++)
+        <div class="rating__item -spacing-b">
+          <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+        </div>
+        @endfor
+      @endif
+      <p class="-typo-copy -text-color-gray-01 -spacing-b">
+        @if ($beachcourt->ratingCount < 10)
+          Dies ist eine vorläufige Bewertung durch <span class="-typo-copy -typo-copy--bold">beachfelder.de</span>, da noch nicht genügend Bewertungen eingeganen sind, um einen repräsentativen Wert darzustellen.
+        @endif
+      </p>
+    </div>
+  </div>
 </div>
 @endsection
