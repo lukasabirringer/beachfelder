@@ -12,6 +12,7 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::get('register/verify/{confirmationCode}', ['as' => 'confirmation_path', 'uses' => 'ProfileController@confirmRegistration']);
 
   Route::post('/search', 'SearchController@show');
+  Route::get('/search', 'SearchController@show');
 
   Route::get('/stadt', 'CityController@index')->name('cities.index');
   Route::get('/stadt/{name}', 'CityController@show')->name('cities.show');

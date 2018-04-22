@@ -56,6 +56,7 @@
       <header class="header row">
         <div class="column column--12 column--m-6">
           <form action="/search" method="POST" class="form--search">
+
             <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" class="form-control" id="form-postcode" name="postcode">

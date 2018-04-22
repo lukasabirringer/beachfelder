@@ -163,7 +163,7 @@
                 </label>
               </div>
             </div>
-
+            <input type="hidden" name="publicProfile" value="{{ $user->publicProfile }}">
 
             <div class="row -spacing-a" id="submit">
               <div class="column column--12">
@@ -212,7 +212,7 @@
               <label class="input-upload -spacing-d">
                 <input type="file" class="input-upload__field" id="profile-img" name="profilePicture" data-multiple-caption="{count} Dateien ausgewählt">
                 <span class="input-upload__label">
-                  <span class="input-upload__icon" data-feather="upload"></span>  
+                  <span class="input-upload__icon" data-feather="upload"></span>
                   <span class="input-upload__text">Lade dein Profilbild hoch</span>
                 </span>
               </label>
