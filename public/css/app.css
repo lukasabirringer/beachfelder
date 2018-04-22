@@ -1,3 +1,9 @@
+.beachcourt-item {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px #f6f6f6 solid;
+}
+
 .beachcourt-item .favorite-link {
   display: none;
 }
@@ -53,6 +59,34 @@
     display: none;
     visibility: hidden;
   }
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+}
+
+.section--start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 14rem;
+  background: url("/../images/IMG_2482.JPG");
+  background-size: cover;
+}
+
+.section__input {
+  width: 550px;
 }
 
 .algolia-places {

@@ -52,6 +52,7 @@
         @endif
       </ul>
     </div>
+    @yield('frontpage')
     <div id="app" class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
