@@ -3,7 +3,7 @@ $(document).ready(function(){
   var owlDetailpage = $('.owl-carousel--detailpage');
 
   owlFrontpage.owlCarousel({
-    margin: 100,
+    margin: 10,
     nav: false,
     dots: false,
     loop: true,
@@ -23,7 +23,7 @@ $(document).ready(function(){
         items: 2
       },
       1000: {
-        items: 2
+        items: 3
       }
     }
   });
