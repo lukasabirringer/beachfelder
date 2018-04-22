@@ -10,7 +10,6 @@ use App\Rating;
 use DB;
 use Storage;
 use Auth;
-use File;
 use Cmfcmf\OpenWeatherMap;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 
