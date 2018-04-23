@@ -19,6 +19,7 @@
         {{ $errors->postcode->first('postcode') }}
       </label>
     </form>
+    <span class="section__link" data-feather="chevrons-down"></span>
   </div>
 @endsection
 

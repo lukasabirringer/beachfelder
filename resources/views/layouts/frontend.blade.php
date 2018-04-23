@@ -53,7 +53,7 @@
       </ul>
     </div>
     @yield('frontpage')
-    <div id="app" class="content">
+    <div id="app" class="content section">
       <header class="header row">
         <div class="column column--12 column--m-6">
           <form action="/search" method="POST" class="form--search">
