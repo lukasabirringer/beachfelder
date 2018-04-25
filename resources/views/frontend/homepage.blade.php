@@ -3,6 +3,8 @@
 
 @section('frontpage')
   <div class="section section--start">
+    <button onclick="window.location.href='{{URL::route('login')}}'" class="button-secondary hide-on-mobile section__button"><span class="button-secondary__label">Anmelden / Registrieren</span></button>
+
     <h1 class="-typo-headline-01 -text-color-white">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
     <p class="-typo-copy -text-color-white -align-center">
     <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
