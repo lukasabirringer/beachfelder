@@ -45,6 +45,12 @@
   }
 }
 
+.section__button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
 .algolia-places {
   width: 100%;
 }

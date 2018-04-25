@@ -24,6 +24,11 @@
 	.hide-on-mobile {display: none; visibility: hidden;}
 }
 
+.section__button {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
 
 //ALGOLIA
 // Main input wrapper
