@@ -161,9 +161,15 @@
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
             <div class="owl-carousel owl-carousel--detailpage">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-02-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
-              <img class="owl-lazy" data-src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03.jpg" data-src-retina="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-03-retina.jpg" alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+
+              @if (count($filecount) > 0)
+                @for ($i = 1; $i <= $filecount; $i++)
+                <img class="owl-lazy"
+                      data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/slide-image-0{{ $i }}.jpg"
+                      data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
+                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+                @endfor
+              @endif
             </div>
 
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
