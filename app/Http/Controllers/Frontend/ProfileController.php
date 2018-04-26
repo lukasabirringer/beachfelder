@@ -23,14 +23,13 @@ class ProfileController extends Controller
 {
     public function show($name, Request $request)
     {
-
         $user = Auth::user();
         $profileuser = User::where('userName', $request->name)->first();
         if (!$profileuser) {
           return back();
         }
 
-        $filename = $user->pictureName;
+        $filename = $profileuser->pictureName;
         $profilepicture = auth()->id() . '/' . $filename;
 
         $min = $request->min;
@@ -144,6 +143,7 @@ class ProfileController extends Controller
         $email = $user->email;
         $name = $user->firstName;
         $code = str_random(30);
+         $confirmation_code = ['foo' => $code];
 
         Mail::send('email.deleteProfile', $confirmation_code, function($message) use ($email, $name) {
             $message->from('hello@beachfelder.de', 'beachfelder.de');
