@@ -91,58 +91,25 @@
         </div>
       </div>
       <div class="row -spacing-a">
+        
         <div class="column column--12">
           <h2 class="-typo-headline-02 -text-color-gray-01">Felder in den größten deutschen Städten</h2>
         </div>
       </div>
       <div class="row">
-        <div class="column column--12 column--s-6 -spacing-b">
-          <div class="teaser">
-            <a href="{{ URL('/') }}/stadt/berlin" class="teaser__link">
-              <img src="https://images.pexels.com/photos/53146/brandenburg-gate-potsdam-place-night-clouds-53146.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="teaser__image">
-              <div class="teaser__info">
-                <h3 class="teaser__title">Berlin</h3>
-                <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
-              </div>
-            </a>
+        @foreach($cities as $city)
+          <div class="column column--12 column--s-6 -spacing-b">
+            <div class="teaser">
+              <a href="{{ URL('/') }}/stadt/{{strtolower($city->name) }}" class="teaser__link">
+                <img src="{{ asset('uploads/cities') }}/{{strtolower($city->name) }}.jpg" class="teaser__image">
+                <div class="teaser__info">
+                  <h3 class="teaser__title">{{ $city->name }}</h3>
+                  <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="column column--12 column--s-6 -spacing-b">
-          <div class="teaser">
-            <a href="{{ URL('/') }}/stadt/hamburg" class="teaser__link">
-              <img src="https://images.pexels.com/photos/167676/pexels-photo-167676.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="teaser__image">
-              <div class="teaser__info">
-                <h3 class="teaser__title">Hamburg</h3>
-                <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="column column--12 column--s-6 -spacing-b">
-          <div class="teaser">
-            <a href="{{ URL('/') }}/stadt/berlin" class="teaser__link">
-              <img src="https://images.pexels.com/photos/163405/munich-olympia-mountain-olympic-stadium-view-163405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="teaser__image">
-              <div class="teaser__info">
-                <h3 class="teaser__title">München</h3>
-                <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="column column--12 column--s-6 -spacing-b">
-          <div class="teaser">
-            <a href="{{ URL('/') }}/stadt/hamburg" class="teaser__link">
-              <img src="https://images.pexels.com/photos/130350/pexels-photo-130350.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="teaser__image">
-              <div class="teaser__info">
-                <h3 class="teaser__title">Köln</h3>
-                <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
-              </div>
-            </a>
-          </div>
-        </div>
+        @endforeach
       </div>
   </div> <!-- .content__main ENDE -->
 @endsection
