@@ -44,10 +44,11 @@
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="map-pin"></span>
               <span class="icon-text__text">
-                {{ $user->postalCode }}
-                @if (Auth::user()->userName === $profileuser->userName)
-                <br> {{ $user->city }}
-                @endif
+
+
+                {{ $profileuser->postalCode }}
+                <br> {{ $profileuser->city }}
+
               </span>
             </div>
           </div>
@@ -75,17 +76,22 @@
 
     <div class="row -spacing-a">
       <div class="column column--12 column--m-4">
-        @if($user->pictureName !== 'placeholder-user.png' )
+        @if($profileuser->pictureName !== 'placeholder-user.png' )
           <img src="{{url('/')}}/uploads/profilePictures/{{ $profilepicture }}" class="image image--max-width">
         @else
           <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
         @endif
+
       </div>
 
       <div class="column column--12 column--m-8">
         <div class="row">
           <div class="column column--12">
+            @if (Auth::user()->userName === $profileuser->userName)
             <h4 class="-typo-headline-04 -text-color-petrol">Deine Informationen</h4>
+            @else
+            <h4 class="-typo-headline-04 -text-color-petrol">Informationen von {{ $profileuser->userName }}</h4>
+            @endif
           </div>
         </div>
         @if (Auth::user()->userName === $profileuser->userName)
@@ -126,19 +132,19 @@
               Username
             </p>
             <p class="-typo-copy -text-color-gray-02">
-              {{ $user->userName }}
+              {{ $profileuser->userName }}
             </p>
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
               PLZ
             </p>
             <p class="-typo-copy -text-color-gray-02">
-              {{ $user->postalCode }}
+              {{ $profileuser->postalCode }}
             </p>
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
               Geschlecht
             </p>
             <p class="-typo-copy -text-color-gray-02">
-              {{ $user->sex }}
+              {{ $profileuser->sex }}
             </p>
           </div>
           @endif
@@ -176,7 +182,7 @@
         </div>
       </div>
     </div>
-
+     @if (Auth::user()->userName === $profileuser->userName)
     <div class="row -spacing-a">
       <div class="column column--12">
         <hr class="divider">
@@ -319,5 +325,6 @@
         </div>
       </div>
     </div>
+    @endif
   </div> <!-- .content__main ENDE -->
 @endsection

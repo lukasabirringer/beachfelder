@@ -36,6 +36,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if ($this->shouldReport($exception) && class_exists(\LaraBug\LaraBug::class)) {
+        app('larabug')->handle($exception);
+        }
+
         parent::report($exception);
     }
 

@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
   Route::post('/rating/new', 'RatingController@store')->name('rating.new');
 
-  Route::get('/user/{name}', 'ProfileController@show')->middleware('auth')->name('profile.show');
+  Route::get('/user/{name}', 'ProfileController@show')->middleware('publicProfile')->name('profile.show');
   Route::get('/user/{name}/edit', 'ProfileController@edit')->middleware('auth')->name('profile.edit');
   Route::post('/user/update', 'ProfileController@update')->middleware('auth')->name('profile.update');
   Route::get('/profile/profil-loeschen', 'ProfileController@destroy')->middleware('auth')->name('profile.deleteuser');

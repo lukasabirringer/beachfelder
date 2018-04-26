@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Beachcourt;
 use App\Favorites;
 use App\Rating;
+use File;
 use DB;
 use Storage;
 use Auth;
@@ -74,7 +75,11 @@ class BeachcourtController extends Controller
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
            ->get();
 
-        return view('frontend.beachcourt.show', compact('otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
+        $path = public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/');
+        $files = File::allFiles($path);
+        $filecount = count($files);
+
+        return view('frontend.beachcourt.show', compact('filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
     }
     public function rate($cityslug, $latitude, $longitude)
     {

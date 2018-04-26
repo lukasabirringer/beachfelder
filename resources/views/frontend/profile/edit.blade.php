@@ -259,6 +259,13 @@
             <input type="hidden" name="email" value="{{ $user->email }}">
             <input type="hidden" name="password" value="{{ $user->password }}">
             <input type="hidden" name="password_confirmation" value="{{ $user->password }}">
+            <input type="hidden" name="pictureName" value="{{ $user->pictureName }}">
+            <input type="hidden" name="postalCode" value="{{ $user->postalCode }}">
+            <input type="hidden" name="city" value="{{ $user->city }}">
+            <input type="hidden" name="birthdate" value="{{ $user->birthdate }}">
+            <input type="hidden" name="role" value="{{ $user->role }}">
+            <input type="hidden" name="isConfirmed" value="{{ $user->isConfirmed }}">
+            <input type="hidden" name="sex" value="{{ $user->sex }}">
             <div class="column column--12 -spacing-d">
               <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="publicProfile" value="{{ $user->publicProfile }}">
