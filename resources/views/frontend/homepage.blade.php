@@ -38,18 +38,8 @@
       </div>
     </div> -->
     <div class="row">
-        <div class="column column--12" style="position: relative;">
+        <div class="column column--12">
           <h2 class="-typo-headline-02 -text-color-gray-01">Unsere neuesten Felder</h2>
-          <!-- <button class="button-circle button-circle--left">
-            <span class="button-circle__icon" data-feather="chevron-left"></span>
-          </button>
-          <button class="button-circle button-circle--right -spacing-b">
-            <span class="button-circle__icon" data-feather="chevron-right"></span>
-          </button> -->
-          <!-- <div class="overlay-gradient overlay-gradient--left">
-
-          </div> -->
-
           <div class="owl-carousel owl-carousel--frontpage -spacing-b">
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
@@ -93,7 +83,6 @@
               </div>
             @endforeach
           </div>
-          <!-- <div class="overlay-gradient overlay-gradient--right"> </div> -->
         </div>
       </div>
       <div class="row -spacing-a">
