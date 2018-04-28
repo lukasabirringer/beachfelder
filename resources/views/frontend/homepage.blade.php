@@ -3,7 +3,32 @@
 
 @section('frontpage')
   <div class="section section--start">
-    <button onclick="window.location.href='{{URL::route('login')}}'" class="button-secondary hide-on-mobile section__button"><span class="button-secondary__label">Anmelden / Registrieren</span></button>
+    @if (Auth::check())
+      <div class="profile-user hide-on-mobile section__button">
+        <div class="profile-user__info">
+          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
+          <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
+            {{ csrf_field() }}
+            <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
+          </form>
+        </div>
+        <div class="profile-user__image ">
+          @if(Auth::user()->pictureName !== 'placeholder-user.png' )
+            <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+              <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
+            </a>
+          @else
+            <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+              <img src="{{ url('/') }}/uploads/profilePictures/fallback/placeholder-user.png" width="60">
+            </a>
+          @endif
+        </div>
+      </div>
+    @else
+      <button class="button-secondary hide-on-mobile section__button" onclick="window.location.href='{{URL::route('login')}}'">
+        <span class="button-secondary__label">Anmelden / Registrieren</span>
+      </button>
+    @endif
 
     <h1 class="-typo-headline-01 -text-color-white">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
     <p class="-typo-copy -text-color-white -align-center">
@@ -35,16 +60,13 @@
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image">
-                  @if( $pictures == true )
                     <figure class="progressive">
                       <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg">
                     </figure>
-                  @else
-                    <figure class="progressive">
+                    <!-- <figure class="progressive">
                       <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="/uploads/beachcourts/dummy-image-submitted.jpg">
-                    </figure>
-                  @endif
-                  
+                    </figure> -->
+
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                   @endif

@@ -18,6 +18,6 @@ class HomepageController extends Controller
         
         $cities = City::paginate(15);
 
-        return view('frontend.homepage', compact('beachcourts'));
+        return view('frontend.homepage', compact('beachcourts', 'cities'));
     }
 }
