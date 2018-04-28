@@ -63,7 +63,7 @@ class BeachcourtController extends Controller
                 break;
         }
 
-        if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/slider-image-01-retina.jpg'))) {
+        if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/retina/slider-image-01-retina.jpg'))) {
              $pictures = 'false';
         } else {
              $pictures = 'true';

@@ -19,7 +19,7 @@
     @endif
     <div class="column column--xxs-12 column--xs-4 column--s-6 column--m-4">
       <figure class="progressive">
-        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
+        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="{{ url('/') }}//uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg">
       </figure>
     </div>
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">

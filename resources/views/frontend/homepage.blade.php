@@ -28,15 +28,6 @@
 @section('content')
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="content__main">
-    <!-- <div class="row">
-      <div class="column column--12 column--s-6">
-        <h1 class="title-page__title home__title">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
-        <p class="title-page__subtitle">
-        <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern.</p>
-
-        <p class="-typo-copy -text-color-gray-01 -spacing-a">Wir bieten dir die Möglickeit, Felder zu bewerten, Favoriten zu speichern und neue Beachvolleyballfelder uns vorzuschlagen.</p>
-      </div>
-    </div> -->
     <div class="row">
         <div class="column column--12">
           <h2 class="-typo-headline-02 -text-color-gray-01">Unsere neuesten Felder</h2>
@@ -44,9 +35,16 @@
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image">
-                  <figure class="progressive">
-                    <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
-                  </figure>
+                  @if( $pictures == true )
+                    <figure class="progressive">
+                      <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg">
+                    </figure>
+                  @else
+                    <figure class="progressive">
+                      <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="/uploads/beachcourts/dummy-image-submitted.jpg">
+                    </figure>
+                  @endif
+                  
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                   @endif
