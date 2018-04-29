@@ -1,6 +1,8 @@
 
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
-
+@section('title_and_meta')
+    <title>Beachfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | Beachfelder.de 🏖🌞🏝</title>
+ @endsection
 @section('content')
  @if (\Session::has('error'))
       <ul class="notification">
@@ -169,6 +171,11 @@
                       data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
                       alt="Beachvolleyballfeld {{ $beachcourt->city }}">
                 @endfor
+              @elseif ($filecount === 0)
+              <img class="owl-lazy"
+                      data-src="/uploads/beachcourts/dummy-image-submitted.jpg"
+                      data-src-retina="/uploads/beachcourts/dummy-image-submitted-retina.jpg"
+                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
               @endif
             </div>
 

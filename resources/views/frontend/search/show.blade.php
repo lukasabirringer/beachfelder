@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
 
+@section('title_and_meta')
+    <title>Beachfelder.de - Community - Suche</title>
+    <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
+@endsection
+
 @section('content')
   <div class="content__main">
     <div class="row">
@@ -106,7 +111,7 @@
         </div>
       </div>
     </form>
-    
+
     <div class="row">
       <div class="column column--12">
         <hr class="divider">
