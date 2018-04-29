@@ -75,7 +75,7 @@
                 <p class="-typo-copy -text-color-gray-01">Anzahl der Beachbälle ändern</p>
                 <label class="input-range -spacing-b">
                   <input type="range" name="ratingmin" class="input-range__field" value="{{ $ratingmin }}" min="1" max="5">
-                  <span class="input-range__value">0</span>
+                  <span class="input-range__value">1</span>
                 </label>
                 <button class="button-primary -spacing-b button__accept">
                   <span class="button-primary__label">bestätigen</span>

@@ -8,7 +8,32 @@
 
 @section('frontpage')
   <div class="section section--start">
-    <button onclick="window.location.href='{{URL::route('login')}}'" class="button-secondary hide-on-mobile section__button"><span class="button-secondary__label">Anmelden / Registrieren</span></button>
+    @if (Auth::check())
+      <div class="profile-user hide-on-mobile section__button">
+        <div class="profile-user__info">
+          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
+          <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
+            {{ csrf_field() }}
+            <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
+          </form>
+        </div>
+        <div class="profile-user__image ">
+          @if(Auth::user()->pictureName !== 'placeholder-user.png' )
+            <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+              <img src="{{ url('/') }}/uploads/profilePictures/{{Auth::user()->id}}/{{Auth::user()->pictureName}}" width="60">
+            </a>
+          @else
+            <a href="{{ URL::route('profile.show', Auth::user()->userName) }}">
+              <img src="{{ url('/') }}/uploads/profilePictures/fallback/placeholder-user.png" width="60">
+            </a>
+          @endif
+        </div>
+      </div>
+    @else
+      <button class="button-secondary hide-on-mobile section__button" onclick="window.location.href='{{URL::route('login')}}'">
+        <span class="button-secondary__label">Anmelden / Registrieren</span>
+      </button>
+    @endif
 
     <h1 class="-typo-headline-01 -text-color-white">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
     <p class="-typo-copy -text-color-white -align-center">
@@ -33,15 +58,6 @@
 @section('content')
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="content__main">
-    <!-- <div class="row">
-      <div class="column column--12 column--s-6">
-        <h1 class="title-page__title home__title">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
-        <p class="title-page__subtitle">
-        <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern.</p>
-
-        <p class="-typo-copy -text-color-gray-01 -spacing-a">Wir bieten dir die Möglickeit, Felder zu bewerten, Favoriten zu speichern und neue Beachvolleyballfelder uns vorzuschlagen.</p>
-      </div>
-    </div> -->
     <div class="row">
         <div class="column column--12">
           <h2 class="-typo-headline-02 -text-color-gray-01">Unsere neuesten Felder</h2>
@@ -49,6 +65,7 @@
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image">
+
                   <figure class="progressive">
                   @if(is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/')))
                     <img
@@ -64,6 +81,7 @@
                     />
                   @endif
                   </figure>
+                  
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                   @endif

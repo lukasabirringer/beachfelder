@@ -20,9 +20,9 @@
       </div>
     </div>
 
-    <div class="row -spacing-b">
+    <div class="row">
       @foreach ($beachcourts as $beachcourt)
-      <div class="column column--12 column--s-6 column--m-4">
+      <div class="column column--12 column--s-6 column--m-4 -spacing-b">
         <div class="beachcourt-item">
           <div class="beachcourt-item__image">
             <figure class="progressive">

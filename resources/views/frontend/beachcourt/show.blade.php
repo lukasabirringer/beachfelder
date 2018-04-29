@@ -162,6 +162,7 @@
     <div class="row">
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
+          @if( $pictures == true )
             <div class="owl-carousel owl-carousel--detailpage">
 
               @if (count($filecount) > 0)
@@ -181,6 +182,12 @@
 
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
+          @else
+            <figure class="progressive">
+              <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="/uploads/beachcourts/dummy-image-submitted.jpg">
+            </figure>
+          @endif
+
         </div>
       </div>
 
