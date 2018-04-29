@@ -240,51 +240,50 @@
 
     <div class="row -spacing-b -flex -flex--direction-row -flex--wrap">
       @foreach ($otherBeachcourts as $otherBeachcourt)
-        <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
-          <div class="beachcourt-item">
-            <div class="beachcourt-item__image">
-                <figure class="progressive">
-                  <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01.jpg">
-                </figure>
-                @if (Auth::user())
-                  <favorite
-                      :beachcourt={{ $otherBeachcourt->id }}
-                      :favorited={{ $otherBeachcourt->favorited() ? 'true' : 'false' }}
-                  ></favorite>
-                  @endif
-            </div>
-            <div class="beachcourt-item__info">
-              <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
-              <div class="icon-text beachcourt-item__rating -spacing-b">
-                <span class="icon-text__icon" data-feather="award"></span>
-                <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
-                <span class="beachcourt-item__info-icon" data-feather="info"></span>
-
-                <div class="flyout beachcourt-item__info-flyout">
-                  <span class="flyout__icon" data-feather="x-circle"></span>
-
-                  <h4 class="-typo-headline-04 -text-color-gray-01">Wie bewerten wir?</h4>
-                  <p class="-typo-copy -text-color-gray-01 -spacing-b">
-                    <a href="#" class="link-text">Hier</a> kannst du mehr dafürber erfahren, wie wir die Beachvolleyballfelder bewerten.
-                  </p>
+        @if($otherBeachcourt->latitude !='')
+          <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
+            <div class="beachcourt-item">
+              <div class="beachcourt-item__image">
+                  <figure class="progressive">
+                    <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/standard/slide-image-01.jpg">
+                  </figure>
+                  @if (Auth::user())
+                    <favorite
+                        :beachcourt={{ $otherBeachcourt->id }}
+                        :favorited={{ $otherBeachcourt->favorited() ? 'true' : 'false' }}
+                    ></favorite>
+                    @endif
+              </div>
+              <div class="beachcourt-item__info">
+                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
+                @if ($otherBeachcourt->rating >= 1)
+                  <div class="icon-text beachcourt-item__rating -spacing-b">
+                    <span class="icon-text__icon" data-feather="award"></span>
+                    <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
+                  </div>
+                @else
+                  <div class="icon-text beachcourt-item__rating -spacing-b">
+                    <span class="icon-text__icon" data-feather="award"></span>
+                    <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
+                  </div>
+                @endif
+                
+                <div class="icon-text -spacing-b">
+                  <span class="icon-text__icon" data-feather="map-pin"></span>
+                  <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
                 </div>
-              </div>
 
-              <div class="icon-text -spacing-b">
-                <span class="icon-text__icon" data-feather="map-pin"></span>
-                <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
-              </div>
+                <div class="icon-text -spacing-b">
+                  <span class="icon-text__icon" data-feather="info"></span>
+                  <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                </div>
 
-              <div class="icon-text -spacing-b">
-                <span class="icon-text__icon" data-feather="info"></span>
-                <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
+                </a>
               </div>
-
-              <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
-              </a>
             </div>
           </div>
-        </div>
+        @endif
       @endforeach
     </div>
 
