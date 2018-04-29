@@ -72,7 +72,7 @@
                   @endif
                 </div>
                 <div class="beachcourt-item__info">
-                  <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h3>
+                  <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</a>
                   @if ($beachcourt->rating >= 1)
                     <div class="icon-text beachcourt-item__rating -spacing-b">
                       <span class="icon-text__icon" data-feather="award"></span>
