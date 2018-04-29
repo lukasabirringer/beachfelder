@@ -1,6 +1,11 @@
 
 @extends('layouts.frontend', ['body_class' => 'home'])
 
+@section('title_and_meta')
+    <title>Beachfelder.de - Community - beach on!</title>
+    <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
+@endsection
+
 @section('frontpage')
   <div class="section section--start">
     @if (Auth::check())
@@ -60,13 +65,23 @@
             @foreach ($beachcourts as $beachcourt)
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image">
-                    <figure class="progressive">
-                      <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg">
-                    </figure>
-                    <!-- <figure class="progressive">
-                      <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="/uploads/beachcourts/dummy-image-submitted.jpg">
-                    </figure> -->
 
+                  <figure class="progressive">
+                  @if(is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/')))
+                    <img
+                      class="progressive__img progressive--not-loaded"
+                      data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
+                      src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg"
+                    />
+                  @else
+                    <img
+                      class="progressive__img progressive--not-loaded"
+                      data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg"
+                      src="/uploads/beachcourts/dummy-image-submitted.jpg"
+                    />
+                  @endif
+                  </figure>
+                  
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                   @endif
@@ -111,7 +126,7 @@
         </div>
       </div>
       <div class="row -spacing-a">
-        
+
         <div class="column column--12">
           <h2 class="-typo-headline-02 -text-color-gray-01">Felder in den größten deutschen Städten</h2>
         </div>
@@ -124,7 +139,7 @@
                 <img src="{{ asset('uploads/cities') }}/{{strtolower($city->name) }}.jpg" class="teaser__image">
                 <div class="teaser__info">
                   <h3 class="teaser__title">{{ $city->name }}</h3>
-                  <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>  
+                  <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>
                 </div>
               </a>
             </div>

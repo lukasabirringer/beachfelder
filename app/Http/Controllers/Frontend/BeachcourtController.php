@@ -19,7 +19,7 @@ class BeachcourtController extends Controller
     public function show($cityslug, $latitude, $longitude)
     {
         $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();
-        //wettaaaa
+
         $lang = 'de';
         $units = 'metric';
         $owm = new OpenWeatherMap('b8139c4415c13e5d46c12b08d1a379d3');
@@ -63,21 +63,20 @@ class BeachcourtController extends Controller
                 break;
         }
 
-        if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/retina/slider-image-01-retina.jpg'))) {
-             $pictures = 'false';
-        } else {
-             $pictures = 'true';
-        }
-
         $distance = '15';
         $otherBeachcourts = Beachcourt::where('submitState', 'approved')
            ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
            ->get();
 
+        if (is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/'))) {
         $path = public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/');
         $files = File::allFiles($path);
         $filecount = count($files);
+        }
+        else {
+            $filecount = 0;
+        }
 
         return view('frontend.beachcourt.show', compact('filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
     }
