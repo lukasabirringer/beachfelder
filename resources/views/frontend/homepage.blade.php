@@ -81,7 +81,7 @@
                     />
                   @endif
                   </figure>
-                  
+
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>
                   @endif
@@ -135,8 +135,8 @@
         @foreach($cities as $city)
           <div class="column column--12 column--s-6 -spacing-b">
             <div class="teaser">
-              <a href="{{ URL('/') }}/stadt/{{strtolower($city->name) }}" class="teaser__link">
-                <img src="{{ asset('uploads/cities') }}/{{strtolower($city->name) }}.jpg" class="teaser__image">
+              <a href="{{ URL('/') }}/stadt/{{ $city->slug }}" class="teaser__link">
+                <img src="{{ asset('uploads/cities') }}/{{ $city->slug }}.jpg" class="teaser__image">
                 <div class="teaser__info">
                   <h3 class="teaser__title">{{ $city->name }}</h3>
                   <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>

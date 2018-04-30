@@ -162,22 +162,14 @@
     <div class="row">
       <div class="column column--12 column--m-6 -spacing-a">
         <div class="image-slide">
-          @if( $pictures == true )
+          @if( $filecount != 0 )
             <div class="owl-carousel owl-carousel--detailpage">
-
-              @if (count($filecount) > 0)
                 @for ($i = 1; $i <= $filecount; $i++)
                 <img class="owl-lazy"
                       data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/slide-image-0{{ $i }}.jpg"
                       data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
                       alt="Beachvolleyballfeld {{ $beachcourt->city }}">
                 @endfor
-              @elseif ($filecount === 0)
-              <img class="owl-lazy"
-                      data-src="/uploads/beachcourts/dummy-image-submitted.jpg"
-                      data-src-retina="/uploads/beachcourts/dummy-image-submitted-retina.jpg"
-                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
-              @endif
             </div>
 
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
@@ -251,7 +243,7 @@
           <div class="beachcourt-item">
             <div class="beachcourt-item__image">
                 <figure class="progressive">
-                  <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/slide-image-01.jpg">
+                  <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01.jpg">
                 </figure>
                 @if (Auth::user())
                   <favorite

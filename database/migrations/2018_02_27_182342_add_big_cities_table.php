@@ -16,6 +16,7 @@ class AddBigCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->string('postalCodeMin');
             $table->string('postalCodeMax');
             $table->string('population');
