@@ -15,9 +15,9 @@ class CityController extends Controller
         $cities = City::paginate(15);
         return view('frontend.city.index', compact('cities'));
     }
-    public function show($name)
+    public function show($slug)
     {
-      $city = City::where('name', $name)->first();
+      $city = City::where('slug', $slug)->first();
       $name = ($city->name);
       $postalCodeMin = $city->postalCodeMin;
       $postalCodeMax = $city->postalCodeMax;
