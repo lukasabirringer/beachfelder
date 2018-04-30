@@ -1,0 +1,50 @@
+@if ($paginator->hasPages())
+    <ul class="pagination">
+        {{-- Previous Page Link --}}
+        @if ($paginator->onFirstPage())
+            <li class="pagination__item pagination__item--disabled">
+                <span data-feather="chevron-left"></span>
+            </li>
+        @else
+            <li class="pagination__item">
+                <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="pagination__link">
+                    <span data-feather="chevron-left"></span>
+                </a>
+            </li>
+        @endif
+
+        {{-- Pagination Elements --}}
+        @foreach ($elements as $element)
+            {{-- "Three Dots" Separator --}}
+            @if (is_string($element))
+                <li class="pagination__item pagination__item--disabled"><span>{{ $element }}</span></li>
+            @endif
+
+            {{-- Array Of Links --}}
+            @if (is_array($element))
+                @foreach ($element as $page => $url)
+                    @if ($page == $paginator->currentPage())
+                        <li class="pagination__item pagination__item--active">
+                            <span class="pagination__text pagination__text--active">{{ $page }}</span>
+                        </li>
+                    @else
+                        <li class="pagination__item">
+                            <a href="{{ $url }}" class="pagination__link">{{ $page }}</a>
+                        </li>
+                    @endif
+                @endforeach
+            @endif
+        @endforeach
+
+        {{-- Next Page Link --}}
+        @if ($paginator->hasMorePages())
+            <li class="pagination__item">
+                <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="pagination__link">
+                    <span data-feather="chevron-right"></span>
+                </a>
+            </li>
+        @else
+            <li class="pagination__item pagination__item--disabled"><span data-feather="chevron-right"></span></li>
+        @endif
+    </ul>
+@endif

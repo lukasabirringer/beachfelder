@@ -2985,6 +2985,91 @@ input::-moz-focus-outer {
   src: local("Oswald Regular"), local("Oswald-Regular"), url("../fonts/oswald-v16-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-v16-latin-regular.woff2") format("woff2"), url("../fonts/oswald-v16-latin-regular.woff") format("woff"), url("../fonts/oswald-v16-latin-regular.ttf") format("truetype"), url("../fonts/oswald-v16-latin-regular.svg#Oswald") format("svg");
   /* Legacy iOS */ }
 
+.pagination {
+  display: inline-block;
+  width: auto; }
+  .pagination__item {
+    display: inline-block;
+    margin-top: 1rem;
+    width: 49%; }
+    @media (min-width: 992px) {
+      .pagination__item {
+        margin-top: 0;
+        width: unset; } }
+    .pagination__item--disabled {
+      opacity: 0.6; }
+  .pagination__text {
+    font-family: "PT Sans";
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #798796;
+    background-color: #f3f3f3;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 0.25rem;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    display: block; }
+    .pagination__text--active {
+      background-color: #08b8b8;
+      color: #FFF; }
+  .pagination__link {
+    font-family: "PT Sans";
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #798796;
+    background-color: #f3f3f3;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 0.25rem;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    display: block; }
+    .pagination__link:hover {
+      background-color: #457b8c;
+      color: #FFF; }
+    .pagination__link--active {
+      background-color: #08b8b8;
+      color: #FFF; }
+      .pagination__link--active:hover {
+        background-color: #08b8b8;
+        color: #FFF; }
+
+/* pt-sans-regular - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/pt-sans-v9-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("PT Sans"), local("PTSans-Regular"), url("../fonts/pt-sans-v9-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/pt-sans-v9-latin-regular.woff2") format("woff2"), url("../fonts/pt-sans-v9-latin-regular.woff") format("woff"), url("../fonts/pt-sans-v9-latin-regular.ttf") format("truetype"), url("../fonts/pt-sans-v9-latin-regular.svg#PTSans") format("svg");
+  /* Legacy iOS */ }
+
+/* pt-sans-700 - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/pt-sans-v9-latin-700.eot");
+  /* IE9 Compat Modes */
+  src: local("PT Sans Bold"), local("PTSans-Bold"), url("../fonts/pt-sans-v9-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/pt-sans-v9-latin-700.woff2") format("woff2"), url("../fonts/pt-sans-v9-latin-700.woff") format("woff"), url("../fonts/pt-sans-v9-latin-700.ttf") format("truetype"), url("../fonts/pt-sans-v9-latin-700.svg#PTSans") format("svg");
+  /* Legacy iOS */ }
+
+/* oswald-regular - latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/oswald-v16-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Oswald Regular"), local("Oswald-Regular"), url("../fonts/oswald-v16-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-v16-latin-regular.woff2") format("woff2"), url("../fonts/oswald-v16-latin-regular.woff") format("woff"), url("../fonts/oswald-v16-latin-regular.ttf") format("truetype"), url("../fonts/oswald-v16-latin-regular.svg#Oswald") format("svg");
+  /* Legacy iOS */ }
+
 .page-login {
   display: -webkit-box;
   display: -ms-flexbox;

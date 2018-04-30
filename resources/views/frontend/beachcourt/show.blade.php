@@ -208,6 +208,12 @@
         <p class="-text-color-green -typo-copy">
           <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
         </p>
+        @if($beachcourt->notes != NULL)
+          <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Bemerkungen</h4>
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">
+            {{ $beachcourt->notes }}
+          </p>
+        @endif
       </div>
     </div>
 
@@ -268,36 +274,36 @@
                   </p>
                 </div>
               </div>
-              <div class="beachcourt-item__info">
-                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
-                @if ($otherBeachcourt->rating >= 1)
-                  <div class="icon-text beachcourt-item__rating -spacing-b">
-                    <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
-                  </div>
-                @else
-                  <div class="icon-text beachcourt-item__rating -spacing-b">
-                    <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
-                  </div>
-                @endif
-                
-                <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="map-pin"></span>
-                  <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
+            </div>
+            <div class="beachcourt-item__info">
+              <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
+              @if ($otherBeachcourt->rating >= 1)
+                <div class="icon-text beachcourt-item__rating -spacing-b">
+                  <span class="icon-text__icon" data-feather="award"></span>
+                  <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
                 </div>
-
-                <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="info"></span>
-                  <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+              @else
+                <div class="icon-text beachcourt-item__rating -spacing-b">
+                  <span class="icon-text__icon" data-feather="award"></span>
+                  <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
                 </div>
-
-                <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
-                </a>
+              @endif
+              
+              <div class="icon-text -spacing-b">
+                <span class="icon-text__icon" data-feather="map-pin"></span>
+                <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
               </div>
+
+              <div class="icon-text -spacing-b">
+                <span class="icon-text__icon" data-feather="info"></span>
+                <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+              </div>
+
+              <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
+              </a>
             </div>
           </div>
-        @endif
+        </div>
       @endforeach
     </div>
 
