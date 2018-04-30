@@ -41,15 +41,17 @@ class SearchController extends Controller
             $results = Beachcourt::where('submitState', 'approved')
                ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
                ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-               ->whereBetween('rating', array($ratingmin, $ratingmax ))
                ->where('isPublic', '=', $isPublic)
                ->where('isChargeable', '=', $isChargeable)
+               ->whereBetween('rating', array($ratingmin, $ratingmax ))
+               ->orWhere('ratingCount', '=', '0')
                ->get();
         } else {
             $results = Beachcourt::where('submitState', 'approved')
                ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
                ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
                ->whereBetween('rating', array($ratingmin, $ratingmax ))
+               ->orWhere('ratingCount', '=', '0')
                ->get();
         }
 

@@ -42,9 +42,8 @@ class ProfileController extends Controller
             $max = 5;
         }
 
-        $myFavorites = Auth::user()->favorites()->whereBetween('rating', array($min, $max))->get();
-
         $id = $profileuser->id;
+        $myFavorites = $profileuser->favorites()->whereBetween('rating', array($min, $max))->get();
 
         if ($id === auth()->id()) {
             $eigenesprofil = 'true';
@@ -54,7 +53,7 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
         $countSubmits = Beachcourt::where('user_id', $user_id)->count();
-        $submittedCourts = Beachcourt::where('user_id', $user_id)->get();
+        $submittedCourts = Beachcourt::where('user_id', $id)->get();
         $countFavorites = Auth::user()->favorites()->count();
 
 

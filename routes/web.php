@@ -15,7 +15,7 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::get('/search', 'SearchController@show');
 
   Route::get('/stadt', 'CityController@index')->name('cities.index');
-  Route::get('/stadt/{name}', 'CityController@show')->name('cities.show');
+  Route::get('/stadt/{slug}', 'CityController@show')->name('cities.show');
 
   Route::get('/beachvolleyballfeld-{cityslug}/@{latitude},{longitude}', 'BeachcourtController@show')->name('beachcourts.show');
   Route::get('/beachvolleyballfeld-{cityslug}/@{latitude},{longitude}/bewerten', 'BeachcourtController@rate')->middleware('auth')->name('beachcourts.rate');
