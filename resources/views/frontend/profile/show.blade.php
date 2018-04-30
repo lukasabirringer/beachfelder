@@ -1,78 +1,28 @@
-
 @extends('layouts.frontend')
 
 @section('content')
+
   <div class="content__main">
+
     <div class="row">
       <div class="column column--12">
-        @if (Auth::user()->userName === $profileuser->userName)
-          <h2 class="title-page__title">Dein Profil</h2>
-        @else
-          <h2 class="title-page__title">Profil von {{ $profileuser->userName }}</h2>
-        @endif
+        @include('frontend.profile.includes.headline')
+        @include('frontend.profile.includes.notification')
       </div>
     </div>
-
-    <ul class="notification">
-      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-        @if(Session::has('alert-' . $msg))
-          <li class="notification__item">
-            <span class="notification__icon" data-feather="info"></span>
-            <p class="notification__text alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
-
-            <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
-              <span class="button-secondary__label">OK</span>
-            </button>
-          </li>
-        @endif
-      @endforeach
-    </ul>
 
     <div class="row">
       <div class="column column--8">
-        <div class="row">
-          @if (Auth::user()->userName === $profileuser->userName)
-          <div class="column column--12 column--s-6 column--m-4">
-            <div class="icon-text -spacing-b">
-              <span class="icon-text__icon" data-feather="user"></span>
-              <span class="icon-text__text">{{ $user->firstName }} {{ $user->lastName }} <br> {{ $user->birthdate }} </span>
-            </div>
-          </div>
-          @endif
-
-          <div class="column column--12 column--s-6 column--m-4">
-            <div class="icon-text -spacing-b">
-              <span class="icon-text__icon" data-feather="map-pin"></span>
-              <span class="icon-text__text">
-
-
-                {{ $profileuser->postalCode }}
-                <br> {{ $profileuser->city }}
-
-              </span>
-            </div>
-          </div>
-
-          <div class="column column--12 column--s-6 column--m-4">
-            <div class="icon-text -spacing-b">
-              <span class="icon-text__icon" data-feather="info"></span>
-              <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
-            </div>
-          </div>
-        </div>
+        @include('frontend.profile.includes.infobar')
       </div>
-      @if (Auth::user()->userName === $profileuser->userName)
       <div class="column column--4 profile-user__column">
-        <a href="/user/{{ $user->userName }}/edit" class="link-icon link-icon--rotate -text-color-gray-01 profile-user__edit-icon"><span data-feather="settings"></span></a>
+        @if (Auth::user()->userName === $profileuser->userName)
+          @include('frontend.profile.includes.settings-button')
+        @endif
       </div>
-      @endif
     </div>
 
-    <div class="row">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -spacing-a">
       <div class="column column--12 column--m-4">
@@ -81,7 +31,6 @@
         @else
           <img src="/uploads/profilePictures/fallback/placeholder-user.png" class="image image--max-width">
         @endif
-
       </div>
 
       <div class="column column--12 column--m-8">
@@ -182,6 +131,7 @@
         </div>
       </div>
     </div>
+
      @if (Auth::user()->userName === $profileuser->userName)
     <div class="row -spacing-a">
       <div class="column column--12">
