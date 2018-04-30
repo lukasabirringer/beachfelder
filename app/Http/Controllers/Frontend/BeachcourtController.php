@@ -67,6 +67,7 @@ class BeachcourtController extends Controller
         $otherBeachcourts = Beachcourt::where('submitState', 'approved')
            ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+           ->limit(6)
            ->get();
 
         if (is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/'))) {
