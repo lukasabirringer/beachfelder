@@ -39,13 +39,13 @@
     <p class="-typo-copy -text-color-white -align-center">
     <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
 
-    <form action="/search" method="POST" class="form--search">
+    <form action="/search" method="POST" class="form form--homepage-search">
       <label class="input section__input" style="overflow: visible;">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" class="form-control" id="form-postcode" name="postcode">
+        <input type="hidden" class="form-control" id="form-homepage-postcode" name="postcode">
 
-        <input type="search" class="input__field" id="address-input" placeholder="PLZ oder Ort" />
-        <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
+        <input type="search" class="input__field" id="homepage-address-input" placeholder="PLZ oder Ort" />
+        <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">PLZ oder Ort</span>
         <div class="input__border"></div>
         {{ $errors->postcode->first('postcode') }}
@@ -67,13 +67,13 @@
                 <div class="beachcourt-item__image">
 
                   @if(is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/')))
-                  <figure class="progressive">
-                    <img
-                      class="progressive__img progressive--not-loaded"
-                      data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
-                      src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg"
-                    />
-                  </figure>
+                    <figure class="progressive">
+                      <img
+                        class="progressive__img progressive--not-loaded"
+                        data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
+                        src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg"
+                      />
+                    </figure>
                   @else
                     <div class="no-image-hint">
                       <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
@@ -140,7 +140,7 @@
                 <img src="{{ asset('uploads/cities') }}/{{ $city->slug }}.jpg" class="teaser__image">
                 <div class="teaser__info">
                   <h3 class="teaser__title">{{ $city->name }}</h3>
-                  <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p>
+                  <!-- <p class="teaser__subtitle">XYZ Beachvolleyballfelder</p> -->
                 </div>
               </a>
             </div>
@@ -149,3 +149,19 @@
       </div>
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+  <script>
+    var placesAutocomplete = places({
+      type: 'city',
+      countries: 'de',
+      language: 'de_DE',
+      useDeviceLocation: true,
+      container: document.querySelector('#homepage-address-input')
+    });
+
+    placesAutocomplete.on('change', function resultSelected(e) {
+      document.querySelector('#form-homepage-postcode').value = e.suggestion.postcode || '';
+    });
+  </script>
+@endpush
