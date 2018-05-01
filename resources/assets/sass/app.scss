@@ -30,6 +30,18 @@
 	right: 30px;
 }
 
+.beachcourt-item__image {display: flex;}
+
+.no-image-hint {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #f3f3f3;
+	padding: 2rem;
+	text-align: center;
+}
 
 //ALGOLIA
 // Main input wrapper

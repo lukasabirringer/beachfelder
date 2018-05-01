@@ -66,21 +66,22 @@
               <div class="beachcourt-item">
                 <div class="beachcourt-item__image">
 
-                  <figure class="progressive">
                   @if(is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/')))
+                  <figure class="progressive">
                     <img
                       class="progressive__img progressive--not-loaded"
                       data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
                       src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg"
                     />
-                  @else
-                    <img
-                      class="progressive__img progressive--not-loaded"
-                      data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg"
-                      src="/uploads/beachcourts/dummy-image-submitted.jpg"
-                    />
-                  @endif
                   </figure>
+                  @else
+                    <div class="no-image-hint">
+                      <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
+                      <p class="-typo-copy -text-color-gray-01">
+                        Hilf' uns und schicke uns welche von diesem Feld. 
+                      </p>
+                    </div>
+                  @endif
 
                   @if (Auth::user())
                       <favorite :beachcourt={{ $beachcourt->id }} :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}></favorite>

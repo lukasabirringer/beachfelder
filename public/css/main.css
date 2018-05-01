@@ -537,6 +537,9 @@ table {
   @media (min-width: 768px) {
     .content {
       padding: 0 7% 0 100px; } }
+  @media (min-width: 1200px) {
+    .content {
+      margin: auto; } }
   .content__main {
     margin-top: 3.125rem; }
 
@@ -2992,7 +2995,7 @@ input::-moz-focus-outer {
     display: inline-block;
     margin-top: 1rem;
     width: 49%; }
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       .pagination__item {
         margin-top: 0;
         width: unset; } }
