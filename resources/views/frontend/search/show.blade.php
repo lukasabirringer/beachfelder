@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title_and_meta')
-    <title>Beachfelder.de - Community - Suche</title>
+    <title>Suche - beachfelder.de 🏖🌞🏝</title>
     <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
 @endsection
 

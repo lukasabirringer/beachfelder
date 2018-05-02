@@ -1,7 +1,7 @@
 
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 @section('title_and_meta')
-    <title>Beachfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | Beachfelder.de 🏖🌞🏝</title>
+    <title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 @section('content')
  @if (\Session::has('error'))

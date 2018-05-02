@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title_and_meta')
-    <title>Beachvolleyballfelder in {{ $name }} | beachfelder.de 🏖 :sunny:</title>
+    <title>Beachvolleyballfelder in {{ $name }} beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
     <meta name="description" content="Hier findest du alle Beachfelder in {{ $name }}. Sehe dir alle Beachvolleyball-Felder in {{ $name }} an und finde dein nächstes Lieblingsfeld!" />
 @endsection
 
