@@ -144,9 +144,6 @@
                 <div class="beachcourt-item__distance">
                   <span class="beachcourt-item__icon" data-feather="navigation"></span>
                   <span class="beachcourt-item__paragraph">
-                    {{ $beachcourt->latitude }}
-                    {{ $beachcourt->longitude }}
-
                     <?php
                       $pi80 = M_PI / 180;
                       $lat1 = $latitude; $lat1 *= $pi80;
