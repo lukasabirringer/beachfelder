@@ -7,6 +7,7 @@
 @endsection
 
 @section('frontpage')
+
   <div class="section section--start">
     @if (Auth::check())
       <div class="profile-user hide-on-mobile section__button">
