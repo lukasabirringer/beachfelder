@@ -37,23 +37,20 @@ class SearchController extends Controller
         $isPublic = $request->isPublic;
         $isChargeable = $request->isChargeable;
 
-        if ($request->has('isPublic') && $request->has('isChargeable')) {
+         if ($request->has('isPublic') && $request->has('isChargeable') && $request->has('rating')) {
             $results = Beachcourt::where('submitState', 'approved')
-               ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-               ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-               ->where('isPublic', '=', $isPublic)
-               ->where('isChargeable', '=', $isChargeable)
-               ->whereBetween('rating', array($ratingmin, $ratingmax ))
-               ->orWhere('ratingCount', '=', '0')
-               ->Paginate(6);
-        } else {
+              ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+              ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+              ->where(function ($results) {$results->where('isPublic', '=', $isPublic)->orWhereNull('isPublic');})
+              ->where(function ($results) {$results->where('isChargeable', '=', $isChargeable)->orWhereNull('isChargeable');})
+              ->where(function ($results) {$results->where('rating', '=', $rating)->orWhereNull('rating');})
+              ->Paginate(6);
+         } else {
             $results = Beachcourt::where('submitState', 'approved')
-               ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-               ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-               ->whereBetween('rating', array($ratingmin, $ratingmax ))
-               ->orWhere('ratingCount', '=', '0')
-               ->Paginate(6);
-        }
+              ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+              ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+              ->Paginate(6);
+         }
 
         return view('frontend.search.show', compact('isChargeable', 'isPublic', 'results', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax'));
     }
