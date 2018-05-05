@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title_and_meta')
-    <title>Beachfelder.de - Community - Suche</title>
+    <title>Suche - beachfelder.de 🏖🌞🏝</title>
     <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
 @endsection
 
@@ -123,27 +123,44 @@
         <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
           <div class="beachcourt-item">
             <div class="beachcourt-item__image">
-              <figure class="progressive">
-                <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01-retina.jpg" src="/uploads/beachcourts/{{$beachcourt->id}}/slider/slide-image-01.jpg">
-              </figure>
-              <div class="beachcourt-item__distance">
-                <span class="beachcourt-item__icon" data-feather="navigation"></span>
-                <span class="beachcourt-item__paragraph">
-                  <?php
-                    $pi80 = M_PI / 180;
-                    $lat1 = $latitude; $lat1 *= $pi80;
-                    $lng1 = $longitude; $lng1 *= $pi80;
-                    $lat2 = $beachcourt->latitude; $lat2 *= $pi80;
-                    $lng2 = $beachcourt->longitude; $lng2 *= $pi80;
-                    $r = 6372.797; // mean radius of Earth in km
-                    $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
-                    $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
-                    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-                    $dis = $r * $c * 0.621371192 * 2;
-                    echo floor($dis);
-                   ?>
-                km entfernt</span>
-              </div>
+
+              @if(is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/')))
+                <figure class="progressive">
+                  <img
+                    class="progressive__img progressive--not-loaded"
+                    data-progressive="/uploads/beachcourts/{{$beachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
+                    src="/uploads/beachcourts/{{$beachcourt->id}}/slider/standard/slide-image-01.jpg"
+                  />
+                </figure>
+              @else
+                <div class="no-image-hint">
+                  <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
+                  <p class="-typo-copy -text-color-gray-01">
+                    Hilf' uns und schicke uns welche von diesem Feld. 
+                  </p>
+                </div>
+              @endif
+              @if ($beachcourt->latitude != '')
+                <div class="beachcourt-item__distance">
+                  <span class="beachcourt-item__icon" data-feather="navigation"></span>
+                  <span class="beachcourt-item__paragraph">
+                    <?php
+                      $pi80 = M_PI / 180;
+                      $lat1 = $latitude; $lat1 *= $pi80;
+                      $lng1 = $longitude; $lng1 *= $pi80;
+                      $lat2 = $beachcourt->latitude; $lat2 *= $pi80;
+                      $lng2 = $beachcourt->longitude; $lng2 *= $pi80;
+                      $r = 6372.797; // mean radius of Earth in km
+                      $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
+                      $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+                      $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+                      $dis = $r * $c * 0.621371192 * 2;
+                      echo floor($dis);
+                     ?>
+
+                  km entfernt</span>
+                </div>
+              @endif
               @if (Auth::user())
                 <favorite
                     :beachcourt={{ $beachcourt->id }}
@@ -153,21 +170,19 @@
             </div>
 
             <div class="beachcourt-item__info">
-              <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h3>
-              <div class="icon-text beachcourt-item__rating -spacing-b">
-                <span class="icon-text__icon" data-feather="award"></span>
-                <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->rating }}</span>/5 Bällen bewertet</span>
-                <span class="beachcourt-item__info-icon" data-feather="info"></span>
-
-                <div class="flyout beachcourt-item__info-flyout">
-                  <span class="flyout__icon" data-feather="x-circle"></span>
-
-                  <h4 class="-typo-headline-04 -text-color-gray-01">Wie bewerten wir?</h4>
-                  <p class="-typo-copy -text-color-gray-01 -spacing-b">
-                    <a href="#" class="link-text">Hier</a> kannst du mehr dafürber erfahren, wie wir die Beachvolleyballfelder bewerten.
-                  </p>
+              <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</a>
+              
+              @if ($beachcourt->rating >= 1)
+                <div class="icon-text beachcourt-item__rating -spacing-b">
+                  <span class="icon-text__icon" data-feather="award"></span>
+                  <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->rating }}</span>/5 Bällen bewertet</span>
                 </div>
-              </div>
+              @else
+                <div class="icon-text beachcourt-item__rating -spacing-b">
+                  <span class="icon-text__icon" data-feather="award"></span>
+                  <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
+                </div>
+              @endif
 
               <div class="icon-text -spacing-b">
                 <span class="icon-text__icon" data-feather="map-pin"></span>
@@ -185,6 +200,11 @@
           </div>
         </div>
       @endforeach
+    </div>
+    <div class="row -spacing-a">
+      <div class="column column--12 -align-center"> 
+        {{ $results->links() }}
+      </div>
     </div>
   </div> <!-- .content__main ENDE -->
 @endsection
