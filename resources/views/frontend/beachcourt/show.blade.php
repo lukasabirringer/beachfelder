@@ -205,9 +205,11 @@
           {{ $beachcourt->operator }}<br>
           {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
         </p>
-        <p class="-text-color-green -typo-copy">
-          <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
-        </p>
+        @if($beachcourt->operatorUrl != NULL)
+          <p class="-text-color-green -typo-copy">
+            <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
+          </p>
+        @endif
         @if($beachcourt->notes != NULL)
           <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Bemerkungen</h4>
           <p class="-typo-copy -text-color-gray-01 -spacing-b">
