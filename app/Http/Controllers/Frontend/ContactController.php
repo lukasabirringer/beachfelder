@@ -50,7 +50,7 @@ class ContactController extends Controller
           'm' => $request->message,
       );
       Mail::send('email.contact', $data, function($message) use ($email1, $email2, $name) {
-            $message->from('hello@beachfelder.de', 'Beachfelder.de');
+            $message->from('hello@beachfelder.de', 'beachfelder.de');
             $message->to($email1, $name)->subject('Neue Anfrage auf beachfelder.de');
             $message->to($email2, $name)->subject('Neue Anfrage auf beachfelder.de');
         });

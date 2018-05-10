@@ -78,6 +78,7 @@ class SubmittedbeachcourtController extends Controller
 
         $email = $user->email;
         $name = $user->firstName;
+        $username = $user->userName;
         $code = str_random(30);
 
           //send confirmationen mail
@@ -86,6 +87,23 @@ class SubmittedbeachcourtController extends Controller
         Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
             $message->from('hello@beachfelder.de', 'Beachfelder.de');
             $message->to($email, $name)->subject('beachfelder.de // Beachfeld eingereicht');
+        });
+
+      $email1 = 'pecherfabian@gmail.com';
+      $email2 = 'lukas.a.birringer@gmail.com';
+      $email3 = 'engmann@beachfelder.de';
+
+      $data = array(
+          'n' => $username,
+          's' => $request->subject,
+          'm' => $request->message,
+          'c' => $request->city,
+      );
+      Mail::send('email.submitCourtIntern', $data, function($message) use ($email1, $email2, $name) {
+            $message->from('hello@beachfelder.de', 'Beachfelder.de');
+            $message->to($email1, $name)->subject('Es wurde ein neues Beachfeld eingereicht!');
+            $message->to($email2, $name)->subject('Es wurde ein neues Beachfeld eingereicht!');
+            // $message->to($email3, $name)->subject('Es wurde ein neues Beachfeld eingereicht!');
         });
 
        return redirect()->back()->with('success', 'Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast!');

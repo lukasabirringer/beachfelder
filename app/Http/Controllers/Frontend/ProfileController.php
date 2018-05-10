@@ -43,7 +43,7 @@ class ProfileController extends Controller
         }
 
         $id = $profileuser->id;
-        $myFavorites = $profileuser->favorites()->whereBetween('rating', array($min, $max))->get();
+        $myFavorites = $profileuser->favorites()->get();
 
         if ($id === auth()->id()) {
             $eigenesprofil = 'true';

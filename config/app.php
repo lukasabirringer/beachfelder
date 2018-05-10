@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         LaraBug\ServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Nexmo' => Nexmo\Laravel\NexmoServiceProvider::class,
 
     ],
 

@@ -4,6 +4,7 @@ Auth::routes();
 
 Route::group(['namespace' => 'Frontend'], function () {
 
+  // Route::get('/send/SMS', 'NotificationController@sendSMS');
   Route::post('/favorite/{beachcourt}', 'BeachcourtController@favoriteBeachcourt');
   Route::post('/unfavorite/{beachcourt}', 'BeachcourtController@unFavoriteBeachcourt');
 
