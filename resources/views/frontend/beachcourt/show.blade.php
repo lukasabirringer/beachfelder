@@ -1,7 +1,7 @@
 
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 @section('title_and_meta')
-    <title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+    <title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 @section('content')
  @if (\Session::has('error'))
@@ -205,9 +205,11 @@
           {{ $beachcourt->operator }}<br>
           {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
         </p>
-        <p class="-text-color-green -typo-copy">
-          <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
-        </p>
+        @if($beachcourt->operatorUrl != NULL)
+          <p class="-text-color-green -typo-copy">
+            <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
+          </p>
+        @endif
         @if($beachcourt->notes != NULL)
           <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Bemerkungen</h4>
           <p class="-typo-copy -text-color-gray-01 -spacing-b">
@@ -245,61 +247,64 @@
 
     <div class="row -spacing-b -flex -flex--direction-row -flex--wrap">
       @foreach ($otherBeachcourts as $otherBeachcourt)
-        <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
-          <div class="beachcourt-item">
-            <div class="beachcourt-item__image">
-                @if(is_dir(public_path('uploads/beachcourts/' . $otherBeachcourt->id . '/slider/standard/')))
-                  <figure class="progressive">
-                    <img
-                      class="progressive__img progressive--not-loaded"
-                      data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
-                      src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/standard/slide-image-01.jpg"
-                    />
-                  </figure>
-                  @else
-                    <div class="no-image-hint">
-                      <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
-                      <p class="-typo-copy -text-color-gray-01">
-                        Hilf' uns und schicke uns welche von diesem Feld. 
-                      </p>
-                    </div>
+        @if($beachcourt-> submitState != 'submitted')
+          <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
+            <div class="beachcourt-item">
+              <div class="beachcourt-item__image">
+                  @if(is_dir(public_path('uploads/beachcourts/' . $otherBeachcourt->id . '/slider/standard/')))
+                    <figure class="progressive">
+                      <img
+                        class="progressive__img progressive--not-loaded"
+                        data-progressive="{{url('/')}}/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
+                        src="{{url('/')}}/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/standard/slide-image-01.jpg"
+                      />
+                    @else
+                      <img class="progressive__img progressive--not-loaded" src="https://maps.googleapis.com/maps/api/staticmap?center={{$otherBeachcourt->latitude}},{{$otherBeachcourt->longitude}}&zoom=19&scale=2&size=347x180&maptype=satellite&format=jpg&visual_refresh=true" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$otherBeachcourt->latitude}},{{$otherBeachcourt->longitude}}&zoom=19&scale=2&size=600x300&maptype=satellite&format=jpg&visual_refresh=true" alt="Beachvolleyballfeld in {{$otherBeachcourt->postalCode}} {{$otherBeachcourt->city}}">
+                      <!-- <div class="no-image-hint">
+                        <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
+                        <p class="-typo-copy -text-color-gray-01">
+                          Hilf' uns und schicke uns welche von diesem Feld. 
+                        </p>
+                      </div> -->
+                    </figure>
                   @endif
-                @if (Auth::user())
-                  <favorite
-                      :beachcourt={{ $otherBeachcourt->id }}
-                      :favorited={{ $otherBeachcourt->favorited() ? 'true' : 'false' }}
-                  ></favorite>
-                  @endif
-            </div>
-            <div class="beachcourt-item__info">
-              <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
-              @if ($otherBeachcourt->rating >= 1)
-                <div class="icon-text beachcourt-item__rating -spacing-b">
-                  <span class="icon-text__icon" data-feather="award"></span>
-                  <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
-                </div>
-              @else
-                <div class="icon-text beachcourt-item__rating -spacing-b">
-                  <span class="icon-text__icon" data-feather="award"></span>
-                  <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
-                </div>
-              @endif
-              
-              <div class="icon-text -spacing-b">
-                <span class="icon-text__icon" data-feather="map-pin"></span>
-                <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
+                  @if (Auth::user())
+                    <favorite
+                        :beachcourt={{ $otherBeachcourt->id }}
+                        :favorited={{ $otherBeachcourt->favorited() ? 'true' : 'false' }}
+                    ></favorite>
+                    @endif
               </div>
+              <div class="beachcourt-item__info">
+                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
+                @if ($otherBeachcourt->rating >= 1)
+                  <div class="icon-text beachcourt-item__rating -spacing-b">
+                    <span class="icon-text__icon" data-feather="award"></span>
+                    <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $otherBeachcourt->rating }}</span>/5 Bällen bewertet</span>
+                  </div>
+                @else
+                  <div class="icon-text beachcourt-item__rating -spacing-b">
+                    <span class="icon-text__icon" data-feather="award"></span>
+                    <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
+                  </div>
+                @endif
+                
+                <div class="icon-text -spacing-b">
+                  <span class="icon-text__icon" data-feather="map-pin"></span>
+                  <span class="icon-text__text">{{ $otherBeachcourt->postalCode }}<br>{{ $otherBeachcourt->city }}</span>
+                </div>
 
-              <div class="icon-text -spacing-b">
-                <span class="icon-text__icon" data-feather="info"></span>
-                <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                <div class="icon-text -spacing-b">
+                  <span class="icon-text__icon" data-feather="info"></span>
+                  <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                </div>
+
+                <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
+                </a>
               </div>
-
-              <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
-              </a>
             </div>
           </div>
-        </div>
+        @endif
       @endforeach
     </div>
 
