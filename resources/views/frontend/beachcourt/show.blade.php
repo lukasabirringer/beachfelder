@@ -254,18 +254,19 @@
                   <figure class="progressive">
                     <img
                       class="progressive__img progressive--not-loaded"
-                      data-progressive="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
-                      src="/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/standard/slide-image-01.jpg"
+                      data-progressive="{{url('/')}}/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/retina/slide-image-01-retina.jpg"
+                      src="{{url('/')}}/uploads/beachcourts/{{$otherBeachcourt->id}}/slider/standard/slide-image-01.jpg"
                     />
-                  </figure>
                   @else
-                    <div class="no-image-hint">
+                    <img class="progressive__img progressive--not-loaded" src="https://maps.googleapis.com/maps/api/staticmap?center={{$otherBeachcourt->latitude}},{{$otherBeachcourt->longitude}}&zoom=19&scale=2&size=347x180&maptype=satellite&format=jpg&visual_refresh=true" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$otherBeachcourt->latitude}},{{$otherBeachcourt->longitude}}&zoom=19&scale=2&size=600x300&maptype=satellite&format=jpg&visual_refresh=true" alt="Beachvolleyballfeld in {{$otherBeachcourt->postalCode}} {{$otherBeachcourt->city}}">
+                    <!-- <div class="no-image-hint">
                       <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
                       <p class="-typo-copy -text-color-gray-01">
                         Hilf' uns und schicke uns welche von diesem Feld. 
                       </p>
-                    </div>
-                  @endif
+                    </div> -->
+                  </figure>
+                @endif
                 @if (Auth::user())
                   <favorite
                       :beachcourt={{ $otherBeachcourt->id }}
