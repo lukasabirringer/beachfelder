@@ -1,6 +1,10 @@
 
 @extends('layouts.frontend')
 
+@section('title_and_meta')
+    <title>Schick' uns deine Beachvolleyballfelder | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+ @endsection
+
 @section('content')
   <div class="content__main">
     <div class="row">

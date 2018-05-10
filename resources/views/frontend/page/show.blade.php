@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 
+@section('title_and_meta')
+    <title>{{ $page['headline'] }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+ @endsection
+
 @section('content')
   <div class="content__main">
     <div class="row">
