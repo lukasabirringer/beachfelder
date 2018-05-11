@@ -90,7 +90,7 @@
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
-                <input type="checkbox" class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
+                <input type="checkbox"class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <span class="input-toggle__switch"></span>
                 <span class="input-toggle__label">frei zugänglich</span>
               </label>
@@ -200,7 +200,6 @@
 @push('scripts')
   <script>
 
-    $(document).ready(function() {
       var checkbox = $('.public');
       var checkboxchargeable = $('.chargeable');
 
@@ -212,17 +211,18 @@
         checkboxchargeable.attr('checked', true);
         checkboxchargeable.parent().find('.input-toggle__label').text('kostenpflichtig');
       }
-    });
 
      $('.public').click(function() {
       if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('frei zugänglich');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
+        $(".button__accept").click();
       } else {
         $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
         $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0)
+        $(this).val(0);
+        $(".button__accept").click();
       }
     });
 
@@ -231,15 +231,13 @@
         $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
+        $(".button__accept").click();
       } else {
         $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
+        $(".button__accept").click();
       }
-    });
-
-    $('input[type="checkbox"]').on('change', function() {
-      $('.form--search').submit();
     });
 
     //grab the values of input slider

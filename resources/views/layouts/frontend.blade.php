@@ -25,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
     <script src="https://unpkg.com/progressively/dist/progressively.min.js"></script>
     <script src="{{ asset('js/tipso.min.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <style>
       .disabled {
         display: none;

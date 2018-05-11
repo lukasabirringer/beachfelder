@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DB;
 use Mail;
+use App\Rules\Captcha;
 
 class ContactController extends Controller
 {
@@ -18,9 +19,11 @@ class ContactController extends Controller
     }
      public function save(Request $request)
     {
+
       $v = Validator::make($request->all(), [
       'subject' => 'required',
       'message' => 'required',
+      'g-recaptcha-response' => new Captcha()
       ]);
 
       if ($v->fails())
@@ -29,12 +32,11 @@ class ContactController extends Controller
       }
 
       $user = Auth::user();
-      $name = $user->userName;
-      $email = $user->email;
+      $email = $request->userEmail;
       $date = Carbon::now()->toDateTimeString();
 
       DB::table('contact')->insert(
-            ['userName' => $name,
+            ['userName' => 'null',
              'userEmail' => $email,
              'subject' => $request->subject,
              'message' => $request->message,
@@ -45,14 +47,14 @@ class ContactController extends Controller
       $email2 = 'lukas.a.birringer@gmail.com';
 
       $data = array(
-          'n' => $name,
+          'e' => $request->userEmail,
           's' => $request->subject,
           'm' => $request->message,
       );
-      Mail::send('email.contact', $data, function($message) use ($email1, $email2, $name) {
+      Mail::send('email.contact', $data, function($message) use ($email1, $email2) {
             $message->from('hello@beachfelder.de', 'beachfelder.de');
-            $message->to($email1, $name)->subject('Neue Anfrage auf beachfelder.de');
-            $message->to($email2, $name)->subject('Neue Anfrage auf beachfelder.de');
+            $message->to($email1)->subject('Neue Anfrage auf beachfelder.de');
+            $message->to($email2)->subject('Neue Anfrage auf beachfelder.de');
         });
 
       return redirect()->back()->with('success', 'Wir haben deine Nachricht erhalten');
