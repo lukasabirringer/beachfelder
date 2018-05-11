@@ -276,6 +276,12 @@
           @endif
         </div>
       </div>
+      <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
+        @if ($errors->has('g-recaptcha-response'))
+            <span class="invalid-feedback" style="display: block;">
+                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+            </span>
+        @endif
       <div class="row">
         <div class="column column--12 column--m-5 -spacing-a">
           <a href="javascript:;" onclick="document.getElementById('form--submit-beachcourt').submit();" class="button-primary">

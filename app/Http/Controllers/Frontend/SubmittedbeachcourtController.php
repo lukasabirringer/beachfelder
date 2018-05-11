@@ -16,6 +16,7 @@ use File;
 use Image;
 use App\Beachcourt;
 use Mail;
+use App\Rules\Captcha;
 
 class SubmittedbeachcourtController extends Controller
 {
@@ -47,6 +48,7 @@ class SubmittedbeachcourtController extends Controller
         'postalCode' => 'required',
          'latitude' => 'required',
          'longitude' => 'required',
+         'g-recaptcha-response' => new Captcha()
         ]);
 
         if ($v->fails())

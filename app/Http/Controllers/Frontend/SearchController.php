@@ -8,14 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use App\Beachcourt;
 use DB;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
 {
     public function show(Request $request)
-    {
-
+    { 
+      
         $plz = $request->postcode ?? '75233';;
         $distance = $request->distance ?? '15';
 

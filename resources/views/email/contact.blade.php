@@ -72,7 +72,7 @@
             </div>
             <div class="content__main">
                 <h1>Hallo :)</h1>
-                <p>Es wurde folgende Nachricht von {{ $n }} an uns geschickt</p>
+                <p>Es wurde folgende Nachricht von {{ $e }} an uns geschickt</p>
                 <h4>Betreff:</h4>
                 <p>{{ $s }}</p>
                 <h4>Nachricht:</h4>

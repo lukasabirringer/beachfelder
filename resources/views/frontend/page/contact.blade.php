@@ -86,8 +86,14 @@
       </div>
       <div class="row">
         <div class="column column--12 column--s-6">
-          
+          <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
+        @if ($errors->has('g-recaptcha-response'))
+            <span class="invalid-feedback" style="display: block;">
+                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+            </span>
+        @endif
         </div>
+        
         <div class="column column--12 column--s-6 -spacing-b">
           <button type="submit" class="button-primary" disabled="disabled">
             <span class="button-primary__label">Anfrage senden</span>
@@ -95,6 +101,7 @@
           </button>
         </div>
       </div>
+
     </form>
 
     <div class="row -spacing-a">
@@ -136,6 +143,7 @@
 @endsection
 
 @push('scripts')
+  
   <script>
     //hide the notification
     $('.notification__button').click(function() {
