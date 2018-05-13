@@ -25,8 +25,8 @@ class CreateBeachcourtsTable extends Migration
             $table->text('longitude')->nullable();
             $table->boolean('isChargeable')->nullable();
             $table->text('notes')->nullable();
-            $table->integer('courtCountOutdoor')->nullable();
-            $table->integer('courtCountIndoor')->nullable();
+            $table->integer('courtCountOutdoor')->default('-');
+            $table->integer('courtCountIndoor')->default('-');
             $table->boolean('isPublic')->nullable();
             $table->double('rating')->nullable();
             $table->integer('ratingCount')->nullable();

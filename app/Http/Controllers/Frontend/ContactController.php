@@ -36,8 +36,7 @@ class ContactController extends Controller
       $date = Carbon::now()->toDateTimeString();
 
       DB::table('contact')->insert(
-            ['userName' => 'null',
-             'userEmail' => $email,
+            ['userEmail' => $email,
              'subject' => $request->subject,
              'message' => $request->message,
              'created_at' => $date]
