@@ -74,9 +74,9 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" class="form-control" id="form-postcode" name="postcode">
 
-              <input type="search" class="input__field" id="address-input" placeholder="PLZ oder Ort" />
+              <input type="search" class="input__field" id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
               <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
-              <span class="input__label">PLZ oder Ort</span>
+              <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
               <div class="input__border"></div>
               {{ $errors->postcode->first('postcode') }}
             </label>

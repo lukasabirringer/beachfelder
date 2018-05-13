@@ -92,7 +92,7 @@
                 <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <input type="checkbox"class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <span class="input-toggle__switch"></span>
-                <span class="input-toggle__label">frei zugänglich</span>
+                <span class="input-toggle__label">nicht frei zugänglich</span>
               </label>
             </div>
             <div class="column column--12 column--m-6">
@@ -147,7 +147,12 @@
                   <div class="beachcourt-item__distance">
                     <span class="beachcourt-item__icon" data-feather="navigation"></span>
                     <span class="beachcourt-item__paragraph">
-                      {{ $beachcourt->distance }}
+                      
+                      <?php  
+                        $dis = number_format($beachcourt->distance, 1);
+                        $dis = str_replace('.', ',', $dis);  
+                        echo $dis; 
+                      ?>                      
 
                     km entfernt</span>
                   </div>
