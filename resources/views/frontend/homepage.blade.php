@@ -42,9 +42,9 @@
     <form action="/search" method="POST" class="form form--homepage-search">
       <label class="input section__input" style="overflow: visible;">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" class="form-control" id="form-homepage-postcode" name="postcode">
+        <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
 
-        <input type="search" class="input__field" id="homepage-address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
+        <input type="search" class="input__field" id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
         <div class="input__border"></div>
@@ -153,19 +153,3 @@
       </div>
   </div> <!-- .content__main ENDE -->
 @endsection
-
-@push('scripts')
-  <script>
-    var placesAutocomplete = places({
-      type: 'city',
-      countries: 'de',
-      language: 'de_DE',
-      useDeviceLocation: true,
-      container: document.querySelector('#homepage-address-input')
-    });
-
-    placesAutocomplete.on('change', function resultSelected(e) {
-      document.querySelector('#form-homepage-postcode').value = e.suggestion.postcode || '';
-    });
-  </script>
-@endpush

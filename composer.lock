@@ -843,16 +843,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.21",
+            "version": "v5.6.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "458a89b1c5ff73072c27308566f444c790f76f28"
+                "reference": "637fd797a6dde8d24a9f07da77e375ec251c5d24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/458a89b1c5ff73072c27308566f444c790f76f28",
-                "reference": "458a89b1c5ff73072c27308566f444c790f76f28",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/637fd797a6dde8d24a9f07da77e375ec251c5d24",
+                "reference": "637fd797a6dde8d24a9f07da77e375ec251c5d24",
                 "shasum": ""
             },
             "require": {
@@ -978,7 +978,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-05-08T13:30:15+00:00"
+            "time": "2018-05-15T13:34:20+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2781,64 +2781,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "buzz/laravel-google-captcha",
-            "version": "v2.1.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thinhbuzz/laravel-google-captcha.git",
-                "reference": "d6e8efdd11475cd590acf3041976f996e52fb5df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thinhbuzz/laravel-google-captcha/zipball/d6e8efdd11475cd590acf3041976f996e52fb5df",
-                "reference": "d6e8efdd11475cd590acf3041976f996e52fb5df",
-                "shasum": ""
-            },
-            "require": {
-                "google/recaptcha": "1.*",
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Buzz\\LaravelGoogleCaptcha\\CaptchaServiceProvider"
-                    ],
-                    "aliases": {
-                        "Captcha": "Buzz\\LaravelGoogleCaptcha\\CaptchaFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Buzz\\LaravelGoogleCaptcha\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ThinhBuzz",
-                    "email": "mr.thinhbuzz@gmail.com",
-                    "homepage": "https://www.facebook.com/thinh.buzz"
-                }
-            ],
-            "description": "Google captcha for laravel 5.*",
-            "homepage": "https://github.com/thinhbuzz/laravel-google-captcha",
-            "keywords": [
-                "captcha",
-                "google-captcha",
-                "laravel",
-                "laravel5",
-                "no-captcha",
-                "recaptcha"
-            ],
-            "time": "2018-04-18T15:56:14+00:00"
-        },
         {
             "name": "doctrine/instantiator",
             "version": "1.1.0",

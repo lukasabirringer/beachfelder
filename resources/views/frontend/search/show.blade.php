@@ -29,7 +29,7 @@
                 <p class="-typo-copy -text-color-gray-01">PLZ ändern</p>
 
                 <label class="input -spacing-b">
-                  <input type="text" name="postcode" value="{{ $plz }}" class="input__field" placeholder="PLZ">
+                  <input type="text" name="postcode13" value="{{ $plz }}" class="input__field" placeholder="PLZ">
                   <span class="input__label">PLZ</span>
                 </label>
                 <button class="button-primary -spacing-b button__accept">
