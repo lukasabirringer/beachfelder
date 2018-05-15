@@ -12,18 +12,17 @@
                 </ul>
             </div>
         @endif
-        <h2>eingereichte Beachcourts</h2>
-
-        <hr>
         <a href="{{ URL::route('backendBeachcourt.create') }}"><button type="button" class="btn btn-primary">Neuen Beachcourt erstellen</button></a>
         <br><br>
+        <h2>eingereichte Beachcourts ({{ $submittedBeachcourts->count }})</h2>
+
+        <hr>
 
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="col-md-1">ID</th>
-                    <th class="col-md-3">Name</th>
                     <th class="col-md-3">Ort</th>
                     <th class="col-md-1">Rating</th>
                     <th class="col-md-4">Optionen</th>
@@ -34,7 +33,6 @@
                         <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
                 <tr>
                     <td>{{ $beachcourt->id }}</td>
-                    <td>{{ $beachcourt->courtName }}</td>
                     <td>{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
                     <td>{{ $beachcourt->realRating }}</td>
                     <td>
@@ -71,18 +69,15 @@
     <div class="row">
         <div class="col-xs-12">
 
-        <h2>Beachcourt-Listing</h2>
+        <h2>Beachcourts ({{ $beachcourts->count }})</h2></h2>
 
         <hr>
-        <a href="{{ URL::route('backendBeachcourt.create') }}"><button type="button" class="btn btn-primary">Neuen Beachcourt erstellen</button></a>
-        <br><br>
 
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="col-md-1">ID</th>
-                    <th class="col-md-3">Name</th>
                     <th class="col-md-3">Ort</th>
                     <th class="col-md-1">Rating</th>
                     <th class="col-md-4">Optionen</th>
@@ -93,7 +88,6 @@
                         <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
                 <tr>
                     <td>{{ $beachcourt->id }}</td>
-                    <td>{{ $beachcourt->courtName }}</td>
                     <td>{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
                     <td>{{ $beachcourt->realRating }}</td>
                     <td>
@@ -121,9 +115,9 @@
                     </td>
                 </tr>
                 @endforeach
-                {{ $beachcourts->links() }}
             </tbody>
         </table>
+                {{ $beachcourts->links() }}
     </div>
 </div>
 

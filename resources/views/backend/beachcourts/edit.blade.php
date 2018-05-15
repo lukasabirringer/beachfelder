@@ -2,45 +2,6 @@
 
 @section('content')
 
-<div class="container">
-<div class="row">
-
-@if($pictures === 'false')
-<img height="200" src="https://beachfelder.de/img/beachcourt-summary-bg-dummy.jpg" class="beachcourt-summary__image">
-@else
-<img height="200" src="/uploads/beachcourts/{{$beachcourt->id}}/1.jpg" class="beachcourt-summary__image">
-<a href="#">löschen</a>
-<a href="#">ersetzen</a>
-<img height="200" src="/uploads/beachcourts/{{$beachcourt->id}}/2.jpg" class="beachcourt-summary__image">
-<a href="#">löschen</a>
-<a href="#">ersetzen</a>
-<img height="200" src="/uploads/beachcourts/{{$beachcourt->id}}/3.jpg" class="beachcourt-summary__image">
-<a href="#">löschen</a>
-<a href="#">ersetzen</a>
-<img height="200" src="/uploads/beachcourts/{{$beachcourt->id}}/4.jpg" class="beachcourt-summary__image">
-<a href="#">löschen</a>
-<a href="#">ersetzen</a>
-<img height="200" src="/uploads/beachcourts/{{$beachcourt->id}}/5.jpg" class="beachcourt-summary__image">
-<a href="#">löschen</a>
-<a href="#">ersetzen</a>
-@endif
-
-<!-- UPLOAD NEW PICTURE -->
-<div class="context-menu profile-user-image__context-menu">
-<form method="POST" action="{{ url('profil/uploadprofilepicture/') }}" enctype="multipart/form-data">
-{{ csrf_field() }}
-<label class="input-fileupload">
-<input type="file" name="profilePicture" class="input-fileupload__field" data-multiple-caption="{count} files selected" />
-<span class="input-fileupload__icon icon icon--camera"></span>
-<span class="input-fileupload__label">@lang('Neues Profilbild hochladen')</span>
-</label>
-<button type="submit">Upload!</button>
-</form>
-</div>
-
-</div>
-</div>
-
 
 
 <div class="container">
@@ -132,6 +93,24 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="operatorUrl" class="col-sm-2 control-label">URL des Betreibers</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="operatorUrl" value="{{ $beachcourt->operatorUrl }}">
+            @if ($errors->has('operatorUrl'))
+              <div class="alert alert-danger">{{ $errors->first('operatorUrl', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="notes" class="col-sm-2 control-label">Notizen / Beschreibung</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="notes" value="{{ $beachcourt->notes }}">
+            @if ($errors->has('notes'))
+              <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
           <label for="isChargeable" class="col-sm-2 control-label">kostenpflichtig</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="isChargeable" value="{{ $beachcourt->isChargeable }}">
@@ -164,6 +143,24 @@
             <input type="text" class="form-control" name="isPublic" placeholder="Hier tippen ;)">
             @if ($errors->has('isPublic'))
               <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="submitState" class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-10">
+            <select class="form-control" name="submitState" class="selectpicker">
+              <optgroup label="aktueller Status">
+                <option>{{ $beachcourt->submitState }}</option>
+              </optgroup>
+              <optgroup label="neues Geschlecht">
+                <option value="eingereicht">eingereicht</option>
+                <option value="approved">veröffentlicht</option>
+                <option value="abgelehnt">abgelehnt</option>
+              </optgroup>
+            </select>
+            @if ($errors->has('submitState'))
+              <div class="alert alert-danger">{{ $errors->first('submitState', ':message') }}</div>
             @endif
           </div>
         </div>
