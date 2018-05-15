@@ -61,6 +61,8 @@ class BeachcourtController extends Controller
             case '13':
                 $icon = 'cloud-snow';
                 break;
+            case '50':
+                $icon = 'wind';
         }
 
         $distance = '15';
