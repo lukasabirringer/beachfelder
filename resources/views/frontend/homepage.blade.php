@@ -35,9 +35,9 @@
       </button>
     @endif
 
-    <h1 class="-typo-headline-01 -text-color-white">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
-    <p class="-typo-copy -text-color-white -align-center">
-    <span class="-typo-copy--bold">beachfelder.de</span> ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
+    <h1 class="-typo-headline-01 -text-color-petrol">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
+    <p class="-typo-copy -text-color-petrol -align-center">
+    <span class="-typo-copy--bold">beachfelder.de</span> ist die Suchmaschine mit der größten und umfangreichsten Datenbank an Beachvolleyball-Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
 
     <form action="/search" method="POST" class="form form--homepage-search">
       <label class="input section__input" style="overflow: visible;">
