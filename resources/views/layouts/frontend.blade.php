@@ -72,12 +72,12 @@
 
             <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" class="form-control" id="form-postcode" name="postcode">
-
-              <input type="search" class="input__field" id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
+              <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
+              <input type="search" class="input__field " id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
               <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
               <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
               <div class="input__border"></div>
+
               {{ $errors->postcode->first('postcode') }}
             </label>
           </form>
@@ -138,6 +138,7 @@
     @stack('scripts')
 
     <script>
+           
       //icons
       feather.replace();
       //progressive image preloading
@@ -171,9 +172,22 @@
         container: document.querySelector('#address-input')
       });
 
-      placesAutocomplete.on('change', function resultSelected(e) {
-        document.querySelector('#form-postcode').value = e.suggestion.postcode || '';
+      $('#address-input').on('keyup', function() {
+      
+        var input = document.querySelector("#address-input");
+        var soll = document.querySelector("#form-postcode13");
+        
+        if (isNaN(input.value) || input.value.length > 5){
+            placesAutocomplete.on('change', function(e) {
+                document.querySelector('#form-postcode13').value = e.suggestion.postcode || '';
+            });
+        } else {
+            soll.value = input.value;
+        }
+
       });
+
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   </body>
