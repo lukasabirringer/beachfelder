@@ -93,6 +93,24 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="operatorUrl" class="col-sm-2 control-label">URL des Betreibers</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="operatorUrl" placeholder="Hier tippen ;)">
+            @if ($errors->has('operatorUrl'))
+              <div class="alert alert-danger">{{ $errors->first('operatorUrl', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="notes" class="col-sm-2 control-label">Notizen / Beschreibung</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="notes" placeholder="Hier tippen ;)">
+            @if ($errors->has('notes'))
+              <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
           <label for="isChargeable" class="col-sm-2 control-label">kostenpflichtig</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="isChargeable" placeholder="Hier tippen ;)">
@@ -125,6 +143,21 @@
             <input type="text" class="form-control" name="isPublic" placeholder="Hier tippen ;)">
             @if ($errors->has('isPublic'))
               <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+            @endif
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="submitState" class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-10">
+            <select class="form-control" name="submitState" class="selectpicker">
+              <optgroup label="neues Geschlecht">
+                <option value="eingereicht">eingereicht</option>
+                <option value="approved">veröffentlicht</option>
+                <option value="abgelehnt">abgelehnt</option>
+              </optgroup>
+            </select>
+            @if ($errors->has('submitState'))
+              <div class="alert alert-danger">{{ $errors->first('submitState', ':message') }}</div>
             @endif
           </div>
         </div>

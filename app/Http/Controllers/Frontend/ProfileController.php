@@ -54,8 +54,7 @@ class ProfileController extends Controller
         $user_id = Auth::id();
         $countSubmits = Beachcourt::where('user_id', $user_id)->count();
         $submittedCourts = Beachcourt::where('user_id', $id)->get();
-        $countFavorites = Auth::user()->favorites()->count();
-      
+        $countFavorites = $profileuser->favorites()->count();
 
         return view('frontend.profile.show', compact('submittedCourts', 'profileuser', 'countFavorites', 'countSubmits', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
     }

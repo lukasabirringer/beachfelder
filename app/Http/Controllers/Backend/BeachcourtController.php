@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Backend\StoreBeachcourtRequest;
+use App\Http\Requests\Backend\UpdateBeachcourtRequest;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Beachcourt;
@@ -14,31 +16,24 @@ class BeachcourtController extends Controller
     public function index()
     {
         $submittedBeachcourts = Beachcourt::where('submitState', 'eingereicht')->get();
+        $submittedBeachcourts->count = $submittedBeachcourts->count();
+
         $beachcourts = Beachcourt::where('submitState', 'approved')->paginate(10);
-        return view('backend.beachcourts.index', ['beachcourts' => $beachcourts,'submittedBeachcourts' => $submittedBeachcourts]);
+        $beachcourts->count = $beachcourts->count();
+
+        return view('backend.beachcourts.index', ['beachcourts' => $beachcourts, 'submittedBeachcourts' => $submittedBeachcourts]);
     }
+
     public function create()
     {
         return view('backend.beachcourts.create');
     }
-    public function store(Request $request)
+
+    public function store(StoreBeachcourtRequest $request)
     {
         $date = Carbon::now()->toDateTimeString();
 
-        $v = Validator::make($request->all(), [
-        'postalCode' => 'required',
-        'city' => 'required',
-         'latitude' => 'required',
-         'longitude' => 'required',
-         'isChargeable' => 'boolean',
-         'isPublic' => 'boolean',
-         'user_id' => 'numeric',
-        ]);
-
-        if ($v->fails())
-        {
-            return redirect()->back()->withErrors($v->errors());
-        }
+        $validated = $request->validated();
 
         DB::table('beachcourts')->insert([
              'postalCode' => $request->postalCode,
@@ -52,10 +47,11 @@ class BeachcourtController extends Controller
              'isChargeable' => $request->chargeable,
              'courtCountOutdoor' => $request->courtCountOutdoor,
              'courtCountIndoor' => $request->courtCountIndoor,
-             'submitState' => 'eingreicht',
+             'submitState' => $request->submitState,
              'isPublic' => $request->public,
-             'user_id' => "0",
-             'operator' => $request->operator
+             'operator' => $request->operator,
+             'operatorUrl' => $request->operatorUrl,
+             'notes' => $request->notes,
         ]);
 
 
@@ -78,53 +74,27 @@ class BeachcourtController extends Controller
 
         return view('backend.beachcourts.edit', compact('beachcourt', 'pictures'));
     }
-    public function update(Request $request, $id)
+    public function update(UpdateBeachcourtRequest $request, $id)
     {
-        $v = Validator::make($request->all(), [
-        'postalCode' => 'required',
-        'city' => 'required',
-         'latitude' => 'required',
-         'longitude' => 'required',
-         'isChargeable' => 'boolean',
-         'isPublic' => 'boolean',
-         'user_id' => 'numeric',
-        ]);
-
-        if ($v->fails())
-        {
-            return redirect()->back()->withErrors($v->errors());
-        }
-
-        $postalCode = $request->input('postalCode');
-        $city = $request->input('city');
-        $street = $request->input('street');
-        $houseNumber = $request->input('houseNumber');
-        $country = $request->input('country');
-        $state = $request->input('state');
-        $latitude = $request->input('latitude');
-        $longitude = $request->input('longitude');
-        $courtCountOutdoor = $request->input('courtCountOutdoor');
-        $courtCountIndoor = $request->input('courtCountIndoor');
-        $chargeable = $request->input('isChargeable');
-        $submitState = $request->input('submitState');
-        $isPublic = $request->input('isPublic');
-        $operator = $request->input('operator');
+        $validated = $request->validated();
 
         $beachcourt = Beachcourt::find($id);
-        $beachcourt->postalCode = $postalCode;
-        $beachcourt->city = $city;
-        $beachcourt->street = $street;
-        $beachcourt->houseNumber = $houseNumber;
-        $beachcourt->country = $country;
-        $beachcourt->state = $state;
-        $beachcourt->latitude = $latitude;
-        $beachcourt->longitude = $longitude;
-        $beachcourt->isChargeable = $chargeable;
-        $beachcourt->courtCountOutdoor = $courtCountOutdoor;
-        $beachcourt->courtCountIndoor = $courtCountIndoor;
-        $beachcourt->submitState = $submitState;
-        $beachcourt->isPublic = $isPublic;
-        $beachcourt->operator = $operator;
+        $beachcourt->postalCode = $request->input('postalCode');
+        $beachcourt->city = $request->input('city');
+        $beachcourt->street = $request->input('street');
+        $beachcourt->houseNumber = $request->input('houseNumber');
+        $beachcourt->country = $request->input('country');
+        $beachcourt->state = $request->input('state');
+        $beachcourt->latitude = $request->input('latitude');
+        $beachcourt->longitude = $request->input('longitude');
+        $beachcourt->isChargeable = $request->input('isChargeable');
+        $beachcourt->courtCountOutdoor = $request->input('courtCountOutdoor');
+        $beachcourt->courtCountIndoor = $request->input('courtCountIndoor');
+        $beachcourt->submitState = $request->input('submitState');
+        $beachcourt->isPublic = $request->input('isPublic');
+        $beachcourt->operator = $request->input('operator');
+        $beachcourt->operatorUrl = $request->input('operatorUrl');
+        $beachcourt->notes = $request->input('notes');
         $beachcourt->save();
 
         return redirect()->route('backendBeachcourt.index')->with('success', 'Beachfeld wurde erfolgreich geändert');

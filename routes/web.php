@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::get('/page/{slug}', 'PagesController@show')->name('page.show');
 });
 
-
+ 
 Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsAdmin'], function () {
 
   Route::get('/backend/dashboard', 'DashboardController@show')->name('backendDashboard.show');
@@ -47,10 +47,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/beachcourts/{id}', 'BeachcourtController@destroy')->name('backendBeachcourt.destroy');
   Route::post('/backend/beachcourts/erstellen', 'BeachcourtController@store')->name('backendBeachcourt.store');
   Route::get('/backend/beachcourts/{id}/bearbeiten', 'BeachcourtController@edit')->name('backendBeachcourt.edit');
-
+  Route::get('/backend/user', 'UserController@index')->name('backendUser.index');
   Route::get('/backend/user/hinzufuegen', 'UserController@create')->name('backendUser.create');
   Route::get('/backend/user/{id}', 'UserController@show')->name('backendUser.show');
-  Route::get('/backend/user', 'UserController@index')->name('backendUser.index');
   Route::patch('/backend/user/{id}', 'UserController@update')->name('backendUser.update');
   Route::delete('/backend/user/{id}', 'UserController@destroy')->name('backendUser.destroy');
   Route::post('/backend/user/erstellen', 'UserController@store')->name('backendUser.store');
