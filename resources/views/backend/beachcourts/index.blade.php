@@ -18,7 +18,6 @@
 
         <hr>
 
-
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -73,8 +72,21 @@
 
         <hr>
 
-
-        <table class="table table-striped">
+        
+        <div id="courts">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <label class="input">
+                        <input class="input__field search" placeholder="Suche" />
+                        <span class="input__label">Suche</span>
+                        <span class="input__icon" data-feather="search"></span>
+                        <div class="input__border"></div>
+                    </label>
+                </div>
+            </div>
+            
+            
+            <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="col-md-1">ID</th>
@@ -83,13 +95,13 @@
                     <th class="col-md-4">Optionen</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="list">
                 @foreach ($beachcourts as $beachcourt)
-                        <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
+                    <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
                 <tr>
-                    <td>{{ $beachcourt->id }}</td>
-                    <td>{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
-                    <td>{{ $beachcourt->realRating }}</td>
+                    <td class="id">{{ $beachcourt->id }}</td>
+                    <td class="city">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
+                    <td class="rating">{{ $beachcourt->realRating }}</td>
                     <td>
                         <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}">
                           <button type="button" class="btn btn-default">
@@ -117,8 +129,21 @@
                 @endforeach
             </tbody>
         </table>
-                {{ $beachcourts->links() }}
+            <ul class="pagination"></ul>
+            
+        </div><!-- #courts ENDE -->
+        
     </div>
 </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        var courtList = new List('courts', {
+          valueNames: ['id', 'city', 'rating'],
+          page: 10,
+          pagination: true
+        });
+    </script>
+@endpush

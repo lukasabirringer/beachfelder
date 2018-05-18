@@ -16,6 +16,9 @@
             {{ csrf_field() }}
             <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
           </form>
+          @if (Auth::user()->isAdmin())
+            <a href="{{ url('/') }}/backend/dashboard/" class="link-text profile-user__subtitle">Adminbereich</a>
+          @endif
         </div>
         <div class="profile-user__image ">
           @if(Auth::user()->pictureName !== 'placeholder-user.png' )

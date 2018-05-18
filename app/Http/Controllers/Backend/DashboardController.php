@@ -19,11 +19,11 @@ class DashboardController extends Controller
         $ratingCount = Rating::all()->count();
         $favsCount = Favorite::all()->count();
 
-        $submittedCourtsCount = Beachcourt::where('submitState', 'eingereicht')->count();
+        $submittedCourtsCount = Beachcourt::where('submitState', 'submitted')->count();
         $approvedCourtsCount = Beachcourt::where('submitState', 'approved')->count();
         $courtWithoutPicturesRating = Beachcourt::where('ratingCount', 'NULL')->count();
 
-        $submittedBeachcourts = Beachcourt::where('submitState', 'eingereicht')->limit(5)->latest()->get();
+        $submittedBeachcourts = Beachcourt::where('submitState', 'submitted')->limit(5)->latest()->get();
 
         $messages = DB::table('contact')->limit(5)->latest()->get();
 
