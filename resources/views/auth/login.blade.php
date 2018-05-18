@@ -48,7 +48,7 @@
           <div class="row -spacing-a">
             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
               {{ csrf_field() }}
-              <div class="column column--12 column--s-6 -spacing-b">
+              <div class="column column--12 column--s-12 -spacing-b">
                 <label class="input">
                   <input type="text" name="name" value="{{ old('name') }}" class="input__field" placeholder="Dein Username">
                   <span class="input__label">Dein Username</span>
@@ -115,23 +115,23 @@
 
               <div class="column column--12 column--s-6 -spacing-a">
                 <label class="input">
-                  <input type="text" name="birthdate" value="{{ old('birthdate') }}" class="datepicker-here input__field input__field--date" data-position="bottom left" placeholder="Dein Geburtsdatum">
-                  <span class="input__label">Dein Geburtsdatum</span>
+                  <input type="text" name="birthdate" value="{{ old('birthdate') }}" class="input__field" placeholder="Dein Geburtsdatum (TT.MM.JJJ)">
+                  <span class="input__label">Dein Geburtsdatum (TT.MM.JJJ)</span>
                   <div class="input__border"></div>
                 </label>
               </div>
 
               <div class="column column--12 column--s-12">
                 <div class="row">
-                  <div class="column column--12 column--s-5 -spacing-a">
+                  <div class="column column--12 column--s-3 -spacing-a">
                     <label class="input">
-                      <input type="text" name="postalCode" value="{{ old('postalCode') }}" class="input__field" placeholder="Deine Postleitzahl">
-                      <span class="input__label">Deine Postleitzahl</span>
+                      <input type="text" name="postalCode" value="{{ old('postalCode') }}" class="input__field" placeholder="PLZ">
+                      <span class="input__label">PLZ</span>
                       <div class="input__border"></div>
                     </label>
                   </div>
 
-                  <div class="column column--12 column--s-7 -spacing-a">
+                  <div class="column column--12 column--s-9 -spacing-a">
                     <label class="input">
                       <input type="text" name="city" value="{{ old('city') }}" class="input__field" placeholder="Dein Wohnort">
                       <span class="input__label">Dein Wohnort</span>
@@ -196,11 +196,11 @@
 
               <div class="column column--12 column--s-6 -spacing-a">
                 <label class="input">
-                  <input type="password" name="password_confirmation" class="input__field input__field--password" placeholder="Passwort wiederholen">
+                  <input type="password" name="password_confirmation" class="input__field input__field--password-repeat" placeholder="Passwort wiederholen">
                   <span class="input__label">Passwort wiederholen</span>
                   <div class="input__border"></div>
-                  <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
-                  <span class="input__icon input__icon--eye-off input__icon--not-visible" data-feather="eye-off" onclick="togglePassword()"></span>
+                  <span class="input__icon input__icon--eye-repeat" data-feather="eye" onclick="togglePasswordRepeat()"></span>
+                  <span class="input__icon input__icon--eye-off-repeat input__icon--not-visible" data-feather="eye-off" onclick="togglePasswordRepeat()"></span>
                 </label>
               </div>
 
@@ -248,11 +248,11 @@
 
               <div class="column column--12 -spacing-a">
                 <label class="input">
-                  <input type="password" name="password" class="input__field" placeholder="Passwort">
+                  <input type="password" name="password" class="input__field input__field--password-login" placeholder="Passwort">
                   <span class="input__label">Passwort</span>
                   <div class="input__border"></div>
-                  <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
-                  <span class="input__icon input__icon--eye-off input__icon--not-visible" data-feather="eye-off" onclick="togglePassword()"></span>
+                  <span class="input__icon input__icon--eye-login" data-feather="eye" onclick="togglePasswordLogin()"></span>
+                  <span class="input__icon input__icon--eye-off-login input__icon--not-visible" data-feather="eye-off" onclick="togglePasswordLogin()"></span>
                 </label>
 
                 @if ($errors->has('password'))
@@ -352,6 +352,40 @@
             input.type = 'password';
             eye.classList.remove('input__icon--not-visible');
             eyeOff.classList.add('input__icon--not-visible');
+        }
+    };
+
+    var inputRepeat = document.querySelector('.input__field--password-repeat'),
+        eyeRepeat = document.querySelector('.input__icon--eye-repeat'),
+        eyeOffRepeat = document.querySelector('.input__icon--eye-off-repeat');
+
+    // Toggle Password Repeat Field
+    function togglePasswordRepeat() {
+        if (inputRepeat.type === 'password') {
+            inputRepeat.type = 'text';
+            eyeRepeat.classList.add('input__icon--not-visible');
+            eyeOffRepeat.classList.remove('input__icon--not-visible');
+        } else {
+            inputRepeat.type = 'password';
+            eyeRepeat.classList.remove('input__icon--not-visible');
+            eyeOffRepeat.classList.add('input__icon--not-visible');
+        }
+    };
+
+    var inputLogin = document.querySelector('.input__field--password-login'),
+        eyeLogin = document.querySelector('.input__icon--eye-login'),
+        eyeOffLogin = document.querySelector('.input__icon--eye-off-login');
+
+    // Toggle Password Login Field
+    function togglePasswordLogin() {
+        if (inputLogin.type === 'password') {
+            inputLogin.type = 'text';
+            eyeLogin.classList.add('input__icon--not-visible');
+            eyeOffLogin.classList.remove('input__icon--not-visible');
+        } else {
+            inputLogin.type = 'password';
+            eyeLogin.classList.remove('input__icon--not-visible');
+            eyeOffLogin.classList.add('input__icon--not-visible');
         }
     };
 
