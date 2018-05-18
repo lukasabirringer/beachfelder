@@ -11,7 +11,7 @@
     @if (Auth::check())
       <div class="profile-user hide-on-mobile section__button">
         <div class="profile-user__info">
-          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
+          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->userName }} </a>
           <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
             {{ csrf_field() }}
             <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
