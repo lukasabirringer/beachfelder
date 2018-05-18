@@ -154,7 +154,7 @@
                 <option>{{ $beachcourt->submitState }}</option>
               </optgroup>
               <optgroup label="neues Geschlecht">
-                <option value="eingereicht">eingereicht</option>
+                <option value="submitted">eingereicht</option>
                 <option value="approved">veröffentlicht</option>
                 <option value="abgelehnt">abgelehnt</option>
               </optgroup>

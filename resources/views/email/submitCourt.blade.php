@@ -73,7 +73,7 @@
             <div class="content__main">
                 <h1>Vielen Dank!</h1>
 
-                <p>Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast und somit uns hilfst, dass beachfelder.de bald die größte und umfangreichste Suchmaschien für Beachvolleyballfelder wird.</p>
+                <p>Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast und somit uns hilfst, dass beachfelder.de bald die größte und umfangreichste Suchmaschine für Beachvolleyballfelder wird.</p>
 
                 <p>
                     Du kannst jederzeit den aktuellen Status deines eingereichten Feldes überprüfen. Klicke einfach auf folgenden Link
