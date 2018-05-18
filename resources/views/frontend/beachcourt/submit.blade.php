@@ -212,7 +212,7 @@
           <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
-            <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="10">
+            <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="20">
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountIndoor'))
@@ -224,7 +224,7 @@
           <p class="-typo-copy -text-color-petrol">Wie viele Outdoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountOutdoor" class="input-range__hidden" value="0">
-            <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="10">
+            <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="20">
             <span class="input-range__value">1</span>
           </label>
           @if ($errors->has('courtCountOutdoor'))
