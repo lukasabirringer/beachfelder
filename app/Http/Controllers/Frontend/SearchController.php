@@ -14,7 +14,7 @@ class SearchController extends Controller
     public function show(Request $request)
     {   
         $plz = $request->postcode13 ?? '75233';
-      dd($request);
+   
         $distance = $request->distance ?? '15';
       
         $validator = Validator::make($request->all(), [
