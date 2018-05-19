@@ -93,8 +93,8 @@
               </label>
 
               <label class="input -spacing-b">
-                <input type="text" class="input__field input__field--date datepicker-here" data-position="top left" placeholder="Geburtstag" name="birthdate" value="{{ $user->birthdate }}">
-                <span class="input__label">Geburstag</span>
+                <input type="text" class="input__field input__field--date" placeholder="Geburtstag (TT.MM.JJJ)" name="birthdate" value="{{ $user->birthdate }}">
+                <span class="input__label">Geburstag (TT.MM.JJJ)</span>
               </label>
             </div>
 

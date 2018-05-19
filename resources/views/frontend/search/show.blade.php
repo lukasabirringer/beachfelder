@@ -90,17 +90,17 @@
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
                 <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
-                <input type="checkbox"class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
+                <input type="checkbox" class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
                 <span class="input-toggle__switch"></span>
-                <span class="input-toggle__label">nicht frei zugänglich</span>
+                <span class="input-toggle__label">frei zugänglich</span>
               </label>
             </div>
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
-                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
-                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? '0'}}">
+                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? '1'}}">
+                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? '1'}}">
                 <span class="input-toggle__switch"></span>
-                <span class="input-toggle__label">nicht kostenpflichtig</span>
+                <span class="input-toggle__label">kostenpflichtig</span>
               </label>
             </div>
           </div>
@@ -186,8 +186,8 @@
                 </div>
 
                 <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="info"></span>
-                  <span class="icon-text__text">Felder outdoor: {{ $beachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $beachcourt->courtCountIndoor }}</span>
+                  <span class="icon-text__icon" data-feather="compass"></span>
+                  <span class="icon-text__text">{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</span>
                 </div>
 
                 <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
@@ -219,12 +219,12 @@
 
      $('.public').click(function() {
       if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('frei zugänglich');
+        // $(this).parent().find('.input-toggle__label').text('frei zugänglich');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
         $(".button__accept").click();
       } else {
-        $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
+        // $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
         $(".button__accept").click();
@@ -233,12 +233,12 @@
 
      $('.chargeable').click(function() {
       if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
+        // $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
         $(".button__accept").click();
       } else {
-        $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
+        // $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
         $(".button__accept").click();

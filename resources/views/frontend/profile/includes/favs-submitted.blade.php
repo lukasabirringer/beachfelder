@@ -66,7 +66,7 @@
                 @empty
                   @if (Auth::user()->userName === $profileuser->userName)
                   <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder in deinen Favoriten.</p>
-                  <p class="-typo-copy -text-color-green"><a href="#" class="link-text">Jetzt Feld hinzufügen</a></p>
+                  <p class="-typo-copy -text-color-green"><a href="{{ url('/') }}/search" class="link-text">Jetzt Feld hinzufügen</a></p>
                   @else
                   <p class="-typo-copy -typo-copy--bold -text-color-gray-01">{{ $profileuser->userName }} hat noch keine Beachvolleyballfelder in seinen Favoriten.</p>
                   @endif
