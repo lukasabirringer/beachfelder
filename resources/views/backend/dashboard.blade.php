@@ -4,9 +4,9 @@
 
     <div class="content__main">
         <div class="row">
-            <div class="column column--12">
-                <h2 class="-typo-headline-02 -text-color-gray-01">Namasté, {{ Auth::user()->userName }}</h2>
-            </div>
+          <div class="column column--12">
+            <h1 class="title-page__title">Namasté, {{ Auth::user()->userName }}</h1>
+          </div>
         </div>
 
         <div class="row">
