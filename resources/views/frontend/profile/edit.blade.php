@@ -93,8 +93,10 @@
               </label>
 
               <label class="input -spacing-b">
+
                 <input type="text" class="input__field input__field--date" placeholder="Geburtstag (TT.MM.JJJ)" name="birthdate" value="{{ $user->birthdate }}">
                 <span class="input__label">Geburstag (TT.MM.JJJ)</span>
+
               </label>
             </div>
 

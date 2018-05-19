@@ -301,14 +301,78 @@
     <div class="row -spacing-a">
       <div class="column column--12">
         <div class="accordion">
-          <div class="accordion__title-bar">
-            <a href="#tab1" class="accordion__title accordion__title--active">Meine eingereichten Felder</a>
+          <div class="accordion__title-bar" data-tabgroup="first-tab-group">
+            <a href="#tab1" class="accordion__title accordion__title--active">Meine Favoriten</a>
+            <a href="#tab2" class="accordion__title">Meine eingereichten Felder</a>
           </div>
           <div id="first-tab-group">
-            <div class="accordion__content" id="tab1">
+            <div id="tab1" class="accordion__content">
               <ul class="list-beachcourt">
-                @forelse ($submittedCourts as $submittedCourt)
+                @forelse ($myFavorites as $myFavorite)
                   <li class="list-beachcourt__item">
+                    <div class="list-beachcourt__image">
+                      <figure class="progressive">
+                        <img class="progressive__img progressive--not-loaded image image--max-width" data-progressive="{{ url('/') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/retina/slide-image-01-retina.jpg" src="{{ url('') }}/uploads/beachcourts/{{$myFavorite->id}}/slider/retina/slide-image-01-retina.jpg" alt="Feld in {{ $myFavorite->city }}" alt="Feld in {{ $myFavorite->city }}">
+                      </figure>
+                    </div>
+                    <div class="list-beachcourt__info">
+                      <div class="row">
+                        <div class="column column--12">
+                          <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $myFavorite->city }}</h4>
+                        </div>
+                      </div>
+
+                      <div class="row  -spacing-b">
+                        <div class="column column--12 column--m-6">
+                          <div class="icon-text">
+                            <span class="icon-text__icon" data-feather="map-pin"></span>
+                            <span class="icon-text__text">{{ $myFavorite->postalCode }} {{ $myFavorite->city }} <br>{{ $myFavorite->street }} {{ $myFavorite->houseNumber }}</span>
+                          </div>
+                        </div>
+
+                        <div class="column column--12 column--m-6">
+                          <div class="icon-text">
+                            <span class="icon-text__icon" data-feather="navigation"></span>
+                            <span class="icon-text__text">{{ $myFavorite->longitude }}<br>{{ $myFavorite->latitude }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row -spacing-b">
+                        <div class="column column--12 column--m-6">
+                          <div class="icon-text">
+                            <span class="icon-text__icon" data-feather="info"></span>
+                            <span class="icon-text__text">Felder outdoor: {{ $myFavorite->courtCountOutdoor }}<br>Felder indoor: {{ $myFavorite->courtCountIndoor }}</span>
+                          </div>
+                        </div>
+
+                        <div class="column column--12 column--s-6">
+                          <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($myFavorite->city),'latitude'=>$myFavorite->latitude,'longitude'=>$myFavorite->longitude)) }}" class="button-primary">
+                            <span class="button-primary__label">Feld ansehen</span>
+                            <span class="button-primary__label button-primary__label--hover">Feld ansehen</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <form action="{{ url('unfavorite/'.$myFavorite->id) }}" method="POST" id="form--delete-favorite">
+                      <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                      <a href="javascript:;" class="link-icon link-icon--shake list-beachcourt__icon" onclick="document.getElementById('form--delete-favorite').submit();">
+                        <span data-feather="trash-2"></span>
+                      </a>
+                    </form>
+                  </li>
+                @empty
+                  @if (Auth::user()->userName === $profileuser->userName)
+                  <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder in deinen Favoriten.</p>
+                  <p class="-typo-copy -text-color-green"><a href="#" class="link-text">Jetzt Feld hinzufügen</a></p>
+                  @else
+                  <p class="-typo-copy -typo-copy--bold -text-color-gray-01">{{ $profileuser->userName }} hat noch keine Beachvolleyballfelder in seinen Favoriten.</p>
+                  @endif
+                @endforelse
+              </ul>
+            </div>
+            <div id="tab2" class="accordion__content">
+              @forelse ($submittedCourts as $submittedCourt)
+              <li class="list-beachcourt__item">
                     <div class="list-beachcourt__image">
                       @if ($submittedCourt->submitState === 'approved')
                         <figure class="progressive">
@@ -365,14 +429,15 @@
                       </div>
                     </div>
                   </li>
-                @empty
-                  <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder eingereicht.</p>
-                  <p class="-typo-copy -text-color-green"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="link-text">Jetzt Feld einreichen</a></p>
-                @endforelse
-              </ul>
+              @empty
+              <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Du hast noch keine Beachvolleyballfelder eingereicht.</p>
+              <p class="-typo-copy -text-color-green"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="link-text">Jetzt Feld einreichen</a></p>
+                
+              @endforelse
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div> <!-- .content__main ENDE -->

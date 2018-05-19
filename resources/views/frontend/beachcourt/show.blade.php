@@ -205,10 +205,17 @@
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
-        @if ($beachcourt->isChargeable == '1' )
+        @if ($beachcourt->isChargeable === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
-        @else
+        @elseif ($beachcourt->isChargeable === 0 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
+        @elseif ($beachcourt->isChargeable === NULL )
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Es sind keine Informationen vorhanden, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
+        @endif
+         @if($beachcourt->notes != NULL)
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">
+            {{ $beachcourt->notes }}
+          </p>
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
@@ -221,12 +228,7 @@
             <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
           </p>
         @endif
-        @if($beachcourt->notes != NULL)
-          <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Bemerkungen</h4>
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">
-            {{ $beachcourt->notes }}
-          </p>
-        @endif
+       
       </div>
     </div>
 

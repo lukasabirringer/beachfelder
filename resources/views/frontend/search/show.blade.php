@@ -89,16 +89,17 @@
           <div class="row">
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
-                <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? '1' }}">
-                <input type="checkbox" class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? '1' }}">
+                <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? 1 }}">
+                <input type="checkbox"class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? 1 }}">
                 <span class="input-toggle__switch"></span>
                 <span class="input-toggle__label">frei zugänglich</span>
               </label>
             </div>
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
-                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? '1'}}">
-                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? '1'}}">
+                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? 0}}">
+                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? 0}}">
+
                 <span class="input-toggle__switch"></span>
                 <span class="input-toggle__label">kostenpflichtig</span>
               </label>
@@ -120,7 +121,7 @@
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
       @foreach ($results as $beachcourt)
-        @if($beachcourt-> submitState != 'submitted')
+        @if($beachcourt->distance <= $distance)
           <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
             <div class="beachcourt-item">
               <div class="beachcourt-item__image">
