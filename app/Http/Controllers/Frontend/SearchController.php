@@ -38,6 +38,7 @@ class SearchController extends Controller
         $isPublic = $request->isPublic;
         $isChargeable = $request->isChargeable;
          
+            if ($request->has('isPublic') && $request->has('isChargeable') && $request->has('rating')) {
             $results = Beachcourt::where('submitState', 'approved')
               ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
               ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
@@ -57,6 +58,13 @@ class SearchController extends Controller
                                 ->orWhereNull('rating');
                       })
               ->get();
+
+              } else {
+                $results = Beachcourt::where('submitState', 'approved')
+                ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+                ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+                ->get();
+              }
         
 
           foreach ($results as $beachcourt) {
