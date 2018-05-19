@@ -13,85 +13,46 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+        <div class="sidebar">
+            <a href="{{ url('/')}}/backend/dashboard"><img class="sidebar__logo" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+            <ul class="navigation">
+                <li class="navigation__item"><a href="{{ url('/')}}/backend/dashboard" class="navigation__link"><span data-feather="home"></span></a></li>
+                
+                <li class="navigation__item"><a href="{{ url('backend/beachcourts') }}" class="navigation__link"><span data-feather="database"></span></a></li>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                <li class="navigation__item"><a href="{{ url('backend/user') }}" class="navigation__link"><span data-feather="users"></span></a></li>
 
-                        {{ config('x', 'beachfelder.de - Backend') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('backend/dashboard') }}"">Backend</a></li>
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->userName }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-
-                                    <li><a href="{{ URL::route('profile.show', Auth::user()->userName) }}">Profil</a></li>
-
-                                    @if (Auth::user()->isAdmin())
-                                       <li><a href="{{ url('backend/dashboard') }}">Backend</a></li>
-                                       <li><a href="{{ url('/') }}">Frontend</a></li>
-                                    @endif
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-                <div class="container">
-            <ul class="nav nav-pills">
-                <li><a href="{{ url('backend/dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url('backend/beachcourts') }}">Beachcourts</a></li>
-                <li><a href="{{ url('backend/user') }}">User</a></li>
+                <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link" target="_blank"><span data-feather="globe"></span></a></li>
+              
+                @if (Auth::check())
+                    <li class="navigation__item">
+                        <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
+                            {{ csrf_field() }}
+                            <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="navigation__link">  <span data-feather="log-out"></span></a>
+                        </form>
+                    </li>
+                @endif
             </ul>
         </div>
-            </div>
-        </nav>
-
-
-        @yield('content')
-    </div>
-
+        <div class="content">
+            @yield('content')
+        </div>
+    </div><!-- #app ENDE -->
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    @stack('scripts')
+
 </body>
 </html>

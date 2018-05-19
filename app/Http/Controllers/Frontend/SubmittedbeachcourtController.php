@@ -89,7 +89,7 @@ class SubmittedbeachcourtController extends Controller
         $confirmation_code = ['foo' => $code];
 
         Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
-            $message->from('hello@beachfelder.de', 'Beachfelder.de');
+            $message->from('noreply@beachfelder.de', 'beachfelder.de');
             $message->to($email, $name)->subject('beachfelder.de // Beachfeld eingereicht');
         });
 

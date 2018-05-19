@@ -3616,12 +3616,6 @@ $(document).ready(function(){
     $(this).parent('.flyout').removeClass('flyout--open');
   });
 
-  //initialize the datepicker
-  $('.input__field--date').datepicker({
-    language: 'de',
-    autoClose: true
-  });
-
   //show tooltip how we rate at beachcourt item
   $('.beachcourt-item__info-icon').click(function() {
     $(this).next($('.flyout')).addClass('flyout--open');

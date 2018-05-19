@@ -11,11 +11,14 @@
     @if (Auth::check())
       <div class="profile-user hide-on-mobile section__button">
         <div class="profile-user__info">
-          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->firstName }} {{ Auth::user()->lastName }} </a>
+          <a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="profile-user__title">{{ Auth::user()->userName }} </a>
           <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
             {{ csrf_field() }}
             <a href="{{ url('/') }}/user/{{ Auth::user()->userName }}/edit" class="link-text profile-user__subtitle">Profil bearbeiten</a>
           </form>
+          @if (Auth::user()->isAdmin())
+            <a href="{{ url('/') }}/backend/dashboard/" class="link-text profile-user__subtitle">Adminbereich</a>
+          @endif
         </div>
         <div class="profile-user__image ">
           @if(Auth::user()->pictureName !== 'placeholder-user.png' )
@@ -110,8 +113,8 @@
                     </div>
 
                     <div class="icon-text -spacing-b">
-                      <span class="icon-text__icon" data-feather="info"></span>
-                      <span class="icon-text__text">Felder outdoor: {{ $beachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $beachcourt->courtCountIndoor }}</span>
+                      <span class="icon-text__icon" data-feather="compass"></span>
+                      <span class="icon-text__text">{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</span>
                     </div>
 
                     <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="button-primary -spacing-a">

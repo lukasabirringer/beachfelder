@@ -195,6 +195,15 @@
           </div>
         @endif
 
+        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
+        @if ($beachcourt->isPublic == 1 )
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
+        @elseif ($beachcourt->isPublic == 0 )
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
+        @else 
+          <p class="-typo-copy -text-color-gray-01 -spacing-b">Leider liegen uns darüber noch keine Daten vor.</p>
+        @endif
+
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
         @if ($beachcourt->isChargeable === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>

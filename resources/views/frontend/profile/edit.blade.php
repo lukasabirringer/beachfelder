@@ -93,9 +93,10 @@
               </label>
 
               <label class="input -spacing-b">
-                <input type="text" class="input__field input__field--date datepicker-here" data-position="top left" placeholder="Geburtstag" name="birthdate" value="{{ $user->birthdate }}">
-                <span class="input__label">Geburstag</span>
-                
+
+                <input type="text" class="input__field input__field--date" placeholder="Geburtstag (TT.MM.JJJ)" name="birthdate" value="{{ $user->birthdate }}">
+                <span class="input__label">Geburstag (TT.MM.JJJ)</span>
+
               </label>
             </div>
 
@@ -289,7 +290,7 @@
           <div class="column column--12">
             <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-a">Deinen Account löschen</p>
             <p class="-typo-copy -text-color-gray-01">
-              Dass du deinen Account bei <span class="-typo-copy--bold">beachfelder.de</span> löschen möchtest, finden wir sehr schade. Bitte beachte, dass dieser Vorgang kann nicht rückgänging gemacht werden und du dies nur machen solltest, wenn du dir wirklich sicher bist.
+              Dass du deinen Account bei <span class="-typo-copy--bold">beachfelder.de</span> löschen möchtest, finden wir sehr schade. Bitte beachte, dass dieser Vorgang nicht rückgängig gemacht werden kann und du dies nur tun solltest, wenn du dir wirklich sicher bist.
             </p>
           </div>
           <div class="column column--12 column--m-6 -spacing-b">
