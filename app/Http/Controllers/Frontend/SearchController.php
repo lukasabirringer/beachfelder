@@ -14,7 +14,7 @@ class SearchController extends Controller
     public function show(Request $request)
     {   
         $plz = $request->postcode13 ?? '75233';
-     
+      dd($request);
         $distance = $request->distance ?? '15';
       
         $validator = Validator::make($request->all(), [
@@ -37,21 +37,27 @@ class SearchController extends Controller
         $ratingmax = $request->ratingmax ?? '5';
         $isPublic = $request->isPublic;
         $isChargeable = $request->isChargeable;
-
-         if ($request->has('isPublic') && $request->has('isChargeable') && $request->has('rating')) {
+         
             $results = Beachcourt::where('submitState', 'approved')
               ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
               ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-              ->where(function ($results) {$results->where('isPublic', '=', $isPublic)->orWhereNull('isPublic');})
-              ->where(function ($results) {$results->where('isChargeable', '=', $isChargeable)->orWhereNull('isChargeable');})
-              ->where(function ($results) {$results->where('rating', '=', $rating)->orWhereNull('rating');})
+              ->where(function ($results) use($isPublic)
+                      {
+                        $results->where('isPublic', '=', $isPublic)
+                                ->orWhereNull('isPublic');
+                      })
+              ->where(function ($results) use($isChargeable)
+                      {
+                        $results->where('isChargeable', '=', $isChargeable)
+                                ->orWhereNull('isChargeable');
+                      })
+              ->where(function ($results) use($ratingmin, $ratingmax)
+                      {
+                        $results->whereBetween('rating', array($ratingmin, $ratingmax))
+                                ->orWhereNull('rating');
+                      })
               ->get();
-         } else {
-            $results = Beachcourt::where('submitState', 'approved')
-              ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-              ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-              ->get();
-         }
+        
 
           foreach ($results as $beachcourt) {
             $pi80 = M_PI / 180;

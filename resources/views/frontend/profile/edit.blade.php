@@ -95,6 +95,7 @@
               <label class="input -spacing-b">
                 <input type="text" class="input__field input__field--date datepicker-here" data-position="top left" placeholder="Geburtstag" name="birthdate" value="{{ $user->birthdate }}">
                 <span class="input__label">Geburstag</span>
+                
               </label>
             </div>
 

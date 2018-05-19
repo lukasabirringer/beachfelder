@@ -80,7 +80,7 @@ class BeachcourtController extends Controller
         else {
             $filecount = 0;
         }
-
+        
         return view('frontend.beachcourt.show', compact('filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures'));
     }
     public function rate($cityslug, $latitude, $longitude)

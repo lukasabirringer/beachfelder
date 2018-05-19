@@ -85,7 +85,7 @@ class ProfileController extends Controller
 
         $birthdate = $request->input('birthdate');
         $birthdate = date('d.m.Y', strtotime($birthdate));
-
+        
         $user = Auth::user();
         $user->userName = $request->input('userName');
         $user->firstName = $request->input('firstName');
@@ -98,7 +98,7 @@ class ProfileController extends Controller
         $user->publicProfile = $request->input('publicProfile');
 
         $user->save();
-
+       
         return redirect()->back()->with('success', 'Du hast dein Profil erfolgreich geändert!');
     }
     public function storeimage(Request $request){
