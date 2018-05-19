@@ -13,6 +13,7 @@ class SearchController extends Controller
 {
     public function show(Request $request)
     {   
+
         $plz = $request->postcode13 ?? '75233';
    
         $distance = $request->distance ?? '15';
@@ -38,7 +39,7 @@ class SearchController extends Controller
         $isPublic = $request->isPublic;
         $isChargeable = $request->isChargeable;
          
-            if ($request->has('isPublic') && $request->has('isChargeable') && $request->has('rating')) {
+            if ($request->has('isPublic') && $request->has('isChargeable')) {
             $results = Beachcourt::where('submitState', 'approved')
               ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
               ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
@@ -63,6 +64,21 @@ class SearchController extends Controller
                 $results = Beachcourt::where('submitState', 'approved')
                 ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
                 ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+                ->where(function ($results)
+                      {
+                        $results->where('isPublic', '=', 1)
+                                ->orWhereNull('isPublic');
+                      })
+                ->where(function ($results)
+                      {
+                        $results->where('isChargeable', '=', 0)
+                                ->orWhereNull('isChargeable');
+                      })
+                ->where(function ($results) use($ratingmin, $ratingmax)
+                      {
+                        $results->whereBetween('rating', array(0, 5))
+                                ->orWhereNull('rating');
+                      })
                 ->get();
               }
         
