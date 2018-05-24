@@ -16,6 +16,7 @@
       </div>
     </div>
     <form class="form-horizontal" action="{{ URL::route('backendBeachcourt.update', $beachcourt->id) }}" method="POST">
+      <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">
         <div class="column column--12 column--m-2 -spacing-b">
@@ -208,12 +209,23 @@
           @endif
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
-          <button class="button-primary">
+          <button class="button-primary" type="submit">
             <span class="button-primary__label">Speichern</span>
             <span class="button-primary__label button-primary__label--hover">Speichern</span>
           </button>
         </div>
       </div>
     </form>
+
+    <div class="row">
+      <div class="column column--12 -spacing-a">
+        <hr class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
+        <p class="-typo-copy -text-color-gray-01"><a class="link-icon-text" href="{{ URL::previous() }}"><span class="link-icon-text__icon" data-feather="chevron-left"></span><span class="link-icon-text__text">Zurück zur Übersicht</span></a></p>
+      </div>
+    </div>
   </div> <!-- .content__main ENDE -->
 @endsection

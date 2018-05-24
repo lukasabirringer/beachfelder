@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
 
+@section('title_and_meta')
+    <title>Bearbeite dein Profil | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+    <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
+@endsection
+
 @section('content')
   <div class="content__main">
     <div id="common"></div>
@@ -116,15 +121,15 @@
 
               <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">Geschlecht</p>
               <label class="input-radio -spacing-b">
-                <input type="radio" class="input-radio__field" name="sex" value="male" checked="checked">
+                <input type="radio" class="input-radio__field" name="sex" value="male" {{ $user->sex == 'male' ? 'checked' : '' }}>
                 <span class="input-radio__label">männlich</span>
               </label>
               <label class="input-radio -spacing-b">
-                <input type="radio" class="input-radio__field" name="sex" value="female">
+                <input type="radio" class="input-radio__field" name="sex" value="female" {{ $user->sex == 'female' ? 'checked' : '' }}>
                 <span class="input-radio__label">weiblich</span>
               </label>
-              <label class="input-radio -spacing-b">
-                <input type="radio" class="input-radio__field" name="sex" value="neutral">
+              <label class="input-radio -spacing-b"> 
+                <input type="radio" class="input-radio__field" name="sex" value="neutral" {{ $user->sex == 'neutral' ? 'checked' : '' }}>
                 <span class="input-radio__label">neutral</span>
               </label>
             </div>
