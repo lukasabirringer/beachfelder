@@ -250,5 +250,10 @@
         <p class="-typo-copy -text-color-gray-01"><a class="link-icon-text" href="{{ URL::previous() }}"><span class="link-icon-text__icon" data-feather="chevron-left"></span><span class="link-icon-text__text">Zurück zur Übersicht</span></a></p>
       </div>
     </div>
+    <div class="row">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
   </div> <!-- .content__main ENDE -->
 @endsection
