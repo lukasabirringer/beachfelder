@@ -202,7 +202,7 @@
         @elseif ($beachcourt->isPublic === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
         @else 
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Leider liegen uns darüber noch keine Daten vor.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
@@ -211,9 +211,9 @@
         @elseif ($beachcourt->isChargeable === 0 )
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
         @elseif ($beachcourt->isChargeable === 3)
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist in dem Eintrittspreis inbegriffen.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist im Eintrittspreis inbegriffen.</p>
         @elseif ($beachcourt->isChargeable === NULL )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es sind keine Informationen vorhanden, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
         @endif
          @if($beachcourt->notes != NULL)
           <p class="-typo-copy -text-color-gray-01 -spacing-b">

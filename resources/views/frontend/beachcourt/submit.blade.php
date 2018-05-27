@@ -19,8 +19,8 @@
           <span class="notification__icon" data-feather="info"></span>
           <p class="notification__text">{!! \Session::get('success') !!}</p>
 
-          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
-            <span class="button-secondary__label">OK</span>
+          <button class="button-secondary notification-button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label notification-button__label">OK</span>
           </button>
         </li>
       </ul>
@@ -496,7 +496,7 @@
         $(target).show();
     });
 
-    $('.notification__button').click(function() {
+    $('.notification-button').click(function() {
       $(this).parent().parent('.notification').slideUp();
     });
 

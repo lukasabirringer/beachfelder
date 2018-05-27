@@ -23,7 +23,6 @@
   		</div>
   	</div>
   	<div class="row">
-
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Adresse</h4>
   			<p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Stadt:</span> {{ $beachcourt->postalCode }} {{ $beachcourt->city }}</p>

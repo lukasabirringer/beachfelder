@@ -57,26 +57,14 @@
   display: flex;
 }
 
-.no-image-hint {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #f3f3f3;
-  padding: 2rem;
-  text-align: center;
+.intro-headline__subtitle {
+  max-width: 763px;
+}
+
+@media screen and (max-width: 768px) {
+  .intro-headline__subtitle {
+    max-width: unset;
+  }
 }
 
 .algolia-places {

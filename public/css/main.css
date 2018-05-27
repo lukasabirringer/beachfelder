@@ -1494,7 +1494,7 @@ input::-moz-focus-outer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: 3.25rem;
+    padding: 1.25rem;
     background: url("/../images/IMG_2482.JPG");
     background-size: cover; }
     @media (min-width: 992px) {
@@ -2956,11 +2956,14 @@ input::-moz-focus-outer {
         padding-right: 1.875rem; } }
     .notification__text--light {
       color: #595556; }
-  .notification__button {
-    margin-top: 0.625rem; }
+  .notification-button {
+    margin-top: 0.625rem;
+    border-color: #FFF; }
     @media (min-width: 768px) {
-      .notification__button {
+      .notification-button {
         margin-top: 0rem; } }
+    .notification-button__label {
+      color: #FFF; }
 
 /* pt-sans-regular - latin */
 @font-face {

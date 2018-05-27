@@ -38,8 +38,8 @@
       </button>
     @endif
 
-    <h1 class="-typo-headline-01 -text-color-petrol">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
-    <p class="-typo-copy -text-color-petrol -align-center">
+    <h1 class="intro-headline__title -typo-headline-01 -text-color-petrol">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
+    <p class="intro-headline__subtitle -typo-copy -text-color-petrol -align-center">
     <span class="-typo-copy--bold">beachfelder.de</span> ist die Suchmaschine mit der größten und umfangreichsten Datenbank an Beachvolleyball-Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
 
     <form action="/search" method="POST" class="form form--homepage-search">

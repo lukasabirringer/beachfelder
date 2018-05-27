@@ -32,16 +32,16 @@
 
 .beachcourt-item__image {display: flex;}
 
-.no-image-hint {
-	display: flex;
-	flex-grow: 1;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background: #f3f3f3;
-	padding: 2rem;
-	text-align: center;
+.intro-headline__subtitle {
+	max-width: 763px;
 }
+
+@media screen and (max-width: 768px) {
+	.intro-headline__subtitle {
+		max-width: unset;
+	}	
+}
+
 
 //ALGOLIA
 // Main input wrapper
