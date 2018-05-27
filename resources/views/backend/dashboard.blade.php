@@ -146,7 +146,7 @@
                 <h4 class="-typo-headline-04 -text-color-gray-01">Alle Seiten</h4>
                 @foreach ($pages as $page)
                     <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Seiten-Name</span>
-                    <span class="-typo-copy -text-color-gray-01">{{ $page->name }}</span>
+                    <span class="-typo-copy -text-color-gray-01"><a href="{{ URL::route('backendPage.edit', $page->slug) }}" class="link-text">{{ $page->name }}</a></span>
                 @endforeach
             </div>
             <div class="column column--12 column--m-6 -spacing-a"></div>

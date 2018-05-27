@@ -15,7 +15,7 @@ class PageController extends Controller
 	    
 	    $pages->count = $pages->count();
 
-	    return view('backend.page.index', ['page' => $pages]);
+	    return view('backend.pages.index', ['page' => $pages]);
 	}
 
     public function show($slug)

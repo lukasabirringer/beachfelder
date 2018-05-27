@@ -6,6 +6,7 @@
     <div class="row">
       <div class="column column--12">
         <h2 class="-typo-headline-02 -text-color-gray-01">Seite {{ $page->name }}</h2>
+        {!! html_entity_decode($page['content']) !!}
       </div>
     </div>
     <div class="row -spacing-a">
