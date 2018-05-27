@@ -38,6 +38,7 @@ class BeachcourtController extends Controller
         DB::table('beachcourts')->insert([
              'postalCode' => $request->postalCode,
              'city' => $request->city,
+             'district' => $request->district,
              'street' => $request->street,
              'houseNumber' => $request->houseNumber,
              'country' => $request->country,
@@ -49,8 +50,13 @@ class BeachcourtController extends Controller
              'courtCountIndoor' => $request->courtCountIndoor,
              'submitState' => $request->submitState,
              'isPublic' => $request->public,
+             'floodlight' => $request->floodlight,
+             'shower' => $request->shower,
              'operator' => $request->operator,
              'operatorUrl' => $request->operatorUrl,
+             'operatorContactPerson' => $request->operatorContactPerson,
+             'operatorContactPersonPhone' => $request->operatorContactPersonPhone,
+             'operatorContactPersonEmail' => $request->operatorContactPersonEmail,
              'notes' => $request->notes,
         ]);
 
@@ -81,6 +87,7 @@ class BeachcourtController extends Controller
         $beachcourt = Beachcourt::find($id);
         $beachcourt->postalCode = $request->input('postalCode');
         $beachcourt->city = $request->input('city');
+        $beachcourt->district = $request->input('district');
         $beachcourt->street = $request->input('street');
         $beachcourt->houseNumber = $request->input('houseNumber');
         $beachcourt->country = $request->input('country');
@@ -92,8 +99,13 @@ class BeachcourtController extends Controller
         $beachcourt->courtCountIndoor = $request->input('courtCountIndoor');
         $beachcourt->submitState = $request->input('submitState');
         $beachcourt->isPublic = $request->input('isPublic');
+        $beachcourt->floodlight = $request->input('floodlight');
+        $beachcourt->shower = $request->input('shower');
         $beachcourt->operator = $request->input('operator');
         $beachcourt->operatorUrl = $request->input('operatorUrl');
+        $beachcourt->operatorContactPerson = $request->input('operatorContactPerson');
+        $beachcourt->operatorContactPersonPhone = $request->input('operatorContactPersonPhone');
+        $beachcourt->operatorContactPersonEmail = $request->input('operatorContactPersonEmail');
         $beachcourt->notes = $request->input('notes');
         $beachcourt->save();
 

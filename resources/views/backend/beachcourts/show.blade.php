@@ -26,17 +26,39 @@
 
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Adresse</h4>
-  			<p class="-typo-copy -text-color-petrol">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</p>
-  			<p class="-typo-copy -text-color-petrol">{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</p>
-  			<p class="-typo-copy -text-color-petrol">{{ $beachcourt->state }}</p>
-  			<p class="-typo-copy -text-color-petrol">{{ $beachcourt->country }}</p>
+  			<p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Stadt:</span> {{ $beachcourt->postalCode }} {{ $beachcourt->city }}</p>
+  			<p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Stadtteil:</span> {{ $beachcourt->district }} </p>
+        <p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Straße + Hausnummer:</span> {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</p>
+        <p class="-typo-copy -text-color-petrol -spacing-d"><span class="-typo-copy -typo-copy--bold">Bundesland:</span> {{ $beachcourt->state }} </p>
+  			<p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Land:</span> {{ $beachcourt->country }}</p>
   		</div>
 
   		<div class="column column--12 column--m-6 -spacing-a">
 			
 			<h4 class="-typo-headline-04 -text-color-green">Betreiber</h4>
-			<p class="-typo-copy -text-color-petrol">{{ $beachcourt->operator }}</p>
-			<p class="-typo-copy -text-color-petrol"><a class="link-text" href="{{ $beachcourt->operatorUrl }}" target="_blank">{{ $beachcourt->operatorUrl }}</a></p>
+			<p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Betreiber:</span> {{ $beachcourt->operator }}</p>
+      <p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Ansprechpartner:</span> 
+        @if($beachcourt->operatorContactPerson != '')
+          {{ $beachcourt->operatorContactPerson }}
+        @else
+          Nicht angegeben
+        @endif
+        </p>
+      <p class="-typo-copy -text-color-petrol -spacing-d"><span class="-typo-copy -typo-copy--bold">Website:</span> <a class="link-text" href="{{ $beachcourt->operatorUrl }}" target="_blank">{{ $beachcourt->operatorUrl }}</a></p>
+      <p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">E-Mail:</span>
+        @if($beachcourt->operatorContactPersonEmail != '')
+          <a class="link-text" href="mailto:{{ $beachcourt->operatorContactPersonEmail }}">{{ $beachcourt->operatorContactPersonEmail }}</a>
+        @else
+          Nicht angegeben
+        @endif
+      </p>
+      <p class="-typo-copy -text-color-petrol"><span class="-typo-copy -typo-copy--bold">Telefon:</span>
+        @if($beachcourt->operatorContactPersonPhone != '')
+          <a class="link-text" href="tel:{{ $beachcourt->operatorContactPersonPhone }}">{{ $beachcourt->operatorContactPersonPhone }}</a>
+        @else
+          Nicht angegeben
+        @endif
+      </p>
   		</div>
   	</div>
 
@@ -57,7 +79,7 @@
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
   			<p class="-typo-copy -text-color-petrol">
-  				kostenpflichtig: 
+  				<span class="-typo-copy -typo-copy--bold">kostenpflichtig:</span> 
   				@if ( $beachcourt->isChargeable === 1 ) 
   					Ja
   				@elseif ($beachcourt->isChargeable === 0)
@@ -67,7 +89,7 @@
   				@endif
   			</p>
   			<p class="-typo-copy -text-color-petrol">
-  				öffentlich zugänglich: 
+  				<span class="-typo-copy -typo-copy--bold">öffentlich zugänglich:</span>
   				@if ( $beachcourt->isPublic === 1 ) 
   					Ja
   				@elseif ($beachcourt->isPublic === 0)
@@ -76,6 +98,26 @@
             Nicht angegeben
   				@endif
   			</p>
+        <p class="-typo-copy -text-color-petrol">
+          <span class="-typo-copy -typo-copy--bold">Dusche:</span>
+          @if ( $beachcourt->shower === 1 ) 
+            Ja
+          @elseif ($beachcourt->shower === 0)
+            nein
+          @else
+            Nicht angegeben
+          @endif
+        </p>
+        <p class="-typo-copy -text-color-petrol">
+          <span class="-typo-copy -typo-copy--bold">Flutlicht:</span>
+          @if ( $beachcourt->floodlight === 1 ) 
+            Ja
+          @elseif ($beachcourt->floodlight === 0)
+            nein
+          @else
+            Nicht angegeben
+          @endif
+        </p>
   		</div>
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Rating</h4>
