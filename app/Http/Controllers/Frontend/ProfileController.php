@@ -95,6 +95,7 @@ class ProfileController extends Controller
         $user->postalCode = $request->input('postalCode');
         $user->city = $request->input('city');
         $user->birthdate = $birthdate;
+        $user->sex = $request->input('sex');
         $user->publicProfile = $request->input('publicProfile');
 
         $user->save();

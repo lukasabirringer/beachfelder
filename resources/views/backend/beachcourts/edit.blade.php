@@ -4,6 +4,21 @@
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
+        <p class="-typo-copy -text-color-gray-01"><a class="link-icon-text" href="{{ URL::previous() }}"><span class="link-icon-text__icon" data-feather="chevron-left"></span><span class="link-icon-text__text">Zurück zur Übersicht</span></a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
         <h1 class="title-page__title">Feld in </h1>
         <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}, {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</p>
         <p class="-typo-copy -text-color-gray-01">Letztes Update: {{ $beachcourt->updated_at }}</p>
@@ -16,6 +31,7 @@
       </div>
     </div>
     <form class="form-horizontal" action="{{ URL::route('backendBeachcourt.update', $beachcourt->id) }}" method="POST">
+      <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">
         <div class="column column--12 column--m-2 -spacing-b">
@@ -167,10 +183,14 @@
         </div>
 
         <div class="column column--12 column--m-3 -spacing-b">
-          <label class="input">
-            <input type="text" class="input__field" placeholder="kostenpflichtig" name="isChargeable" value="{{ $beachcourt->isChargeable }}">
-            <span class="input__label">kostenpflichtig</span>
-            <div class="input__border"></div>
+          <label class="input-radio -spacing-b">
+            <input type="radio" class="input-radio__field" name="isChargeable" value="1" {{ $beachcourt->isChargeable == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">kostenpflichtig</span>
+          </label>
+
+          <label class="input-radio -spacing-b">
+            <input type="radio" class="input-radio__field" name="isChargeable" value="0" {{ $beachcourt->isChargeable == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">nicht kostenpflichtig</span>
           </label>
           @if ($errors->has('isChargeable'))
             <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
@@ -178,10 +198,14 @@
         </div>
 
         <div class="column column--12 column--m-3 -spacing-b">
-          <label class="input">
-            <input type="text" class="input__field" placeholder="öffentlich zugänglich" name="isPublic" value="{{ $beachcourt->isPublic }}">
-            <span class="input__label">öffentlich zugänglich</span>
-            <div class="input__border"></div>
+          <label class="input-radio -spacing-b">
+            <input type="radio" class="input-radio__field" name="isPublic" value="1" {{ $beachcourt->isPublic == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">öffentlich zugänglich</span>
+          </label>
+
+          <label class="input-radio -spacing-b">
+            <input type="radio" class="input-radio__field" name="isPublic" value="0" {{ $beachcourt->isPublic == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">nicht öffentlich zugänglich</span>
           </label>
           @if ($errors->has('isPublic'))
             <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
@@ -208,12 +232,28 @@
           @endif
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
-          <button class="button-primary">
+          <button class="button-primary" type="submit">
             <span class="button-primary__label">Speichern</span>
             <span class="button-primary__label button-primary__label--hover">Speichern</span>
           </button>
         </div>
       </div>
     </form>
+
+    <div class="row">
+      <div class="column column--12 -spacing-a">
+        <hr class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
+        <p class="-typo-copy -text-color-gray-01"><a class="link-icon-text" href="{{ URL::previous() }}"><span class="link-icon-text__icon" data-feather="chevron-left"></span><span class="link-icon-text__text">Zurück zur Übersicht</span></a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
   </div> <!-- .content__main ENDE -->
 @endsection

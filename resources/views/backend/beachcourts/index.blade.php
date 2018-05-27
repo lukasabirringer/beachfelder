@@ -31,9 +31,9 @@
                 @foreach ($submittedBeachcourts as $beachcourt)
                         <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
                 <tr>
-                    <td>{{ $beachcourt->id }}</td>
-                    <td>{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
-                    <td>{{ $beachcourt->realRating }}</td>
+                    <td class="-typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
+                    <td class="-typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
+                    <td class="-typo-copy -text-color-gray-01">{{ $beachcourt->realRating }}</td>
                     <td>
                         <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}">
                           <button type="button" class="btn btn-default">
@@ -89,19 +89,19 @@
             <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="col-md-1">ID</th>
-                    <th class="col-md-3">Ort</th>
-                    <th class="col-md-1">Rating</th>
-                    <th class="col-md-4">Optionen</th>
+                    <th class="col-md-1 -typo-copy -typo-copy--bold -text-color-green">ID</th>
+                    <th class="col-md-3 -typo-copy -typo-copy--bold -text-color-green">Ort</th>
+                    <th class="col-md-1 -typo-copy -typo-copy--bold -text-color-green">Rating</th>
+                    <th class="col-md-4 -typo-copy -typo-copy--bold -text-color-green">Optionen</th>
                 </tr>
             </thead>
             <tbody class="list">
                 @foreach ($beachcourts as $beachcourt)
                     <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
                 <tr>
-                    <td class="id">{{ $beachcourt->id }}</td>
-                    <td class="city">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
-                    <td class="rating">{{ $beachcourt->realRating }}</td>
+                    <td class="id -typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
+                    <td class="city -typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</td>
+                    <td class="rating -typo-copy -text-color-gray-01">{{ $beachcourt->realRating }}</td>
                     <td>
                         <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}">
                           <button type="button" class="btn btn-default">

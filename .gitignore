@@ -6,6 +6,8 @@
 /vendor
 /.idea
 /.vagrant
+
+##FILES##
 .env
 Homestead.json
 Homestead.yaml
