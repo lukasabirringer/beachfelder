@@ -54,4 +54,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/user/{id}', 'UserController@destroy')->name('backendUser.destroy');
   Route::post('/backend/user/erstellen', 'UserController@store')->name('backendUser.store');
   Route::get('/backend/user/{id}/bearbeiten', 'UserController@edit')->name('backendUser.edit');
+  Route::get('/backend/page/{id}', 'PageController@show')->name('backendPage.show');
+  Route::get('/backend/page/{id}/bearbeiten', 'PageController@edit')->name('backendPage.edit');
+
 });

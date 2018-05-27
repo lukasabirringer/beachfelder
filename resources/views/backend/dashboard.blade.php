@@ -140,5 +140,22 @@
                 <hr class="divider">
             </div>
         </div>
+
+        <div class="row">
+            <div class="column column--12 column--m-6 -spacing-a">
+                <h4 class="-typo-headline-04 -text-color-gray-01">Alle Seiten</h4>
+                @foreach ($pages as $page)
+                    <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Seiten-Name</span>
+                    <span class="-typo-copy -text-color-gray-01">{{ $page->name }}</span>
+                @endforeach
+            </div>
+            <div class="column column--12 column--m-6 -spacing-a"></div>
+        </div>
+
+        <div class="row">
+            <div class="column column--12 -spacing-a">
+                <hr class="divider">
+            </div>
+        </div>
     </div><!-- .content__main ENDE -->
 @endsection

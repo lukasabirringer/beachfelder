@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Beachcourt;
 use App\User;
+use App\Page;
 use App\Rating;
 use App\Favorite;
 use DB;
@@ -26,6 +27,7 @@ class DashboardController extends Controller
         $submittedBeachcourts = Beachcourt::where('submitState', 'submitted')->limit(5)->latest()->get();
 
         $messages = DB::table('contact')->limit(5)->latest()->get();
+        $pages = DB::table('pages')->limit(5)->latest()->get();
 
 
         // $users = User::limit(5)->latest()->get();
@@ -40,6 +42,7 @@ class DashboardController extends Controller
                             'approvedCourtsCount',
                             'courtWithoutPicturesRating',
                             'submittedBeachcourts',
-                            'messages'));
+                            'messages',
+                            'pages'));
     }
 }
