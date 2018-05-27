@@ -38,8 +38,8 @@
       </button>
     @endif
 
-    <h1 class="-typo-headline-01 -text-color-petrol">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
-    <p class="-typo-copy -text-color-petrol -align-center">
+    <h1 class="intro-headline__title -typo-headline-01 -text-color-petrol">Willkommen @if (Auth::check()) {{ Auth::user()->userName }} @endif</h1>
+    <p class="intro-headline__subtitle -typo-copy -text-color-petrol -align-center">
     <span class="-typo-copy--bold">beachfelder.de</span> ist die Suchmaschine mit der größten und umfangreichsten Datenbank an Beachvolleyball-Feldern. Auf <span class="-typo-copy--bold">beachfelder.de</span> kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen.</p>
 
     <form action="/search" method="POST" class="form form--homepage-search">
@@ -98,7 +98,11 @@
                     @endif
                   </div>
                   <div class="beachcourt-item__info">
-                    <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</a>
+                    <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}
+                      @if ($beachcourt->district != '') 
+                        - {{ $beachcourt->district }}
+                      @endif 
+                    </a>
                     @if ($beachcourt->rating >= 1)
                       <div class="icon-text beachcourt-item__rating -spacing-b">
                         <span class="icon-text__icon" data-feather="award"></span>

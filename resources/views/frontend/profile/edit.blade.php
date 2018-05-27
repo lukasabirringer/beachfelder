@@ -18,8 +18,8 @@
         <li class="notification__item">
           <span class="notification__icon" data-feather="info"></span>
           <p class="notification__text">{!! \Session::get('success') !!}</p>
-          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
-            <span class="button-secondary__label">OK</span>
+          <button class="button-secondary notification-button close" data-dismiss="alert" aria-label="close">
+            <span class="button-secondary__label notification-button__label">OK</span>
           </button>
         </li>
       </ul>
@@ -379,8 +379,8 @@
     });
 
     //hide the notification
-    $('.notification__button').click(function() {
-      $(this).parent('.notification__item').parent('.notification').hide();
+    $('.notification-button').click(function() {
+      $(this).parent('.notification__item').parent('.notification').slideUp();
     });
   </script>
 @endpush

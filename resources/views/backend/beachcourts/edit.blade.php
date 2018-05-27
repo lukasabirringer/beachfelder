@@ -148,6 +148,45 @@
       </div>
 
       <div class="row">
+        <div class="column column--12 column--m-6 -spacing-b">
+          <label class="input">
+            <input type="text" class="input__field" placeholder="Ansprechpartner" name="operatorContactPerson" value="{{ $beachcourt->operatorContactPerson }}">
+            <span class="input__label">Ansprechpartner</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('operatorContactPerson'))
+            <div class="alert alert-danger">{{ $errors->first('operatorContactPerson', ':message') }}</div>
+          @endif
+        </div>
+        <div class="column column--12 column--m-6 -spacing-b">
+          <label class="input">
+            <input type="text" class="input__field" placeholder="Ansprechpartner E-Mail" name="operatorContactPersonEmail" value="{{ $beachcourt->operatorContactPersonEmail }}">
+            <span class="input__label">Ansprechpartner E-Mail</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('operatorContactPersonEmail'))
+            <div class="alert alert-danger">{{ $errors->first('operatorContactPersonEmail', ':message') }}</div>
+          @endif
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-b">
+          <label class="input">
+            <input type="text" class="input__field" placeholder="Ansprechpartner Telefon" name="operatorContactPersonPhone" value="{{ $beachcourt->operatorContactPersonPhone }}">
+            <span class="input__label">Ansprechpartner Telefon</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('operatorContactPersonPhone'))
+            <div class="alert alert-danger">{{ $errors->first('operatorContactPersonPhone', ':message') }}</div>
+          @endif
+        </div>
+        <div class="column column--12 column--m-6 -spacing-b">
+          
+        </div>
+      </div>
+
+      <div class="row">
         <div class="column column--12 -spacing-b">
             <label class="textarea">
               <textarea class="textarea__field" name="notes">{{ $beachcourt->notes }}</textarea>
@@ -181,42 +220,8 @@
             <div class="alert alert-danger">{{ $errors->first('courtCountIndoor', ':message') }}</div>
           @endif
         </div>
-
-        <div class="column column--12 column--m-3 -spacing-b">
-          <label class="input-radio -spacing-b">
-            <input type="radio" class="input-radio__field" name="isChargeable" value="1" {{ $beachcourt->isChargeable == '1' ? 'checked' : '' }}>
-            <span class="input-radio__label">kostenpflichtig</span>
-          </label>
-
-          <label class="input-radio -spacing-b">
-            <input type="radio" class="input-radio__field" name="isChargeable" value="0" {{ $beachcourt->isChargeable == '0' ? 'checked' : '' }}>
-            <span class="input-radio__label">nicht kostenpflichtig</span>
-          </label>
-          @if ($errors->has('isChargeable'))
-            <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
-          @endif
-        </div>
-
-        <div class="column column--12 column--m-3 -spacing-b">
-          <label class="input-radio -spacing-b">
-            <input type="radio" class="input-radio__field" name="isPublic" value="1" {{ $beachcourt->isPublic == '1' ? 'checked' : '' }}>
-            <span class="input-radio__label">öffentlich zugänglich</span>
-          </label>
-
-          <label class="input-radio -spacing-b">
-            <input type="radio" class="input-radio__field" name="isPublic" value="0" {{ $beachcourt->isPublic == '0' ? 'checked' : '' }}>
-            <span class="input-radio__label">nicht öffentlich zugänglich</span>
-          </label>
-          @if ($errors->has('isPublic'))
-            <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
-          @endif
-        </div>
-
-      </div>
-
-      <div class="row">
         <div class="column column--12 column--m-6 -spacing-b">
-          <p class="-typo-copy -text-color-gray-01">Status</p>
+          <p class="-typo-copy -text-color-green">Status</p>
           <select class="form-control" name="submitState" class="selectpicker">
             <optgroup label="aktueller Status">
               <option>{{ $beachcourt->submitState }}</option>
@@ -230,6 +235,78 @@
           @if ($errors->has('submitState'))
             <div class="alert alert-danger">{{ $errors->first('submitState', ':message') }}</div>
           @endif
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="column column--12 column--m-3 -spacing-b">
+          <p class="-typo-copy -text-color-green">Flutlicht</p>
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="floodlight" value="1" {{ $beachcourt->floodlight == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">Flutlicht vorhanden</span>
+          </label>
+
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="floodlight" value="0" {{ $beachcourt->floodlight == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">Flutlicht nicht vorhanden</span>
+          </label>
+          @if ($errors->has('floodlight'))
+            <div class="alert alert-danger">{{ $errors->first('floodlight', ':message') }}</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-3 -spacing-b">
+          <p class="-typo-copy -text-color-green">Dusche</p>
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="shower" value="1" {{ $beachcourt->shower == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">Dusche vorhanden</span>
+          </label>
+
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="shower" value="0" {{ $beachcourt->shower == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">Dusche nicht vorhanden</span>
+          </label>
+          @if ($errors->has('shower'))
+            <div class="alert alert-danger">{{ $errors->first('shower', ':message') }}</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-3 -spacing-b">
+          <p class="-typo-copy -text-color-green">kostenlos/konstenpflichtig</p>
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="isChargeable" value="1" {{ $beachcourt->isChargeable == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">kostenpflichtig</span>
+          </label>
+
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="isChargeable" value="0" {{ $beachcourt->isChargeable == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">nicht kostenpflichtig</span>
+          </label>
+          @if ($errors->has('isChargeable'))
+            <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-3 -spacing-b">
+          <p class="-typo-copy -text-color-green">öffentlich/nicht öffentlich</p>
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="isPublic" value="1" {{ $beachcourt->isPublic == '1' ? 'checked' : '' }}>
+            <span class="input-radio__label">öffentlich zugänglich</span>
+          </label>
+
+          <label class="input-radio -spacing-d">
+            <input type="radio" class="input-radio__field" name="isPublic" value="0" {{ $beachcourt->isPublic == '0' ? 'checked' : '' }}>
+            <span class="input-radio__label">nicht öffentlich zugänglich</span>
+          </label>
+          @if ($errors->has('isPublic'))
+            <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+          @endif
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-b">
+          
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
           <button class="button-primary" type="submit">

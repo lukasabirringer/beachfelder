@@ -69,7 +69,13 @@
         Geschlecht
     </p>
     <p class="-typo-copy -text-color-gray-02">
-        {{ $user->sex }}
+        @if ($user->sex == 'male')
+            männlich
+        @elseif ($user->sex == 'female')
+            weiblich
+        @else 
+            neutral
+        @endif
     </p>
 </div>
 @endif

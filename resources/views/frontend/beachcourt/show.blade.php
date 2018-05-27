@@ -161,28 +161,29 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="column column--12 column--m-6 -spacing-a">
-        <div class="image-slide">
-          @if( $filecount != 0 )
+    <div class="row -flex -flex--wrap">
+      <div class="column column--12 column--m-6 -spacing-a flex">
+        @if( $filecount != 0 )
+          <div class="image-slide">
             <div class="owl-carousel owl-carousel--detailpage">
-                @for ($i = 1; $i <= $filecount; $i++)
+              @for ($i = 1; $i <= $filecount; $i++)
                 <img class="owl-lazy"
-                      data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/slide-image-0{{ $i }}.jpg"
-                      data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
-                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
-                @endfor
+                     data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/slide-image-0{{ $i }}.jpg"
+                     data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
+                     alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+              @endfor
             </div>
-
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
-          @else
-            <figure class="progressive">
-              <img class="progressive__img progressive--not-loaded" data-progressive="/uploads/beachcourts/dummy-image-submitted-retina.jpg" src="/uploads/beachcourts/dummy-image-submitted.jpg">
-            </figure>
-          @endif
-
-        </div>
+          </div>
+        @else
+          <div class="message-image-missing">
+            <span class="message-image-missing__icon" data-feather="image"></span>
+            <p class="message-image-missing__text">
+                Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a class="link-text" href="{{ URL::route('beachcourtsubmit.submit') }}">schickst</a>.
+            </p>
+          </div>
+        @endif
       </div>
 
       <div class="column column--12 column--m-6 -spacing-a">
@@ -195,22 +196,24 @@
           </div>
         @endif
 
-        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
-        @if ($beachcourt->isPublic == 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
-        @elseif ($beachcourt->isPublic == 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
+        <h4 class="-typo-headline-04 -text-color-petrol">Ist das Feld öffentlich zugänglich?</h4>
+        @if ($beachcourt->isPublic === 0 )
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
+        @elseif ($beachcourt->isPublic === 1 )
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
         @else 
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Leider liegen uns darüber noch keine Daten vor.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
         @if ($beachcourt->isChargeable === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
         @elseif ($beachcourt->isChargeable === 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
+        @elseif ($beachcourt->isChargeable === 3)
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist im Eintrittspreis inbegriffen.</p>
         @elseif ($beachcourt->isChargeable === NULL )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Es sind keine Informationen vorhanden, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
         @endif
          @if($beachcourt->notes != NULL)
           <p class="-typo-copy -text-color-gray-01 -spacing-b">
@@ -219,7 +222,7 @@
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
-        <p class="-typo-copy -text-color-gray-01 -spacing-b">
+        <p class="-typo-copy -text-color-gray-01 -spacing-d">
           {{ $beachcourt->operator }}<br>
           {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
         </p>
@@ -293,7 +296,11 @@
                     @endif
               </div>
               <div class="beachcourt-item__info">
-                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
+                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}
+                  @if ($otherBeachcourt->district != '') 
+                    - {{ $otherBeachcourt->district }}
+                  @endif 
+                </h3>
                 @if ($otherBeachcourt->rating >= 1)
                   <div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
@@ -312,8 +319,8 @@
                 </div>
 
                 <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="info"></span>
-                  <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                  <span class="icon-text__icon" data-feather="compass"></span>
+                  <span class="icon-text__text">{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</span>
                 </div>
 
                 <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
