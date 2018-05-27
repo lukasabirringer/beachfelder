@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/progressively/dist/progressively.min.css">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

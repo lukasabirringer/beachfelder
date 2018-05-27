@@ -24,13 +24,14 @@
 		<div class="row">
 		  <div class="column column--12">
 		    <h2 class="title-page__title">Registriere dich</h2>
-		    <p class="title-page__subtitle">Als registrierter Benutzer hast du viele Vorteile wie zum Beispiel:</p>
-		    <ul class="-typo-copy -text-color-gray-01">
-		    	<li>Deine Lieblingsfelder als Favoriten abspeichern</li>
-		    	<li>Neue Felder vorschlagen</li>
-		    	<li>Felder bewerten</li>
-		    	<li>Fotos der Felder hochladen</li>
-		    	<li>Unseren Newsletter mit den aktuellsten Tipps erhalten</li>
+		    <p class="title-page__subtitle">Als registrierter Benutzer hast du nützliche Vorteile</p>
+
+		    <ul class="list-benefits -spacing-c">
+		    	<li class="list-benefits__item"><span data-feather="check-square" class="list-benefits__icon"></span>Deine Lieblingsfelder als Favoriten abspeichern</li>
+		    	<li class="list-benefits__item"><span data-feather="check-square" class="list-benefits__icon"></span>Neue Felder vorschlagen</li>
+		    	<li class="list-benefits__item"><span data-feather="check-square" class="list-benefits__icon"></span>Felder bewerten</li>
+		    	<li class="list-benefits__item"><span data-feather="check-square" class="list-benefits__icon"></span>Fotos der Felder hochladen</li>
+		    	<li class="list-benefits__item"><span data-feather="check-square" class="list-benefits__icon"></span>Unseren Newsletter mit den aktuellsten Tipps erhalten</li>
 		    </ul>
 		  </div>
 		</div>
@@ -233,7 +234,7 @@
 
 @push('scripts')
   <script>
-    var myInput = document.querySelector('.input__field--password');
+  	var myInput = document.querySelector('.input__field--password');
     var letter = document.getElementById('letter');
     var capital = document.getElementById('capital');
     var number = document.getElementById('number');

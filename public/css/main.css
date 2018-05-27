@@ -2355,6 +2355,49 @@ input::-moz-focus-outer {
         border-radius: 0rem;
         background: transparent; } }
 
+/* pt-sans-regular - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("PT Sans"), local("PTSans-Regular"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.woff2") format("woff2"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.woff") format("woff"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.ttf") format("truetype"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-regular.svg#PTSans") format("svg");
+  /* Legacy iOS */ }
+
+/* pt-sans-700 - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.eot");
+  /* IE9 Compat Modes */
+  src: local("PT Sans Bold"), local("PTSans-Bold"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.woff2") format("woff2"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.woff") format("woff"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.ttf") format("truetype"), url("../fonts/pt-sans-v9-latin/pt-sans-v9-latin-700.svg#PTSans") format("svg");
+  /* Legacy iOS */ }
+
+/* oswald-regular - latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Oswald Regular"), local("Oswald-Regular"), url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.woff2") format("woff2"), url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.woff") format("woff"), url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.ttf") format("truetype"), url("../fonts/oswald-v16-latin/oswald-v16-latin-regular.svg#Oswald") format("svg");
+  /* Legacy iOS */ }
+
+.list-benefits__item {
+  font-family: "PT Sans";
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #798796; }
+
+.list-benefits__icon {
+  color: #08b8b8;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: text-top;
+  margin-right: 0.3125rem; }
+
 .flyout {
   background-color: #FFF;
   padding: 1.25rem;
