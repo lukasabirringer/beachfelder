@@ -216,6 +216,7 @@
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
         @endif
          @if($beachcourt->notes != NULL)
+         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
           <p class="-typo-copy -text-color-gray-01 -spacing-b">
             {{ $beachcourt->notes }}
           </p>
