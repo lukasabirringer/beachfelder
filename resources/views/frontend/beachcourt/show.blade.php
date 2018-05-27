@@ -293,7 +293,11 @@
                     @endif
               </div>
               <div class="beachcourt-item__info">
-                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}</h3>
+                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}
+                  @if ($otherBeachcourt->district != '') 
+                    - {{ $otherBeachcourt->district }}
+                  @endif 
+                </h3>
                 @if ($otherBeachcourt->rating >= 1)
                   <div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
@@ -312,8 +316,8 @@
                 </div>
 
                 <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="info"></span>
-                  <span class="icon-text__text">Felder outdoor: {{ $otherBeachcourt->courtCountOutdoor }} <br> Felder indoor: {{ $otherBeachcourt->courtCountIndoor }}</span>
+                  <span class="icon-text__icon" data-feather="compass"></span>
+                  <span class="icon-text__text">{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}</span>
                 </div>
 
                 <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude,)) }}" class="button-primary -spacing-a"> <span class="button-primary__label">Mehr Details</span> <span class="button-primary__label button-primary__label--hover">Mehr Details</span>
