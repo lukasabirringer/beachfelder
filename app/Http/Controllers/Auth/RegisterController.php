@@ -48,7 +48,7 @@ class RegisterController extends Controller
                             'alert-success',
                             'Wir haben dir eine E-Mail geschickt! Zur Bestätigung deines Profils einfach den Link in dieser anklicken und mit deinen User-Daten auf der Seite anmelden. Viel Spaß bei beachfelder.de!'
                             );
-        return redirect('/login');
+        return redirect('/register');
     }
     /**
      * Create a new controller instance.
