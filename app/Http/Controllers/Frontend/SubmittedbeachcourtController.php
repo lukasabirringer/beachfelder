@@ -25,10 +25,15 @@ class SubmittedbeachcourtController extends Controller
         $user_id = Auth::id();
         $submittedCourts = Beachcourt::where('user_id', $user_id)->get();
 
-        $user = Auth::user();
-        $myFavorites = $user->favorites()->get();
+        if (Auth::user()){
+            $user = Auth::user();
+            $myFavorites = $user->favorites()->get();
 
-        return view('frontend.beachcourt.submit', compact('submittedCourts', 'myFavorites'));
+            return view('frontend.beachcourt.submit', compact('submittedCourts', 'myFavorites'));
+        }else{
+            return view('frontend.beachcourt.submit', compact('submittedCourts'));
+        }
+        
     }
     public function destroy(Request $request, $id)
     {

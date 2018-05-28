@@ -70,11 +70,12 @@ class ProfileController extends Controller
     public function update(Request $request){
 
         $v = Validator::make($request->all(), [
-            'userName' => 'required',
+            'userName' => 'required|unique:users',
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
+            'birthdate' => 'date_format:"d-m-Y"',
             'password_confirmation' => 'required',
         ]);
 

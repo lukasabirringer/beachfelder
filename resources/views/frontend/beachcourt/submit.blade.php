@@ -42,6 +42,10 @@
 
         <p class="-typo-copy -text-color-gray-01 -spacing-d">Du musst nicht alle Felder ausfüllen. Wichtig für uns sind allerdings die <span class="-typo-copy--bold">Koordinaten</span> des Feldes. Denn mit Hilfe dieser können wir das Feld bei unserer Recherche am Besten orten.
         </p>
+        @if (!Auth::check())
+        <p class="-typo-copy -text-color-gray-01 -spacing-d -typo-copy--bold">Beachte:</p>
+        <p class="-typo-copy -text-color-gray-01">Um ein Feld einzureichen, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>
+        @endif
       </div>
     </div>
 
@@ -276,6 +280,7 @@
           @endif
         </div>
       </div>
+      @if (Auth::check())
       <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
         @if ($errors->has('g-recaptcha-response'))
             <span class="invalid-feedback" style="display: block;">
@@ -290,6 +295,7 @@
           </a>
         </div>
       </div>
+      @endif
     </form>
 
     <div class="row -spacing-a">
@@ -297,7 +303,7 @@
         <hr class="divider">
       </div>
     </div>
-
+  @if (Auth::check())
     <div class="row -spacing-a">
       <div class="column column--12">
         <div class="accordion">
@@ -440,6 +446,7 @@
 
       </div>
     </div>
+    @endif
   </div> <!-- .content__main ENDE -->
 @endsection
 

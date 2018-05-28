@@ -99,10 +99,13 @@
 
               <label class="input -spacing-b">
 
-                <input type="text" class="input__field input__field--date" placeholder="Geburtstag (TT.MM.JJJ)" name="birthdate" value="{{ $user->birthdate }}">
-                <span class="input__label">Geburstag (TT.MM.JJJ)</span>
+                <input type="text" class="input__field input__field--date" placeholder="Geburtstag (TT.MM. JJJJ)" name="birthdate" value="{{ $user->birthdate }}">
+                <span class="input__label">Geburstag (TT.MM. JJJJ)</span>
 
               </label>
+                @if ($errors->has('birthdate'))
+                <div class="alert alert-danger">{{ $errors->first('birthdate', 'Das angegebene Geburtsdatum entspricht nicht dem Format "TT.MM.JJJJ".') }}</div>
+              @endif
             </div>
 
             <div class="column column--12 column--m-6">

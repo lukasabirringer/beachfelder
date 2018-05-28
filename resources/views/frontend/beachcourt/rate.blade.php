@@ -55,6 +55,10 @@
         <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück</a>
         </a>
       </p>
+      @if (!Auth::check())
+        <p class="-typo-copy -text-color-gray-01 -spacing-d -typo-copy--bold">Beachte:</p>
+        <p class="-typo-copy -text-color-gray-01">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>
+        @endif
     </div>
   </div>
 
@@ -573,21 +577,21 @@
           </div>
         </div>
       </div> <!-- .tab #environment ENDE -->
-
+      @if (Auth::check())
       <div class="column column--12 column--m-6 -spacing-b">
         <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
           <span class="button-primary__label">Schritt zurück</span>
           <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
         </button>
       </div>
-
+    
       <div class="column column--12 column--m-6 -spacing-b">
         <button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)">
           <span class="button-primary__label">Schritt weiter</span>
           <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
         </button>
       </div>
-
+      @endif
     </form>
   </div><!-- .row ENDE -->
 </div><!-- .content__main ENDE -->
