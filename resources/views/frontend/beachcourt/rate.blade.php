@@ -51,7 +51,7 @@
         </div>
       </div>
       <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-        Nicht das richtige Feld?
+        Wieder das Feld anschauen? Dann gehe
         <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück</a>
         </a>
       </p>
