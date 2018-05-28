@@ -67,7 +67,7 @@
     <div class="row">
       <div class="column column--12 -spacing-a">
         <div class="row">
-          <div class="column column--12">
+          <div class="column column--12 column--m-8">
             <div class="rating">
               @for ($i = 1; $i <= $beachcourt->rating; $i++)
                 <div class="rating__item">
@@ -88,10 +88,14 @@
               @elseif ($beachcourt->ratingCount >= 10)
                 <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
-              <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
-                <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
-              </a>
+              
+              
             </div>
+          </div>
+          <div class="column column--12 column--m-4 -align-right">
+            <a href="{{ URL::route('beachcourts.rate', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="rating__count link-icon-text">
+              <span class="link-icon-text__icon" data-feather="thumbs-up"></span><span class="link-icon-text__copy">Bewertung abgeben</span>
+            </a>
           </div>
         </div>
         <div class="row">
