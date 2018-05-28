@@ -297,10 +297,10 @@
                     @endif
               </div>
               <div class="beachcourt-item__info">
-                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $otherBeachcourt->city }}
+                <h3 class="beachcourt-item__title">Beachfeld in {{ $otherBeachcourt->city }}
                   @if ($otherBeachcourt->district != '') 
                     - {{ $otherBeachcourt->district }}
-                  @endif 
+                  @endif
                 </h3>
                 @if ($otherBeachcourt->rating >= 1)
                   <div class="icon-text beachcourt-item__rating -spacing-b">

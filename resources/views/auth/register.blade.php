@@ -48,8 +48,8 @@
 				<div class="column column--12">
 					<h4 class="-typo-headline-04 -text-color-green">Allgemeine Angaben</h4>
 					<label class="input -spacing-b">
-					  <input type="text" name="name" value="{{ old('name') }}" class="input__field" placeholder="Dein Username">
-					  <span class="input__label">Dein Username</span>
+					  <input type="text" name="name" value="{{ old('name') }}" class="input__field" placeholder="Dein Username*">
+					  <span class="input__label">Dein Username*</span>
 					  <div class="input__border"></div>
 					</label>
 					@if ($errors->has('name'))
@@ -66,8 +66,8 @@
 			<div class="row">
 				<div class="column column--12 column--m-6 -spacing-b">
 					<label class="input">
-					  <input type="text" name="firstName" value="{{ old('firstName') }}" class="input__field" placeholder="Dein Vorname">
-					  <span class="input__label">Dein Vorname</span>
+					  <input type="text" name="firstName" value="{{ old('firstName') }}" class="input__field" placeholder="Dein Vorname*">
+					  <span class="input__label">Dein Vorname*</span>
 					  <div class="input__border"></div>
 					</label>
 					@if ($errors->has('firstName'))
@@ -81,8 +81,8 @@
 				</div>
 				<div class="column column--12 column--m-6 -spacing-b">
 					<label class="input">
-					  <input type="text" name="lastName" value="{{ old('lastName') }}" class="input__field" placeholder="Dein Nachname">
-					  <span class="input__label">Dein Nachname</span>
+					  <input type="text" name="lastName" value="{{ old('lastName') }}" class="input__field" placeholder="Dein Nachname*">
+					  <span class="input__label">Dein Nachname*</span>
 					  <div class="input__border"></div>
 					</label>
 					@if ($errors->has('lastName'))
@@ -99,8 +99,8 @@
 			<div class="row">
 				<div class="column column--12 column--m-6 -spacing-b">
 					<label class="input">
-					  <input type="email" name="email" value="{{ old('email') }}" class="input__field" placeholder="Deine E-Mail Adresse">
-					  <span class="input__label">Deine E-Mail Adresse</span>
+					  <input type="email" name="email" value="{{ old('email') }}" class="input__field" placeholder="Deine E-Mail Adresse*">
+					  <span class="input__label">Deine E-Mail Adresse*</span>
 					  <div class="input__border"></div>
 					</label>
 					@if ($errors->has('email'))
@@ -140,7 +140,7 @@
 
 			<div class="row">
 				<div class="column column--12 column--m-6 -spacing-b"> 
-					<h4 class="-typo-headline-04 -text-color-green">Wähle dein Geschlecht</h4>
+					<h4 class="-typo-headline-04 -text-color-green">Wähle dein Geschlecht*</h4>
 					<label class="input-radio -spacing-d">
 					  <input type="radio" class="input-radio__field" name="sex" value="male">
 					  <span class="input-radio__label">männlich</span>
@@ -181,8 +181,8 @@
 			<div class="row">
 				<div class="column column--12 column--m-6 -spacing-b">
 					<label class="input">
-					  <input type="password" name="password" value="{{ old('password') }}" class="input__field input__field--password" placeholder="Dein Passwort" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-					  <span class="input__label">Dein Passwort</span>
+					  <input type="password" name="password" value="{{ old('password') }}" class="input__field input__field--password" placeholder="Dein Passwort*" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+					  <span class="input__label">Dein Passwort*</span>
 					  <div class="input__border"></div>
 					  <span class="input__icon input__icon--eye" data-feather="eye" onclick="togglePassword()"></span>
 					  <span class="input__icon input__icon--eye-off input__icon--not-visible" data-feather="eye-off" onclick="togglePassword()"></span>
@@ -199,8 +199,8 @@
 				</div>
 				<div class="column column--12 column--m-6 -spacing-b">
 					<label class="input">
-					  <input type="password" name="password_confirmation" class="input__field input__field--password-repeat" placeholder="Passwort wiederholen">
-					  <span class="input__label">Passwort wiederholen</span>
+					  <input type="password" name="password_confirmation" class="input__field input__field--password-repeat" placeholder="Passwort wiederholen*">
+					  <span class="input__label">Passwort wiederholen*</span>
 					  <div class="input__border"></div>
 					  <span class="input__icon input__icon--eye-repeat" data-feather="eye" onclick="togglePasswordRepeat()"></span>
 					  <span class="input__icon input__icon--eye-off-repeat input__icon--not-visible" data-feather="eye-off" onclick="togglePasswordRepeat()"></span>

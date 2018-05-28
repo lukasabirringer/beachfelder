@@ -170,10 +170,10 @@
               </div>
 
               <div class="beachcourt-item__info">
-                <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }} 
+                <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachfeld in {{ $beachcourt->city }} 
                   @if ($beachcourt->district != '') 
                     - {{ $beachcourt->district }}
-                  @endif 
+                  @endif
                 </a>
                 
                 @if ($beachcourt->rating >= 1)

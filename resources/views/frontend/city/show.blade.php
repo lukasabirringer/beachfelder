@@ -43,7 +43,11 @@
                 @endif
               </div>
               <div class="beachcourt-item__info">
-                <h3 class="beachcourt-item__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h3>
+                <h3 class="beachcourt-item__title">Beachfeld in {{ $beachcourt->city }} 
+                  @if ($beachcourt->district != '') 
+                    - {{ $beachcourt->district }}
+                  @endif
+                </h3>
                 @if ($beachcourt->rating >= 1)
                   <div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>

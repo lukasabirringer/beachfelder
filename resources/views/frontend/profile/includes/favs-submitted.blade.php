@@ -25,7 +25,11 @@
                     <div class="list-beachcourt__info">
                       <div class="row">
                         <div class="column column--12">
-                          <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $myFavorite->city }}</h4>
+                          <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $myFavorite->city }}
+                            @if ($myFavorite->district != '') 
+                              - {{ $myFavorite->district }}
+                            @endif
+                          </h4>
                         </div>
                       </div>
 
@@ -94,7 +98,11 @@
                     <div class="list-beachcourt__info">
                       <div class="row">
                         <div class="column column--12">
-                          <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $submittedCourt->city }}</h4>
+                          <h4 class="-typo-headline-04 -text-color-gray-01">Feld in {{ $submittedCourt->city }}
+                            @if ($submittedCourt->district != '') 
+                              - {{ $submittedCourt->district }}
+                            @endif
+                          </h4>
                         </div>
                       </div>
 
