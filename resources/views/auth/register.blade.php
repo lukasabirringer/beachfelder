@@ -48,11 +48,11 @@
 				<div class="column column--12">
 					<h4 class="-typo-headline-04 -text-color-green">Allgemeine Angaben</h4>
 					<label class="input -spacing-b">
-					  <input type="text" name="name" value="{{ old('name') }}" class="input__field" placeholder="Dein Username*">
+					  <input type="text" name="userName" value="{{ old('userName') }}" class="input__field" placeholder="Dein Username*">
 					  <span class="input__label">Dein Username*</span>
 					  <div class="input__border"></div>
 					</label>
-					@if ($errors->has('name'))
+					@if ($errors->has('userName'))
 					  <div class="message message--error -spacing-d">
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>

@@ -48,9 +48,8 @@
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
 
-        @if (Auth::check())
           <li class="navigation__item tipso-add-field" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
-        @endif
+    
 
         @if (Auth::check())
           <li class="navigation__item">
