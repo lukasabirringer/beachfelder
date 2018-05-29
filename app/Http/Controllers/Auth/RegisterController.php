@@ -11,6 +11,7 @@ use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Newsletter;
 
 class RegisterController extends Controller
 {
@@ -44,6 +45,12 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
+
+       
+        if ($request->newsletterSubscribed = 1) {
+         Newsletter::subscribe($request->email);
+        }
+
         $request->session()->flash(
                             'alert-success',
                             'Wir haben dir eine E-Mail geschickt! Zur Bestätigung deines Profils einfach den Link in dieser anklicken und mit deinen User-Daten auf der Seite anmelden. Viel Spaß bei beachfelder.de!'
