@@ -13,7 +13,8 @@
         "larabug/larabug": "^1.2",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
-        "spatie/laravel-cookie-consent": "^2.2"
+        "spatie/laravel-cookie-consent": "^2.2",
+        "spatie/laravel-newsletter": "^4.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
