@@ -76,11 +76,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="column column--12">
+      	<div class="column column--12 column--m-4">
+      		
+      	</div>
+        <div class="column column--12 column--m-8">
           <label class="input-toggle -spacing-d">
             <input type="checkbox" class="input-toggle__field" name="agreed">
             <span class="input-toggle__switch"></span>
-            <span class="input-toggle__label">Ja, ich habe die <a class="link-text" href="{{ url('/page/datenschutzerklaerung') }}">Datenschutzerklärung</a> zur Kenntnis genommen und bin damit einverstanden, dass die von mir angegebenen Daten elektronisch erhoben und gespeichert werden. Meine Daten werden dabei nur streng zweckgebunden zur Bearbeitung und Beantwortung meiner Anfrage benutzt. Mit dem Absenden des Kontaktformulars erkläre ich mich mit der Verarbeitung einverstanden.</span>
+            <span class="input-toggle__label" style="max-width: 90%; vertical-align: middle;">Ja, ich habe die <a class="link-text" href="{{ url('/page/datenschutzerklaerung') }}">Datenschutzerklärung</a> zur Kenntnis genommen und bin damit einverstanden, dass die von mir angegebenen Daten elektronisch erhoben und gespeichert werden. Meine Daten werden dabei nur streng zweckgebunden zur Bearbeitung und Beantwortung meiner Anfrage benutzt. Mit dem Absenden des Kontaktformulars erkläre ich mich mit der Verarbeitung einverstanden.</span>
           </label>
         </div>
       </div>
