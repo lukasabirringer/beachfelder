@@ -46,6 +46,8 @@
       <label class="input section__input" style="overflow: visible;">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
+        <input type="hidden" class="form-control" id="form-long" name="long">
+        <input type="hidden" class="form-control" id="form-lat" name="lat">
 
         <input type="search" class="input__field" id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
