@@ -8,6 +8,7 @@ yarn-error.log
 
 /_frontend
 /node_modules
+/public/.DS_Store
 /public/hot
 /public/storage
 /public/uploads/profilePictures/*
