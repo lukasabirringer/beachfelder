@@ -51,7 +51,7 @@
             <div class="infobox">
               <span class="infobox__icon" data-feather="{{ $icon }}"></span>
               <span class="infobox__title">Heute</span>
-              <span class="infobox__text">{{ $roundedWheater }} {{ $weather->temperature->getUnit() }}</span>
+              <span class="infobox__text">{{ $roundedWheater }} °C</span>
             </div>
           </div>
         </div>

@@ -21,3 +21,15 @@
 
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+	<script>
+		var allPanels = $('.accordion-vertical__content').hide();
+			    
+		$('.accordion-vertical__title').click(function() {
+			allPanels.slideUp();
+		   	$(this).next().slideDown();
+		   	return false;
+		});
+	</script>
+@endpush

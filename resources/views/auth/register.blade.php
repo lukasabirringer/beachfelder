@@ -141,17 +141,17 @@
 			<div class="row">
 				<div class="column column--12 column--m-6 -spacing-b"> 
 					<h4 class="-typo-headline-04 -text-color-green">Wähle dein Geschlecht*</h4>
-					<label class="input-radio -spacing-d">
+					<label class="input-radio -spacing-b">
 					  <input type="radio" class="input-radio__field" name="sex" value="male">
 					  <span class="input-radio__label">männlich</span>
 					</label>
 
-					<label class="input-radio -spacing-d">
+					<label class="input-radio -spacing-b">
 					  <input type="radio" class="input-radio__field" name="sex" value="female">
 					  <span class="input-radio__label">weiblich</span>
 					</label>
 
-					<label class="input-radio -spacing-d">
+					<label class="input-radio -spacing-b">
 					  <input type="radio" class="input-radio__field" name="sex" value="neutral">
 					  <span class="input-radio__label">neutral</span>
 					</label>
@@ -171,10 +171,11 @@
 
 					<label class="input-toggle -spacing-d">
 					  <input type="hidden" class="input-toggle__hidden" name="newsletterSubscribed" value="1">
-					  <input type="checkbox" class="input-toggle__field" name="newsletterSubscribed" value="1">
+					  <input type="checkbox" class="input-toggle__field newsletter" name="newsletterSubscribed" value="1">
 					  <span class="input-toggle__switch"></span>
 					  <span class="input-toggle__label">Ja</span>
 					</label>
+					<span class="-typo-copy -typo-copy--small -text-color-gray-01">Ich bin damit einverstanden, dass mich beachfelder.de über ausgewählte Themen (Aktuelle Tipps über Beachvolleyball, Beachvolleyball-Veranstaltungen und neu eingereichte Beachvolleyball-Felder) informieren darf. Meine Daten werden ausschließlich zu diesem Zweck genutzt. Insbesondere erfolgt keine Weitergabe an unberechtigte Dritte. Mir ist bekannt, dass ich meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen kann. Dies kann ich über folgende Kanäle tun: elektronisch über einen Abmeldelink im jeweiligen Newsletter, per E-Mail an: presse@beachfelder.de. Es gilt die Es gilt die Datenschutzerklärung von beachfelder.de, die auch weitere Informationen über Möglichkeiten zur Berichtigung, Löschung und Sperrung meiner Daten beinhaltet.</span>
 				</div>
 			</div>
 
@@ -221,7 +222,18 @@
 
 			<div class="row">
 				<div class="column column--12 -spacing-b">
-				  <button class="button-primary btn-register">
+					<label class="input-toggle agreed">
+					  <input type="checkbox" class="input-toggle__field" name="agreed">
+					  <span class="input-toggle__switch"></span>
+					  <span class="input-toggle__label -spacing-d" style="max-width: 90%; vertical-align: middle;">Ja, ich habe die <a class="link-text" href="{{ url('/page/datenschutzerklaerung') }}">Datenschutzerklärung</a> zur Kenntnis genommen und bin damit einverstanden, dass die von mir angegebenen Daten elektronisch erhoben und gespeichert werden. Meine Daten werden dabei nur streng zweckgebunden zur Bearbeitung und Beantwortung meiner Anfrage benutzt. Mit dem Absenden des Kontaktformulars erkläre ich mich mit der Verarbeitung einverstanden.</span>
+					</label>
+					<span class="-typo-copy -text-color-gray-01"></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="column column--12 -spacing-b">
+				  <button class="button-primary btn-register" disabled="disabled">
 				    <span class="button-primary__label">Jetzt kostenlos registrieren</span>
 				    <span class="button-primary__label button-primary__label--hover">Jetzt kostenlos registrieren</span>
 				  </button>
@@ -336,28 +348,32 @@
     });
 
     $(document).ready(function() {
-      var checkbox = $('.input-toggle__field');
-      var hint = $('.hint').hide();
+      var checkbox = $('.newsletter');
 
       if(checkbox.val() == 1) {
         checkbox.attr('checked', true);
-        checkbox.parent().find('.input-toggle__label').text('Ja');
-        hint.slideToggle();
       }
     });
 
-    $('.input-toggle__field').click(function() {
+    $('.newsletter').click(function() {
       if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('Ja');
         $(this).parent().find('.input-toggle__hidden').val(1);
         $(this).val(1);
-        $('.hint').slideToggle();
       } else {
-        $(this).parent().find('.input-toggle__label').text('Nein');
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
-        $('.hint').slideToggle();
       }
+    });
+
+     $('.agreed').click(function () {
+        //check if checkbox is checked
+        if ($(this).children('.input-toggle__field').is(':checked')) {
+
+            $('.button-primary').removeAttr('disabled'); //enable input
+
+        } else {
+            $('.button-primary').attr('disabled', true); //disable input
+        }
     });
   </script>
 @endpush

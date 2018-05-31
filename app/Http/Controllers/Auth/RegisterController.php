@@ -55,7 +55,7 @@ class RegisterController extends Controller
                             'alert-success',
                             'Wir haben dir eine E-Mail geschickt! Zur Bestätigung deines Profils einfach den Link in dieser anklicken und mit deinen User-Daten auf der Seite anmelden. Viel Spaß bei beachfelder.de!'
                             );
-        return redirect('/register');
+        return redirect('/');
     }
     /**
      * Create a new controller instance.
@@ -73,7 +73,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'userName' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
             'sex' => 'required',
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255'
