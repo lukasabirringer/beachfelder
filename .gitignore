@@ -1,3 +1,11 @@
+##FILES##
+.env
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.DS_Store
+
 /node_modules
 /public/hot
 /public/storage
@@ -6,11 +14,3 @@
 /vendor
 /.idea
 /.vagrant
-
-##FILES##
-.env
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-.DS_Store
