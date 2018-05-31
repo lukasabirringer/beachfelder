@@ -12,79 +12,43 @@ use DB;
 class SearchController extends Controller
 {
     public function show(Request $request)
-    {   
+    { 
 
-        $plz = $request->postcode13 ?? '75233';
-   
-        $distance = $request->distance ?? '15';
+    $slat = $request->lat;
+    $slong = $request->long;
+    $plz = $request->postcode13;
+
+    if ($plz){
+      $url = "https://maps.googleapis.com/maps/api/geocode/json?components=country:DE|postal_code:".$plz."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
       
-        $validator = Validator::make($request->all(), [
-            'postcode' => 'min:4',
-        ]);
+    } else {
+      $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$slat.",".$slong."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+    }
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($ch);
+    $response = json_decode($response, true);
+    $latitude = $response['results'][0]['geometry']['location']['lat'];
+    $longitude = $response['results'][0]['geometry']['location']['lng'];
 
-        if ($validator->fails()) {
-         return redirect('/')->withErrors($validator, 'postcode');
-        }
+    $distance = $request->distance ?? '15';
+    $ratingmin = $request->ratingmin ?? '1';
+    $ratingmax = $request->ratingmax ?? '5';
+    $isPublic = $request->isPublic;
+    $isChargeable = $request->isChargeable;
 
-        require_once(app_path() . '/plz/ogdbPLZnearby2.lib.php');
-        require_once(app_path() . '/plz/plzToCity.php');
+    $results = Beachcourt::where('submitState', 'approved')
+      ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
+      ->get();
 
-        $citylonglat = ($plzToCity[$plz]);
-        
-        $latitude = $citylonglat[1];
-        $longitude = $citylonglat[2];
-
-        $ratingmin = $request->ratingmin ?? '1';
-        $ratingmax = $request->ratingmax ?? '5';
-        $isPublic = $request->isPublic;
-        $isChargeable = $request->isChargeable;
-         
-            if ($request->has('isPublic') && $request->has('isChargeable')) {
-            $results = Beachcourt::where('submitState', 'approved')
-              ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-              ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-              ->where(function ($results) use($isPublic)
-                      {
-                        $results->where('isPublic', '=', $isPublic)
-                                ->orWhereNull('isPublic');
-                      })
-              ->where(function ($results) use($isChargeable)
-                      {
-                        $results->where('isChargeable', '=', $isChargeable)
-                                ->orWhereNull('isChargeable');
-                      })
-              ->where(function ($results) use($ratingmin, $ratingmax)
-                      {
-                        $results->whereBetween('rating', array($ratingmin, $ratingmax))
-                                ->orWhereNull('rating');
-                      })
-              ->get();
-
-              } else {
-                $results = Beachcourt::where('submitState', 'approved')
-                ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-                ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-                ->where(function ($results)
-                      {
-                        $results->where('isPublic', '=', 1)
-                                ->orWhereNull('isPublic');
-                      })
-                ->where(function ($results)
-                      {
-                        $results->where('isChargeable', '=', 0)
-                                ->orWhereNull('isChargeable');
-                      })
-                ->where(function ($results) use($ratingmin, $ratingmax)
-                      {
-                        $results->whereBetween('rating', array(0, 5))
-                                ->orWhereNull('rating');
-                      })
-                ->get();
-              }
-        
-
-          foreach ($results as $beachcourt) {
-            $pi80 = M_PI / 180;
+      foreach ($results as $beachcourt) {
+         $pi80 = M_PI / 180;
             $lat1 = $latitude; $lat1 *= $pi80;
             $lng1 = $longitude; $lng1 *= $pi80;
             $lat2 = $beachcourt->latitude; $lat2 *= $pi80;
@@ -96,10 +60,11 @@ class SearchController extends Controller
             $dis = $r * $c * 0.621371192 * 2;
             
             $beachcourt->distance = $dis;
-           }
-           $results = $results->sortBy('distance');
+       }
+       $results = $results->sortBy('distance');
+       
+      return view('frontend.search.show', compact('isChargeable', 'isPublic', 'results', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax'));
 
-        return view('frontend.search.show', compact('isChargeable', 'isPublic', 'results', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax'));
     }
 
 }

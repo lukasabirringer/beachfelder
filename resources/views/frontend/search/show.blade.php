@@ -119,6 +119,9 @@
     </div>
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
+      @if ($results->isEmpty()) 
+        <p class="intro-headline__subtitle -typo-copy -text-color-petrol -align-left">Im gewählten Suchumkreis ist bisher kein Beachfeld verzeichnet. Bitte vergrößere den Suchumkreis und wiederhole die Suche, um weiter entfernte Felder zu finden.</p>
+      @endif
       @foreach ($results as $beachcourt)
         @if($beachcourt->distance <= $distance)
           <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
@@ -151,13 +154,11 @@
                   <div class="beachcourt-item__distance">
                     <span class="beachcourt-item__icon" data-feather="navigation"></span>
                     <span class="beachcourt-item__paragraph">
-                      
-                      <?php  
-                        $dis = number_format($beachcourt->distance, 1);
-                        $dis = str_replace('.', ',', $dis);  
-                        echo $dis; 
-                      ?>                      
-
+                     <?php
+                      $dist = number_format($beachcourt->distance, 1);
+                      $dist = str_replace('.', ',', $dist);
+                      echo $dist; 
+                      ?>             
                     km entfernt</span>
                   </div>
                 @endif

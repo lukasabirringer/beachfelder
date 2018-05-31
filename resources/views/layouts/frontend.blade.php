@@ -71,6 +71,9 @@
             <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
+              <input type="hidden" class="form-control" id="form-long" name="long">
+              <input type="hidden" class="form-control" id="form-lat" name="lat">
+
               <input type="search" class="input__field " id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
               <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
               <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
@@ -176,13 +179,20 @@
         var input = document.querySelector("#address-input");
         var soll = document.querySelector("#form-postcode13");
         
-        if (isNaN(input.value) || input.value.length > 5){
+        if (isNaN(input.value) || input.value.length > 6){
             placesAutocomplete.on('change', function(e) {
                 document.querySelector('#form-postcode13').value = e.suggestion.postcode || '';
+                document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
+                document.querySelector('#form-long').value = e.suggestion.latlng.lng || '';     
             });
-        } else {
-            soll.value = input.value;
-        }
+          } else {
+                soll.value = input.value;
+              placesAutocomplete.on('change', function(e) {
+                document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
+                document.querySelector('#form-long').value = e.suggestion.latlng.lng || ''; 
+            });
+          }
+
 
       });
 
