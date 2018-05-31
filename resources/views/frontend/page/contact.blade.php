@@ -76,8 +76,13 @@
         </div>
       </div>
       <div class="row">
-      	<div class="column column--12 column--m-4">
-      		
+      	<div class="column column--12 column--m-4 -spacing-d">
+      		  <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
+      		@if ($errors->has('g-recaptcha-response'))
+      		    <span class="invalid-feedback" style="display: block;">
+      		        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+      		    </span>
+      		@endif
       	</div>
         <div class="column column--12 column--m-8">
           <label class="input-toggle -spacing-d">
@@ -89,12 +94,6 @@
       </div>
       <div class="row">
         <div class="column column--12 column--s-6">
-          <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
-        @if ($errors->has('g-recaptcha-response'))
-            <span class="invalid-feedback" style="display: block;">
-                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-            </span>
-        @endif
         </div>
         
         <div class="column column--12 column--s-6 -spacing-b">
