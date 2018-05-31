@@ -44,7 +44,7 @@
         </p>
         @if (!Auth::check())
         <p class="-typo-copy -text-color-gray-01 -spacing-d -typo-copy--bold">Beachte:</p>
-        <p class="-typo-copy -text-color-gray-01">Um ein Feld einzureichen, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>
+        <p class="-typo-copy -text-color-gray-01">Um ein Feld einzureichen, musst du dich zuvor <a class="link-text" href="{{ route('register') }}">als User registrieren</a> oder bei beachfelder.de schon <a class="link-text" href="{{ route('login') }}">angemeldet</a> sein.</p>
         @endif
       </div>
     </div>
