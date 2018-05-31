@@ -20,12 +20,6 @@ class BeachcourtController extends Controller
 {
     public function show($cityslug, $latitude, $longitude)
     {
-        // if ($request->newsletterSubscribed === 1) {
-        //  Newsletter::subscribe('ulkas.birringer@dasdsd.de');
-        // }
-
-        Newsletter::subscribe('ulkas.birringer@dasdsd.de');
-
         $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();
 
         $lang = 'de';
