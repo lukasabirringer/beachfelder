@@ -89,25 +89,23 @@
           <div class="row">
             <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
-                <input type="hidden" class="input-toggle__hidden" name="isPublic" value="{{ $isPublic ?? 1 }}">
-                <input type="checkbox"class="input-toggle__field public" name="isPublic" value="{{ $isPublic ?? 1 }}">
-                <span class="input-toggle__switch"></span>
-                <span class="input-toggle__label">nicht frei zugänglich</span>
+                <input type="radio" class="" name="filter" value="public" {{ $filter == 'public' ? 'checked' : '' }}>
+                <span class="input-toggle__label">öffentlich</span>
               </label>
-            </div>
-            <div class="column column--12 column--m-6">
               <label class="input-toggle -spacing-d">
-                <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="{{ $isChargeable ?? 0}}">
-                <input type="checkbox" class="input-toggle__field chargeable" name="isChargeable" value="{{ $isChargeable ?? 0}}">
-                <span class="input-toggle__switch"></span>
-                <span class="input-toggle__label">nicht kostenpflichtig</span>
+                <input type="radio" class="" name="filter" value="facilities" {{ $filter == 'facilities' ? 'checked' : '' }}>
+                <span class="input-toggle__label">in Einrichtungen</span>
+              </label>
+              <label class="input-toggle -spacing-d">
+                <input type="radio" class="" name="filter" value="free" {{ $filter == 'free' ? 'checked' : '' }}>
+                <span class="input-toggle__label">komplett kostenfrei</span>
               </label>
             </div>
           </div>
-          <!-- <button class="button-primary -spacing-b button__accept">
+          <button class="button-primary -spacing-b button__accept">
             <span class="button-primary__label">bestätigen</span>
             <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-          </button> -->
+          </button>
         </div>
       </div>
     </form>
