@@ -184,7 +184,7 @@
           <div class="message-image-missing">
             <span class="message-image-missing__icon" data-feather="image"></span>
             <p class="message-image-missing__text">
-                Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a class="link-text" href="{{ URL::route('beachcourtsubmit.submit') }}">schickst</a>.
+                Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}">schickst</a>.
             </p>
           </div>
         @endif

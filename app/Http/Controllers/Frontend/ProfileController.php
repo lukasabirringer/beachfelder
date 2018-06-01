@@ -143,7 +143,7 @@ class ProfileController extends Controller
         $email = $user->email;
         $name = $user->firstName;
         $code = str_random(30);
-         $confirmation_code = ['foo' => $code];
+        $confirmation_code = ['foo' => $code];
 
         Mail::send('email.deleteProfile', $confirmation_code, function($message) use ($email, $name) {
             $message->from('hello@beachfelder.de', 'beachfelder.de');

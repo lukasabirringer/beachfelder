@@ -268,6 +268,48 @@
           <h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
         </div>
       </div>
+      {{-- Photo Upload --}}
+
+ 
+  <input type="file" name="photos[]" id="gallery-photo-add" multiple />
+  
+  <div class="gallery">
+   
+  </div>
+   @if ($errors->has('photos'))
+      <div class="alert alert-danger">{{ $errors->first('photos', ':message') }}</div>
+    @endif
+<button onclick="$('#gallery-photo-add').val(''); $('.gallery').empty();">clear</button>
+
+<script>
+
+
+$(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img height="100">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#gallery-photo-add').on('change', function() {
+        imagesPreview(this, 'div.gallery');
+    });
+});
+</script>
+      {{-- Photo Upload --}}
       <div class="row">
         <div class="column column--12 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
