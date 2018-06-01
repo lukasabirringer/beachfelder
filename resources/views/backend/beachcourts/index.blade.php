@@ -21,6 +21,14 @@
                 <h2 class="title-page__title">Unsere Beachfelder</h2>
             </div>
         </div>
+        <div class="row">
+        	<div class="column column--12 column--m-4">
+        		<a href="{{ URL::route('backendBeachcourt.create') }}" class="button-primary">
+        			<span class="button-primary__label">Neues Feld erstellen</span>
+        			<span class="button-primary__label button-primary__label--hover">Neues Feld erstellen</span>
+        		</a>
+        	</div>
+        </div>
         <div class="row -spacing-a">
             <div class="column column--12">
                 <h3 class="-typo-headline-03 -text-color-gray-01">eingereichte Beachcourts</h3>

@@ -12,109 +12,90 @@
         <h2 class="title-page__title">Dein Suchergebnis</h2>
       </div>
     </div>
-    <form action="/search" method="POST" class="form--search">
-      <div class="row  -spacing-b">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-        <div class="column column--12 column--m-7">
-          <div class="row">
-            <div class="column column--12 column--s-6 column--m-3">
-              <div class="icon-text icon-text--hoverable trigger-flyout">
-                <span class="icon-text__icon" data-feather="map-pin"></span>
-                <span class="icon-text__text">PLZ: <br> <span class="output__value">{{ $plz }}</span></span>
-              </div>
-
-              <div class="flyout flyout--zip-search flyout--fade">
-                <span class="flyout__icon" data-feather="x-circle"></span>
-                <p class="-typo-copy -text-color-gray-01">PLZ ändern</p>
-
-                <label class="input -spacing-b">
-                  <input type="text" name="postcode13" value="{{ $plz }}" class="input__field" placeholder="PLZ">
-                  <span class="input__label">PLZ</span>
-                </label>
-                <button class="button-primary -spacing-b button__accept">
-                  <span class="button-primary__label">bestätigen</span>
-                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="column column--12 column--s-6 column--m-3">
-              <div class="icon-text icon-text--hoverable trigger-flyout">
-                <span class="icon-text__icon" data-feather="crosshair"></span>
-                <span class="icon-text__text">{{$distance}} <span class="output__value"></span> km <br> entfernt</span>
-              </div>
-
-              <div class="flyout flyout--rating-search">
-                <span class="flyout__icon" data-feather="x-circle"></span>
-                <p class="-typo-copy -text-color-gray-01">Entfernung ändern</p>
-                <label class="input-range -spacing-b">
-                  <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="100">
-                  <span class="input-range__value">0</span>
-                </label>
-                <button class="button-primary -spacing-b button__accept">
-                  <span class="button-primary__label">bestätigen</span>
-                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="hint">
-              <div class="hint__container">
-                <img src="images/hint-search.png" class="hint__image">
-              </div>
-            </div>
-
-            <div class="column column--12 column--s-6 column--m-3">
-              <div class="icon-text icon-text--hoverable trigger-flyout">
-                <span class="icon-text__icon" data-feather="award"></span>
-                <span class="icon-text__text">mindestens<br><span class="output__value">{{ $ratingmin }}</span> Beachbälle</span>
-              </div>
-              <div class="flyout flyout--rating-search">
-                <span class="flyout__icon" data-feather="x-circle"></span>
-                <p class="-typo-copy -text-color-gray-01">Anzahl der Beachbälle ändern</p>
-                <label class="input-range -spacing-b">
-                  <input type="range" name="ratingmin" class="input-range__field" value="{{ $ratingmin }}" min="1" max="5">
-                  <span class="input-range__value">1</span>
-                </label>
-                <button class="button-primary -spacing-b button__accept">
-                  <span class="button-primary__label">bestätigen</span>
-                  <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column column--12 column--m-5">
-          <div class="row">
-            <div class="column column--12 column--m-6">
-              <label class="input-toggle -spacing-d">
-                <input type="radio" class="" name="filter" value="public" {{ $filter == 'public' ? 'checked' : '' }}>
-                <span class="input-toggle__label">öffentlich</span>
-              </label>
-              <label class="input-toggle -spacing-d">
-                <input type="radio" class="" name="filter" value="facilities" {{ $filter == 'facilities' ? 'checked' : '' }}>
-                <span class="input-toggle__label">in Einrichtungen</span>
-              </label>
-              <label class="input-toggle -spacing-d">
-                <input type="radio" class="" name="filter" value="free" {{ $filter == 'free' ? 'checked' : '' }}>
-                <span class="input-toggle__label">komplett kostenfrei</span>
-              </label>
-            </div>
-          </div>
-          <button class="button-primary -spacing-b button__accept">
-            <span class="button-primary__label">bestätigen</span>
-            <span class="button-primary__label button-primary__label--hover">bestätigen</span>
-          </button>
-        </div>
-      </div>
-    </form>
 
     <div class="row">
       <div class="column column--12">
         <hr class="divider">
       </div>
     </div>
+    
+    <form action="/search" method="POST" class="form form--search">
+      <div class="row -spacing-b">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="column column--12 column--m-4">
+        	<!-- <p class="-typo-copy -text-color-gray-01">Deine PLZ</p> -->
+        	<input type="search" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
+        	<input type="hidden" id="form-postcode13-searchResults" name="postcode13">
+        	<input type="hidden" id="form-long-searchResults" name="long">
+          <input type="hidden" id="form-lat-searchResults" name="lat">
+        	<span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
+        	<span class="input__label">Deine PLZ</span>
+        	
+        	<!-- <label class="input">
+        		<input type="text" name="postcode13" value="{{ $plz }}" class="input__field" placeholder="PLZ" />
+        		<span class="input__icon" data-feather="map-pin"></span>
+        		<span class="input__label">PLZ</span>
+        	</label> -->
+        </div>
+        <div class="column column--12 column--m-4">
+        	<p class="-typo-copy -text-color-gray-01">Entfernung in km</p>
+					<label class="input-range -spacing-b">
+	          <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="100">
+	          <span class="input-range__value">0</span>
+	        </label>
+        </div>
+        <div class="column column--12 column--m-4">
+        	<p class="-typo-copy -text-color-gray-01">Anzahl der Bälle</p>
+					<label class="input-range -spacing-b">
+            <input type="range" name="ratingmin" class="input-range__field" value="{{ $ratingmin }}" min="0" max="5">
+            <span class="input-range__value">0</span>
+          </label>
+        </div>
+       </div>
+       <div class="row">
+       	<div class="column column--12 -spacing-b">
+       		<ul class="accordion-vertical">
+       			<li class="accordion-vertical__item">
+       				<a href="#" class="accordion-vertical__title">Mehr Optionen <span class="accordion-vertical__icon" data-feather="chevron-down"></span></a>
+							<div class="accordion-vertical__content row">
+								<div class="column column--12 column--s-6 column--m-3">
+									<label class="input-radio-icon -spacing-b">
+									  <input type="radio" class="input-radio-icon__field" name="filter" value="public" {{ $filter == 'public' ? 'checked' : '' }}>
+									  <div class="input-radio-icon__container">
+									    <span class="input-radio-icon__label">öffentlich</span>
+									  </div>
+									</label>
+								</div>
+								<div class="column column--12 column--s-6 column--m-3">
+									<label class="input-radio-icon -spacing-b">
+									  <input type="radio" class="input-radio-icon__field" name="filter" value="facilities" {{ $filter == 'facilities' ? 'checked' : '' }}>
+									  <div class="input-radio-icon__container">
+									    <span class="input-radio-icon__label">in Einrichtungen</span>
+									  </div>
+									</label>
+								</div>
+								<div class="column column--12 column--s-6 column--m-3">
+									<label class="input-radio-icon -spacing-b">
+									  <input type="radio" class="input-radio-icon__field" name="filter" value="free" {{ $filter == 'free' ? 'checked' : '' }}>
+									  <div class="input-radio-icon__container">
+									    <span class="input-radio-icon__label">komplett kostenfrei</span>
+									  </div>
+									</label>
+								</div>
+							</div>
+       			</li>
+       		</ul>
+       	</div>
+       </div>
+       <div class="row">
+       	<!-- <div class="column column--12 column--s-6 column--m-3">
+       		<button class="button-primary -spacing-a button__accept">
+       		  <span class="button-primary__label">Suchen</span>
+       		  <span class="button-primary__label button-primary__label--hover">Suchen</span>
+       		</button>
+       	</div> -->
+      </div><!-- .row ENDE -->
+    </form>
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
       @if ($results->isEmpty()) 
@@ -147,12 +128,6 @@
                   <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" >
                     <img class="progressive__img progressive--not-loaded" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=347x180&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=600x300&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
                   </a>
-                  <!-- <div class="no-image-hint">
-                    <h4 class="-typo-headline-04 -text-color-petrol">Noch kein Bild vorhanden.</h4>
-                    <p class="-typo-copy -text-color-gray-01">
-                      Hilf' uns und schicke uns welche von diesem Feld. 
-                    </p>
-                  </div> -->
                   </figure>
                 @endif
                 @if ($beachcourt->latitude != '')
@@ -280,5 +255,47 @@
     };
 
     rangeSlider();
+
+
+    var allPanels = $('.accordion-vertical__content').hide();
+    	    
+    $('.accordion-vertical__title').click(function() {
+    	allPanels.slideUp();
+      $(this).next().slideDown();
+      return false;
+    });
+
+    $('input').on('change', function() {
+    	$('.form--search').submit();
+    });
+
+    var placesAutocompleteSearchResults = places({
+      type: 'city',
+      countries: 'de',
+      language: 'de_DE',
+      useDeviceLocation: true,
+      container: document.querySelector('#address-input-seachResults')
+    });
+
+    $('#address-input-seachResults').on('keyup', function() {
+    
+      var input = document.querySelector("#address-input-seachResults");
+      var soll = document.querySelector("#form-postcode13");
+      
+      if (isNaN(input.value) || input.value.length > 6){
+          placesAutocompleteSearchResults.on('change', function(e) {
+              document.querySelector('#form-postcode13-searchResults').value = e.suggestion.postcode || '';
+              document.querySelector('#form-lat-searchResults').value = e.suggestion.latlng.lat || '';
+              document.querySelector('#form-long-searchResults').value = e.suggestion.latlng.lng || '';     
+          });
+        } else {
+              soll.value = input.value;
+            placesAutocompleteSearchResults.on('change', function(e) {
+              document.querySelector('#form-lat-searchResults').value = e.suggestion.latlng.lat || '';
+              document.querySelector('#form-long-searchResults').value = e.suggestion.latlng.lng || ''; 
+          });
+        }
+    });
+    
   </script>
 @endpush
