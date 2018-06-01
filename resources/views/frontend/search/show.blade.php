@@ -118,7 +118,14 @@
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
       @if ($results->isEmpty()) 
-        <p class="intro-headline__subtitle -typo-copy -text-color-petrol -align-left">Im gewählten Suchumkreis ist bisher kein Beachfeld verzeichnet. Bitte vergrößere den Suchumkreis und wiederhole die Suche, um weiter entfernte Felder zu finden.</p>
+      	<div class="column column--12 -align-center">
+      			<img src="{{url('/')}}/images/image-no-search-results.png" class="image">
+      			<h3 class="-typo-headline-03 -text-color-green">Tut uns leid</h3>
+      		  <p class="-typo-copy -text-color-gray-01 -spacing-c">Im gewählten Suchumkreis ist bisher kein Beachfeld verzeichnet.</p>	
+      		  <p class="-typo-copy -text-color-gray-01 -spacing-d">
+      		  	Bitte vergrößere den Suchumkreis und wiederhole die Suche.
+      		  </p>
+      	</div>
       @endif
       @foreach ($results as $beachcourt)
         @if($beachcourt->distance <= $distance)
