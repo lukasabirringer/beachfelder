@@ -20,7 +20,6 @@
     @endif
   <div class="content__main">
     <div class="row">
-
       <div class="column column--12">
         <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h1>
       </div>
@@ -184,7 +183,7 @@
           <div class="message-image-missing">
             <span class="message-image-missing__icon" data-feather="image"></span>
             <p class="message-image-missing__text">
-                Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}">schickst</a>.
+                Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
             </p>
           </div>
         @endif

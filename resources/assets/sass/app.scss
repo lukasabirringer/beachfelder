@@ -1,7 +1,5 @@
 .beachcourt-item {transition: all .2s ease-in-out;}
-.beachcourt-item:hover {
-	box-shadow: 0 0 15px 1px rgba(0,0,0, .05)
-}
+.beachcourt-item:hover {box-shadow: 0 0 15px 1px rgba(0,0,0, .05)}
 .beachcourt-item .favorite-link {display: none;}
 .beachcourt-item .rating__count {margin-left: 0;}
 .beachcourt-item .link-icon-text__icon {margin-right: 0;}
@@ -30,8 +28,8 @@
 
 .section__button {
 	position: absolute;
-	top: 30px;
-	right: 30px;
+	top: 1.875rem;
+	right: 1.875rem;
 }
 
 .beachcourt-item__image {display: flex;}
@@ -44,6 +42,11 @@
 	.intro-headline__subtitle {
 		max-width: unset;
 	}	
+}
+
+.image--shadow {
+	padding: .625rem;
+	box-shadow: 0 0 15px 1px rgba(0,0,0, .05);
 }
 
 

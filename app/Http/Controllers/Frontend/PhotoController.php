@@ -32,6 +32,7 @@ class PhotoController extends Controller
             }
 
             $photos = request()->file('photos');
+            $contestParticipation = request()->input('contestParticipation');
 
             $i = 0;
 
@@ -62,17 +63,12 @@ class PhotoController extends Controller
                 $newPhoto = $beachcourt->photos()->create([
                     'user_id' => $user_id,
                     'file' => $filename,
-                    'path' => $path
+                    'path' => $path,
+                    'contestParticipation' => $contestParticipation
                 ]);
-                
-                
-
             }
-
-
-   
         }
-        return back();
+        return redirect()->back()->with('success', 'Vielen Dank, dass du uns Bilder gesendet hast!');
     }
 
 }
