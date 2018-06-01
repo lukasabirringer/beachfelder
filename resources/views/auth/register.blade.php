@@ -75,7 +75,7 @@
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>
 					    </div>
-					    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
+					    <p class="message__text message__text--error">Bitte gib' deinen Vornamen an</p>
 					  </div>
 					@endif
 				</div>
@@ -90,7 +90,7 @@
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>
 					    </div>
-					    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
+					    <p class="message__text message__text--error">Bitte gib' deinen Nachnamen an</p>
 					  </div>
 					@endif
 				</div>
@@ -108,7 +108,7 @@
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>
 					    </div>
-					    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
+					    <p class="message__text message__text--error">Bitte gib' deine E-Mail Adresse an</p>
 					  </div>
 					@endif
 				</div>
@@ -161,7 +161,7 @@
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>
 					    </div>
-					    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
+					    <p class="message__text message__text--error">Bitte wähle dein Geschlecht</p>
 					  </div>
 					@endif
 
@@ -194,7 +194,7 @@
 					    <div class="message__icon message__icon--error">
 					      <span data-feather="alert-circle"></span>
 					    </div>
-					    <p class="message__text message__text--error">Dieses Feld ist ein Pflichtfeld</p>
+					    <p class="message__text message__text--error">Bitte gib dein Passwort an</p>
 					  </div>
 					@endif
 				</div>

@@ -37,7 +37,7 @@ class SearchController extends Controller
     $longitude = $response['results'][0]['geometry']['location']['lng'];
     if (!$plz){$plz = $response['results'][0]['address_components'][6]['long_name'];}
     $distance = $request->distance ?? '15';
-    $ratingmin = $request->ratingmin ?? '1';
+    $ratingmin = $request->ratingmin ?? '0';
     $ratingmax = $request->ratingmax ?? '5';
 
     $filter = $request->filter ?? null;
