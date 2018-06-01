@@ -4,6 +4,7 @@
 @section('title_and_meta')
     <title>beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
     <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
+   
 @endsection
 
 @section('frontpage')
@@ -45,11 +46,11 @@
     <form action="/search" method="POST" class="form form--homepage-search">
       <label class="input section__input" style="overflow: visible;">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
-        <input type="hidden" class="form-control" id="form-long" name="long">
-        <input type="hidden" class="form-control" id="form-lat" name="lat">
+        <input type="hidden" class="form-control" id="form-postcode13-homepage" name="postcode13">
+        <input type="hidden" class="form-control" id="form-long-homepage" name="long">
+        <input type="hidden" class="form-control" id="form-lat-homepage" name="lat">
 
-        <input type="search" class="input__field" id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
+        <input type="search" class="input__field" id="address-input-homepage" placeholder="Wo willst du dein nächstes Match spielen?" />
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
         <div class="input__border"></div>
@@ -146,7 +147,7 @@
       <div class="row">
         @foreach($cities as $city)
           <div class="column column--12 column--s-6 -spacing-b">
-            <div class="teaser">
+            <div class="teaser" data-aos="fade-up" data-aos-duration="600" data-aos-anchor-placement="bottom-center">
               <a href="{{ URL('/') }}/stadt/{{ $city->slug }}" class="teaser__link">
                 <img src="{{ asset('uploads/cities') }}/{{ $city->slug }}.jpg" class="teaser__image">
                 <div class="teaser__info">
@@ -160,3 +161,35 @@
       </div>
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+	<script>
+		var placesAutocompleteHomepage = places({
+		  type: 'city',
+		  countries: 'de',
+		  language: 'de_DE',
+		  useDeviceLocation: true,
+		  container: document.querySelector('#address-input-homepage')
+		});
+
+		$('#address-input-homepage').on('keyup', function() {
+		
+		  var input = document.querySelector("#address-input-homepage");
+		  var soll = document.querySelector("#form-postcode13-homepage");
+		  
+		  if (isNaN(input.value) || input.value.length > 6){
+		      placesAutocompleteHomepage.on('change', function(e) {
+		          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
+		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
+		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
+		      });
+		    } else {
+		          soll.value = input.value;
+		        placesAutocompleteHomepage.on('change', function(e) {
+		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
+		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || ''; 
+		      });
+		    }
+		});
+	</script>
+@endpush

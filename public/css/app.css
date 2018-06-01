@@ -1,3 +1,13 @@
+.beachcourt-item {
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.beachcourt-item:hover {
+  -webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
+}
+
 .beachcourt-item .favorite-link {
   display: none;
 }

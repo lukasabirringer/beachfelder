@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.0/aos.css">
     <link rel="stylesheet" href="https://unpkg.com/progressively/dist/progressively.min.css">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -66,7 +67,7 @@
     <div id="app" class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
-          <form action="/search" method="POST" class="form--search">
+          <form action="/search" method="POST" class="form form--search">
 
             <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -138,8 +139,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.0/aos.js"></script>
 
     <script>
+
+			AOS.init();
            
       //icons
       feather.replace();
@@ -192,11 +196,7 @@
                 document.querySelector('#form-long').value = e.suggestion.latlng.lng || ''; 
             });
           }
-
-
       });
-
-
     </script>
 
     @stack('scripts')
