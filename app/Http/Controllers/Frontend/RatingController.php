@@ -13,7 +13,7 @@ use Auth;
 class RatingController extends Controller
 {
     public function store(Request $request)
-        {
+        {   
             $sandQuality = $request->sandQuality;
             $courtTopography = $request->courtTopography;
             $sandDepth = $request->sandDepth;

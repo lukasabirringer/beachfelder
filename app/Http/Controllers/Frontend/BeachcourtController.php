@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Beachcourt;
 use App\Favorites;
 use App\Rating;
+use App\Photo;
 use File;
 use DB;
 use Storage;
@@ -116,6 +117,16 @@ class BeachcourtController extends Controller
         }
         return redirect()->back()->with('error', 'Du hast dieses Feld bereits bewertet - Falls das Feld verbessert wurde, informiere uns darüber und du kannst es erneut bewerten!');
 
+    }
+    public function upload($cityslug, $latitude, $longitude)
+    {
+        $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();
+
+        $beachcourt_id = $beachcourt->id;
+        
+        $photos = Photo::where('beachcourt_id', $beachcourt_id)->first();
+
+        return view('frontend.beachcourt.upload', compact('beachcourt', 'photos'));
     }
     public function favoriteBeachcourt(Beachcourt $beachcourt)
     {

@@ -15,6 +15,10 @@ class Beachcourt extends Model
   {
       return $this->hasMany('App\Rating');
   }
+  public function photos()
+  {
+      return $this->hasMany('App\Photo');
+  }
 
   public function favorites()
   {

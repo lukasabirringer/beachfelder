@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 
   Route::get('/beachvolleyballfeld-{cityslug}/@{latitude},{longitude}', 'BeachcourtController@show')->name('beachcourts.show');
   Route::get('/beachvolleyballfeld-{cityslug}/@{latitude},{longitude}/bewerten', 'BeachcourtController@rate')->name('beachcourts.rate');
+  Route::get('/beachvolleyballfeld-{cityslug}/@{latitude},{longitude}/fotos-hochladen', 'BeachcourtController@upload')->name('beachcourts.upload');
+  Route::post('/beachvolleyballfeld/upload', 'PhotoController@store')->name('photo.store');
   Route::post('/beachvolleyballfeld/einreichen', 'SubmittedbeachcourtController@store')->name('beachcourtsubmit.store');
   Route::get('/beachvolleyballfeld/submit', 'SubmittedbeachcourtController@submit')->name('beachcourtsubmit.submit');
 
