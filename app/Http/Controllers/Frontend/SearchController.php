@@ -14,11 +14,21 @@ class SearchController extends Controller
     public function show(Request $request)
     { 
 
+      $v = Validator::make($request->all(), [
+        'postcode13' => 'required',
+        'lat' => 'required',
+        'long' => 'required',
+      ]);
+
+      if($v->fails()){
+        return redirect()->back()->withErrors($v->errors());
+      }
+
     $slat = $request->lat;
     $slong = $request->long;
     $plz = $request->postcode13;
 
-    if ($plz){
+    if (strlen($plz) == 5){
       $url = "https://maps.googleapis.com/maps/api/geocode/json?components=country:DE|postal_code:".$plz."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
       
     } else {
@@ -36,6 +46,7 @@ class SearchController extends Controller
     $latitude = $response['results'][0]['geometry']['location']['lat'];
     $longitude = $response['results'][0]['geometry']['location']['lng'];
     if (!$plz){$plz = $response['results'][0]['address_components'][6]['long_name'];}
+    elseif (strlen($plz) < 6){$plz = $response['results'][0]['address_components'][6]['long_name'];}
     $distance = $request->distance ?? '15';
     $ratingmin = $request->ratingmin ?? '0';
     $ratingmax = $request->ratingmax ?? '5';
