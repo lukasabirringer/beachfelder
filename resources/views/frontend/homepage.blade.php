@@ -168,7 +168,7 @@
 		  type: 'city',
 		  countries: 'de',
 		  language: 'de_DE',
-		  useDeviceLocation: true,
+		  useDeviceLocation: false,
 		  container: document.querySelector('#address-input-homepage')
 		});
 

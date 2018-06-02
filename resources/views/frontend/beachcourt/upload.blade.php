@@ -41,18 +41,18 @@
 		<div class="row">
 			<div class="column column--12 column--m-4">
 				<img src="{{url('/')}}/images/slide-image-01-retina.jpg" class="image image--max-width image--shadow -spacing-c">
-				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d">1. Gesamtansicht der Anlage</h4>
-				<p class="-typo-copy -text-color-gray-01 -spacing-c">Auf dem ersten Bild sollte die Anlage in einem Übersichtsbild aufgenommen werden – gern auch von einem erhöhten Standpunkt.</p>
+				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d" data-aos="fade-up">1. Gesamtansicht der Anlage</h4>
+				<p class="-typo-copy -text-color-gray-01 -spacing-c" data-aos="fade-up">Auf dem ersten Bild sollte die Anlage in einem Übersichtsbild aufgenommen werden – gern auch von einem erhöhten Standpunkt.</p>
 			</div>
 			<div class="column column--12 column--m-4">
 				<img src="{{url('/')}}/images/slide-image-02-retina.jpg" class="image image--max-width image--shadow -spacing-c">
-				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d">2. Detailbild Pfostenanlage und Netz</h4>
-				<p class="-typo-copy -text-color-gray-01 -spacing-c">Auf dem zweiten Bild sollte die Pfostenanlage und das Netz, gegebenenfalls mit Antennen, aufgenommen werden.</p>
+				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d" data-aos="fade-up">2. Detailbild Pfostenanlage und Netz</h4>
+				<p class="-typo-copy -text-color-gray-01 -spacing-c" data-aos="fade-up">Auf dem zweiten Bild sollte die Pfostenanlage und das Netz, gegebenenfalls mit Antennen, aufgenommen werden.</p>
 			</div>
 			<div class="column column--12 column--m-4">
 				<img src="{{url('/')}}/images/slide-image-03-retina.jpg" class="image image--max-width image--shadow -spacing-c">
-				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d">3. Detailbild Sand und Courtline</h4>
-				<p class="-typo-copy -text-color-gray-01 -spacing-c">Auf dem dritten Bild sollte die Courtline aufgenommen werden. Damit bekommen deine Beachfreunde auch einen Eindruck von der Qualität des Sandes.</p>
+				<h4 class="-typo-headline-04 -text-color-gray-01 -spacing-d" data-aos="fade-up">3. Detailbild Sand und Courtline</h4>
+				<p class="-typo-copy -text-color-gray-01 -spacing-c" data-aos="fade-up">Auf dem dritten Bild sollte die Courtline aufgenommen werden. Damit bekommen deine Beachfreunde auch einen Eindruck von der Qualität des Sandes.</p>
 			</div>
 		</div>
 
@@ -85,22 +85,20 @@
 	  	<div class="row">
 	  		<div class="column column--12 column--m-4">
 	  			<label class="input-upload -spacing-a">
-	  				<input type="file" name="photos[]" id="gallery-photo-add" class="input-upload__field" multiple />	
 	  				<input type="hidden" name="beachcourtId" value="{{ $beachcourt->id }}">
+	  				<input type="file" name="photos[]" id="gallery-photo-add" class="input-upload__field" data-multiple-caption="{count} Bilder ausgewählt" multiple />	
 	  				<span class="input-upload__label">
 	  					<span class="input-upload__icon" data-feather="upload"></span>
 	  					<span class="input-upload__text">Bilder auswählen</span>
 	  				</span>
 	  			</label>
-	  			
-
+	  		
 	  			@if ($errors->has('photos'))
 	  				<div class="alert alert-danger">{{ $errors->first('photos', ':message') }}</div>
 	  			@endif
 	  		</div>
 		  	<div class="column column--12 column--m-8">
-		  		<div class="gallery -spacing-b" style="border: 1px #efefef solid; border-radius: 4px; padding: .625rem; display: none;">
-		  		</div>
+		  		<div class="gallery -spacing-b"></div>
 		  	</div>
 		  </div>
 
@@ -136,7 +134,6 @@
 @push('scripts')
 
 	<script>
-
 		var checkbox = $('.contestParticipation');
 
 		if(checkbox.val() == 1) {
@@ -153,9 +150,38 @@
 			}
 		});
 
-		$('.notification-button').click(function() {
-      $(this).parent().parent('.notification').slideUp();
-    });
+		//shows the counter at the upload field
+		;( function( $, window, document, undefined )
+		{
+			$( '.input-upload__field' ).each( function()
+			{
+				var $input	 = $( this ),
+					$label	 = $input.next( '.input-upload__label' ),
+					labelVal = $label.html();
+
+				$input.on( 'change', function( e )
+				{
+					var fileName = '';
+
+					if( this.files && this.files.length > 1 )
+						fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+					else if( e.target.value )
+						fileName = e.target.value.split( '\\' ).pop();
+
+					if( fileName )
+						$label.find( 'span' ).html( fileName );
+					else
+						$label.html( labelVal );
+				});
+
+				// Firefox bug fix
+				$input
+				.on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+				.on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+			});
+		})( jQuery, window, document );
+
+		
 
 		$(function() {
 			// Multiple images preview in browser
@@ -178,8 +204,14 @@
 
 			$('#gallery-photo-add').on('change', function() {
 				$('.gallery').show();
+				$('.gallery').empty();
 				imagesPreview(this, '.gallery');
 			});
 		});
+
+		//Closes notification
+		$('.notification-button').click(function() {
+      $(this).parent().parent('.notification').slideUp();
+    });
 	</script>
 @endpush
