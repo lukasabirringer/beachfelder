@@ -129,6 +129,9 @@
                   <span class="input-radio-icon__label">Ja</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              	Grundfläche eben, Sandfläche gepflegt,  Glätter vor Ort zugänglich
+              </p>              
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
@@ -138,6 +141,9 @@
                   <span class="input-radio-icon__label">es geht so</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              	Grundfläche eben, aber zu wenig geglättet, kein Glätter vor Ort
+              </p>
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
@@ -147,6 +153,9 @@
                   <span class="input-radio-icon__label">Nein</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              	Grundfläche geneigt oder Sandfläche sehr uneben, kein Glätter
+              </p>
             </div>
           </div>
 
