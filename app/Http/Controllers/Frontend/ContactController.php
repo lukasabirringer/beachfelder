@@ -42,18 +42,16 @@ class ContactController extends Controller
              'created_at' => $date]
         );
 
-      $email1 = 'pecherfabian@gmail.com';
-      $email2 = 'lukas.a.birringer@gmail.com';
+      $email = 'presse@beachfelder.de';
 
       $data = array(
           'e' => $request->userEmail,
           's' => $request->subject,
           'm' => $request->message,
       );
-      Mail::send('email.contact', $data, function($message) use ($email1, $email2) {
-            $message->from('hello@beachfelder.de', 'beachfelder.de');
-            $message->to($email1)->subject('Neue Anfrage auf beachfelder.de');
-            $message->to($email2)->subject('Neue Anfrage auf beachfelder.de');
+      Mail::send('email.contact', $data, function($message) use ($email) {
+            $message->from('noreply@beachfelder.de', 'beachfelder.de');
+            $message->to($email)->subject('Neue Anfrage auf beachfelder.de');
         });
 
       return redirect()->back()->with('success', 'Wir haben deine Nachricht erhalten');

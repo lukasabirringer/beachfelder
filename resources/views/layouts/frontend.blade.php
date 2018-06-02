@@ -49,8 +49,7 @@
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
 
-          <li class="navigation__item tipso-add-field" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
-    
+        <li class="navigation__item tipso-add-field" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
 
         @if (Auth::check())
           <li class="navigation__item">
@@ -131,7 +130,9 @@
 
     <script>
 
-			AOS.init();
+			AOS.init({
+				disable: 'mobile'
+	    });
            
       //icons
       feather.replace();

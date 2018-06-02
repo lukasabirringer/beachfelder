@@ -260,9 +260,10 @@
           <h4 class="-typo-headline-04 -text-color-green">Sonstiges</h4>
         </div>
       </div>
+      
       {{-- Photo Upload --}}
 
-      <div class="row">
+      <!-- <div class="row">
 	  		<div class="column column--12 column--m-4">
 	  			<label class="input-upload -spacing-a">
 	  				<input type="file" name="photos[]" id="gallery-photo-add" class="input-upload__field" data-multiple-caption="{count} Bilder ausgewählt" multiple />	
@@ -294,7 +295,7 @@
 		  	<div class="column column--12 column--s-6">
 		  		
 		  	</div>
-		  </div>
+		  </div> -->
 
   <!-- <input type="file" name="photos[]" id="gallery-photo-add" multiple />
   

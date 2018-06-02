@@ -21,7 +21,7 @@
 	<div class="content__main">
 		<div class="row">
 			<div class="columm column--12">
-				<h2 class="title-page__title">Schick' uns Bilder</h2>
+				<h2 class="title-page__title">Schick uns Bilder</h2>
 				<p class="title-page__subtitle">Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds schickst. Unter den ersten 500 Einsendern verlosen wir <span class="-typo-copy -typo-copy--bold">100 Mikasa-Beachpakete</span> im Gesamtwert von 2000 EUR!</p>
 			</div>
 		</div>
