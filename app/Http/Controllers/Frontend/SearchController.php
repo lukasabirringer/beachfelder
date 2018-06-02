@@ -13,13 +13,20 @@ class SearchController extends Controller
 {
     public function show(Request $request)
     { 
-
+      $distance = $request->distance;
+      // bedeutet: if suche von suchergebnisseite
+      if ($distance) {
+      $v = Validator::make($request->all(), [
+        'postcode13' => 'required'
+      ]);
+      // bedeutet: if suche von irgendwoher
+      } else {
       $v = Validator::make($request->all(), [
         'postcode13' => 'required',
         'lat' => 'required',
         'long' => 'required',
       ]);
-
+      }
       if($v->fails()){
         return redirect()->back()->withErrors($v->errors());
       }
@@ -46,7 +53,7 @@ class SearchController extends Controller
     $latitude = $response['results'][0]['geometry']['location']['lat'];
     $longitude = $response['results'][0]['geometry']['location']['lng'];
     if (!$plz){$plz = $response['results'][0]['address_components'][6]['long_name'];}
-    elseif (strlen($plz) < 6){$plz = $response['results'][0]['address_components'][6]['long_name'];}
+    elseif (strlen($plz) < 5){$plz = $response['results'][0]['address_components'][6]['long_name'];}
     $distance = $request->distance ?? '15';
     $ratingmin = $request->ratingmin ?? '0';
     $ratingmax = $request->ratingmax ?? '5';

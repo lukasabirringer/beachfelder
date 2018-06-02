@@ -24,8 +24,8 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="column column--12 column--m-4">
         	<!-- <p class="-typo-copy -text-color-gray-01">Deine PLZ</p> -->
-        	<input type="search" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
-        	<input type="hidden" id="form-postcode13-searchResults" name="postcode13">
+        	<input type="search" name="postcode13" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
+        	{{-- <input type="hidden" id="form-postcode13-searchResults" name="postcode13"> --}}
         	<input type="hidden" id="form-long-searchResults" name="long">
           <input type="hidden" id="form-lat-searchResults" name="lat">
         	<span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
@@ -87,6 +87,7 @@
        		</ul>
        	</div>
        </div>
+       <input type="submit">
        <div class="row">
        	<!-- <div class="column column--12 column--s-6 column--m-3">
        		<button class="button-primary -spacing-a button__accept">
@@ -265,9 +266,9 @@
       return false;
     });
 
-    $('input').on('change', function() {
-    	$('.form--search').submit();
-    });
+    // $('input').on('change', function() {
+    // 	$('.form--search').submit();
+    // });
 
     var placesAutocompleteSearchResults = places({
       type: 'city',
