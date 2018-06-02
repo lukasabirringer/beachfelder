@@ -52,6 +52,7 @@ class SearchController extends Controller
     $response = json_decode($response, true);
     $latitude = $response['results'][0]['geometry']['location']['lat'];
     $longitude = $response['results'][0]['geometry']['location']['lng'];
+
     if (!$plz){$plz = $response['results'][0]['address_components'][6]['long_name'];}
     elseif (strlen($plz) < 5){$plz = $response['results'][0]['address_components'][6]['long_name'];}
     $distance = $request->distance ?? '15';

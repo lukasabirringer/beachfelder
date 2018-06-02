@@ -57,11 +57,7 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row">
       <div class="column column--12 -spacing-a">
@@ -158,11 +154,7 @@
       </div>
     </div>
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -flex -flex--wrap">
       <div class="column column--12 column--m-6 -spacing-a flex">
@@ -239,11 +231,7 @@
       </div>
     </div>
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -253,11 +241,7 @@
       </div>
     </div>
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -311,11 +295,13 @@
                         @endif
                   </div>
                   <div class="beachcourt-item__info">
-                    <h3 class="beachcourt-item__title">Beachfeld in {{ $otherBeachcourt->city }}
+                  	<a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude)) }}" class="beachcourt-item__title">
+                  		Beachfeld in {{ $otherBeachcourt->city }}
                       @if ($otherBeachcourt->district != '') 
                         - {{ $otherBeachcourt->district }}
                       @endif
-                    </h3>
+                  	</a>
+                  	
                     @if ($otherBeachcourt->rating >= 1)
                       <div class="icon-text beachcourt-item__rating -spacing-b">
                         <span class="icon-text__icon" data-feather="award"></span>
