@@ -23,19 +23,14 @@
       <div class="row -spacing-b">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="column column--12 column--m-4">
+
+          <p class="-typo-copy -text-color-gray-01">Deine PLZ</p>
         	<!-- <p class="-typo-copy -text-color-gray-01">Deine PLZ</p> -->
         	<input type="search" name="postcode13" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
         	{{-- <input type="hidden" id="form-postcode13-searchResults" name="postcode13"> --}}
         	<input type="hidden" id="form-long-searchResults" name="long">
           <input type="hidden" id="form-lat-searchResults" name="lat">
-        	<span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
-        	<span class="input__label">Deine PLZ</span>
-        	
-        	<!-- <label class="input">
-        		<input type="text" name="postcode13" value="{{ $plz }}" class="input__field" placeholder="PLZ" />
-        		<span class="input__icon" data-feather="map-pin"></span>
-        		<span class="input__label">PLZ</span>
-        	</label> -->
+  
         </div>
         <div class="column column--12 column--m-4">
         	<p class="-typo-copy -text-color-gray-01">Entfernung in km</p>
@@ -52,49 +47,13 @@
           </label>
         </div>
        </div>
-       <div class="row">
-       	<div class="column column--12 -spacing-b">
-       		<ul class="accordion-vertical">
-       			<li class="accordion-vertical__item">
-       				<a href="#" class="accordion-vertical__title">Mehr Optionen <span class="accordion-vertical__icon" data-feather="chevron-down"></span></a>
-							<div class="accordion-vertical__content row">
-								<div class="column column--12 column--s-6 column--m-3">
-									<label class="input-radio-icon -spacing-b">
-									  <input type="radio" class="input-radio-icon__field" name="filter" value="public" {{ $filter == 'public' ? 'checked' : '' }}>
-									  <div class="input-radio-icon__container">
-									    <span class="input-radio-icon__label">öffentlich</span>
-									  </div>
-									</label>
-								</div>
-								<div class="column column--12 column--s-6 column--m-3">
-									<label class="input-radio-icon -spacing-b">
-									  <input type="radio" class="input-radio-icon__field" name="filter" value="facilities" {{ $filter == 'facilities' ? 'checked' : '' }}>
-									  <div class="input-radio-icon__container">
-									    <span class="input-radio-icon__label">in Einrichtungen</span>
-									  </div>
-									</label>
-								</div>
-								<div class="column column--12 column--s-6 column--m-3">
-									<label class="input-radio-icon -spacing-b">
-									  <input type="radio" class="input-radio-icon__field" name="filter" value="free" {{ $filter == 'free' ? 'checked' : '' }}>
-									  <div class="input-radio-icon__container">
-									    <span class="input-radio-icon__label">komplett kostenfrei</span>
-									  </div>
-									</label>
-								</div>
-							</div>
-       			</li>
-       		</ul>
-       	</div>
-       </div>
-       <input type="submit">
-       <div class="row">
-       	<!-- <div class="column column--12 column--s-6 column--m-3">
+       
+       	<div class="column column--12 column--s-6 column--m-3">
        		<button class="button-primary -spacing-a button__accept">
        		  <span class="button-primary__label">Suchen</span>
        		  <span class="button-primary__label button-primary__label--hover">Suchen</span>
        		</button>
-       	</div> -->
+       	</div>
       </div><!-- .row ENDE -->
     </form>
 
