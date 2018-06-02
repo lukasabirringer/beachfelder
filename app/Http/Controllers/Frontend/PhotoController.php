@@ -32,8 +32,8 @@ class PhotoController extends Controller
             }
 
             $photos = request()->file('photos');
-            $contestParticipation = request()->input('contestParticipation');
-
+            $contestParticipation = $request->contestParticipation;
+           
             $i = 0;
 
             foreach ($request->file('photos') as $photo) {
@@ -59,6 +59,7 @@ class PhotoController extends Controller
 
                 $user_id = request()->user()->id;
                 $beachcourt = Beachcourt::where('id', $beachcourtId)->first();
+
 
                 $newPhoto = $beachcourt->photos()->create([
                     'user_id' => $user_id,

@@ -106,6 +106,7 @@
 
 		  <div class="row">
 		  	<div class="column column--12 column--s-6">
+		  	@if (Auth::check())
 		  		<label class="input-toggle -spacing-a">
 		  		  <input type="hidden" class="input-toggle__hidden" name="contestParticipation" value="0">
 		  		  <input type="checkbox" class="input-toggle__field contestParticipation" name="contestParticipation" value="0">
@@ -118,6 +119,11 @@
 		  			<span class="button-primary__label">Absenden</span>
 		  			<span class="button-primary__label button-primary__label--hover">Absenden</span>
 		  		</button>
+		  		@endif
+		  		@if (!Auth::check())
+        <p class="-typo-copy -text-color-gray-01 -spacing-d -typo-copy--bold">Beachte:</p>
+        <p class="-typo-copy -text-color-gray-01">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>
+        @endif
 		  	</div>
 		  </div>
 		</form>
