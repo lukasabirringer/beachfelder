@@ -25,11 +25,9 @@
 				<p class="title-page__subtitle">Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds schickst. Unter den ersten 500 Einsendern verlosen wir <span class="-typo-copy -typo-copy--bold">100 Mikasa-Beachpakete</span> im Gesamtwert von 2000 EUR!</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="column column--12 -spacing-a">
-				<hr class="divider">
-			</div>
-		</div>
+		
+		@include('frontend.reusable-includes.divider')
+
 		<div class="row">
 			<div class="column column--12 -spacing-c">
 				<p class="-typo-copy -text-color-gray-01">
@@ -62,11 +60,7 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="column column--12 -spacing-a">
-				<hr class="divider">
-			</div>
-		</div>
+		@include('frontend.reusable-includes.divider')
 
 		<div class="row">
 			<div class="column column--12 -spacing-a">
