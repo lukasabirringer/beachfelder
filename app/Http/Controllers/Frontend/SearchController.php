@@ -13,6 +13,7 @@ class SearchController extends Controller
 {
     public function show(Request $request)
     { 
+
       $distance = $request->distance;
       // bedeutet: if suche von suchergebnisseite
       if ($distance) {
@@ -22,7 +23,7 @@ class SearchController extends Controller
       // bedeutet: if suche von irgendwoher
       } else {
       $v = Validator::make($request->all(), [
-        'postcode13' => 'required',
+        
         'lat' => 'required',
         'long' => 'required',
       ]);
