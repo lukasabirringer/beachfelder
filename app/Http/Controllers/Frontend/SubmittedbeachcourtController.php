@@ -87,6 +87,7 @@ class SubmittedbeachcourtController extends Controller
         $beachcourtId = DB::getPdo()->lastInsertId();
 
         $photos = request()->file('photos');
+        $contestParticipation = request()->input('contestParticipation');
         $i = 0;
 
         foreach ($request->file('photos') as $photo) {
@@ -114,7 +115,8 @@ class SubmittedbeachcourtController extends Controller
                 $newPhoto = $beachcourt->photos()->create([
                     'user_id' => $user_id,
                     'file' => $filename,
-                    'path' => $path
+                    'path' => $path,
+                    'contestParticipation' => $contestParticipation
                 ]);   
             }
 

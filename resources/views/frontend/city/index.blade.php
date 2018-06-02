@@ -8,11 +8,7 @@
 		  </div>
 		</div>
 
-		<div class="row -spacing-a">
-			<div class="column column--12">
-		  	<hr class="divider">
-		  </div>
-		</div>
+		@include('frontend.reusable-includes.divider')
 
 		<div class="row -spacing-b">
 			<div class="column column--12">

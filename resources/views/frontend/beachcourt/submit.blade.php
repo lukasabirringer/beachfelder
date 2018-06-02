@@ -26,11 +26,7 @@
       </ul>
     @endif
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -spacing-b">
       <div class="column column--12">
@@ -49,11 +45,7 @@
       </div>
     </div>
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -181,10 +173,10 @@
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Ist das Feld öffentlich zugänglich?</p>
-          <label class="input-toggle -spacing-d">
+          <label class="input-toggle  -spacing-d">
 
             <input type="hidden" class="input-toggle__hidden" name="isPublic" value="0">
-            <input type="checkbox" class="input-toggle__field" name="isPublic" value="0">
+            <input type="checkbox" class="input-toggle__field isPublic" name="isPublic" value="0">
 
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
@@ -198,7 +190,7 @@
           <p class="-typo-copy -text-color-petrol">Ist das Spielen dort kostenpflichtig?</p>
           <label class="input-toggle -spacing-d">
             <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="0">
-            <input type="checkbox" class="input-toggle__field" name="isChargeable" value="0">
+            <input type="checkbox" class="input-toggle__field isChargeable" name="isChargeable" value="0">
 
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
@@ -217,7 +209,7 @@
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
             <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="20">
-            <span class="input-range__value">1</span>
+            <span class="input-range__value">0</span>
           </label>
           @if ($errors->has('courtCountIndoor'))
           <div class="alert alert-danger">{{ $errors->first('courtCountIndoor', ':message') }}</div>
@@ -229,7 +221,7 @@
           <label class="input-range -spacing-b">
             <input type="hidden" name="courtCountOutdoor" class="input-range__hidden" value="0">
             <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="20">
-            <span class="input-range__value">1</span>
+            <span class="input-range__value">0</span>
           </label>
           @if ($errors->has('courtCountOutdoor'))
           <div class="alert alert-danger">{{ $errors->first('courtCountOutdoor', ':message') }}</div>
@@ -270,46 +262,49 @@
       </div>
       {{-- Photo Upload --}}
 
- 
-  <input type="file" name="photos[]" id="gallery-photo-add" multiple />
+      <div class="row">
+	  		<div class="column column--12 column--m-4">
+	  			<label class="input-upload -spacing-a">
+	  				<input type="file" name="photos[]" id="gallery-photo-add" class="input-upload__field" data-multiple-caption="{count} Bilder ausgewählt" multiple />	
+	  				<span class="input-upload__label">
+	  					<span class="input-upload__icon" data-feather="upload"></span>
+	  					<span class="input-upload__text">Bilder auswählen</span>
+	  				</span>
+	  			</label>
+	  		
+	  			@if ($errors->has('photos'))
+	  				<div class="alert alert-danger">{{ $errors->first('photos', ':message') }}</div>
+	  			@endif
+
+	  		</div>
+		  	<div class="column column--12 column--m-8">
+		  		<div class="gallery -spacing-b"></div>
+		  	</div>
+		  </div>
+
+		  <div class="row">
+		  	<div class="column column--12 column--s-6">
+		  		<label class="input-toggle -spacing-a">
+		  		  <input type="hidden" class="input-toggle__hidden" name="contestParticipation" value="0">
+		  		  <input type="checkbox" class="input-toggle__field contestParticipation" name="contestParticipation" value="0">
+		  		  <span class="input-toggle__switch"></span>
+		  		  <span class="input-toggle__label">Ja, ich möchte an der Verlosung der 200 Preise teilnehmen</span>
+		  		</label>
+		  	</div>
+		  	<div class="column column--12 column--s-6">
+		  		
+		  	</div>
+		  </div>
+
+  <!-- <input type="file" name="photos[]" id="gallery-photo-add" multiple />
   
   <div class="gallery">
    
   </div>
-   @if ($errors->has('photos'))
-      <div class="alert alert-danger">{{ $errors->first('photos', ':message') }}</div>
-    @endif
-<button onclick="$('#gallery-photo-add').val(''); $('.gallery').empty();">clear</button>
-
-<script>
-
-
-$(function() {
-    // Multiple images preview in browser
-    var imagesPreview = function(input, placeToInsertImagePreview) {
-
-        if (input.files) {
-            var filesAmount = input.files.length;
-
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-
-                reader.onload = function(event) {
-                    $($.parseHTML('<img height="100">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-                }
-
-                reader.readAsDataURL(input.files[i]);
-            }
-        }
-
-    };
-
-    $('#gallery-photo-add').on('change', function() {
-        imagesPreview(this, 'div.gallery');
-    });
-});
-</script>
+   
+<button onclick="$('#gallery-photo-add').val(''); $('.gallery').empty();">clear</button> -->
       {{-- Photo Upload --}}
+
       <div class="row">
         <div class="column column--12 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Hast du uns sonst noch etwas mitzuteilen?</p>
@@ -340,11 +335,8 @@ $(function() {
       @endif
     </form>
 
-    <div class="row -spacing-a">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
+
   @if (Auth::check())
     <div class="row -spacing-a">
       <div class="column column--12">
@@ -522,7 +514,7 @@ $(function() {
 
     rangeSlider();
 
-    $('.input-toggle__field').click(function() {
+    $('.isChargeable, .isPublic').click(function() {
       if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('Ja');
         $(this).parent().find('.input-toggle__hidden').val(1);
@@ -532,6 +524,16 @@ $(function() {
         $(this).parent().find('.input-toggle__hidden').val(0);
         $(this).val(0);
       }
+    });
+
+    $('.contestParticipation').click(function() {
+    	if($(this).is(':checked')) {
+      	$(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
+    	} else {
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0);
+    	}
     });
 
     //tabs navigation
@@ -552,6 +554,37 @@ $(function() {
     $('.notification-button').click(function() {
       $(this).parent().parent('.notification').slideUp();
     });
+
+    //shows the counter at the upload field
+    ;( function( $, window, document, undefined )
+    {
+    	$( '.input-upload__field' ).each( function()
+    	{
+    		var $input	 = $( this ),
+    			$label	 = $input.next( '.input-upload__label' ),
+    			labelVal = $label.html();
+
+    		$input.on( 'change', function( e )
+    		{
+    			var fileName = '';
+
+    			if( this.files && this.files.length > 1 )
+    				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+    			else if( e.target.value )
+    				fileName = e.target.value.split( '\\' ).pop();
+
+    			if( fileName )
+    				$label.find( 'span' ).html( fileName );
+    			else
+    				$label.html( labelVal );
+    		});
+
+    		// Firefox bug fix
+    		$input
+    		.on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+    		.on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+    	});
+    })( jQuery, window, document );
 
 
     (function() {

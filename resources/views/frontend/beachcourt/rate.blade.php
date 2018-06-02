@@ -62,11 +62,7 @@
     </div>
   </div>
 
-  <div class="row -spacing-a">
-    <div class="column column--12">
-      <hr class="divider">
-    </div>
-  </div>
+  @include('frontend.reusable-includes.divider')
 
   <div class="row">
     <form action="{{ url('/rating/new') }}" method="POST" class="form-rating" id="form-rating" enctype="multipart/form-data">
@@ -109,11 +105,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -148,11 +140,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -187,11 +175,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12 ">
@@ -266,11 +250,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -305,11 +285,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -344,11 +320,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -421,11 +393,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -460,11 +428,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">
@@ -537,11 +501,7 @@
             </div>
           </div>
 
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <hr class="divider">
-            </div>
-          </div>
+          @include('frontend.reusable-includes.divider')
 
           <div class="row -spacing-a">
             <div class="column column--12">

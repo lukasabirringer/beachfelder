@@ -1,13 +1,3 @@
-.beachcourt-item {
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-
-.beachcourt-item:hover {
-  -webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
-}
-
 .beachcourt-item .favorite-link {
   display: none;
 }
@@ -31,21 +21,21 @@
 .tipso_title,
 .tipso_content {
   font-family: 'PT Sans', sans-serif;
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 .beachcourt-detail__favorite {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   float: right;
 }
 
 .beachcourt-detail__favorite .beachcourt-item__favorite {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   right: 0;
-  top: -20px;
+  top: -1.25rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -77,10 +67,11 @@
   }
 }
 
-.image--shadow {
+.gallery {
+  border: 1px #efefef solid;
+  border-radius: .25rem;
   padding: .625rem;
-  -webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
+  display: none;
 }
 
 .algolia-places {
