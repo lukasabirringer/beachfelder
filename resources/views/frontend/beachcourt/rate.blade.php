@@ -84,6 +84,9 @@
                   <span class="input-radio-icon__label">sehr gut</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              		Feinkörniger, gewaschener Sand, gerundete Körner bis 2,0 mm (entspr. DVV Beach1 oder 2)
+              </p>
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
@@ -93,6 +96,9 @@
                   <span class="input-radio-icon__label">gut</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              		Feinkörnig bis 2 mm, aber scharfkantig oder nicht gewaschen (hoher Anteil kleinster Partikel)
+              </p>
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
@@ -102,6 +108,10 @@
                   <span class="input-radio-icon__label">schlecht</span>
                 </div>
               </label>
+              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
+              		Grobe Körner > 2 mm enthalten, scharfkantig
+              </p>
+              
             </div>
           </div>
 
@@ -186,7 +196,7 @@
                 <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="7" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Keine Staubentwicklung und/oder Wasseranschluss vorhanden</span>
+                  <span class="input-radio-icon__label">Keine Staubentwicklung oder Wasseranschluss vorhanden</span>
                 </div>
               </label>
             </div>
@@ -457,7 +467,7 @@
                 <input type="radio" class="input-radio-icon__field" name="securityZone" value="1" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Unter 2m</span>
+                  <span class="input-radio-icon__label">Unter 2m oder Hindernisse im Auslaufbereich</span>
                 </div>
               </label>
             </div>

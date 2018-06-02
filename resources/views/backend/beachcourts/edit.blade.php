@@ -44,7 +44,7 @@
             <div class="alert alert-danger">{{ $errors->first('postalCode', ':message') }}</div>
           @endif
         </div>
-        <div class="column column--12 column--m-4 -spacing-b">
+        <div class="column column--12 column--m-2 -spacing-b">
           <label class="input">
             <input type="text" class="input__field" placeholder="Stadt" name="city" value="{{ $beachcourt->city }}">
             <span class="input__label">Stadt</span>
@@ -52,6 +52,17 @@
           </label>
           @if ($errors->has('city'))
             <div class="alert alert-danger">{{ $errors->first('city', ':message') }}</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-2 -spacing-b">
+          <label class="input">
+            <input type="text" class="input__field" placeholder="Stadtteil" name="district" value="{{ $beachcourt->district }}">
+            <span class="input__label">Stadtteil</span>
+            <div class="input__border"></div>
+          </label>
+          @if ($errors->has('district'))
+            <div class="alert alert-danger">{{ $errors->first('district', ':message') }}</div>
           @endif
         </div>
 
