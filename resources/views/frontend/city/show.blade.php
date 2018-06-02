@@ -22,10 +22,5 @@
         @endif
       @endforeach
     </div>
-    <div class="row -spacing-a">
-      <div class="column column--12 -align-center"> 
-        {{ $beachcourts->links() }}
-      </div>
-    </div>
   </div> <!-- .content__main ENDE -->
 @endsection

@@ -54,7 +54,7 @@
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
         <div class="input__border"></div>
-        {{ $errors->postcode->first('postcode') }}
+        {{ $errors->postcode->first('postcode13') }}
       </label>
     </form>
     <span class="section__link" data-feather="chevrons-down"></span>

@@ -22,8 +22,9 @@ class CityController extends Controller
       $postalCodeMin = $city->postalCodeMin;
       $postalCodeMax = $city->postalCodeMax;
 
-      $beachcourts = Beachcourt::whereBetween('postalCode', array($postalCodeMin, $postalCodeMax))
-        ->paginate(6);
+      $beachcourts = Beachcourt::whereBetween('postalCode', array($postalCodeMin, $postalCodeMax))->get();
+      
+      $beachcourts = $beachcourts->sortByDesc('rating');
 
       return view('frontend.city.show', compact('beachcourts', 'name'));
     }
