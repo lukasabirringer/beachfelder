@@ -68,7 +68,7 @@
     <body>
         <div class="content">
             <div class="content__header">
-                <img src="https://beachfelder.de/mail/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36">
+                <img src="http://static.beachfelder.de/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36">
             </div>
             <div class="content__main">
                 <h1>Vielen Dank!</h1>

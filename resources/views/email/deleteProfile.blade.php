@@ -68,7 +68,7 @@
     <body>
         <div class="content">
             <div class="content__header">
-                <img src="https://beachfelder.de/mail/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36">
+                <img src="http://static.beachfelder.de/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36">
             </div>
             <div class="content__main">
                 <h1>Schade!</h1>
@@ -87,7 +87,7 @@
                     Gerne haben wir ein offenes Ohr, warum es dir bei beachfelder.de nicht gefallen hat. Wir freuen uns über deine konstruktive Kritik, damit wir besser werden.
                     <br><br>
 
-                    <a href="https://beachfelder.de/i/kontakt" target="_blank" class="button">Nimm' Kontakt mit uns auf</a>
+                    <a href="https://beachfelder.de/page/kontakt" target="_blank" class="button">Nimm' Kontakt mit uns auf</a>
                     <br><br>
                 </p>
 

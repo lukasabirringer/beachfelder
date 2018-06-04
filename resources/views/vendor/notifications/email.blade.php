@@ -68,7 +68,7 @@
     <body style="background: #eaeaea; padding-top: 20px;">
         <div class="content" style="background: #ffffff; padding: 30px; margin: auto; width: 80%; max-width: 600px;">
             <div class="content__header" style="padding-bottom: 20px;">
-                <img src="http://static.beachfelder.de/mail/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36"/>
+                <img src="http://static.beachfelder.de/logo-beachfelder.de-domain_blue.jpg" alt="beachfelder.de - Deine Beachvolleyballfeld-Suchmaschine" width="200" height="36"/>
             </div>
             <div class="content__main" style="padding-top: 20px; border-top: 1px #e1e1e1 solid; text-align: center;">
                 <h1 style="font-size: 30px; color: #798796; text-transform: uppercase; text-align: center; font-family: 'Oswald', sans-serif;">Hallo!</h1>
