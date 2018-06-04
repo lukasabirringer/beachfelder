@@ -52,18 +52,16 @@
     <div class="sidebar">
       <a href="{{ url('/') }}"><img class="sidebar__logo" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
       <ul class="navigation">
-        <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span></a></li>
+        <li class="navigation__item tipso-sidebar" data-tipso="Startseite"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span></a></li>
         @if (Auth::check())
-        <li class="navigation__item"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a>
+        <li class="navigation__item tipso-sidebar" data-tipso="Dein Profl"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a>
         </li>
         @else
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
-
-        <li class="navigation__item tipso-add-field" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
-
+          <li class="navigation__item tipso-sidebar" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
         @if (Auth::check())
-          <li class="navigation__item">
+          <li class="navigation__item tipso-sidebar" data-tipso="Ausloggen">
             <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
               {{ csrf_field() }}
               <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="navigation__link">  <span data-feather="log-out"></span>
@@ -150,8 +148,8 @@
       //progressive image preloading
       progressively.init();
       //tooltips
-      $('.tipso-add-field').tipso({
-        speed : 50,
+      $('.tipso-sidebar').tipso({
+        speed : 250,
         offsetX : -20,
         background : '#457b8c',
         color : '#ffffff',

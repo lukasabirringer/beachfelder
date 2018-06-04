@@ -2,7 +2,9 @@
 	<div class="column column--12">
 		<ul class="footer__navigation">
 			@foreach($footerLinks as $footerLink)
-			<li class="footer__item"><a href="{{ url('/') }}/page/{{ $footerLink->slug }}" class="footer__link">{{ $footerLink->name }}</a></li>
+				@if ($footerLink->isPublic == 1)
+					<li class="footer__item"><a href="{{ url('/') }}/page/{{ $footerLink->slug }}" class="footer__link">{{ $footerLink->name }}</a></li>
+				@endif
 			@endforeach
 			<li class="footer__item"><a href="{{ url('/') }}/page/kontakt" class="footer__link">Kontakt</a></li>
 		</ul>

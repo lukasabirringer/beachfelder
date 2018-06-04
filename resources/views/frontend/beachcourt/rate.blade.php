@@ -34,19 +34,35 @@
     <div class="column column--xxs-12 column--xs-8 column--s-6 column--m-8">
 
       <h2 class="title-page__title">Bewerte das Beachvolleyballfeld</h2>
-      <h4 class="title-page__subtitle">in {{ $beachcourt->city }}</h4>
+      <h4 class="title-page__subtitle">
+      	in {{ $beachcourt->city }}
+      	@if($beachcourt->district)
+      		- {{ $beachcourt->district }}
+      	@endif
+      </h4>
 
       <div class="row">
-        <div class="column column--12 column--m-6">
+        <div class="column column--12 column--m-4">
           <div class="icon-text -spacing-b">
             <span class="icon-text__icon" data-feather="map-pin"></span>
-            <span class="icon-text__text">{{ $beachcourt->postalCode }}<br>{{ $beachcourt->city }}</span>
+            <span class="icon-text__text">
+            	{{ $beachcourt->postalCode }} {{ $beachcourt->city }} <br>
+            	{{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
+            </span>
           </div>
         </div>
-        <div class="column column--12 column--m-6">
+        <div class="column column--12 column--m-4">
           <div class="icon-text -spacing-b">
             <span class="icon-text__icon" data-feather="navigation"></span>
             <span class="icon-text__text">{{ $beachcourt->latitude }}<br>{{ $beachcourt->longitude }}</span>
+          </div>
+        </div>
+        <div class="column column--12 column--m-4">
+          <div class="icon-text -spacing-b">
+            <span class="icon-text__icon" data-feather="info"></span>
+            <span class="icon-text__text">
+            	Felder outdoor: {{ $beachcourt->courtCountOutdoor }}<br>
+            	Felder indoor: {{ $beachcourt->courtCountIndoor }}</span>
           </div>
         </div>
       </div>
@@ -55,10 +71,7 @@
         <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude,)) }}" class="link-text">zurück</a>
         </a>
       </p>
-      @if (!Auth::check())
-        <p class="-typo-copy -text-color-gray-01 -spacing-d -typo-copy--bold">Beachte:</p>
-        <p class="-typo-copy -text-color-gray-01">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>
-        @endif
+      
     </div>
   </div>
 
@@ -570,6 +583,18 @@
           <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
         </button>
       </div>
+      @else
+      	<div class="column column--12 column--m-6 -spacing-b">
+      		
+      	</div>
+      	<div class="column column--12 column--m-6 -spacing-b">
+      		<button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)" disabled="disabled">
+      		  <span class="button-primary__label">Schritt weiter</span>
+      		  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      		</button>
+      		<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+      		
+      	</div>
       @endif
     </form>
   </div><!-- .row ENDE -->
