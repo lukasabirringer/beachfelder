@@ -56,4 +56,8 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/user/{id}', 'UserController@destroy')->name('backendUser.destroy');
   Route::post('/backend/user/erstellen', 'UserController@store')->name('backendUser.store');
   Route::get('/backend/user/{id}/bearbeiten', 'UserController@edit')->name('backendUser.edit');
+  Route::get('/backend/cities', 'CityController@index')->name('backendCity.index');
+  Route::patch('/backend/cities/{id}', 'CityController@update')->name('backendCity.update');
+  Route::get('/backend/cities/{id}', 'CityController@show')->name('backendCity.show');
+  Route::get('/backend/cities/{id}/bearbeiten', 'CityController@edit')->name('backendCity.edit');
 });

@@ -28,6 +28,8 @@
 
                 <li class="navigation__item"><a href="{{ url('backend/user') }}" class="navigation__link"><span data-feather="users"></span></a></li>
 
+                <li class="navigation__item"><a href="{{ url('backend/cities') }}" class="navigation__link"><span data-feather="target"></span></a></li>
+
                 <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link" target="_blank"><span data-feather="globe"></span></a></li>
               
                 @if (Auth::check())

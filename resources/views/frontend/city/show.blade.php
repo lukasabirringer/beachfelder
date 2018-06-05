@@ -5,7 +5,6 @@
     <meta name="description" content="Hier findest du alle Beachfelder in {{ $name }}. Sehe dir alle Beachvolleyball-Felder in {{ $name }} an und finde dein nächstes Lieblingsfeld!" />
 @endsection
 
-<title>Beachfelder in {{ $name }}</title>
 @section('content')
   <div class="content__main">
     

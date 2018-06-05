@@ -19,6 +19,7 @@ class CityController extends Controller
     {
       $city = City::where('slug', $slug)->first();
       $name = ($city->name);
+      $description = ($city->description);
       $postalCodeMin = $city->postalCodeMin;
       $postalCodeMax = $city->postalCodeMax;
 
@@ -26,6 +27,6 @@ class CityController extends Controller
       
       $beachcourts = $beachcourts->sortByDesc('rating');
 
-      return view('frontend.city.show', compact('beachcourts', 'name'));
+      return view('frontend.city.show', compact('beachcourts', 'name', 'description'));
     }
 }
