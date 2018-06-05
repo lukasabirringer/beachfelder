@@ -1,7 +1,14 @@
 @extends('layouts.frontend')
 
 @section('title_and_meta')
-    <title>{{ $page['headline'] }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-2244539104246669",
+	    enable_page_level_ads: true
+	  });
+	</script>
+  <title>{{ $page['headline'] }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 
 @section('content')

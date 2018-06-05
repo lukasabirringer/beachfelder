@@ -8,6 +8,17 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MQ5N6TZ');</script>
     <!-- End Google Tag Manager -->
+		
+		<!-- Google Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-2244539104246669",
+        enable_page_level_ads: true
+      });
+    </script>
+    <!-- End Google Adsense -->
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -48,10 +59,7 @@
         @else
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
-
           <li class="navigation__item tipso-sidebar" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
-    
-
         @if (Auth::check())
           <li class="navigation__item tipso-sidebar" data-tipso="Ausloggen">
             <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
@@ -131,7 +139,9 @@
 
     <script>
 
-			AOS.init();
+			AOS.init({
+				disable: 'mobile'
+	    });
            
       //icons
       feather.replace();

@@ -47,28 +47,30 @@
                     </thead>
                     <tbody>
                         @foreach ($submittedBeachcourts as $beachcourt)
-                            <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
-                                <input name="_method" type="hidden" value="DELETE">
-                                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <tr>
-                                    <td class="column column--12 column--m-2 -typo-copy -text-color-gray-01 column column--12 column--m-1">{{ $beachcourt->id }}</td>
-                                    <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->postalCode }} {{  $beachcourt->city }} {{  $beachcourt->district }}</td>
-                                    <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->latitude }} {{ $beachcourt->longitude }}</td>
-                                    <td class="column column--12 column--m-2">
-                                        <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
-                                            <span data-feather="search"></span>
-                                        </a>
+                          <tr>
+                              <td class="column column--12 column--m-2 -typo-copy -text-color-gray-01 column column--12 column--m-1">{{ $beachcourt->id }}</td>
+                              <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->postalCode }} {{  $beachcourt->city }} {{  $beachcourt->district }}</td>
+                              <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->latitude }} {{ $beachcourt->longitude }}</td>
+                              <td class="column column--12 column--m-2">
+                                  <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
+                                      <span data-feather="search"></span>
+                                  </a>
 
-                                        <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01">
-                                            <span data-feather="edit"></span>
-                                        </a>
+                                  <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01">
+                                      <span data-feather="edit"></span>
+                                  </a>                                        
+                                  
+                                  <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST" class="form form--delete" id="form--delete">
+                                  	<input name="_method" type="hidden" value="DELETE">
+                                  	<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
-                                        <a href="#" class="link-icon -text-color-red" onclick="return confirm('Möchtest du das Beachfeld wirklich löschen?')">
-                                            <span data-feather="trash-2"></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </form>
+                                    <a href="#" class="link-icon -text-color-red" onclick="document.getElementById('form--delete').submit(); return false;">
+                                        <span data-feather="trash-2"></span>
+                                    </a>
+                                      
+                                  </form>
+                              </td>
+                          </tr>
                         @endforeach
                     </tbody>
                 </table>

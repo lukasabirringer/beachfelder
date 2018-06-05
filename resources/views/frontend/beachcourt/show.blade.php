@@ -2,7 +2,14 @@
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('title_and_meta')
-    <title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-2244539104246669",
+	    enable_page_level_ads: true
+	  });
+	</script>
+	<title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 
 @section('content')
@@ -79,7 +86,11 @@
               @endif
 
               @if ($beachcourt->ratingCount < 10)
-                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
+              	@if($beachcourt->ratingCount <= 1)
+              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Feld liegen noch nicht genügend Bewertungen vor</p>
+              	@else
+                	<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
+                @endif
               @elseif ($beachcourt->ratingCount >= 10)
                 <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
               @endif
@@ -163,7 +174,7 @@
             <div class="owl-carousel owl-carousel--detailpage">
               @for ($i = 1; $i <= $filecount; $i++)
                 <img class="owl-lazy"
-                     data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/slide-image-0{{ $i }}.jpg"
+                     data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/standard/slide-image-0{{ $i }}.jpg"
                      data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
               @endfor

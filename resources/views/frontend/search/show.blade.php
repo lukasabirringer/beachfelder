@@ -40,14 +40,14 @@
 	        </label>
         </div>
         <div class="column column--12 column--m-4">
-        	<p class="-typo-copy -text-color-gray-01">Anzahl der Bälle</p>
+        	<p class="-typo-copy -text-color-gray-01">Bewertung (beachfelder.de-Bälle)</p>
 					<label class="input-range -spacing-b">
             <input type="range" name="ratingmin" class="input-range__field" value="{{ $ratingmin }}" min="0" max="5">
             <span class="input-range__value">0</span>
           </label>
         </div>
        </div>
-       
+       <div class="row">
        	<div class="column column--12 column--s-6 column--m-3">
        		<button class="button-primary -spacing-a button__accept">
        		  <span class="button-primary__label">Suchen</span>

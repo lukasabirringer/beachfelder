@@ -21,33 +21,34 @@
     </thead>
     <tbody class="list">
         @foreach ($beachcourts as $beachcourt)
-            <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
-            <input name="_method" type="hidden" value="DELETE">
-            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                <tr>
-                    <td class="column column--12 column--m-2 id -typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
-                    <td class="column column--12 column--m-4 city -typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}
-                        @if($beachcourt->district !='')
-                            - {{ $beachcourt->district }}
-                        @endif
-                        <br>
-                        {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
-                    </td>
-                    <td class="column column--12 column--m-4 rating -typo-copy -text-color-gray-01">{{ $beachcourt->latitude }}, {{ $beachcourt->longitude }} <br> <a class="link-text" href="https://www.google.com/maps/?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}" target="_blank">auf Google Maps ansehen</a></td>
-                    <td class="column column--12 column--m-2">
-                        <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
-                            <span data-feather="search"></span>
-                        </a>
-                        <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01">
-                            <span data-feather="edit"></span>
-                        </a>
+          <tr>
+              <td class="column column--12 column--m-2 id -typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
+              <td class="column column--12 column--m-4 city -typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}
+                  @if($beachcourt->district !='')
+                      - {{ $beachcourt->district }}
+                  @endif
+                  <br>
+                  {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
+              </td>
+              <td class="column column--12 column--m-4 rating -typo-copy -text-color-gray-01">{{ $beachcourt->latitude }}, {{ $beachcourt->longitude }} <br> <a class="link-text" href="https://www.google.com/maps/?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}" target="_blank">auf Google Maps ansehen</a></td>
+              <td class="column column--12 column--m-2">
+                  <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
+                      <span data-feather="search"></span>
+                  </a>
+                  <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01">
+                      <span data-feather="edit"></span>
+                  </a>
 
-                        <a href="#" class="link-icon -text-color-red" onclick="return confirm('Möchtest du das Beachfeld wirklich löschen?')">
-                            <span data-feather="trash-2"></span>
-                        </a>
-                    </td>
-                </tr>
-            </form>
+                  <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST" id="form--deleteField">
+                    <input name="_method" type="hidden" value="DELETE">
+                    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                    <a href="#" class="link-icon -text-color-red" onclick="document.getElementById('form--deleteField').submit(); return false;">
+                        <span data-feather="trash-2"></span>
+                    </a>
+                  </form>
+              </td>
+          </tr>
+            
         @endforeach
     </tbody>
 </table>
