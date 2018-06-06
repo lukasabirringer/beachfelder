@@ -87,7 +87,7 @@
 
               @if ($beachcourt->ratingCount < 10)
               	@if($beachcourt->ratingCount <= 1)
-              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Feld liegen noch nicht genügend Bewertungen vor</p>
+              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor.</p>
               	@else
                 	<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
                 @endif
