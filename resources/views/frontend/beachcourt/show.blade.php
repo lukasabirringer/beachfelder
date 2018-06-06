@@ -257,7 +257,7 @@
 
     <div class="row -spacing-a">
       <div class="column column--12">
-        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>
+        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Nähe von {{ $beachcourt->city }}</h4>
       </div>
     </div>
 
