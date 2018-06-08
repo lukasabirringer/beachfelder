@@ -87,7 +87,7 @@
 
               @if ($beachcourt->ratingCount < 10)
               	@if($beachcourt->ratingCount <= 1)
-              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Feld liegen noch nicht genügend Bewertungen vor</p>
+              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor.</p>
               	@else
                 	<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
                 @endif
@@ -183,12 +183,13 @@
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
           </div>
         @else
-          <div class="message-image-missing">
+        	<img class="progressive__img" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=500x350&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=1000x700&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
+          <!-- <div class="message-image-missing">
             <span class="message-image-missing__icon" data-feather="image"></span>
             <p class="message-image-missing__text">
                 Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
             </p>
-          </div>
+          </div> -->
         @endif
       </div>
 
@@ -219,7 +220,7 @@
         @elseif ($beachcourt->isChargeable === 3)
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist im Eintrittspreis inbegriffen.</p>
         @elseif ($beachcourt->isChargeable === NULL )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostpflichtig ist.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostenpflichtig ist.</p>
         @endif
          @if($beachcourt->notes != NULL)
          <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
@@ -256,7 +257,7 @@
 
     <div class="row -spacing-a">
       <div class="column column--12">
-        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Umgebung</h4>
+        <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Nähe von {{ $beachcourt->city }}</h4>
       </div>
     </div>
 
@@ -307,9 +308,7 @@
                   </div>
                   <div class="beachcourt-item__info">
                   	<a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($otherBeachcourt->city),'latitude'=>$otherBeachcourt->latitude,'longitude'=>$otherBeachcourt->longitude)) }}" class="beachcourt-item__title">
-                  		Beachfeld in {{ $otherBeachcourt->city }}
-                      @if ($otherBeachcourt->district != '') 
-                        - {{ $otherBeachcourt->district }}
+                  		Beachfeld in {{ $otherBeachcourt->city }}@if ($otherBeachcourt->district != '')-{{ $otherBeachcourt->district }}
                       @endif
                   	</a>
                   	
