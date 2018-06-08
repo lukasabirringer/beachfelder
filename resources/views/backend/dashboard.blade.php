@@ -7,10 +7,10 @@
           <div class="column column--12">
             <h1 class="title-page__title">Namasté, {{ Auth::user()->userName }}</h1>
             <p class="-typo-copy -text-color-green -spacing-b">
-            	<a href="{{ url('backend/beachcourts') }}" class="link-text">Übersicht aller Beachfelder</a> | 
-            	<a href="{{ url('backend/user') }}" class="link-text">Übersicht aller User</a> | 
-            	<a href="{{ url('backend/cities') }}" class="link-text">Übersicht aller Städte</a> | 
-            	<a href="{{ url('backend/faqs') }}" class="link-text">Übersicht aller FAQs</a>
+            	<a href="{{ url('backend/beachcourts') }}" class="link-icon-text"><span class="link-icon-text__icon" data-feather="database"></span><span class="link-icon-text__copy">Übersicht aller Beachfelder</span></a> | 
+            	<a href="{{ url('backend/user') }}" class="link-icon-text"><span class="link-icon-text__icon" data-feather="users"></span><span class="link-icon-text__copy">Übersicht aller User</span></a> | 
+            	<a href="{{ url('backend/cities') }}" class="link-icon-text"><span class="link-icon-text__icon" data-feather="target"></span><span class="link-icon-text__copy">Übersicht aller Städte</span></a> | 
+            	<a href="{{ url('backend/faqs') }}" class="link-icon-text"><span class="link-icon-text__icon" data-feather="help-circle"></span><span class="link-icon-text__copy">Übersicht aller FAQs</span></a>
             </p>
           </div>
         </div>
