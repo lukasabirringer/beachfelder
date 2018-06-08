@@ -6,6 +6,12 @@
         <div class="row">
           <div class="column column--12">
             <h1 class="title-page__title">Namasté, {{ Auth::user()->userName }}</h1>
+            <p class="-typo-copy -text-color-green -spacing-b">
+            	<a href="{{ url('backend/beachcourts') }}" class="link-text">Übersicht aller Beachfelder</a> | 
+            	<a href="{{ url('backend/user') }}" class="link-text">Übersicht aller User</a> | 
+            	<a href="{{ url('backend/cities') }}" class="link-text">Übersicht aller Städte</a> | 
+            	<a href="{{ url('backend/faqs') }}" class="link-text">Übersicht aller FAQs</a>
+            </p>
           </div>
         </div>
 
