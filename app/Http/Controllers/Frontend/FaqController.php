@@ -8,13 +8,13 @@ use App\Faq;
 
 class FaqController extends Controller
 {
+
 	public function show()
 	{
-		$faq = Faq::where('isPublic', 1)->get();
-		
-    $title = ($faq->title);
-    $content = ($faq->content);
-
-	  return view('frontend.page.faq', compact('faq', 'title', 'content', 'isPublic'));
+	  $faq = Faq::all();
+	  $title = ($faq->title);
+	  $content = ($faq->content);
+	  
+	  return view('frontend.page.faq', compact('faq', 'title', 'content'));
 	}
 }

@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Frontend'], function () {
   Route::post('/page/kontakt', 'ContactController@save')->name('contact.save');
   Route::get('/page/kontakt', 'ContactController@show')->name('contact.show');
   Route::get('/page/{slug}', 'PagesController@show')->name('page.show');
-  Route::get('/page/faq', 'FaqController@show')->name('faq.show');
+  Route::get('/faq', 'FaqController@show')->name('faq.show');
 });
 
  

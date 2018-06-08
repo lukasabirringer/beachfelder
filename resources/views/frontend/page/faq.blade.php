@@ -23,10 +23,10 @@
 		    <hr class="divider">
 		  </div>
 		</div>
-		@foreach($faqs as faq)
+		@foreach($faqs as $faq)
 		<div class="row">
 			<div class="column column--12">
-				{{ $faq->title }}
+				<h1>{{ $faq->title }}</h1>
 			</div>
 		</div>
 		@endforeach
