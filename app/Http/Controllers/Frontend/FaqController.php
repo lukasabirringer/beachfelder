@@ -11,10 +11,8 @@ class FaqController extends Controller
 
 	public function show()
 	{
-	  $faq = Faq::all();
-	  $title = ($faq->title);
-	  $content = ($faq->content);
+	  $faqs = Faq::all();
 	  
-	  return view('frontend.page.faq', compact('faq', 'title', 'content'));
+	  return view('frontend.page.faq', compact('faqs', 'title', 'content'));
 	}
 }

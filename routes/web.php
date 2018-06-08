@@ -34,8 +34,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 
   Route::post('/page/kontakt', 'ContactController@save')->name('contact.save');
   Route::get('/page/kontakt', 'ContactController@show')->name('contact.show');
+  Route::get('/page/faq', 'FaqController@show')->name('faq.show');
   Route::get('/page/{slug}', 'PagesController@show')->name('page.show');
-  Route::get('/faq', 'FaqController@show')->name('faq.show');
 });
 
  
@@ -61,4 +61,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::patch('/backend/cities/{id}', 'CityController@update')->name('backendCity.update');
   Route::get('/backend/cities/{id}', 'CityController@show')->name('backendCity.show');
   Route::get('/backend/cities/{id}/bearbeiten', 'CityController@edit')->name('backendCity.edit');
+  //FAQs
+  Route::get('/backend/faqs', 'FaqController@index')->name('backendFaq.index');
+  Route::patch('/backend/faqs/{id}', 'FaqController@update')->name('backendFaq.update');
+  Route::get('/backend/faqs/{id}', 'FaqController@show')->name('backendFaq.show');
+  Route::get('/backend/faqs/{id}/bearbeiten', 'FaqController@edit')->name('backendFaq.edit');
 });

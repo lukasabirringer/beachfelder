@@ -15,7 +15,7 @@
 	<div class="content__main">
 		<div class="row">
 		  <div class="column column--12">
-		    <h2 class="title-page__title">Häufig gestellte Fragen und deren Antworten</h2>
+		    <h2 class="title-page__title">Häufig gestellte Fragen und Antworten</h2>
 		  </div>
 		</div>
 		<div class="row -spacing-a">
@@ -23,12 +23,38 @@
 		    <hr class="divider">
 		  </div>
 		</div>
-		@foreach($faqs as $faq)
-		<div class="row">
-			<div class="column column--12">
-				<h1>{{ $faq->title }}</h1>
-			</div>
+		
+		<div class="row -spacing-a">
+			<ul class="accordion-vertical">
+				@foreach($faqs as $faq)
+					@if($faq->isPublic == 1)
+						<li class="accordion-vertical__item">
+							<a href="#" class="accordion-vertical__title">{{ $faq->title }} <span class="accordion-vertical__icon" data-feather="chevron-down"></span></a>
+							
+							<div class="accordion-vertical__content row">
+								<div class="column column--12">
+									{{ $faq->content }}
+								</div>
+							</div>
+						</li>
+					@endif
+				@endforeach	
+			</ul>
 		</div>
-		@endforeach
 	</div>
 @endsection
+
+@push('scripts')
+	<script>
+		
+		var allPanels = $('.accordion-vertical__content').hide();
+
+		$('.accordion-vertical__title').click(function() {
+			allPanels.slideUp();
+
+		   	$(this).next().slideDown();
+		   	return false;
+		});
+		
+	</script>
+@endpush
