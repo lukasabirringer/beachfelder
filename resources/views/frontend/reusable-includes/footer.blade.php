@@ -6,6 +6,7 @@
 					<li class="footer__item"><a href="{{ url('/') }}/page/{{ $footerLink->slug }}" class="footer__link">{{ $footerLink->name }}</a></li>
 				@endif
 			@endforeach
+			<li class="footer__item"><a href="{{ url('/') }}/page/faq" class="footer__link">FAQs</a></li>
 			<li class="footer__item"><a href="{{ url('/') }}/page/kontakt" class="footer__link">Kontakt</a></li>
 		</ul>
 	</div>
