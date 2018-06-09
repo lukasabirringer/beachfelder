@@ -33,7 +33,7 @@
 							
 							<div class="accordion-vertical__content row">
 								<div class="column column--12">
-									{{ $faq->content }}
+									{!! html_entity_decode($faq['content']) !!}
 								</div>
 							</div>
 						</li>
