@@ -76,7 +76,13 @@
           </div>
         </div>
       </div>
+      
       @include('frontend.reusable-includes.divider')
+      
+      @include('frontend.reusable-includes.teaser-contest')
+
+      @include('frontend.reusable-includes.divider')
+
       <div class="row -spacing-a">
 
         <div class="column column--12">
