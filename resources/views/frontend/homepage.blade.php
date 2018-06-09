@@ -54,7 +54,18 @@
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
         <div class="input__border"></div>
-        {{ $errors->postcode->first('postcode13') }}
+
+        @if ($errors->has('postcode13'))
+          <div class="alert alert-danger">{{ $errors->first('postcode13', 'Die Postleitzahl muss fünf Stellen besitzen.') }}</div>
+        @endif
+        
+       
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
       </label>
     </form>
     <span class="section__link" data-feather="chevrons-down"></span>
@@ -122,19 +133,14 @@
 		  var input = document.querySelector("#address-input-homepage");
 		  var soll = document.querySelector("#form-postcode13-homepage");
 		  
-		  if (isNaN(input.value) || input.value.length > 6){
+		  soll.value = input.value;
 		      placesAutocompleteHomepage.on('change', function(e) {
+              
 		          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
 		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
 		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
 		      });
-		    } else {
-		          soll.value = input.value;
-		        placesAutocompleteHomepage.on('change', function(e) {
-		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
-		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || ''; 
-		      });
-		    }
+		   
 		});
 	</script>
 @endpush

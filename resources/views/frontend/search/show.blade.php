@@ -69,7 +69,6 @@
       	</div>
       @endif
       @foreach ($results as $beachcourt)
-        @if($beachcourt->distance <= $distance)
           <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
             <div class="beachcourt-item">
               <div class="beachcourt-item__image">
@@ -141,7 +140,6 @@
               </div>
             </div>
           </div>
-        @endif
       @endforeach
 
       @include('frontend.reusable-includes.divider')
@@ -240,25 +238,22 @@
       container: document.querySelector('#address-input-seachResults')
     });
 
+
+
     $('#address-input-seachResults').on('keyup', function() {
-    
-      var input = document.querySelector("#address-input-seachResults");
-      var soll = document.querySelector("#form-postcode13");
-      
-      if (isNaN(input.value) || input.value.length > 6){
-          placesAutocompleteSearchResults.on('change', function(e) {
-              document.querySelector('#form-postcode13-searchResults').value = e.suggestion.postcode || '';
-              document.querySelector('#form-lat-searchResults').value = e.suggestion.latlng.lat || '';
-              document.querySelector('#form-long-searchResults').value = e.suggestion.latlng.lng || '';     
-          });
-        } else {
-              soll.value = input.value;
-            placesAutocompleteSearchResults.on('change', function(e) {
-              document.querySelector('#form-lat-searchResults').value = e.suggestion.latlng.lat || '';
-              document.querySelector('#form-long-searchResults').value = e.suggestion.latlng.lng || ''; 
-          });
-        }
-    });
+		
+		  var input = document.querySelector("#address-input-seachResults");
+		  var soll = document.querySelector("#form-postcode13-seachResults");
+		  
+		  soll.value = input.value;
+      placesAutocompleteSearchResults.on('change', function(e) {
+              
+		          document.querySelector('#form-postcode13-seachResults').value = e.suggestion.postcode || '';
+		          document.querySelector('#form-lat-seachResults').value = e.suggestion.latlng.lat || '';
+		          document.querySelector('#form-long-seachResults').value = e.suggestion.latlng.lng || '';     
+		      });
+		   
+		});
     
   </script>
 @endpush

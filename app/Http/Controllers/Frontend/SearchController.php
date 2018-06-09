@@ -11,57 +11,102 @@ use DB;
 
 class SearchController extends Controller
 {
-    public function show(Request $request)
-    { 
-     
-      $distance = $request->distance;
-      // bedeutet: if suche von suchergebnisseite
-      if ($distance) {
+  public function show(Request $request)
+  { 
+    $slat = $request->lat;
+    $slong = $request->long;
+    $input = $request->postcode13;
+    
+    if (is_numeric($input)) {
+
+      $plz = $request->postcode13;
       $v = Validator::make($request->all(), [
-        'postcode13' => 'required'
+        'postcode13' => 'required|digits:5'
       ]);
-      // bedeutet: if suche von irgendwoher
-      } else {
-      $v = Validator::make($request->all(), [
-     
-        'lat' => 'required',
-        'long' => 'required',
-      ]);
-      }
       if($v->fails()){
         return redirect('/')->withErrors($v->errors());
       }
 
-    $slat = $request->lat;
-    $slong = $request->long;
-    $plz = $request->postcode13;
-
-    if (strlen($plz) == 5){
-      $url = "https://maps.googleapis.com/maps/api/geocode/json?components=country:DE|postal_code:".$plz."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
-      
     } else {
-      $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$slat.",".$slong."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+
+      $address = $request->postcode13;
+
     }
     
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $response = curl_exec($ch);
-    $response = json_decode($response, true);
-    $latitude = $response['results'][0]['geometry']['location']['lat'];
-    $longitude = $response['results'][0]['geometry']['location']['lng'];
-    $arrayl = $response['results'][0]['address_components'];
+    if ($slat) {
 
-    if (!$plz){$plz = $response['results'][0]['address_components'][count($arrayl)-1]['long_name'];}
-    elseif (strlen($plz) < 5){$plz = $response['results'][0]['address_components'][6]['long_name'];}
+      $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$slat.",".$slong."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($ch);
+      $response = json_decode($response, true);
+      $latitude = $response['results'][0]['geometry']['location']['lat'];
+      $longitude = $response['results'][0]['geometry']['location']['lng'];
+      $arrayl = $response['results'][0]['address_components'];
+
+      $plz = $response['results'][0]['address_components'][count($arrayl)-1]['long_name'];
+      
+    } elseif(is_numeric($input)) {
+
+      $url = "https://maps.googleapis.com/maps/api/geocode/json?components=country:DE|postal_code:".$plz."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($ch);
+      $response = json_decode($response, true);
+      $latitude = $response['results'][0]['geometry']['location']['lat'];
+      $longitude = $response['results'][0]['geometry']['location']['lng'];
+      $arrayl = $response['results'][0]['address_components'];
+    
+    } elseif(ctype_alpha($address)) {
+
+      $url = "https://maps.googleapis.com/maps/api/geocode/json?address=".$address."&region=de&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($ch);
+      $response = json_decode($response, true);
+    
+      if($response['status'] === 'ZERO_RESULTS'){
+        return redirect('/')->with('status', 'Wir konnten deinem Suchbegriff keine Stadt zuweisen.');
+      }
+
+      $latitude = $response['results'][0]['geometry']['location']['lat'];
+      $longitude = $response['results'][0]['geometry']['location']['lng'];
+      $arrayl = $response['results'][0]['address_components'];
+     
+      $plzurl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$latitude.",".$longitude."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $plzurl);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+      $plzurlresponse = curl_exec($ch);
+      $plzurlresponse = json_decode($plzurlresponse, true);
+      $arrayl = $plzurlresponse['results'][0]['address_components'];
+      
+      $plz = $plzurlresponse['results'][0]['address_components'][count($arrayl)-1]['long_name'];
+
+    } else {
+
+      return redirect('/')->with('status', 'Bitte suche nach einer PLZ oder einem Ort!');
+
+    }
    
     $distance = $request->distance ?? '15';
     $ratingmin = $request->ratingmin ?? '0';
     $ratingmax = $request->ratingmax ?? '5';
-
     $filter = $request->filter ?? null;
     
     if ($filter == 'public') {
@@ -116,7 +161,6 @@ class SearchController extends Controller
       ->get();
     }
 
-
       foreach ($results as $beachcourt) {
          $pi80 = M_PI / 180;
             $lat1 = $latitude; $lat1 *= $pi80;
@@ -130,9 +174,14 @@ class SearchController extends Controller
             $dis = $r * $c * 0.621371192 * 2;
             
             $beachcourt->distance = $dis;
+
+            if ($distance < $dis) {
+              $results = $results->keyBy('id');
+              $results->forget($beachcourt->id);
+            }
        }
        $results = $results->sortBy('distance');
-      
+     
       return view('frontend.search.show', compact('filter', 'isChargeable', 'isPublic', 'results', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax'));
 
     }
