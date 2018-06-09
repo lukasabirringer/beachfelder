@@ -20,7 +20,12 @@ class FaqController extends Controller
 	   return view('backend.faq.index', compact('faqs'));
 	}
 
-	public function store(StoreCityRequest $request)
+	public function create()
+  {
+      return view('backend.faq.create');
+  }
+
+	public function store(StoreFaqRequest $request)
 	{
 		$validated = $request->validated();
 
@@ -63,6 +68,6 @@ class FaqController extends Controller
 		$faq = Faq::findOrFail($id);
 		$faq->delete();
 
-		return redirect()->route('backendFaq.index');
+		return redirect()->route('backendFaq.index')->with('success', 'FAQ wurde gelöscht');
 	}
 }

@@ -64,7 +64,7 @@
 						<input type="radio" name="isPublic" class="input-radio__field" value="1" {{ $faq->isPublic == '1' ? 'checked' : '' }}>
 						<span class="input-radio__label">Ja</span>
 					</label>
-					<br>
+					
 					<label class="input-radio">
 						<input type="radio" name="isPublic" class="input-radio__field" value="0" {{ $faq->isPublic == '0' ? 'checked' : '' }}>
 						<span class="input-radio__label">nein</span>

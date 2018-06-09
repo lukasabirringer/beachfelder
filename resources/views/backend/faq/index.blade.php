@@ -27,6 +27,22 @@
 	    	<hr class="divider">	
 	    </div>
 		</div>
+
+		<div class="row">
+			<div class="column column--12 column--m-4">
+				<a href="{{ URL::route('backendFaq.create') }}" class="button-primary">
+					<span class="button-primary__label">Neue FAQ erstellen</span>
+					<span class="button-primary__label button-primary__label--hover">Neue FAQ erstellen</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="row -spacing-a">
+	    <div class="column column--12">
+	    	<hr class="divider">	
+	    </div>
+		</div>
+
 		<div class="row">
 			<div class="column column--12">
 				<ul class="accordion-horizontal">

@@ -42,7 +42,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsAdmin'], function () {
 
   Route::get('/backend/dashboard', 'DashboardController@show')->name('backendDashboard.show');
-
+  //BEACHCOURTS
   Route::get('/backend/beachcourts', 'BeachcourtController@index')->name('backendBeachcourt.index');
   Route::get('/backend/beachcourts/hinzufuegen', 'BeachcourtController@create')->name('backendBeachcourt.create');
   Route::get('/backend/beachcourts/{id}', 'BeachcourtController@show')->name('backendBeachcourt.show');
@@ -50,6 +50,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/beachcourts/{id}', 'BeachcourtController@destroy')->name('backendBeachcourt.destroy');
   Route::post('/backend/beachcourts/erstellen', 'BeachcourtController@store')->name('backendBeachcourt.store');
   Route::get('/backend/beachcourts/{id}/bearbeiten', 'BeachcourtController@edit')->name('backendBeachcourt.edit');
+  //USER
   Route::get('/backend/user', 'UserController@index')->name('backendUser.index');
   Route::get('/backend/user/hinzufuegen', 'UserController@create')->name('backendUser.create');
   Route::get('/backend/user/{id}', 'UserController@show')->name('backendUser.show');
@@ -57,13 +58,17 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/user/{id}', 'UserController@destroy')->name('backendUser.destroy');
   Route::post('/backend/user/erstellen', 'UserController@store')->name('backendUser.store');
   Route::get('/backend/user/{id}/bearbeiten', 'UserController@edit')->name('backendUser.edit');
+  //CITIES
   Route::get('/backend/cities', 'CityController@index')->name('backendCity.index');
   Route::patch('/backend/cities/{id}', 'CityController@update')->name('backendCity.update');
   Route::get('/backend/cities/{id}', 'CityController@show')->name('backendCity.show');
   Route::get('/backend/cities/{id}/bearbeiten', 'CityController@edit')->name('backendCity.edit');
   //FAQs
   Route::get('/backend/faqs', 'FaqController@index')->name('backendFaq.index');
-  Route::patch('/backend/faqs/{id}', 'FaqController@update')->name('backendFaq.update');
+  Route::get('/backend/faqs/hinzufuegen', 'FaqController@create')->name('backendFaq.create');
   Route::get('/backend/faqs/{id}', 'FaqController@show')->name('backendFaq.show');
+  Route::patch('/backend/faqs/{id}', 'FaqController@update')->name('backendFaq.update');
+  Route::delete('/backend/faqs/{id}', 'FaqController@destroy')->name('backendFaq.destroy');
+  Route::post('/backend/faqs/erstellen', 'FaqController@store')->name('backendFaq.store');
   Route::get('/backend/faqs/{id}/bearbeiten', 'FaqController@edit')->name('backendFaq.edit');
 });
