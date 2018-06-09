@@ -60,6 +60,7 @@
         <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
         @endif
           <li class="navigation__item tipso-sidebar" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
+          <li class="navigation__item tipso-sidebar" data-tipso="Fragen und Antworten"><a href="{{ url('/') }}/page/faq" class="navigation__link"><span data-feather="help-circle"></span></a></li>
         @if (Auth::check())
           <li class="navigation__item tipso-sidebar" data-tipso="Ausloggen">
             <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
