@@ -69,7 +69,7 @@
 								</div>
 								<div class="column column--12 column--m-8">
 									<span class="-typo-copy -typo-copy--bold">Antwort</span> <br>
-									{{ $faq->content }}
+									{!! html_entity_decode($faq['content']) !!}
 								</div>
 							</div>
 						</li>
