@@ -142,17 +142,12 @@
 		  var soll = document.querySelector("#form-postcode13-homepage");
 		  
 		  soll.value = input.value;
-      placesAutocompleteHomepage.on('change', function(e) {
-          
-          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
-          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
-          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
-      });
-		});
-
-
-		$("#address-input-homepage").on('change', function(e) {
-			$('.form--homepage-search').submit();
+		      placesAutocompleteHomepage.on('change', function(e) {
+              
+		          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
+		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
+		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
+		      });
 		});
 	</script>
 @endpush
