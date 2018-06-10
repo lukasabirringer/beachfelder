@@ -71,31 +71,47 @@
         <div class="row">
           <div class="column column--12 column--m-8">
             <div class="rating">
-              @for ($i = 1; $i <= $beachcourt->rating; $i++)
-                <div class="rating__item">
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
-                </div>
-              @endfor
-              <?php $starsLeft = 5 - $beachcourt->rating; ?>
-              @if (count($starsLeft) > 0)
-                @for ($i = 1; $i <= $starsLeft; $i++)
+              @if ($beachcourt->bfdeRating)
+                @for ($i = 1; $i <= $beachcourt->bfdeRating; $i++)
+                  <div class="rating__item">
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                  </div>
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->bfdeRating; ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <div class="rating__item">
+                    <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                  </div>
+                  @endfor
+                @endif
+                <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">Vorläufige Bewertung von Beachfelder.de</p>
+              @elseif ($beachcourt->ratingCount < 10)
+                @for ($i = 1; $i <= 5; $i++)
                 <div class="rating__item">
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
                 @endfor
-              @endif
-
-              @if ($beachcourt->ratingCount < 10)
-              	@if($beachcourt->ratingCount <= 1)
-              		<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor.</p>
-              	@else
-                	<p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Vorläufige Bewertung durch beachfelder.de</p>
+                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. (@if($beachcourt->ratingCount < 1)0 @else {{ $beachcourt->ratingCount }}@endif von 10)</p>
+              @else
+                @for ($i = 1; $i <= $beachcourt->rating; $i++)
+                <div class="rating__item">
+                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                </div>
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->rating; ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <div class="rating__item">
+                    <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+                  </div>
+                  @endfor
                 @endif
-              @elseif ($beachcourt->ratingCount >= 10)
-                <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
-              @endif
-              
-              
+              <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">{{ $beachcourt->ratingCount }} Bewertungen</p>
+              <br>
+              <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">Aufgrund von kritischen Problemen des Feldes wurden in der Wertung des Feldes {{ $minusBallCount }} Bälle abgezogen.</p>
+              @endif             
+
             </div>
           </div>
           <div class="column column--12 column--m-4 -align-right">
@@ -105,62 +121,154 @@
           </div>
         </div>
         <div class="row">
+          @if ($beachcourt->ratingCount < 10)
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Sand</span>
-              @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @for ($i = 1; $i <= 5; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
               @endfor
-              <?php $starsLeft = 5 - $beachcourt->ratingSand;     ?>
-              @if (count($starsLeft) > 0)
-                @for ($i = 1; $i <= $starsLeft; $i++)
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-                @endfor
-              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Netz</span>
-              @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @for ($i = 1; $i <= 5; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
               @endfor
-              <?php $starsLeft = 5 - $beachcourt->ratingNet;     ?>
-              @if (count($starsLeft) > 0)
-                @for ($i = 1; $i <= $starsLeft; $i++)
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-                @endfor
-              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Feld</span>
-              @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @for ($i = 1; $i <= 5; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
               @endfor
-              <?php $starsLeft = 5 - $beachcourt->ratingCourt;     ?>
-              @if (count($starsLeft) > 0)
-                @for ($i = 1; $i <= $starsLeft; $i++)
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-                @endfor
-              @endif
             </p>
           </div>
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Umgebung</span>
-              @for ($i = 1; $i <= $beachcourt->ratingEnvironment; $i++)
-                  <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+              @for ($i = 1; $i <= 5; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
               @endfor
-              <?php $starsLeft = 5 - $beachcourt->ratingEnvironment; ?>
-              @if (count($starsLeft) > 0)
-                @for ($i = 1; $i <= $starsLeft; $i++)
-                <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
-                @endfor
-              @endif
             </p>
           </div>
+          @elseif ($beachcourt->bfdeRating)
+          <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Sand</span>
+                @for ($i = 1; $i <= $beachcourt->bfdeRatingSand; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingSand;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Netz</span>
+                @for ($i = 1; $i <= $beachcourt->bfdeRatingNet; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingNet;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Feld</span>
+                @for ($i = 1; $i <= $beachcourt->bfdeRatingCourt; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingCourt;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Umgebung</span>
+                @for ($i = 1; $i <= $beachcourt->bfdeRatingEnvironment; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingEnvironment; ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+          @else
+          <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Sand</span>
+                @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->ratingSand;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Netz</span>
+                @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->ratingNet;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Feld</span>
+                @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->ratingCourt;     ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+            <div class="column column--6 column--s-3 -hidden--xxs">
+              <p class="-typo-copy -text-color-gray-01 -spacing-b">
+                <span class="-typo-copy--bold">Umgebung</span>
+                @for ($i = 1; $i <= $beachcourt->ratingEnvironment; $i++)
+                    <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
+                @endfor
+                <?php $starsLeft = 5 - $beachcourt->ratingEnvironment; ?>
+                @if (count($starsLeft) > 0)
+                  @for ($i = 1; $i <= $starsLeft; $i++)
+                  <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
+                  @endfor
+                @endif
+              </p>
+            </div>
+          @endif
         </div>
       </div>
     </div>

@@ -64,6 +64,7 @@
   </div>
 
   <div class="row -spacing-b">
+
     <div class="column column--12 column--m-6">
       <h4 class="-typo-headline-04 -text-color-gray-01 -spacing-b">Du hast es mit {{ $userRating }} von 5 Bällen bewertet!</h4>
       @for ($i = 1; $i <= $userRating; $i++)
@@ -79,30 +80,51 @@
         </div>
         @endfor
       @endif
+      <p>Deiner Bewertung wurden {{ $countMinusBall }} Bälle abgezogen, da du {{ $countMinusBall }} der Sicherheitsfragen negativ beantwortet hast.</p>
     </div>
-    <div class="column column--12 column--m-6">
-      <h4 class="-typo-headline-04 -text-color-gray-01 -spacing-b">Insgesamt wurde das Feld mit {{ $newRating }} von 5 Bällen bewertet!</h4>
 
-      @for ($i = 1; $i <= $newRating; $i++)
-        <div class="rating__item -spacing-b">
+    <div class="column column--12 column--m-6">
+        <h4 class="-typo-headline-04 -text-color-gray-01 -spacing-b">Bisherige Bewertungen</h4>
+    @if ($beachcourt->bfdeRating)
+      @for ($i = 1; $i <= $beachcourt->bfdeRating; $i++)
+        <div class="rating__item  -spacing-b">
           <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
         </div>
       @endfor
-      <?php $starsLeft = 5 - $newRating; ?>
+      <?php $starsLeft = 5 - $beachcourt->bfdeRating; ?>
       @if (count($starsLeft) > 0)
         @for ($i = 1; $i <= $starsLeft; $i++)
-        <div class="rating__item -spacing-b">
+        <div class="rating__item  -spacing-b">
           <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
         </div>
         @endfor
       @endif
-      <p class="-typo-copy -text-color-gray-01 -spacing-b">
-        @if ($beachcourt->ratingCount < 10)
-          Dies ist eine vorläufige Bewertung durch <span class="-typo-copy -typo-copy--bold">beachfelder.de</span>, da noch nicht genügend Bewertungen eingeganen sind, um einen repräsentativen Wert darzustellen.
+      <p class="-typo-copy -text-color-gray-01 -spacing-b">Vorläufige Bewertung von Beachfelder.de</p>
+    @elseif ($beachcourt->ratingCount < 10)
+      @for ($i = 1; $i <= 5; $i++)
+      <div class="rating__item  -spacing-b">
+        <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+      </div>
+      @endfor
+
+      <p class="-typo-copy -text-color-gray-01 -spacing-b">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. ( {{ $beachcourt->ratingCount + 1 }} von 10 )</p>
+    @else
+      @for ($i = 1; $i <= $beachcourt->rating; $i++)
+      <div class="rating__item  -spacing-b">
+        <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+      </div>
+      @endfor
+      <?php $starsLeft = 5 - $beachcourt->rating; ?>
+      @if (count($starsLeft) > 0)
+        @for ($i = 1; $i <= $starsLeft; $i++)
+        <div class="rating__item  -spacing-b">
+          <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+        </div>
+        @endfor
         @endif
-      </p>
-    </div>
-  </div>
+        <h4 class="-typo-copy -text-color-gray-01 -spacing-b">Insgesamt wurde das Feld mit {{ $newRating }} von 5 Bällen bewertet! Das Feld wurde {{ $beachcourt->ratingCount }} mal bewertet.</h4>
+    @endif    
+    </div></div>
 </div>
 @endsection
 
