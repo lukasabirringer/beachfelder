@@ -13,6 +13,15 @@ use Carbon\Carbon;
 
 class BeachcourtController extends Controller
 {
+    public function rate(Request $request, $id)
+    {
+        $beachcourt = Beachcourt::findOrFail($id);
+        $beachcourt->bfdeRating = $request->input('bfderating');
+        $beachcourt->save();
+
+        return view('backend.beachcourts.edit', compact('beachcourt'));
+    }
+
     public function index()
     {
         $submittedBeachcourts = Beachcourt::where('submitState', 'eingereicht')->get();

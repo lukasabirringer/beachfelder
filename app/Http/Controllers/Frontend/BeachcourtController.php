@@ -101,7 +101,9 @@ class BeachcourtController extends Controller
             $filecount = 0;
         }
         
-        return view('frontend.beachcourt.show', compact('filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures', 'distance'));
+        $minusBallCount = (($beachcourt->ratingSand + $beachcourt->ratingNet + $beachcourt->ratingCourt + $beachcourt->ratingEnvironment)/4) - $beachcourt->rating;
+
+        return view('frontend.beachcourt.show', compact('minusBallCount', 'filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures', 'distance'));
     }
     public function rate($cityslug, $latitude, $longitude)
     {

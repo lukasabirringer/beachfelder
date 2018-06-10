@@ -31,5 +31,10 @@ class Rating extends Model
     'securityZone',
     'windProtection',
     'interferenceCourt',
+    'securitySandDepth',
+    'securityJunk',
+    'securityCutting',
+    'securityBricks',
+
      ];
 }
