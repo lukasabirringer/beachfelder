@@ -26,6 +26,12 @@
     
     {!! html_entity_decode($page['content']) !!}
 
+    @include('frontend.reusable-includes.divider')
+    
+    @include('frontend.reusable-includes.teaser-contest')
+
+    @include('frontend.reusable-includes.divider')
+
   </div> <!-- .content__main ENDE -->
 @endsection
 

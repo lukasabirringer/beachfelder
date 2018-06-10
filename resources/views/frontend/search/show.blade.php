@@ -141,13 +141,13 @@
             </div>
           </div>
       @endforeach
-
-      @include('frontend.reusable-includes.divider')
-
-      @include('frontend.reusable-includes.teaser-contest')
-
-      @include('frontend.reusable-includes.divider')
     </div>
+
+    @include('frontend.reusable-includes.divider')
+
+    @include('frontend.reusable-includes.teaser-contest')
+
+    @include('frontend.reusable-includes.divider')
     
   </div> <!-- .content__main ENDE -->
 @endsection

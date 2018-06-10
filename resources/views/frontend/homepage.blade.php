@@ -56,14 +56,22 @@
         <div class="input__border"></div>
 
         @if ($errors->has('postcode13'))
-          <div class="alert alert-danger">{{ $errors->first('postcode13', 'Die Postleitzahl muss fünf Stellen besitzen.') }}</div>
+          <div class="message message--error -spacing-d">
+            <div class="message__icon message__icon--error">
+              <span data-feather="alert-circle"></span>
+            </div>
+            <p class="message__text message__text--error">{{ $errors->first('postcode13', 'Die Postleitzahl muss fünf Stellen besitzen.') }}</p>
+          </div>
         @endif
         
        
         @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
+	        <div class="message message--error -spacing-d">
+	          <div class="message__icon message__icon--error">
+	            <span data-feather="alert-circle"></span>
+	          </div>
+	          <p class="message__text message__text--error">{{ session('status') }}</p>
+	        </div>
         @endif
 
       </label>
@@ -134,13 +142,17 @@
 		  var soll = document.querySelector("#form-postcode13-homepage");
 		  
 		  soll.value = input.value;
-		      placesAutocompleteHomepage.on('change', function(e) {
-              
-		          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
-		          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
-		          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
-		      });
-		   
+      placesAutocompleteHomepage.on('change', function(e) {
+          
+          document.querySelector('#form-postcode13-homepage').value = e.suggestion.postcode || '';
+          document.querySelector('#form-lat-homepage').value = e.suggestion.latlng.lat || '';
+          document.querySelector('#form-long-homepage').value = e.suggestion.latlng.lng || '';     
+      });
+		});
+
+
+		$("#address-input-homepage").on('change', function(e) {
+			$('.form--homepage-search').submit();
 		});
 	</script>
 @endpush

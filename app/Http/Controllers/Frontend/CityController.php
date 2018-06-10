@@ -20,11 +20,8 @@ class CityController extends Controller
       $city = City::where('slug', $slug)->first();
       $name = ($city->name);
       $description = ($city->description);
-      $postalCodeMin = $city->postalCodeMin;
-      $postalCodeMax = $city->postalCodeMax;
 
-      $beachcourts = Beachcourt::whereBetween('postalCode', array($postalCodeMin, $postalCodeMax))->get();
-      
+      $beachcourts = Beachcourt::where('city', 'like' , '%' . $name . '%')->get();
       $beachcourts = $beachcourts->sortByDesc('rating');
 
       return view('frontend.city.show', compact('beachcourts', 'name', 'description'));
