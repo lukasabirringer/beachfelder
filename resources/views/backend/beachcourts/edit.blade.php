@@ -327,6 +327,29 @@
         </div>
       </div>
     </form>
+    <div class="row">
+        <div class="column column--12 -spacing-a">
+          <hr class="divider">
+        </div>
+      </div>
+    <div class="row">
+
+        <div class="column column--12">
+            <h2 class="title-page__title">Rating</h2>
+            rating der Community: {{ $beachcourt->rating }} ({{ $beachcourt->ratingCount }} Bewertungen) <br>
+            rating von bfde: {{ $beachcourt->bfdeRating }} <br>
+
+            <form class="form-horizontal" action="{{ URL::route('backendBeachcourt.rate', ['id' => $beachcourt->id]) }}" method="POST">
+              <input type="hidden" name="_method" value="PATCH">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input class="input__field" placeholder="beachfelder.de Bälle Gesamt Rating" type="text" name="bfderating">
+              <button class="button-primary" type="submit">
+                <span class="button-primary__label">Rating abgeben</span>
+                <span class="button-primary__label button-primary__label--hover">Rating abgeben</span>
+              </button>
+            </form>
+        </div>
+    </div>
 
     <div class="row">
       <div class="column column--12 -spacing-a">

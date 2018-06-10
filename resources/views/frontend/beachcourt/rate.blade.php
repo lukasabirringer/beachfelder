@@ -91,7 +91,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="10" required>
+                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="125" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">sehr gut</span>
@@ -103,7 +103,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="5" required>
+                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="62.5" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">gut</span>
@@ -115,7 +115,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">schlecht</span>
@@ -136,7 +136,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Ja</span>
@@ -148,7 +148,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">es geht so</span>
@@ -160,7 +160,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Nein</span>
@@ -180,7 +180,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="10" required>
+                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="112" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">mehr als 30cm</span>
@@ -189,7 +189,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="5" required>
+                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">20-30cm</span>
@@ -198,7 +198,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">weniger als 20cm</span>
@@ -215,7 +215,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Keine Staubentwicklung oder Wasseranschluss vorhanden</span>
@@ -224,7 +224,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Leichte Staubentwicklung, kein Wasseranschluss</span>
@@ -233,7 +233,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Starke Staubentwicklung, kein Wasseranschluss</span>
@@ -255,7 +255,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="10" required>
+                <input type="radio" class="input-radio-icon__field" name="netHeight" value="112" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Ja, man kann alle Höhen von 2m bis 2,43m wählen</span>
@@ -264,7 +264,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="5" required>
+                <input type="radio" class="input-radio-icon__field" name="netHeight" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Die Höhe stimmt, ist aber nicht verstellbar</span>
@@ -273,7 +273,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="netHeight" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Nein, leider ist die Höhe nicht veränderbar</span>
@@ -290,7 +290,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="netType" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Stabiles Beachnetz mit fester Einfassung</span>
@@ -299,7 +299,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="netType" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Provisorisches Netz (zum Beispiel Hallen-Netz), Beachnetz mit Mängeln</span>
@@ -308,7 +308,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="netType" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Schnur oder Kettennetz oder Netz fehlt</span>
@@ -325,7 +325,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Ja</span>
@@ -334,7 +334,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="2" required>
+                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="14" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Ja, aber die Befestigung ist mangelhaft</span>
@@ -343,7 +343,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Nein</span>
@@ -360,7 +360,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="netTension" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Spannseil und Abspannung intakt</span>
@@ -369,7 +369,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="netTension" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Zu wenig Spannung, nicht justierbar</span>
@@ -378,7 +378,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="netTension" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Netz hängt durch, bzw. schwingt stark</span>
@@ -398,7 +398,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="10" required>
+                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="112" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">5 cm breit, im Boden verankert</span>
@@ -407,7 +407,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="5" required>
+                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Falsche Breite oder Verankerung lose</span>
@@ -416,7 +416,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Keine Linien oder Linien nicht verankert</span>
@@ -433,7 +433,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">8 x 16 m +/- 5 cm, rechteckig</span>
@@ -442,7 +442,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Abweichung 5-25 cm oder nicht rechteckig gespannt</span>
@@ -451,7 +451,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Abweichung >25 cm oder geringe Abweichung + nicht rechteckig</span>
@@ -468,7 +468,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="10" required>
+                <input type="radio" class="input-radio-icon__field" name="securityZone" value="130" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">3m ringsum oder mehr</span>
@@ -477,7 +477,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="5" required>
+                <input type="radio" class="input-radio-icon__field" name="securityZone" value="65" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">2 - 3m</span>
@@ -486,7 +486,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="securityZone" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Unter 2m oder Hindernisse im Auslaufbereich</span>
@@ -506,7 +506,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="7" required>
+                <input type="radio" class="input-radio-icon__field" name="windProtection" value="56" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Gut windgeschützt</span>
@@ -515,7 +515,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="windProtection" value="28" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Windanfällig bei schlechtem Wetter</span>
@@ -524,7 +524,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="windProtection" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Eigentlich immer windig, ohne Schutzmaßnahmen</span>
@@ -541,7 +541,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="4" required>
+                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="45" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="sun"></span>
                   <span class="input-radio-icon__label">Einzelfeld, bzw. Schutz durch Ballfangzaun</span>
@@ -550,7 +550,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="2" required>
+                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="22.5" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud"></span>
                   <span class="input-radio-icon__label">Maximal 2 Felder nebeneinander ohne Ballfangzaun</span>
@@ -559,7 +559,7 @@
             </div>
             <div class="column column--12 column--m-4 -spacing-d">
               <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="1" required>
+                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
                   <span class="input-radio-icon__label">Mehrere Felder direkt nebeneinander ohne Ballfangzaung</span>
@@ -569,6 +569,24 @@
           </div>
         </div>
       </div> <!-- .tab #environment ENDE -->
+      <div>
+        <h1>Sicherheitsfragen</h1>
+          <span class="input-radio-icon__label">Ist der Sand auf dem Spielfeld stellenweise weniger als 20 cm tief?</span>
+          <input type="radio" name="securitySandDepth" value="1" required>ja <br>
+          <input type="radio" name="securitySandDepth" value="0" required>nein  
+          <br><br>
+          <span class="input-radio-icon__label">Ist der Sand auf dem Court durch Müll, Scherben oder Fäkalien verschmutzt?</span>
+          <input type="radio" name="securityJunk" value="1" required>ja <br>
+          <input type="radio" name="securityJunk" value="0" required>nein
+          <br><br>
+          <span class="input-radio-icon__label">Hat die Pfostenanlage scharfe Kanten oder nicht verkleidete Haken oder Schraubenköpfe?</span>
+          <input type="radio" name="securityCutting" value="1" required>ja <br>
+          <input type="radio" name="securityCutting" value="0" required>nein
+          <br><br>
+          <span class="input-radio-icon__label">Gibt es Stufen, scharfkantige Bordsteine oder Mauern in der Auslaufzone?</span>
+          <input type="radio" name="securityBricks" value="1" required>ja <br>
+          <input type="radio" name="securityBricks" value="0" required>nein
+      </div>
       @if (Auth::check())
       <div class="column column--12 column--m-6 -spacing-b">
         <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
