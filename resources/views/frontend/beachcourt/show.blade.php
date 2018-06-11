@@ -92,7 +92,7 @@
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
                 @endfor
-                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. (@if($beachcourt->ratingCount < 1)0 @else {{ $beachcourt->ratingCount }}@endif von 10)</p>
+                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. <br> (@if($beachcourt->ratingCount < 1)0 @else {{ $beachcourt->ratingCount }}@endif von 10)</p>
               @else
                 @for ($i = 1; $i <= $beachcourt->rating; $i++)
                 <div class="rating__item">

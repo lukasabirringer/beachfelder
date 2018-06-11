@@ -9,17 +9,7 @@
     })(window,document,'script','dataLayer','GTM-MQ5N6TZ');</script>
     <!-- End Google Tag Manager -->
 		
-		<!-- Google Adsense -->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-2244539104246669",
-        enable_page_level_ads: true
-      });
-    </script>
-    <!-- End Google Adsense -->
-    
-    <meta charset="utf-8">
+		<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
