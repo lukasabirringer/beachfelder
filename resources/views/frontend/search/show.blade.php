@@ -122,7 +122,7 @@
                 @else
                   <div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
+                    <span class="icon-text__text">Für dieses Feld liegen noch <br> <span class="-typo-copy--bold">nicht </span> genügend Bewertungen vor</span>
                   </div>
                 @endif
 
