@@ -569,24 +569,62 @@
           </div>
         </div>
       </div> <!-- .tab #environment ENDE -->
-      <div>
-        <h1>Sicherheitsfragen</h1>
-          <span class="input-radio-icon__label">Ist der Sand auf dem Spielfeld stellenweise weniger als 20 cm tief?</span>
-          <input type="radio" name="securitySandDepth" value="1" required>ja <br>
-          <input type="radio" name="securitySandDepth" value="0" required>nein  
-          <br><br>
-          <span class="input-radio-icon__label">Ist der Sand auf dem Court durch Müll, Scherben oder Fäkalien verschmutzt?</span>
-          <input type="radio" name="securityJunk" value="1" required>ja <br>
-          <input type="radio" name="securityJunk" value="0" required>nein
-          <br><br>
-          <span class="input-radio-icon__label">Hat die Pfostenanlage scharfe Kanten oder nicht verkleidete Haken oder Schraubenköpfe?</span>
-          <input type="radio" name="securityCutting" value="1" required>ja <br>
-          <input type="radio" name="securityCutting" value="0" required>nein
-          <br><br>
-          <span class="input-radio-icon__label">Gibt es Stufen, scharfkantige Bordsteine oder Mauern in der Auslaufzone?</span>
-          <input type="radio" name="securityBricks" value="1" required>ja <br>
-          <input type="radio" name="securityBricks" value="0" required>nein
-      </div>
+      <div class="tab -spacing-a" id="security">
+      	<div class="column column--12">
+      	  <div class="row">
+      	    <div class="column column--12 -spacing-b">
+      	      <h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Sicherheit</h3>
+      	    </div>
+      	   </div>
+      	   <div class="row">
+      	    <div class="column column--12 -spacing-d">
+      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist der Sand auf dem Spielfeld stellenweise weniger als 20 cm tief?</p>
+      	    	<label class="input-toggle -spacing-c">
+      	    		<input type="hidden" class="input-toggle__hidden" name="securitySandDepth">
+      	    		<input type="checkbox" name="securitySandDepth" class="input-toggle__field" value="0">
+      	    		<span class="input-toggle__switch"></span>
+      	    		<span class="input-toggle__label">Nein</span>
+      	    	</label>
+      	    </div>
+      	   </div>
+      	   @include('frontend.reusable-includes.divider')
+      	   <div class="row">
+      	    <div class="column column--12 -spacing-d">
+      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist der Sand auf dem Court durch Müll, Scherben oder Fäkalien verschmutzt?</p>
+      	    	<label class="input-toggle -spacing-c">
+      	    		<input type="hidden" class="input-toggle__hidden" name="securityJunk">
+      	    		<input type="checkbox" name="securityJunk" class="input-toggle__field" value="0">
+      	    		<span class="input-toggle__switch"></span>
+      	    		<span class="input-toggle__label">Nein</span>
+      	    	</label>
+      	    </div>
+      	   </div>
+      	   @include('frontend.reusable-includes.divider')
+      	   <div class="row">
+      	    <div class="column column--12 -spacing-d">
+      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Hat die Pfostenanlage scharfe Kanten oder nicht verkleidete Haken oder Schraubenköpfe?</p>
+      	      <label class="input-toggle -spacing-c">
+      	      	<input type="hidden" class="input-toggle__hidden" name="securityCutting">
+      	      	<input type="checkbox" name="securityCutting" class="input-toggle__field" value="0">
+      	      	<span class="input-toggle__switch"></span>
+      	      	<span class="input-toggle__label">Nein</span>
+      	      </label>
+      	    </div>
+      	   </div>
+      	   @include('frontend.reusable-includes.divider')
+      	   <div class="row">
+      	    <div class="column column--12 -spacing-d">
+      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Gibt es Stufen, scharfkantige Bordsteine oder Mauern in der Auslaufzone?</p>
+      	      <label class="input-toggle -spacing-c">
+      	      	<input type="hidden" class="input-toggle__hidden" name="securityBricks">
+      	      	<input type="checkbox" name="securityBricks" class="input-toggle__field" value="0">
+      	      	<span class="input-toggle__switch"></span>
+      	      	<span class="input-toggle__label">Nein</span>
+      	      </label>
+      	    </div>
+      	   </div>
+      	</div>  
+      </div> <!-- .tab #security ENDE -->
       @if (Auth::check())
       <div class="column column--12 column--m-6 -spacing-b">
         <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
@@ -663,6 +701,27 @@
     //hide the notification
     $('.notification-button').click(function() {
       $(this).parent('.notification__item').parent('.notification').hide();
+    });
+
+    $(document).ready(function() {
+      var checkbox = $('.input-toggle__field');
+
+      if(checkbox.val() == 1) {
+        checkbox.attr('checked', true);
+        checkbox.parent().find('.input-toggle__label').text('Ja');
+      }
+    });
+
+    $('.input-toggle__field').click(function() {
+      if($(this).is(':checked')) {
+        $(this).parent().find('.input-toggle__label').text('Ja');
+        $(this).parent().find('.input-toggle__hidden').val(1);
+        $(this).val(1);
+      } else {
+        $(this).parent().find('.input-toggle__label').text('Nein');
+        $(this).parent().find('.input-toggle__hidden').val(0);
+        $(this).val(0);
+      }
     });
   </script>
 @endpush

@@ -42,6 +42,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsAdmin'], function () {
 
   Route::get('/backend/dashboard', 'DashboardController@show')->name('backendDashboard.show');
+  Route::redirect('/backend', '/backend/dashboard');
+  
   //BEACHCOURTS
   Route::get('/backend/beachcourts', 'BeachcourtController@index')->name('backendBeachcourt.index');
   Route::get('/backend/beachcourts/hinzufuegen', 'BeachcourtController@create')->name('backendBeachcourt.create');

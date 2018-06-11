@@ -2907,9 +2907,9 @@ input::-moz-focus-outer {
       .beachcourt-item__favorite--is-favorited svg {
         color: #FFF; }
       .beachcourt-item__favorite--is-favorited:hover {
-        background-color: #FFF; }
+        background-color: #ce4034; }
         .beachcourt-item__favorite--is-favorited:hover svg {
-          color: #798796; }
+          color: #FFF; }
   .beachcourt-item__distance {
     background-color: #FFF;
     position: absolute;
@@ -3406,16 +3406,14 @@ input::-moz-focus-outer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-radius: 0.125rem;
-  border: 1px #798796 solid; }
+  border-bottom: 1px #798796 solid; }
   .message--error {
     border-color: #ce4034; }
   .message--success {
     border-color: #08b8b8; }
   .message__icon {
     padding: 0.3125rem;
-    background-color: #798796;
-    color: #FFF;
+    color: #798796;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3427,9 +3425,9 @@ input::-moz-focus-outer {
       width: 0.625rem;
       height: 0.625rem; }
     .message__icon--error {
-      background-color: #ce4034; }
+      color: #ce4034; }
     .message__icon--success {
-      background-color: #08b8b8; }
+      color: #08b8b8; }
   .message__text {
     font-family: "PT Sans";
     font-size: 0.75rem;

@@ -92,7 +92,7 @@
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
                 </div>
                 @endfor
-                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. (@if($beachcourt->ratingCount < 1)0 @else {{ $beachcourt->ratingCount }}@endif von 10)</p>
+                <p class="-typo-copy -typo-copy--small -text-color-gray-01 rating__count">Für dieses Beachfeld liegen noch zu wenige Bewertungen vor. <br> (@if($beachcourt->ratingCount < 1)0 @else {{ $beachcourt->ratingCount }}@endif von 10)</p>
               @else
                 @for ($i = 1; $i <= $beachcourt->rating; $i++)
                 <div class="rating__item">
@@ -291,8 +291,14 @@
             <span class="owl-navigation-item owl-navigation-item--right" data-feather="chevron-right"></span>
           </div>
         @else
-        	<img class="progressive__img" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=500x350&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=1000x700&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
-          <!-- <div class="message-image-missing">
+       		<div class="image-missing" style="position: relative;">
+       			<img class="progressive__img" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=500x350&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=1000x700&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
+
+       			<p class="-typo-copy -text-color-gray-01" style="position: absolute; top: 0; left: 0; background: rgba(255,255,255,.9); padding: 10px;">
+       				Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
+       			</p>
+       		</div>
+        	<!-- <div class="message-image-missing">
             <span class="message-image-missing__icon" data-feather="image"></span>
             <p class="message-image-missing__text">
                 Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
@@ -311,7 +317,18 @@
           </div>
         @endif
 
-        <h4 class="-typo-headline-04 -text-color-petrol">Ist das Feld öffentlich zugänglich?</h4>
+        <h4 class="-typo-headline-04 -text-color-petrol">Betreiber des Feldes</h4>
+        <p class="-typo-copy -text-color-gray-01 -spacing-d">
+          {{ $beachcourt->operator }}<br>
+          {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
+        </p>
+        @if($beachcourt->operatorUrl != NULL)
+          <p class="-text-color-green -typo-copy">
+            <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
+          </p>
+        @endif
+
+        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
         @if ($beachcourt->isPublic === 0 )
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
         @elseif ($beachcourt->isPublic === 1 )
@@ -336,18 +353,6 @@
             {{ $beachcourt->notes }}
           </p>
         @endif
-
-        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Betreiber des Feldes</h4>
-        <p class="-typo-copy -text-color-gray-01 -spacing-d">
-          {{ $beachcourt->operator }}<br>
-          {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
-        </p>
-        @if($beachcourt->operatorUrl != NULL)
-          <p class="-text-color-green -typo-copy">
-            <a href="{{ $beachcourt->operatorUrl }}" class="link-icon-text" target="_blank"><span data-feather="external-link" class="link-icon-text__icon"></span><span class="link-icon-text__copy">{{ $beachcourt->operatorUrl }}</span></a>
-          </p>
-        @endif
-       
       </div>
     </div>
 

@@ -13,11 +13,7 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="column column--12">
-        <hr class="divider">
-      </div>
-    </div>
+    @include('frontend.reusable-includes.divider')
     
     <form action="/search" method="POST" class="form form--search">
       <div class="row -spacing-b">
@@ -25,7 +21,6 @@
         <div class="column column--12 column--m-4">
 
           <p class="-typo-copy -text-color-gray-01">Deine PLZ</p>
-        	<!-- <p class="-typo-copy -text-color-gray-01">Deine PLZ</p> -->
         	<input type="search" name="postcode13" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
         	{{-- <input type="hidden" id="form-postcode13-searchResults" name="postcode13"> --}}
         	<input type="hidden" id="form-long-searchResults" name="long">
@@ -48,6 +43,12 @@
         </div>
        </div>
        <div class="row">
+       	<div class="column column--12 column--m-3">
+       	</div>
+       	<div class="column column--12 column--m-3">
+       	</div>
+       	<div class="column column--12 column--m-3">
+       	</div>
        	<div class="column column--12 column--s-6 column--m-3">
        		<button class="button-primary -spacing-a button__accept">
        		  <span class="button-primary__label">Suchen</span>
@@ -121,7 +122,7 @@
                 @else
                   <div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
+                    <span class="icon-text__text">Für dieses Feld liegen noch <br> <span class="-typo-copy--bold">nicht </span> genügend Bewertungen vor</span>
                   </div>
                 @endif
 
@@ -141,13 +142,13 @@
             </div>
           </div>
       @endforeach
-
-      @include('frontend.reusable-includes.divider')
-
-      @include('frontend.reusable-includes.teaser-contest')
-
-      @include('frontend.reusable-includes.divider')
     </div>
+
+    @include('frontend.reusable-includes.divider')
+
+    @include('frontend.reusable-includes.teaser-contest')
+
+    @include('frontend.reusable-includes.divider')
     
   </div> <!-- .content__main ENDE -->
 @endsection
@@ -230,30 +231,30 @@
     // 	$('.form--search').submit();
     // });
 
-    var placesAutocompleteSearchResults = places({
-      type: 'city',
-      countries: 'de',
-      language: 'de_DE',
-      useDeviceLocation: false,
-      container: document.querySelector('#address-input-seachResults')
-    });
+  //   var placesAutocompleteSearchResults = places({
+  //     type: 'city',
+  //     countries: 'de',
+  //     language: 'de_DE',
+  //     useDeviceLocation: false,
+  //     container: document.querySelector('#address-input-seachResults')
+  //   });
 
 
 
-    $('#address-input-seachResults').on('keyup', function() {
+  //   $('#address-input-seachResults').on('keyup', function() {
 		
-		  var input = document.querySelector("#address-input-seachResults");
-		  var soll = document.querySelector("#form-postcode13-seachResults");
+		//   var input = document.querySelector("#address-input-seachResults");
+		//   var soll = document.querySelector("#form-postcode13-seachResults");
 		  
-		  soll.value = input.value;
-      placesAutocompleteSearchResults.on('change', function(e) {
+		//   soll.value = input.value;
+  //     placesAutocompleteSearchResults.on('change', function(e) {
               
-		          document.querySelector('#form-postcode13-seachResults').value = e.suggestion.postcode || '';
-		          document.querySelector('#form-lat-seachResults').value = e.suggestion.latlng.lat || '';
-		          document.querySelector('#form-long-seachResults').value = e.suggestion.latlng.lng || '';     
-		      });
+		//           document.querySelector('#form-postcode13-seachResults').value = e.suggestion.postcode || '';
+		//           document.querySelector('#form-lat-seachResults').value = e.suggestion.latlng.lat || '';
+		//           document.querySelector('#form-long-seachResults').value = e.suggestion.latlng.lng || '';     
+		//       });
 		   
-		});
+		// });
     
   </script>
 @endpush
