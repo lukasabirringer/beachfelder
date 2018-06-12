@@ -114,17 +114,25 @@
                   @endif
                 </a>
                 
-                @if ($beachcourt->rating >= 1)
-                  <div class="icon-text beachcourt-item__rating -spacing-b">
+                @if ($beachcourt->bfdeRating)
+                	<div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->rating }}</span>/5 Bällen bewertet</span>
+                    <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->bfdeRating }}</span>/5 Bällen bewertet <br>
+                    <span class="-typo-copy -typo-copy--small">Vorläufige Bewertung durch beachfelder.de</span></span>
                   </div>
-                @else
-                  <div class="icon-text beachcourt-item__rating -spacing-b">
-                    <span class="icon-text__icon" data-feather="award"></span>
-                    <span class="icon-text__text">Für dieses Feld liegen noch <br> <span class="-typo-copy--bold">nicht </span> genügend Bewertungen vor</span>
-                  </div>
+                @elseif ($beachcourt->rating >= 1)
+									<div class="icon-text beachcourt-item__rating -spacing-b">
+									  <span class="icon-text__icon" data-feather="award"></span>
+									  <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->rating }}</span>/5 Bällen bewertet</span>
+									</div>
+								@else
+									<div class="icon-text beachcourt-item__rating -spacing-b">
+									  <span class="icon-text__icon" data-feather="award"></span>
+									  <span class="icon-text__text">Für dieses Feld liegen noch <br> <span class="-typo-copy--bold">nicht </span> genügend Bewertungen vor.</span>
+									</div>
                 @endif
+
+                
 
                 <div class="icon-text -spacing-b">
                   <span class="icon-text__icon" data-feather="map-pin"></span>

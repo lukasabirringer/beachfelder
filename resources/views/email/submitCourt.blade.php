@@ -76,11 +76,7 @@
                 <p>Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast und somit uns hilfst, dass beachfelder.de bald die größte und umfangreichste Suchmaschine für Beachvolleyballfelder wird.</p>
 
                 <p>
-                    Du kannst jederzeit den aktuellen Status deines eingereichten Feldes überprüfen. Klicke einfach auf folgenden Link
-                    <br><br>
-
-                    <a href="{{ URL::to('login') }}" target="_blank" class="button">Status ansehen</a>
-                    <br><br>
+                    Dein Feld wird nun von unserer Redaktion geprüft. Sobald die Prüfung abgeschlossen ist, wird das Feld in unsere Datenbank übernommen und angezeigt. Dann kannst du auch Bilder der Anlage hochladen.
                 </p>
 
                 <p>
