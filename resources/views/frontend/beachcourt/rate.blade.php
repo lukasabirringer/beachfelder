@@ -700,8 +700,8 @@
 
     //hide the notification
     $('.notification-button').click(function() {
-      $(this).parent('.notification__item').parent('.notification').hide();
-    });
+	  	$(this).parent().parent('.notification').slideUp();
+		});
 
     $(document).ready(function() {
       var checkbox = $('.input-toggle__field');

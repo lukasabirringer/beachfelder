@@ -41,11 +41,24 @@
 				@endforeach	
 			</ul>
 		</div>
+
+		<div class="row">
+			<div class="column column--12 -spacing-a">
+				<!-- Beachcourt-Detail-Page -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2244539104246669"
+				     data-ad-slot="1398925976"
+				     data-ad-format="auto"></ins>
+			</div>
+		</div>
 	</div>
 @endsection
 
 @push('scripts')
 	<script>
+
+		(adsbygoogle = window.adsbygoogle || []).push({});
 		
 		var allPanels = $('.accordion-vertical__content').hide();
 
