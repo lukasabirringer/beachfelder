@@ -85,7 +85,7 @@
                   </div>
                   @endfor
                 @endif
-                <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">Vorläufige Bewertung von Beachfelder.de</p>
+                <p class="-typo-copy -text-color-gray-01 -text-color-gray-01 rating__count">Vorläufige Bewertung von beachfelder.de</p>
               @elseif ($beachcourt->ratingCount < 10)
                 @for ($i = 1; $i <= 5; $i++)
                 <div class="rating__item">
@@ -372,6 +372,20 @@
 
     @include('frontend.reusable-includes.divider')
 
+    <div class="row">
+    	<div class="column column--12 -spacing-a">
+    		<!-- Beachcourt-Detail-Page -->
+    		<ins class="adsbygoogle"
+    		     style="display:block"
+    		     data-ad-client="ca-pub-2244539104246669"
+    		     data-ad-slot="1398925976"
+    		     data-ad-format="auto"></ins>
+    	</div>
+    </div>
+
+    @include('frontend.reusable-includes.divider')
+		
+
     <div class="row -spacing-a">
       <div class="column column--12">
         <h4 class="-typo-headline-03 -text-color-gray-01">Weitere Beachfelder in der Nähe von {{ $beachcourt->city }}</h4>
@@ -464,3 +478,13 @@
 
   </div> <!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+
+	  $('.notification-button').click(function() {
+	    $(this).parent().parent('.notification').slideUp();
+	  });
+	</script>
+@endpush
