@@ -22,7 +22,8 @@
 		<div class="row">
 			<div class="columm column--12">
 				<h2 class="title-page__title">Schick uns Bilder</h2>
-				<p class="title-page__subtitle">Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds schickst. Unter den ersten 500 Einsendern verlosen wir <span class="-typo-copy -typo-copy--bold">100 Mikasa-Beachpakete</span> im Gesamtwert von 2000 EUR!</p>
+				<p class="title-page__subtitle">Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds schickst. Unter allen Einsendern von vollständigen Foto-Uploads* und neuen Feldern, die noch nicht in unserer Datenbank verzeichnet sind, verlosen wir verlosen wir <span class="-typo-copy -typo-copy--bold">250 heiße Preise</span></p>
+				<p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-d">*nur von Feldern, bei denen noch keine Detailbilder vorliegen</p>
 			</div>
 		</div>
 		
@@ -70,7 +71,7 @@
 
 		<div class="row">
 			<div class="column column--12 -spacing-d">
-				<p class="-typo-copy -text-color-gray-01">Die Bilder sollten eine Auflösung von mindestens 600 x 400 px haben</p>
+				<p class="-typo-copy -text-color-gray-01">Die Bilder sollten eine Mindestbreite von 1000px haben</p>
 			</div>
 		</div>
 
@@ -103,7 +104,7 @@
 		  		  <input type="hidden" class="input-toggle__hidden" name="contestParticipation" value="0">
 		  		  <input type="checkbox" class="input-toggle__field contestParticipation" name="contestParticipation" value="0">
 		  		  <span class="input-toggle__switch"></span>
-		  		  <span class="input-toggle__label">Ja, ich möchte an der Verlosung der 200 Preise teilnehmen</span>
+		  		  <span class="input-toggle__label">Ja, ich möchte an der Verlosung der 250 heißen Preise teilnehmen</span>
 		  		</label>
 		  	</div>
 		  	<div class="column column--12 column--s-6">

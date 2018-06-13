@@ -278,6 +278,14 @@
       <div class="column column--12 column--m-6 -spacing-a flex">
         @if( $filecount != 0 )
           <div class="image-slide">
+          	@if(Auth::user())
+          	  <div class="beachcourt-detail__favorite">
+          	    <favorite
+          	    :beachcourt={{ $beachcourt->id }}
+          	    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+          	    ></favorite>
+          	  </div>
+          	@endif
             <div class="owl-carousel owl-carousel--detailpage">
               @for ($i = 1; $i <= $filecount; $i++)
                 <img class="owl-lazy"
@@ -291,9 +299,17 @@
           </div>
         @else
        		<div class="image-missing" style="position: relative;">
+       			@if(Auth::user())
+       			  <div class="beachcourt-detail__favorite">
+       			    <favorite
+       			    :beachcourt={{ $beachcourt->id }}
+       			    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+       			    ></favorite>
+       			  </div>
+       			@endif
        			<img class="progressive__img" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=500x350&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=1000x700&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
 
-       			<p class="-typo-copy -text-color-gray-01" style="position: absolute; top: 0; left: 0; background: rgba(255,255,255,.9); padding: 10px;">
+       			<p class="-typo-copy -text-color-gray-01" style="position: absolute; bottom: 0; left: 0; background: rgba(255,255,255,.9); padding: 10px;">
        				Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
        			</p>
        		</div>
@@ -307,15 +323,6 @@
       </div>
 
       <div class="column column--12 column--m-6 -spacing-a">
-        @if(Auth::user())
-          <div class="beachcourt-detail__favorite">
-            <favorite
-            :beachcourt={{ $beachcourt->id }}
-            :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-            ></favorite>
-          </div>
-        @endif
-
         <h4 class="-typo-headline-04 -text-color-petrol">Betreiber des Feldes</h4>
         <p class="-typo-copy -text-color-gray-01 -spacing-d">
           {{ $beachcourt->operator }}<br>

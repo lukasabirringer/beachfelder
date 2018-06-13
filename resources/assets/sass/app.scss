@@ -8,10 +8,12 @@
 .tipso_title, .tipso_content {font-family: 'PT Sans', sans-serif; font-size: .875rem;}
 
 .beachcourt-detail__favorite {
-	position: relative;
+	position: absolute;
+	top: 30px;
+	right: 20px;
+	z-index: 1;
 	width: 2.5rem;
 	height: 2.5rem;
-	float: right;
 }
 .beachcourt-detail__favorite .beachcourt-item__favorite {
 	width: 2.5rem;
