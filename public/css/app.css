@@ -80,6 +80,45 @@
   }
 }
 
+.number {
+  background: #f1f1f1;
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.number::before,
+.number::after {
+  content: '';
+  z-index: -1;
+  width: 500px;
+  height: 2px;
+  display: block;
+  background: #f1f1f1;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.number::before {
+  left: -100%;
+}
+
+.number::after {
+  right: -100%;
+}
+
+.password-strength {
+  margin-right: 1rem;
+}
+
 .algolia-places {
   width: 100%;
 }
