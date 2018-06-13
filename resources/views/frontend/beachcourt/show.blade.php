@@ -13,18 +13,17 @@
  @endsection
 
 @section('content')
- @if (\Session::has('error'))
-      <ul class="notification">
-        <li class="notification__item">
-          <span class="notification__icon" data-feather="info"></span>
-          <p class="notification__text">{!! \Session::get('error') !!}</p>
-
-          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
-            <span class="button-secondary__label">OK</span>
-          </button>
-        </li>
-      </ul>
-    @endif
+	@if (\Session::has('error'))
+	<ul class="notification">
+	  <li class="notification__item">
+	    <span class="notification__icon" data-feather="info"></span>
+	    <p class="notification__text">{!! \Session::get('error') !!}</p>
+	    <button class="button-secondary notification-button close" data-dismiss="alert" aria-label="close">
+	      <span class="button-secondary__label notification-button__label">OK</span>
+	    </button>
+	  </li>
+	</ul>
+	@endif
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
@@ -330,9 +329,9 @@
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
         @if ($beachcourt->isPublic === 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für jedermann zugänglich.</p>
         @elseif ($beachcourt->isPublic === 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">jedermann zugänglich</span>.</p>
         @else 
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
@@ -481,10 +480,12 @@
 
 @push('scripts')
 	<script>
+	  //hide the notification
+    $('.notification-button').click(function() {
+      $(this).parent().parent('.notification').slideUp();
+    });
+
 		(adsbygoogle = window.adsbygoogle || []).push({});
 
-	  $('.notification-button').click(function() {
-	    $(this).parent().parent('.notification').slideUp();
-	  });
 	</script>
 @endpush
