@@ -9,6 +9,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use App\Beachcourt;
 use DB;
+use File;
 use Carbon\Carbon;
 
 class BeachcourtController extends Controller
@@ -81,13 +82,17 @@ class BeachcourtController extends Controller
     {
         $beachcourt = Beachcourt::findOrFail($id);
 
-        if (!file_exists(public_path('uploads/beachcourts/' . $beachcourt->id . '/1.jpg'))) {
-             $pictures = 'false';
-        } else {
-             $pictures = 'true';
+        if (is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/'))) {
+	        $path = public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/');
+	        $files = File::allFiles($path);
+	        $filecount = count($files);
         }
 
-        return view('backend.beachcourts.edit', compact('beachcourt', 'pictures'));
+        else {
+            $filecount = 0;
+        }
+
+        return view('backend.beachcourts.edit', compact('beachcourt', 'pictures', 'filecount'));
     }
     public function update(UpdateBeachcourtRequest $request, $id)
     {
