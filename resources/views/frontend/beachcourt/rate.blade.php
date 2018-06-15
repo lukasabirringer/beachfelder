@@ -562,7 +562,7 @@
                 <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="0" required>
                 <div class="input-radio-icon__container">
                   <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Mehrere Felder direkt nebeneinander ohne Ballfangzaung</span>
+                  <span class="input-radio-icon__label">Mehrere Felder direkt nebeneinander ohne Ballfangzaun</span>
                 </div>
               </label>
             </div>

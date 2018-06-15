@@ -9,9 +9,9 @@
 
 .beachcourt-detail__favorite {
 	position: absolute;
-	top: 30px;
-	right: 20px;
-	z-index: 1;
+	top: 1.875rem;
+	right: 1.25rem;
+	z-index: 2;
 	width: 2.5rem;
 	height: 2.5rem;
 }
@@ -75,7 +75,7 @@
 .number::after {
 	content: '';
 	z-index: -1;
-	width: 500px;
+	width: 31.25rem;
 	height: 2px;
 	display: block;
 	background: #f1f1f1;
@@ -92,10 +92,45 @@
 	right: -100%;
 }
 
+.no-scroll {
+	overflow-y: hidden;
+}
 
 .password-strength {
 	margin-right: 1rem;
 }
+
+.sidebar-filter {
+	position: fixed;
+	right: -100%;
+	top: 0;
+	height: 100vh;
+	overflow-y: auto;
+	background: #f3f3f3;
+	z-index: 10;
+	padding: 40px;
+	transition: all .5s ease-in-out;
+
+	&--open {
+		right: 0;
+	}
+
+	&__option {
+		padding-bottom: 1.875rem;
+		border-bottom: 1px #798796 solid;
+	}
+
+	&__icon {
+		position: absolute;
+		right: .625rem;
+		top: .625rem;
+		color: #798796;
+		width: 1.5625rem;
+		height: 1.5625rem;
+		cursor: pointer;
+	}
+}
+
 //ALGOLIA
 // Main input wrapper
 .algolia-places {width: 100%}
