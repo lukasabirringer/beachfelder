@@ -1,9 +1,9 @@
 <template>
     <span>
-        <a href="#" v-if="isFavorited" @click.prevent="unFavorite(beachcourt)" class="beachcourt-item__favorite beachcourt-item__favorite--is-favorited tipso-favorite" data-tipso="Aus Favoriten entfernen">
+        <a href="#" v-if="isFavorited" @click.prevent="unFavorite(beachcourt)" class="beachcourt-item__favorite beachcourt-item__favorite--is-favorited">
             <span class="" data-feather="heart"></span>
         </a>
-        <a href="#" v-else @click.prevent="favorite(beachcourt)" class="beachcourt-item__favorite tipso-favorite" data-tipso="Zu Favoriten hinzufügen">
+        <a href="#" v-else @click.prevent="favorite(beachcourt)" class="beachcourt-item__favorite">
             <span class="" data-feather="heart"></span>
         </a>
     </span>

@@ -30493,8 +30493,8 @@ var render = function() {
           "a",
           {
             staticClass:
-              "beachcourt-item__favorite beachcourt-item__favorite--is-favorited tipso-favorite",
-            attrs: { href: "#", "data-tipso": "Aus Favoriten entfernen" },
+              "beachcourt-item__favorite beachcourt-item__favorite--is-favorited",
+            attrs: { href: "#" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -30507,8 +30507,8 @@ var render = function() {
       : _c(
           "a",
           {
-            staticClass: "beachcourt-item__favorite tipso-favorite",
-            attrs: { href: "#", "data-tipso": "Zu Favoriten hinzufügen" },
+            staticClass: "beachcourt-item__favorite",
+            attrs: { href: "#" },
             on: {
               click: function($event) {
                 $event.preventDefault()

@@ -74,11 +74,14 @@ class SubmittedbeachcourtController extends Controller
              'longitude' => $request->longitude,
              'operator' => $request->operator,
              'isChargeable' => $request->isChargeable,
+             'isMembership' => $request->isMembership,
+             'isSingleAccess' => $request->isSingleAccess,
+             'isswimmingLake' => $request->isswimmingLake,
              'notes' => $request->notes,
              'courtCountOutdoor' => $request->courtCountOutdoor,
              'courtCountIndoor' => $request->courtCountIndoor,
              'isPublic' => $request->isPublic,
-             'submitState' => 'eingereicht',
+             'submitState' => 'submitted',
              'created_at' => $date]
         );
         $beachcourtId = DB::getPdo()->lastInsertId();

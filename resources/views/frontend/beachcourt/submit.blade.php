@@ -74,7 +74,12 @@
               <div class="input__border"></div>
             </label>
             @if ($errors->has('postalCode'))
-              <div class="alert alert-danger">{{ $errors->first('postalCode', ':message') }}</div>
+              <div class="message message--error -spacing-d">
+                <div class="message__icon message__icon--error">
+                  <span data-feather="alert-circle"></span>
+                </div>
+                <p class="message__text message__text--error">{{ $errors->first('postalCode', ':message') }}</p>
+              </div>
             @endif
           </div>
 
@@ -85,7 +90,12 @@
               <div class="input__border"></div>
             </label>
             @if ($errors->has('city'))
-              <div class="alert alert-danger">{{ $errors->first('city', ':message') }}</div>
+            	<div class="message message--error -spacing-d">
+            	  <div class="message__icon message__icon--error">
+            	    <span data-feather="alert-circle"></span>
+            	  </div>
+            	  <p class="message__text message__text--error">{{ $errors->first('city', ':message') }}</p>
+            	</div>
             @endif
           </div>
 
@@ -96,7 +106,12 @@
               <div class="input__border"></div>
             </label>
             @if ($errors->has('street'))
-              <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
+            	<div class="message message--error -spacing-d">
+            	  <div class="message__icon message__icon--error">
+            	    <span data-feather="alert-circle"></span>
+            	  </div>
+            	  <p class="message__text message__text--error">{{ $errors->first('street', ':message') }}</p>
+            	</div>
             @endif
           </div>
 
@@ -106,8 +121,13 @@
               <span class="input__label">Nr.</span>
               <div class="input__border"></div>
             </label>
-            @if ($errors->has('street'))
-              <div class="alert alert-danger">{{ $errors->first('street', ':message') }}</div>
+            @if ($errors->has('houseNumber'))
+            	<div class="message message--error -spacing-d">
+            	  <div class="message__icon message__icon--error">
+            	    <span data-feather="alert-circle"></span>
+            	  </div>
+            	  <p class="message__text message__text--error">{{ $errors->first('houseNumber', ':message') }}</p>
+            	</div>
             @endif
           </div>
         </div>
@@ -120,10 +140,13 @@
             <span class="input__label">Bundesland</span>
             <div class="input__border"></div>
           </label>
-
           @if ($errors->has('state'))
-            <div class="alert alert-danger">{{ $errors->first('state', ':message') }}</div>
-
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('state', ':message') }}</p>
+          	</div>
           @endif
         </div>
         <div class="column column--12 column--m-6 -spacing-b">
@@ -134,8 +157,12 @@
           </label>
 
           @if ($errors->has('country'))
-            <div class="alert alert-danger">{{ $errors->first('country', ':message') }}</div>
-
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('country', ':message') }}</p>
+          	</div>
           @endif
         </div>
       </div>
@@ -147,8 +174,14 @@
             <span class="input__label">Betreiber des Feldes</span>
             <div class="input__border"></div>
           </label>
+          
           @if ($errors->has('operator'))
-          <div class="alert alert-danger">{{ $errors->first('operator', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('operator', ':message') }}</p>
+          	</div>
           @endif
         </div>
 
@@ -158,8 +191,14 @@
             <span class="input__label">Website des Betreiber</span>
             <div class="input__border"></div>
           </label>
+          
           @if ($errors->has('operatorURL'))
-          <div class="alert alert-danger">{{ $errors->first('operatorURL', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('operatorURL', ':message') }}</p>
+          	</div>
           @endif
         </div>
       </div>
@@ -181,13 +220,19 @@
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
           </label>
+          
           @if ($errors->has('isPublic'))
-          <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('isPublic', ':message') }}</p>
+          	</div>
           @endif
         </div>
 
         <div class="column column--12 column--m-6 -spacing-a">
-          <p class="-typo-copy -text-color-petrol">Ist das Spielen dort kostenpflichtig?</p>
+          <p class="-typo-copy -text-color-petrol">Ist für das Spielen eine Platzmiete fällig?</p>
           <label class="input-toggle -spacing-d">
             <input type="hidden" class="input-toggle__hidden" name="isChargeable" value="0">
             <input type="checkbox" class="input-toggle__field isChargeable" name="isChargeable" value="0">
@@ -195,8 +240,14 @@
             <span class="input-toggle__switch"></span>
             <span class="input-toggle__label">Nein</span>
           </label>
+          
           @if ($errors->has('isChargeable'))
-          <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('isChargeable', ':message') }}</p>
+          	</div>
           @endif
         </div>
 
@@ -204,18 +255,74 @@
 
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Ist für den Zugang zum Feld eine einmalige Gebühr fällig?</p>
+          <label class="input-toggle  -spacing-d">
 
-          <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
-          <label class="input-range -spacing-b">
-            <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
-            <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="20">
-            <span class="input-range__value">0</span>
+            <input type="hidden" class="input-toggle__hidden" name="isSingleAccess" value="0">
+            <input type="checkbox" class="input-toggle__field isSingleAccess" name="isSingleAccess" value="0">
+
+            <span class="input-toggle__switch"></span>
+            <span class="input-toggle__label">Nein</span>
           </label>
-          @if ($errors->has('courtCountIndoor'))
-          <div class="alert alert-danger">{{ $errors->first('courtCountIndoor', ':message') }}</div>
+          
+          @if ($errors->has('isSingleAccess'))
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('isSingleAccess', ':message') }}</p>
+          	</div>
           @endif
         </div>
 
+        <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Liegt das Feld an einem See oder in einem Freibad?</p>
+          <label class="input-toggle -spacing-d">
+            <input type="hidden" class="input-toggle__hidden" name="isswimmingLake" value="0">
+            <input type="checkbox" class="input-toggle__field isswimmingLake" name="isswimmingLake" value="0">
+
+            <span class="input-toggle__switch"></span>
+            <span class="input-toggle__label">Nein</span>
+          </label>
+
+          @if ($errors->has('isswimmingLake'))
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('isswimmingLake', ':message') }}</p>
+          	</div>
+          @endif
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Ist für das Spielen eine dauerhafte Mitgliedsgebühr fällig?</p>
+          <label class="input-toggle  -spacing-d">
+
+            <input type="hidden" class="input-toggle__hidden" name="isMembership" value="0">
+            <input type="checkbox" class="input-toggle__field isMembership" name="isMembership" value="0">
+
+            <span class="input-toggle__switch"></span>
+            <span class="input-toggle__label">Nein</span>
+          </label>
+          
+          @if ($errors->has('isMembership'))
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('isMembership', ':message') }}</p>
+          	</div>
+          @endif
+        </div>
+      </div>
+
+      @include('frontend.reusable-includes.divider')
+
+      <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
           <p class="-typo-copy -text-color-petrol">Wie viele Outdoor-Felder gibt es an diesem Ort?</p>
           <label class="input-range -spacing-b">
@@ -223,11 +330,43 @@
             <input type="range" name="courtCountOutdoor" class="input-range__field" value="0" min="0" max="20">
             <span class="input-range__value">0</span>
           </label>
+          
           @if ($errors->has('courtCountOutdoor'))
-          <div class="alert alert-danger">{{ $errors->first('courtCountOutdoor', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('courtCountOutdoor', ':message') }}</p>
+          	</div>
+          @endif
+        </div>
+
+        <div class="column column--12 column--m-6 -spacing-a">
+          <p class="-typo-copy -text-color-petrol">Wie viele Indoor-Felder gibt es an diesem Ort?</p>
+          <label class="input-range -spacing-b">
+            <input type="hidden" name="courtCountIndoor" class="input-range__hidden" value="0">
+            <input type="range" name="courtCountIndoor" class="input-range__field" value="0" min="0" max="20">
+            <span class="input-range__value">0</span>
+          </label>
+          
+          @if ($errors->has('courtCountIndoor'))
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('courtCountIndoor', ':message') }}</p>
+          	</div>
           @endif
         </div>
       </div>
+			
+			@include('frontend.reusable-includes.divider')
+
+			<div class="row -spacing-a">
+			  <div class="column column--12">
+			    <h4 class="-typo-headline-04 -text-color-green">Koordinaten</h4>
+			  </div>
+			</div>
 
       <div class="row">
         <div class="column column--12 column--m-6 -spacing-a">
@@ -237,8 +376,14 @@
             <span class="input__label">Breitengrad des Feldes</span>
             <div class="input__border"></div>
           </label>
+          
           @if ($errors->has('latitude'))
-            <div class="alert alert-danger">{{ $errors->first('latitude', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('latitude', ':message') }}</p>
+          	</div>
           @endif
         </div>
 
@@ -249,8 +394,14 @@
             <span class="input__label">Längengrad des Feldes</span>
             <div class="input__border"></div>
           </label>
+          
           @if ($errors->has('longitude'))
-            <div class="alert alert-danger">{{ $errors->first('longitude', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('longitude', ':message') }}</p>
+          	</div>
           @endif
         </div>
       </div>
@@ -313,8 +464,14 @@
             <textarea name="notes" class="textarea__field"></textarea>
             <span class="textarea__label">Deine Nachricht an uns</span>
           </label>
+          
           @if ($errors->has('notes'))
-          <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+          	<div class="message message--error -spacing-d">
+          	  <div class="message__icon message__icon--error">
+          	    <span data-feather="alert-circle"></span>
+          	  </div>
+          	  <p class="message__text message__text--error">{{ $errors->first('notes', ':message') }}</p>
+          	</div>
           @endif
         </div>
       </div>
@@ -513,7 +670,7 @@
 
     rangeSlider();
 
-    $('.isChargeable, .isPublic').click(function() {
+    $('.isChargeable, .isPublic, .isSingleAccess, .isMembership, .isswimmingLake').click(function() {
       if($(this).is(':checked')) {
         $(this).parent().find('.input-toggle__label').text('Ja');
         $(this).parent().find('.input-toggle__hidden').val(1);

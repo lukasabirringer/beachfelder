@@ -13,18 +13,17 @@
  @endsection
 
 @section('content')
- @if (\Session::has('error'))
-      <ul class="notification">
-        <li class="notification__item">
-          <span class="notification__icon" data-feather="info"></span>
-          <p class="notification__text">{!! \Session::get('error') !!}</p>
-
-          <button class="button-secondary notification__button close" data-dismiss="alert" aria-label="close">
-            <span class="button-secondary__label">OK</span>
-          </button>
-        </li>
-      </ul>
-    @endif
+	@if (\Session::has('error'))
+	<ul class="notification">
+	  <li class="notification__item">
+	    <span class="notification__icon" data-feather="info"></span>
+	    <p class="notification__text">{!! \Session::get('error') !!}</p>
+	    <button class="button-secondary notification-button close" data-dismiss="alert" aria-label="close">
+	      <span class="button-secondary__label notification-button__label">OK</span>
+	    </button>
+	  </li>
+	</ul>
+	@endif
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
@@ -121,7 +120,7 @@
           </div>
         </div>
         <div class="row">
-          @if ($beachcourt->ratingCount < 10)
+          @if ($beachcourt->ratingCount >= 10)
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Sand</span>
@@ -279,6 +278,14 @@
       <div class="column column--12 column--m-6 -spacing-a flex">
         @if( $filecount != 0 )
           <div class="image-slide">
+          	@if(Auth::user())
+          	  <div class="beachcourt-detail__favorite">
+          	    <favorite
+          	    :beachcourt={{ $beachcourt->id }}
+          	    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+          	    ></favorite>
+          	  </div>
+          	@endif
             <div class="owl-carousel owl-carousel--detailpage">
               @for ($i = 1; $i <= $filecount; $i++)
                 <img class="owl-lazy"
@@ -292,9 +299,17 @@
           </div>
         @else
        		<div class="image-missing" style="position: relative;">
+       			@if(Auth::user())
+       			  <div class="beachcourt-detail__favorite">
+       			    <favorite
+       			    :beachcourt={{ $beachcourt->id }}
+       			    :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
+       			    ></favorite>
+       			  </div>
+       			@endif
        			<img class="progressive__img" src="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=500x350&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" data-progressive="https://maps.googleapis.com/maps/api/staticmap?center={{$beachcourt->latitude}},{{$beachcourt->longitude}}&zoom=19&scale=2&size=1000x700&maptype=satellite&format=jpg&visual_refresh=true&key=AIzaSyAXZ7GDxm_FJ5g5yVdkawywTg7swA1rVeE" alt="Beachvolleyballfeld in {{$beachcourt->postalCode}} {{$beachcourt->city}}">
 
-       			<p class="-typo-copy -text-color-gray-01" style="position: absolute; top: 0; left: 0; background: rgba(255,255,255,.9); padding: 10px;">
+       			<p class="-typo-copy -text-color-gray-01" style="position: absolute; bottom: 0; left: 0; background: rgba(255,255,255,.9); padding: 10px;">
        				Von diesem Beachfeld haben wir noch keine Detailbilder vorliegen. Bitte hilf uns, den Service zu verbessern, indem du uns Fotos des Beachfelds <a href="{{ URL::route('beachcourts.upload', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude) )}}" class="link-text">schickst</a>.
        			</p>
        		</div>
@@ -308,15 +323,6 @@
       </div>
 
       <div class="column column--12 column--m-6 -spacing-a">
-        @if(Auth::user())
-          <div class="beachcourt-detail__favorite">
-            <favorite
-            :beachcourt={{ $beachcourt->id }}
-            :favorited={{ $beachcourt->favorited() ? 'true' : 'false' }}
-            ></favorite>
-          </div>
-        @endif
-
         <h4 class="-typo-headline-04 -text-color-petrol">Betreiber des Feldes</h4>
         <p class="-typo-copy -text-color-gray-01 -spacing-d">
           {{ $beachcourt->operator }}<br>
@@ -330,9 +336,9 @@
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
         @if ($beachcourt->isPublic === 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für Jedermann zugänglich.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für jedermann zugänglich.</p>
         @elseif ($beachcourt->isPublic === 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">Jedermann zugänglich</span>.</p>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">jedermann zugänglich</span>.</p>
         @else 
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
@@ -481,10 +487,12 @@
 
 @push('scripts')
 	<script>
+	  //hide the notification
+    $('.notification-button').click(function() {
+      $(this).parent().parent('.notification').slideUp();
+    });
+
 		(adsbygoogle = window.adsbygoogle || []).push({});
 
-	  $('.notification-button').click(function() {
-	    $(this).parent().parent('.notification').slideUp();
-	  });
 	</script>
 @endpush
