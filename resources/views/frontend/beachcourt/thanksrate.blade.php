@@ -80,7 +80,9 @@
         </div>
         @endfor
       @endif
-      <p>Deiner Bewertung wurden {{ $countMinusBall }} Bälle abgezogen, da du {{ $countMinusBall }} der Sicherheitsfragen negativ beantwortet hast.</p>
+      @if($countMinusBall <= 1)
+      <p class="-typo-copy -text-color-gray-01 -spacing-b">Aufgrund deiner Angaben zu unseren Sicherheitsfragen die Platzbewertung um {{ $countMinusBall }} Bälle abgewertet.</p>
+      @endif 
     </div>
 
     <div class="column column--12 column--m-6">
@@ -99,7 +101,7 @@
         </div>
         @endfor
       @endif
-      <p class="-typo-copy -text-color-gray-01 -spacing-b">Vorläufige Bewertung von Beachfelder.de</p>
+      <p class="-typo-copy -text-color-gray-01 -spacing-b">Vorläufige Bewertung von beachfelder.de</p>
     @elseif ($beachcourt->ratingCount < 10)
       @for ($i = 1; $i <= 5; $i++)
       <div class="rating__item  -spacing-b">

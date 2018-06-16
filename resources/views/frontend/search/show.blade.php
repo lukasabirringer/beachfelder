@@ -16,26 +16,111 @@
     @include('frontend.reusable-includes.divider')
     
     <form action="/search" method="POST" class="form form--search">
+    	<div class="sidebar-filter">
+    		<span class="sidebar-filter__icon icon--close" data-feather="x-circle"></span>
+       	<h3 class="sidebar-filter__title -typo-headline-04 -text-color-green">Mehr Filter</h3>
+       	<div class="sidebar-filter__option -spacing-c">
+       		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Indoor oder Outdoor?</p>
+     			<label class="input-radio -spacing-d">
+     			  <input type="radio" class="input-radio__field" name="outin" value="indoor" {{ $outin == 'indoor' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur Indoor-Felder</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="outin" value="outdoor" {{ $outin == 'outdoor' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur Outdoor-Felder</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="outin" value="egal" {{ $outin == 'egal' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">Alle Felder</span>
+     			</label>
+       	</div>
+
+       	<div class="sidebar-filter__option -spacing-a">
+       		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Zugang</p>
+     			<label class="input-radio -spacing-d">
+     			  <input type="radio" class="input-radio__field" name="access" value="yes" {{ $access == 'yes' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur öffentliche Felder</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="access" value="no" {{ $access == 'no' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur nicht öffentliche Felder</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="access" value="egal" {{ $access == 'egal' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">Alle Felder</span>
+     			</label>
+       	</div>
+
+   	  	<div class="sidebar-filter__option -spacing-a">
+   	  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Kosten</p>
+     			<label class="input-radio -spacing-d">
+     			  <input type="radio" class="input-radio__field" name="cost" value="kostenlos" {{ $cost == 'kostenlos' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur kostenlose Felder</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="cost" value="einmaligeGebühr" {{ $cost == 'einmaligeGebühr' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur einmalige Zutritts-Gebühr</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="cost" value="zeitabhaengigeGebühr" {{ $cost == 'zeitabhaengigeGebühr' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur zeitabhängige Gebühr</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="cost" value="dauerhafteMitgliedschaft" {{ $cost == 'dauerhafteMitgliedschaft' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">nur dauerhafte Mitgliedschaft</span>
+     			</label>
+
+     			<label class="input-radio -spacing-b">
+     			  <input type="radio" class="input-radio__field" name="cost" value="egal" {{ $cost == 'egal' ? 'checked' : '' }}>
+     			  <span class="input-radio__label">Alle Felder</span>
+     			</label>
+   	  	</div>
+
+   	  		  	<div class="sidebar-filter__option -spacing-a">
+   	  		  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Beach &amp; Swim</p>
+   	  	  			<label class="input-radio -spacing-d">
+   	  	  			  <input type="radio" class="input-radio__field" name="swimmingLake" value="swimmingLake" {{ $cost == 'swimmingLake' ? 'checked' : '' }}>
+   	  	  			  <span class="input-radio__label">nur Felder an einem See oder in einem Freibad</span>
+   	  	  			</label>
+
+   	  	  			<label class="input-radio -spacing-b">
+   	  	  			  <input type="radio" class="input-radio__field" name="cost" value="egal" {{ $cost == 'egal' ? 'checked' : '' }}>
+   	  	  			  <span class="input-radio__label">Alle Felder</span>
+   	  	  			</label>
+   	  		  	</div>
+
+   	  	<div class="sidebar-filter__option -spacing-a">
+   	  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold button__reset">Filter zurücksetzen</p>
+   	  	</div>
+       </div>
       <div class="row -spacing-b">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="column column--12 column--m-4">
 
           <p class="-typo-copy -text-color-gray-01">Deine PLZ</p>
-        	<input type="search" name="postcode13" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value=" {{ $plz }}"/>
-        	{{-- <input type="hidden" id="form-postcode13-searchResults" name="postcode13"> --}}
-        	<input type="hidden" id="form-long-searchResults" name="long">
-          <input type="hidden" id="form-lat-searchResults" name="lat">
-  
+          <label class="input">
+          		<input type="search" name="postcode13" class="input__field" id="address-input-seachResults" placeholder="Deine PLZ" value="{{ $plz }}"/>
+          		{{-- <input type="hidden" id="form-postcode13-searchResults" name="postcode13"> --}}
+          		<input type="hidden" id="form-long-searchResults" name="long" value="{{$slong}}">
+          	  <input type="hidden" id="form-lat-searchResults" name="lat" value="{{$slat}}">
+          </label>
         </div>
         <div class="column column--12 column--m-4">
         	<p class="-typo-copy -text-color-gray-01">Entfernung in km</p>
 					<label class="input-range -spacing-b">
-	          <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="100">
+	          <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="50">
 	          <span class="input-range__value">0</span>
 	        </label>
         </div>
         <div class="column column--12 column--m-4">
-        	<p class="-typo-copy -text-color-gray-01">Bewertung (beachfelder.de-Bälle)</p>
+        	<p class="-typo-copy -text-color-gray-01">Mindest-Bewertung (beachfelder.de-Bälle)</p>
 					<label class="input-range -spacing-b">
             <input type="range" name="ratingmin" class="input-range__field" value="{{ $ratingmin }}" min="0" max="5">
             <span class="input-range__value">0</span>
@@ -43,19 +128,24 @@
         </div>
        </div>
        <div class="row">
-       	<div class="column column--12 column--m-3">
+       	<div class="column column--12 -align-center -spacing-a">
+       		<p class="-typo-copy -text-color-gray-01">
+       			<a href="#" class="link-icon-text btn--more-filter -text-color-gray-01">
+       				<span class="link-icon-text__icon" data-feather="filter"></span><span class="link-icon-text__copy">mehr Filter</span>
+       			</a>	
+       		</p>
        	</div>
-       	<div class="column column--12 column--m-3">
-       	</div>
-       	<div class="column column--12 column--m-3">
-       	</div>
-       	<div class="column column--12 column--s-6 column--m-3">
-       		<button class="button-primary -spacing-a button__accept">
-       		  <span class="button-primary__label">Suchen</span>
-       		  <span class="button-primary__label button-primary__label--hover">Suchen</span>
-       		</button>
-       	</div>
-      </div><!-- .row ENDE -->
+       </div>
+      <div class="row">
+      	<div class="column column--m-4"></div>
+      	<div class="column column--12 column--m-4 -spacing-c">
+      		<button class="button-primary button__accept">
+      		  <span class="button-primary__label">Suchen</span>
+      		  <span class="button-primary__label button-primary__label--hover">Suchen</span>
+      		</button>
+      	</div>
+      	<div class="column column--m-4"></div>
+      </div>
     </form>
 
     <div class="row -spacing-a -flex -flex--direction-row -flex--wrap">
@@ -164,46 +254,6 @@
 @push('scripts')
   <script>
 
-      var checkbox = $('.public');
-      var checkboxchargeable = $('.chargeable');
-
-      if(checkbox.val() == 1) {
-        checkbox.attr('checked', true);
-        checkbox.parent().find('.input-toggle__label').text('frei zugänglich');
-      }
-      if(checkboxchargeable.val() == 1) {
-        checkboxchargeable.attr('checked', true);
-        checkboxchargeable.parent().find('.input-toggle__label').text('kostenpflichtig');
-      }
-
-     $('.public').click(function() {
-      if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('frei zugänglich');
-        $(this).parent().find('.input-toggle__hidden').val(1);
-        $(this).val(1);
-        $(".button__accept").click();
-      } else {
-        $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
-        $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0);
-        $(".button__accept").click();
-      }
-    });
-
-     $('.chargeable').click(function() {
-      if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
-        $(this).parent().find('.input-toggle__hidden').val(1);
-        $(this).val(1);
-        $(".button__accept").click();
-      } else {
-        $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
-        $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0);
-        $(".button__accept").click();
-      }
-    });
-
     //grab the values of input slider
     var rangeSlider = function(){
       var slider = $('.input-range'),
@@ -226,43 +276,26 @@
 
     rangeSlider();
 
-
-    var allPanels = $('.accordion-vertical__content').hide();
-    	    
-    $('.accordion-vertical__title').click(function() {
-    	allPanels.slideUp();
-      $(this).next().slideDown();
-      return false;
+    $('.btn--more-filter, .icon--close').click(function(e) {
+    	e.stopPropagation();
+    	$('body').toggleClass('no-scroll');
+    	$('.sidebar-filter').toggleClass('sidebar-filter--open');
     });
 
-    // $('input').on('change', function() {
-    // 	$('.form--search').submit();
-    // });
+    $('.sidebar-filter').click( function(e) {
+			e.stopPropagation();
+		});
 
-  //   var placesAutocompleteSearchResults = places({
-  //     type: 'city',
-  //     countries: 'de',
-  //     language: 'de_DE',
-  //     useDeviceLocation: false,
-  //     container: document.querySelector('#address-input-seachResults')
-  //   });
+    $('body').click(function() {
+    	$('.sidebar-filter').removeClass('sidebar-filter--open');
+    	$('body').removeClass('no-scroll');
+    });
 
-
-
-  //   $('#address-input-seachResults').on('keyup', function() {
-		
-		//   var input = document.querySelector("#address-input-seachResults");
-		//   var soll = document.querySelector("#form-postcode13-seachResults");
-		  
-		//   soll.value = input.value;
-  //     placesAutocompleteSearchResults.on('change', function(e) {
-              
-		//           document.querySelector('#form-postcode13-seachResults').value = e.suggestion.postcode || '';
-		//           document.querySelector('#form-lat-seachResults').value = e.suggestion.latlng.lat || '';
-		//           document.querySelector('#form-long-seachResults').value = e.suggestion.latlng.lng || '';     
-		//       });
-		   
-		// });
+    $('.button__reset').click(function() {
+    	$('input[type="radio"]').attr('checked', false) ;
+    	$('.form--search').submit();
+    	$('body').removeClass('no-scroll');
+    });
     
   </script>
 @endpush

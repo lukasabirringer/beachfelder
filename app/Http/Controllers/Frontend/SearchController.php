@@ -13,12 +13,16 @@ class SearchController extends Controller
 {
   public function show(Request $request)
   { 
+
+    /////////AUSLESEN DER REQUEST VARIABLEN
     $slat = $request->lat;
     $slong = $request->long;
     $input = $request->postcode13;
-    
-    if (is_numeric($input)) {
 
+
+
+    /////////KURZE ABFRAGE WENN NUR NACH ZAHLEN GESUCHT WIRD, OB ES 5 STÜCK SIND (WENN NICHT => REDIRECT/ERROR)
+    if (is_numeric($input)) {
       $plz = $request->postcode13;
       $v = Validator::make($request->all(), [
         'postcode13' => 'required|digits:5'
@@ -26,13 +30,12 @@ class SearchController extends Controller
       if($v->fails()){
         return redirect('/')->withErrors($v->errors());
       }
-
     } else {
-
       $address = $request->postcode13;
-
     }
     
+    /////////UMWANDLUNG DER PLZ, ADRESSE, ODER WAS AUCH IMMER KOMMT (INKL. VALIDATION)
+    /////////IN LONGITUDE & LATITUDE (START)
     if ($slat) {
 
       $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$slat.",".$slong."&key=AIzaSyDQXCnp5XKH4KJotgqMqu-qKDhdm2dRgho";
@@ -99,90 +102,109 @@ class SearchController extends Controller
       $plz = $plzurlresponse['results'][0]['address_components'][count($arrayl)-1]['long_name'];
 
     } else {
-
       return redirect('/')->with('status', 'Bitte suche nach einer PLZ oder einem Ort!');
-
     }
-   
-    $distance = $request->distance ?? '15';
-    $ratingmin = $request->ratingmin ?? '0';
-    $ratingmax = $request->ratingmax ?? '5';
-    $filter = $request->filter ?? null;
+    /////////UMWANDLUNG DER PLZ, ADRESSE, ODER WAS AUCH IMMER KOMMT (INKL. VALIDATION)
+    /////////IN LONGITUDE & LATITUDE (ENDE)
+
+    /////////START
+    /////////SUCHE
     
-    if ($filter == 'public') {
-         // public isPublic = 1 oder NULL 
-      $results = Beachcourt::where('submitState', 'approved')
-      ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-      ->where(function ($results) 
-        {
-          $results->where('isPublic', '=', 1)
-                  ->orWhereNull('isPublic');
-        })
-      ->get();
-    } elseif ($filter == 'facilities') {
-       //  facilities isPublic = 1 oder NULL  und isCharge = 0 oder 3 oder NULL 
-      $results = Beachcourt::where('submitState', 'approved')
-      ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-      ->where(function ($results) 
-        {
-          $results->where('isPublic', '=', 1)
-                  ->orWhereNull('isPublic');
-        })
-      ->where(function ($results) 
-        {
-          $results->where('isChargeable', 0)
-                  ->orWhere('isChargeable', 3)
-                  ->orWhereNull('isChargeable');
-        })
-      ->get();
-       } elseif ($filter == 'free') {
-       //  free isPublic = 1 oder NULL und isCharge = 0 oder NULL" 
-      $results = Beachcourt::where('submitState', 'approved')
-      ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-      ->where(function ($results) 
-        {
-          $results->where('isPublic', '=', 1)
-                  ->orWhereNull('isPublic');
-        })
-      ->where(function ($results) 
-        {
-          $results->where('isChargeable', '=', 0)
-                  ->orWhereNull('isChargeable');
-        })
-      ->get();
-    } else {
-    
+
+    /////////STANDARD
+    /////////SUCHKRITERIEN
+
+    //definierter Suchradius - Fallback 15km
+    $distance = $request->distance ?? 15;
+    // Suche im definierten Radius
     $results = Beachcourt::where('submitState', 'approved')
       ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-      ->get();
+      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))));
+      
+    //definierte mindestbälle - Fallback 0
+    $ratingmin = intval($request->ratingmin) ?? 0;
+    //Filter anhand der Bälle
+    if( $ratingmin <= 5 && $ratingmin >= 1 ) {
+    		$results->whereBetween('rating', array($ratingmin, 5))
+    						->orWhereBetween('bfdeRating', array($ratingmin, 5));
+    }
+    else {
+    	$results->get();
     }
 
-      foreach ($results as $beachcourt) {
-         $pi80 = M_PI / 180;
-            $lat1 = $latitude; $lat1 *= $pi80;
-            $lng1 = $longitude; $lng1 *= $pi80;
-            $lat2 = $beachcourt->latitude; $lat2 *= $pi80;
-            $lng2 = $beachcourt->longitude; $lng2 *= $pi80;
-            $r = 6372.797; // mean radius of Earth in km
-            $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
-            $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
-            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $dis = $r * $c * 0.621371192 * 2;
-            
-            $beachcourt->distance = $dis;
+    /////////FILTER 
+    /////////INDOOR/OUTDOOR (VORAUSSETZUNG IST, DASS ES IM FRONTEND RADIO BUTTONS SIND)
 
-            if ($distance < $dis) {
-              $results = $results->keyBy('id');
-              $results->forget($beachcourt->id);
-            }
-       }
-       $results = $results->sortBy('distance');
+    //Radio Value: outdoor, indoor oder egal // egal wird nicht weiter verarbeitet, da leer
+    $outin = $request->outin;
+    //when Kriterium 'courtCountOutdoor' dann suche danach
+    if ($outin == 'outdoor') {$results->where('courtCountOutdoor', '>=', 1);}
+    //when Kriterium 'courtCountIndoor' dann suche danach
+    if ($outin == 'indoor') {$results->where('courtCountIndoor', '>=', 1);}
+
+    /////////FILTER 
+    /////////ZUGANG (VORAUSSETZUNG IST, DASS ES IM FRONTEND RADIO BUTTONS SIND)
+
+    //Radio Value: outdoor, indoor oder egal // egal wird nicht weiter verarbeitet, da leer
+    $access = $request->access;
+    //when Kriterium 'yesOrNull' (public) dann suche danach
+    if ($access == 'yes') {$results->where('isPublic', '=', 1)->orWhereNull('isPublic');}
+    //when Kriterium 'no' (public) dann suche danach
+    if ($access == 'no') {$results->where('isPublic', '=', 0);}
+
+    /////////FILTER 
+    /////////KOSTEN (VORAUSSETZUNG IST, DASS ES IM FRONTEND RADIO BUTTONS SIND)
+
+    //Radio Value: kostenlos, zeitabhaengigeGebühr, einmaligeGebühr, swimmingLake, dauerhafteMitgliedschaft oder egal // egal wird nicht weiter verarbeitet, da leer
+    $cost = $request->cost;
+    //when Kriterium 'kostenlos' dann suche danach
+    if ($cost == 'kostenlos') {$results->where('isChargeable', '=', 0)->orWhereNull('isChargeable');}
+    //when Kriterium 'einmaligeGebühr' dann suche danach
+    if ($cost == 'einmaligeGebühr') {$results->where('isSingleAccess', '=', 1);}
+    //when Kriterium 'einmaligeGebühr' dann suche danach
+    if ($cost == 'zeitabhaengigeGebühr') {$results->where('isChargeable', '=', 1);}
+    //when Kriterium 'einmaligeGebühr' dann suche danach
+    if ($cost == 'dauerhafteMitgliedschaft') {$results->where('isMembership', '=', 1);}
+
+    $swimmingLake = $request->swimmingLake;
+
+    //when Kriterium 'swimmingLake' dann suche danach
+    if ($swimmingLake == 'swimmingLake') {$results->where('isswimmingLake', '=', 1);}
+
+    /////////FINALLY GET THE RESULTS 
+    $results = $results->get();
+    
+    /////////CALCULATE THE DISTANCE BETWENN THE QUERY AND THE SURROUNDING COURTS
+    foreach ($results as $beachcourt) {
+        $pi80 = M_PI / 180;
+        $lat1 = $latitude;
+        $lat1 *= $pi80;
+        
+        $lng1 = $longitude;
+        $lng1 *= $pi80;
+        
+        $lat2 = $beachcourt->latitude;
+        $lat2 *= $pi80;
+
+        $lng2 = $beachcourt->longitude;
+        $lng2 *= $pi80;
+
+        $r = 6372.797; // mean radius of Earth in km
+        $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        $dis = $r * $c * 0.621371192 * 2;
+          
+        $beachcourt->distance = $dis;
+
+        if ($distance < $dis) {
+          $results = $results->keyBy('id'); 
+          $results->forget($beachcourt->id);
+        }
+      }
+      $results = $results->sortBy('distance');
      
-      return view('frontend.search.show', compact('filter', 'isChargeable', 'isPublic', 'results', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax'));
+      return view('frontend.search.show', compact('filter', 'isChargeable', 'isPublic', 'results', 'slong', 'slat', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax', 'outin', 'access', 'cost', 'swimmingLake'));
 
     }
 
