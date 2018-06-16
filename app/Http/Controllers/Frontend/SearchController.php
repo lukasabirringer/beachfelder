@@ -125,8 +125,8 @@ class SearchController extends Controller
     $ratingmin = intval($request->ratingmin) ?? 0;
     //Filter anhand der Bälle
     if( $ratingmin <= 5 && $ratingmin >= 1 ) {
-    		$results->whereBetween('bfdeRating', array($ratingmin, 5))
-    						->orWhereBetween('rating', array($ratingmin, 5));
+    		$results->whereBetween('rating', array($ratingmin, 5))
+    						->orWhereBetween('bfdeRating', array($ratingmin, 5));
     }
     else {
     	$results->get();
@@ -160,13 +160,16 @@ class SearchController extends Controller
     //when Kriterium 'kostenlos' dann suche danach
     if ($cost == 'kostenlos') {$results->where('isChargeable', '=', 0)->orWhereNull('isChargeable');}
     //when Kriterium 'einmaligeGebühr' dann suche danach
+    if ($cost == 'einmaligeGebühr') {$results->where('isSingleAccess', '=', 1);}
+    //when Kriterium 'einmaligeGebühr' dann suche danach
     if ($cost == 'zeitabhaengigeGebühr') {$results->where('isChargeable', '=', 1);}
     //when Kriterium 'einmaligeGebühr' dann suche danach
-    if ($cost == 'einmaligeGebühr') {$results->where('isSingleAccess', '=', 1);}
-    //when Kriterium 'swimmingLake' dann suche danach
-    if ($cost == 'swimmingLake') {$results->where('isswimmingLake', '=', 1);}
-    //when Kriterium 'einmaligeGebühr' dann suche danach
     if ($cost == 'dauerhafteMitgliedschaft') {$results->where('isMembership', '=', 1);}
+
+    $swimmingLake = $request->swimmingLake;
+
+    //when Kriterium 'swimmingLake' dann suche danach
+    if ($swimmingLake == 'swimmingLake') {$results->where('isswimmingLake', '=', 1);}
 
     /////////FINALLY GET THE RESULTS 
     $results = $results->get();
@@ -201,7 +204,7 @@ class SearchController extends Controller
       }
       $results = $results->sortBy('distance');
      
-      return view('frontend.search.show', compact('filter', 'isChargeable', 'isPublic', 'results', 'slong', 'slat', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax', 'outin', 'access', 'cost'));
+      return view('frontend.search.show', compact('filter', 'isChargeable', 'isPublic', 'results', 'slong', 'slat', 'latitude', 'longitude', 'plz', 'distance', 'ratingmin', 'ratingmax', 'outin', 'access', 'cost', 'swimmingLake'));
 
     }
 

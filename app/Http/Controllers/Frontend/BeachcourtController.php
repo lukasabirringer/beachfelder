@@ -71,7 +71,7 @@ class BeachcourtController extends Controller
 
         $distance = 15;
         $otherBeachcourts = Beachcourt::where('submitState', 'approved')
-           ->whereBetween('latitudeNew', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+           ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
            ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
            ->limit(6)
            ->get();
@@ -100,7 +100,7 @@ class BeachcourtController extends Controller
         	  $lng1 = $longitude;
         	  $lng1 *= $pi80;
         	  
-        	  $lat2 = $otherBeachcourt->latitudeNew;
+        	  $lat2 = $otherBeachcourt->latitude;
         	  $lat2 *= $pi80;
 
         	  $lng2 = $otherBeachcourt->longitude;

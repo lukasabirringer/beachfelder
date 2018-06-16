@@ -25,7 +25,7 @@ class BeachcourtController extends Controller
 
     public function index()
     {
-        $submittedBeachcourts = Beachcourt::where('submitState', 'eingereicht')->get();
+        $submittedBeachcourts = Beachcourt::where('submitState', 'submitted')->get();
         $submittedBeachcourts->count = $submittedBeachcourts->count();
 
         $beachcourts = Beachcourt::where('submitState', 'approved')->get();

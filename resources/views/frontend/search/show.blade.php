@@ -38,7 +38,7 @@
        	</div>
 
        	<div class="sidebar-filter__option -spacing-a">
-       		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Öffentlich oder nicht?</p>
+       		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Zugang</p>
      			<label class="input-radio -spacing-d">
      			  <input type="radio" class="input-radio__field" name="access" value="yes" {{ $access == 'yes' ? 'checked' : '' }}>
      			  <span class="input-radio__label">nur öffentliche Felder</span>
@@ -56,7 +56,7 @@
        	</div>
 
    	  	<div class="sidebar-filter__option -spacing-a">
-   	  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Kostenlos oder kostenpflichtig?</p>
+   	  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Kosten</p>
      			<label class="input-radio -spacing-d">
      			  <input type="radio" class="input-radio__field" name="cost" value="kostenlos" {{ $cost == 'kostenlos' ? 'checked' : '' }}>
      			  <span class="input-radio__label">nur kostenlose Felder</span>
@@ -64,17 +64,17 @@
 
      			<label class="input-radio -spacing-b">
      			  <input type="radio" class="input-radio__field" name="cost" value="einmaligeGebühr" {{ $cost == 'einmaligeGebühr' ? 'checked' : '' }}>
-     			  <span class="input-radio__label">nur einmalige Gebühren</span>
+     			  <span class="input-radio__label">nur einmalige Zutritts-Gebühr</span>
      			</label>
 
      			<label class="input-radio -spacing-b">
      			  <input type="radio" class="input-radio__field" name="cost" value="zeitabhaengigeGebühr" {{ $cost == 'zeitabhaengigeGebühr' ? 'checked' : '' }}>
-     			  <span class="input-radio__label">nur zeitabhängige Gebühren</span>
+     			  <span class="input-radio__label">nur zeitabhängige Gebühr</span>
      			</label>
 
      			<label class="input-radio -spacing-b">
      			  <input type="radio" class="input-radio__field" name="cost" value="dauerhafteMitgliedschaft" {{ $cost == 'dauerhafteMitgliedschaft' ? 'checked' : '' }}>
-     			  <span class="input-radio__label">nur dauerhafte Mitgliedschaften</span>
+     			  <span class="input-radio__label">nur dauerhafte Mitgliedschaft</span>
      			</label>
 
      			<label class="input-radio -spacing-b">
@@ -82,6 +82,19 @@
      			  <span class="input-radio__label">Alle Felder</span>
      			</label>
    	  	</div>
+
+   	  		  	<div class="sidebar-filter__option -spacing-a">
+   	  		  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Beach &amp; Swim</p>
+   	  	  			<label class="input-radio -spacing-d">
+   	  	  			  <input type="radio" class="input-radio__field" name="swimmingLake" value="swimmingLake" {{ $cost == 'swimmingLake' ? 'checked' : '' }}>
+   	  	  			  <span class="input-radio__label">nur Felder an einem See oder in einem Freibad</span>
+   	  	  			</label>
+
+   	  	  			<label class="input-radio -spacing-b">
+   	  	  			  <input type="radio" class="input-radio__field" name="cost" value="egal" {{ $cost == 'egal' ? 'checked' : '' }}>
+   	  	  			  <span class="input-radio__label">Alle Felder</span>
+   	  	  			</label>
+   	  		  	</div>
 
    	  	<div class="sidebar-filter__option -spacing-a">
    	  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold button__reset">Filter zurücksetzen</p>
@@ -102,7 +115,7 @@
         <div class="column column--12 column--m-4">
         	<p class="-typo-copy -text-color-gray-01">Entfernung in km</p>
 					<label class="input-range -spacing-b">
-	          <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="100">
+	          <input type="range" name="distance" class="input-range__field" value="{{ $distance }}" min="0" max="50">
 	          <span class="input-range__value">0</span>
 	        </label>
         </div>
@@ -240,46 +253,6 @@
 
 @push('scripts')
   <script>
-
-      var checkbox = $('.public');
-      var checkboxchargeable = $('.chargeable');
-
-      if(checkbox.val() == 1) {
-        checkbox.attr('checked', true);
-        checkbox.parent().find('.input-toggle__label').text('frei zugänglich');
-      }
-      if(checkboxchargeable.val() == 1) {
-        checkboxchargeable.attr('checked', true);
-        checkboxchargeable.parent().find('.input-toggle__label').text('kostenpflichtig');
-      }
-
-     $('.public').click(function() {
-      if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('frei zugänglich');
-        $(this).parent().find('.input-toggle__hidden').val(1);
-        $(this).val(1);
-        $(".button__accept").click();
-      } else {
-        $(this).parent().find('.input-toggle__label').text('nicht frei zugänglich');
-        $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0);
-        $(".button__accept").click();
-      }
-    });
-
-     $('.chargeable').click(function() {
-      if($(this).is(':checked')) {
-        $(this).parent().find('.input-toggle__label').text('kostenpflichtig');
-        $(this).parent().find('.input-toggle__hidden').val(1);
-        $(this).val(1);
-        $(".button__accept").click();
-      } else {
-        $(this).parent().find('.input-toggle__label').text('nicht kostenpflichtig');
-        $(this).parent().find('.input-toggle__hidden').val(0);
-        $(this).val(0);
-        $(".button__accept").click();
-      }
-    });
 
     //grab the values of input slider
     var rangeSlider = function(){

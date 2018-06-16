@@ -120,7 +120,7 @@
           </div>
         </div>
         <div class="row">
-          @if ($beachcourt->ratingCount < 10)
+          @if ($beachcourt->ratingCount >= 10)
           <div class="column column--6 column--s-3 -hidden--xxs">
             <p class="-typo-copy -text-color-gray-01 -spacing-b">
               <span class="-typo-copy--bold">Sand</span>

@@ -9,6 +9,7 @@ use DB;
 use App\Beachcourt;
 use App\Rating;
 use Auth;
+use Mail;
 
 class RatingController extends Controller
 {   
@@ -147,6 +148,25 @@ class RatingController extends Controller
             DB::table('beachcourts')->where('id', $request->beachcourtname)->update(['rating' => $rating]);
             }
             $newRating = $beachcourt->rating;
+
+
+            $user = Auth::user();
+            $email = $user->email;
+            $userName = $user->userName;
+            $firstName = $user->firstName;
+            $lastName = $user->lastName;
+
+            $data = array(
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'userName' => $userName,
+                'beachcourt' => $request->beachcourtname
+            );
+
+            Mail::send('email.ratingCourt', $data, function($message) use ($email) {
+                $message->from('noreply@beachfelder.de', 'beachfelder.de');
+                $message->to('presse@beachfelder.de')->subject('beachfelder.de // Neue Bewertung eines Feldes');
+            });
             
             return view('frontend.beachcourt.thanksrate',compact('userRating', 'countMinusBall', 'newRating', 'beachcourt'));
         }
