@@ -16,6 +16,7 @@
     @include('frontend.reusable-includes.divider')
     
     <form action="/search" method="POST" class="form form--search">
+    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
     	<div class="sidebar-filter">
     		<span class="sidebar-filter__icon icon--close" data-feather="x-circle"></span>
        	<h3 class="sidebar-filter__title -typo-headline-04 -text-color-green">Mehr Filter</h3>
@@ -86,7 +87,7 @@
    	  		  	<div class="sidebar-filter__option -spacing-a">
    	  		  		<p class="-typo-copy -text-color-gray-01 -typo-copy--bold">Beach &amp; Swim</p>
    	  	  			<label class="input-radio -spacing-d">
-   	  	  			  <input type="radio" class="input-radio__field" name="swimmingLake" value="swimmingLake" {{ $cost == 'swimmingLake' ? 'checked' : '' }}>
+   	  	  			  <input type="radio" class="input-radio__field" name="swimmingLake" value="swimmingLake" {{ $swimmingLake == 'swimmingLake' ? 'checked' : '' }}>
    	  	  			  <span class="input-radio__label">nur Felder an einem See oder in einem Freibad</span>
    	  	  			</label>
 
@@ -101,7 +102,7 @@
    	  	</div>
        </div>
       <div class="row -spacing-b">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
         <div class="column column--12 column--m-4">
 
           <p class="-typo-copy -text-color-gray-01">Deine PLZ</p>
@@ -152,11 +153,9 @@
       @if ($results->isEmpty()) 
       	<div class="column column--12 -align-center">
       			<img src="{{url('/')}}/images/image-no-search-results.png" class="image">
-      			<h3 class="-typo-headline-03 -text-color-green">Tut uns leid</h3>
-      		  <p class="-typo-copy -text-color-gray-01 -spacing-c">Im gewählten Suchumkreis ist bisher kein Beachfeld verzeichnet.</p>	
-      		  <p class="-typo-copy -text-color-gray-01 -spacing-d">
-      		  	Bitte vergrößere den Suchumkreis und wiederhole die Suche.
-      		  </p>
+      			<h3 class="-typo-headline-03 -text-color-green -spacing-b">Kein Treffer</h3>
+      		  <p class="-typo-copy -text-color-gray-01 -spacing-c">Im gewählten Suchradius ist in unserer Datenbank leider kein Beachfeld mit den gewünschten Kriterien verzeichnet. </p>	
+      		  <p class="-typo-copy -text-color-gray-01 -spacing-d">Bitte erweitere den Suchradius oder verändere deine Suchkriterien.</p>
       	</div>
       @endif
       @foreach ($results as $beachcourt)
@@ -203,8 +202,53 @@
                 <a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachfeld in {{ $beachcourt->city }}@if ($beachcourt->district != '')-{{ $beachcourt->district }}
                   @endif
                 </a>
-                
+								
                 @if ($beachcourt->bfdeRating)
+                	<div class="rating -spacing-b">
+                		@for ($i = 1; $i <= $beachcourt->bfdeRating; $i++)
+                		  <div class="rating__item">
+                		    <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+                		  </div>
+                		@endfor
+                		<?php $starsLeft = 5 - $beachcourt->bfdeRating; ?>
+                		@if (count($starsLeft) > 0)
+	                    @for ($i = 1; $i <= $starsLeft; $i++)
+	                    <div class="rating__item">
+	                      <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+	                    </div>
+	                    @endfor
+	                    <p class="-typo-copy -typo-copy--small -text-color-gray-01 -text-color-gray-01">Vorläufige Bewertung von beachfelder.de</p>
+	                  </div>
+                  @endif
+
+                @elseif ($beachcourt->ratingCount < 10)
+                	<div class="rating -spacing-b">
+	                	@for ($i = 1; $i <= 5; $i++)
+	                		<div class="rating__item">
+	                		  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+	                		</div>
+	                	@endfor
+	                	<p class="-typo-copy -typo-copy--small -text-color-gray-01 ">Momentan liegen noch zu wenige Bewertungen vor.</p>
+                	</div>
+                @else
+                	@for ($i = 1; $i <= $beachcourt->rating; $i++)
+	                	<div class="rating__item">
+	                	  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+	                	</div>
+	                @endfor
+	                <?php $starsLeft = 5 - $beachcourt->rating; ?>
+	                @if (count($starsLeft) > 0)
+	                	@for ($i = 1; $i <= $starsLeft; $i++)
+	                		<div class="rating__item">
+	                		  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+	                		</div>
+	                	@endfor
+	                @endif
+
+	              	<p class="-typo-copy -text-color-gray-01 -text-color-gray-0 -spacing-d">{{ $beachcourt->ratingCount }} Bewertungen</p>
+                @endif
+                
+                {{-- @if ($beachcourt->bfdeRating)
                 	<div class="icon-text beachcourt-item__rating -spacing-b">
                     <span class="icon-text__icon" data-feather="award"></span>
                     <span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->bfdeRating }}</span>/5 Bällen bewertet <br>
@@ -220,7 +264,7 @@
 									  <span class="icon-text__icon" data-feather="award"></span>
 									  <span class="icon-text__text">Für dieses Feld liegen noch <br> <span class="-typo-copy--bold">nicht </span> genügend Bewertungen vor.</span>
 									</div>
-                @endif
+                @endif --}}
 
                 
 

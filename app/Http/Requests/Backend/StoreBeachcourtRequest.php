@@ -30,6 +30,9 @@ class StoreBeachcourtRequest extends FormRequest
             'longitude' => 'required',
             'isChargeable' => 'boolean',
             'isPublic' => 'boolean',
+            'isMembership' => 'boolean',
+            'isSingleAccess' => 'boolean',
+            'isswimmingLake' => 'boolean',
             'user_id' => 'numeric',
         ];
     }

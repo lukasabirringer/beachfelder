@@ -14,13 +14,33 @@
             </p>
           </div>
         </div>
+        <div class="row">
+        	<div class="column column--3 -spacing-b">
+        		<a href="{{ URL::route('backendBeachcourt.create') }}" class="button-primary">
+        			<span class="button-primary__label">Neues Feld erstellen</span>
+        			<span class="button-primary__label button-primary__label--hover">Neues Feld erstellen</span>
+        		</a>
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		<a href="{{ URL::route('backendFaq.create') }}" class="button-primary">
+        			<span class="button-primary__label">Neue FAQ erstellen</span>
+        			<span class="button-primary__label button-primary__label--hover">Neue FAQ erstellen</span>
+        		</a>
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		
+        	</div>
+        </div>
 
         <div class="row">
             <div class="column column--12 -spacing-a">
                 <hr class="divider">
             </div>
         </div>
-
+        
         <div class="row">
             <div class="column column--12 column--s-6 -spacing-b">
                 {{-- Anzahl (Courts, User, Bewertungen, Favoriten) --}}

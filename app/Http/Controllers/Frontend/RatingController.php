@@ -8,13 +8,15 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Beachcourt;
 use App\Rating;
+use Validator;
 use Auth;
 use Mail;
 
 class RatingController extends Controller
 {   
     public function store(Request $request)
-        {   
+        {
+
             //get Values
             $sandQuality = $request->sandQuality; $courtTopography = $request->courtTopography; $sandDepth = $request->sandDepth; $irrigationSystem = $request->irrigationSystem;
             $netHeight = $request->netHeight; $netType = $request->netType;$netAntennas = $request->netAntennas; $netTension = $request->netTension;

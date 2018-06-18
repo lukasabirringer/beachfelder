@@ -22,7 +22,7 @@
 		
 		<div class="row">
 		  <div class="column column--12">
-		    <h1 class="title-page__title">Feld anlegen </h1>
+		    <h1 class="title-page__title">Feld anlegen</h1>
 		  </div>
 		</div>
 
@@ -281,22 +281,6 @@
 			  </div>
 
 			  <div class="column column--12 column--m-3 -spacing-b">
-			    <p class="-typo-copy -text-color-green">kostenlos/konstenpflichtig</p>
-			    <label class="input-radio -spacing-d">
-			      <input type="radio" class="input-radio__field" name="isChargeable" value="1">
-			      <span class="input-radio__label">kostenpflichtig</span>
-			    </label>
-
-			    <label class="input-radio -spacing-d">
-			      <input type="radio" class="input-radio__field" name="isChargeable" value="0">
-			      <span class="input-radio__label">nicht kostenpflichtig</span>
-			    </label>
-			    @if ($errors->has('isChargeable'))
-			      <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
-			    @endif
-			  </div>
-
-			  <div class="column column--12 column--m-3 -spacing-b">
 			    <p class="-typo-copy -text-color-green">öffentlich/nicht öffentlich</p>
 			    <label class="input-radio -spacing-d">
 			      <input type="radio" class="input-radio__field" name="isPublic" value="1">
@@ -311,6 +295,94 @@
 			      <div class="alert alert-danger">{{ $errors->first('isPublic', ':message') }}</div>
 			    @endif
 			  </div>
+
+			  <div class="column column--12 column--m-3 -spacing-b">
+			    <p class="-typo-copy -text-color-green">Zeitabhängige Gebühr?</p>
+			    <label class="input-radio -spacing-d">
+			      <input type="radio" class="input-radio__field" name="isChargeable" value="1">
+			      <span class="input-radio__label">Ja</span>
+			    </label>
+
+			    <label class="input-radio -spacing-d">
+			      <input type="radio" class="input-radio__field" name="isChargeable" value="0">
+			      <span class="input-radio__label">Nein</span>
+			    </label>
+			    @if ($errors->has('isChargeable'))
+			      <div class="alert alert-danger">{{ $errors->first('isChargeable', ':message') }}</div>
+			    @endif
+			  </div>
+			</div>
+
+			<div class="row">
+				<div class="column column--12 column--m-3 -spacing-b">
+					<p class="-typo-copy -text-color-green">Dauerhafte Mitgliedsgebühr fällig?</p>
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isMembership" value="1">
+					  <span class="input-radio__label">Ja</span>
+					</label>
+
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isMembership" value="0">
+					  <span class="input-radio__label">Nein</span>
+					</label>
+					@if ($errors->has('isMembership'))
+					  <div class="alert alert-danger">{{ $errors->first('isMembership', ':message') }}</div>
+					@endif
+				</div>
+				<div class="column column--12 column--m-3 -spacing-b">
+					<p class="-typo-copy -text-color-green">Einmalige Zutrittsgebühr?</p>
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isSingleAccess" value="1">
+					  <span class="input-radio__label">Ja</span>
+					</label>
+
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isSingleAccess" value="0">
+					  <span class="input-radio__label">Nein</span>
+					</label>
+					@if ($errors->has('isSingleAccess'))
+					  <div class="alert alert-danger">{{ $errors->first('isSingleAccess', ':message') }}</div>
+					@endif
+				</div>
+				<div class="column column--12 column--m-3 -spacing-b">
+					<p class="-typo-copy -text-color-green">See oder Freibad?</p>
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isswimmingLake" value="1">
+					  <span class="input-radio__label">Ja</span>
+					</label>
+
+					<label class="input-radio -spacing-d">
+					  <input type="radio" class="input-radio__field" name="isswimmingLake" value="0">
+					  <span class="input-radio__label">Nein</span>
+					</label>
+					@if ($errors->has('isswimmingLake'))
+					  <div class="alert alert-danger">{{ $errors->first('isswimmingLake', ':message') }}</div>
+					@endif
+				</div>
+				<div class="column column--12 column--m-3 -spacing-b"></div>
+			</div>
+
+			<div class="row">
+			  <div class="column column--12 -spacing-a">
+			    <h3 class="-typo-headline-03 -text-color-green"> Bilder </h3>
+			  </div>
+			</div>
+
+			<div class="row">
+				<div class="column column--12 column--m-6 -spacing-a">
+
+					<label class="input-upload" id="lfm" data-input="thumbnail" data-preview="holder">
+					  <input type="text" class="input-upload__field" id="thumbnail" name="filepath" >
+					  <span class="input-upload__label">
+					    <span class="input-upload__icon" data-feather="upload"></span>
+					    <span class="input-upload__text">Lade Bilder hoch</span>
+					  </span>
+					</label>
+					<img id="holder" style="margin-top:15px;max-height:100px;">    		
+				</div>
+				<div class="column column--12 column--m-6 -spacing-a">
+					
+				</div>
 			</div>
 
 			<div class="row">
@@ -344,3 +416,10 @@
 	</div> <!-- .content__main ENDE -->
 	
 @endsection
+@push('scripts')
+	<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+
+	<script>
+		$('#lfm').filemanager('image');
+	</script>
+@endpush

@@ -153,14 +153,14 @@
               @endfor
             </p>
           </div>
-          @elseif ($beachcourt->bfdeRating)
+          @elseif ( $beachcourt->bfdeRating )
           <div class="column column--6 column--s-3 -hidden--xxs">
               <p class="-typo-copy -text-color-gray-01 -spacing-b">
                 <span class="-typo-copy--bold">Sand</span>
                 @for ($i = 1; $i <= $beachcourt->bfdeRatingSand; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->bfdeRatingSand;     ?>
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingSand; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -174,7 +174,7 @@
                 @for ($i = 1; $i <= $beachcourt->bfdeRatingNet; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->bfdeRatingNet;     ?>
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingNet; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
