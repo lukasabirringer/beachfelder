@@ -29,6 +29,10 @@
 		
 		@include('frontend.reusable-includes.divider')
 
+		@include('frontend.reusable-includes.teaser-contest')
+
+		@include('frontend.reusable-includes.divider')
+
 		<div class="row">
 			<div class="column column--12 -spacing-c">
 				<p class="-typo-copy -text-color-gray-01">

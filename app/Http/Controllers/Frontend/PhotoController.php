@@ -13,6 +13,7 @@ use Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use Mail;
 
 class PhotoController extends Controller
 {
@@ -69,6 +70,20 @@ class PhotoController extends Controller
                 ]);
             }
         }
+
+        $user = Auth::user();
+
+        $email = $user->email;
+        $name = $user->firstName;
+        $code = str_random(30);
+
+          //send confirmationen mail
+        $confirmation_code = ['foo' => $code];
+
+        Mail::send('email.photoUpload', $confirmation_code, function($message) use ($email, $name) {
+            $message->from('noreply@beachfelder.de', 'beachfelder.de');
+            $message->to($email, $name)->subject('beachfelder.de // Vielen Dank für den Foto-Upload');
+        });
         return redirect()->back()->with('success', 'Vielen Dank, dass du uns Bilder gesendet hast!');
     }
 

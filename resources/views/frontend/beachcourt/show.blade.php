@@ -43,7 +43,7 @@
           <div class="column column--12 column--s-6 column--m-3">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="navigation"></span>
-              <span class="icon-text__text">{{ $beachcourt->longitude }}<br>{{ $beachcourt->latitude }}</span>
+              <span class="icon-text__text">{{ $beachcourt->latitude }}<br>{{ $beachcourt->longitude }}</span>
             </div>
           </div>
           <div class="column column--12 column--s-6 column--m-3">
@@ -217,7 +217,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingSand;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingSand; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -231,7 +231,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingNet;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingNet; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -245,7 +245,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingCourt;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingCourt; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -335,7 +335,7 @@
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
-        @if ($beachcourt->isPublic === 0 )
+        @if ($beachcourt->isPublic === 0)
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für jedermann zugänglich.</p>
         @elseif ($beachcourt->isPublic === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">jedermann zugänglich</span>.</p>
@@ -343,22 +343,26 @@
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
 
-        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
-        @if ($beachcourt->isChargeable === 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
-        @elseif ($beachcourt->isChargeable === 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
-        @elseif ($beachcourt->isChargeable === 3)
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist im Eintrittspreis inbegriffen.</p>
-        @elseif ($beachcourt->isChargeable === NULL )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostenpflichtig ist.</p>
+        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Was kostet die Benutzung des Feldes?</h4>
+        @if ($beachcourt->isChargeable === 1)
+        	<p class="-typo-copy -text-color-gray-01 -spacing-b">Dieses Beachfeld wird für einen bestimmten Zeitraum (meist stundenweise) vermietet. Bitte informiere dich über die aktuellen Nutzungsgebühren beim Betreiber.</p>
+        @elseif($beachcourt->isSingleAccess === 1)
+					<p class="-typo-copy -text-color-gray-01 -spacing-b">Um Zugang zu diesem Beachfeld zu erhalten, musst du eine einmalige Eintrittsgebühr bezahlen. Bitte informiere dich über die aktuellen Eintrittsgebühren beim Betreiber.</p>
+				@elseif($beachcourt->isMembership === 1)
+					<p class="-typo-copy -text-color-gray-01 -spacing-b">Um Zugang zu diesem Beachfeld zu erhalten, musst du Mitglied im Betreiberverein werden. Bei einer Hotelanlage musst du als Gast registriert sein.</p>
+
+				@elseif($beachcourt->isChargeable === NULL)
+					<p class="-typo-copy -text-color-gray-01 -spacing-b">Hierüber liegen uns noch keine Informationen vor. Falls du diese Informationen besitzt, teile sie uns bitte mit.</p>
+				@else
+					<p class="-typo-copy -text-color-gray-01 -spacing-b">Das Spiel auf diesem Feld ist kostenfrei. Geh gleich los und spiele eine Runde oder zwei!</p>
         @endif
-         @if($beachcourt->notes != NULL)
-         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
+
+        @if($beachcourt->notes != NULL)
+        	<h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
           <p class="-typo-copy -text-color-gray-01 -spacing-b">
-            {{ $beachcourt->notes }}
+          	{{ $beachcourt->notes }}
           </p>
-        @endif
+        @endif  
       </div>
     </div>
 

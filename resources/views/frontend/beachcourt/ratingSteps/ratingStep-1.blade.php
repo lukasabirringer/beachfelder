@@ -1,5 +1,5 @@
 <div class="column column--12">
-	<div class="row group-rate" data-group="sandQuality">
+	<div class="row group-rate">
 		<div class="column column--12">
 			<h3 class="-typo-headline-03 -text-color-gray-01">Sand</h3>
 			<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Qualität des Sandes?</p>
@@ -45,7 +45,7 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a" data-group="courtTopography">
+	<div class="row group-rate -spacing-a">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Ist die Spielfläche eben?</p>
 		</div>
@@ -89,7 +89,7 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a" data-group="sandDepth">
+	<div class="row group-rate -spacing-a">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Wie tief ist der Sand an der flachsten Stelle des Feldes?</p>
 		</div>
@@ -124,7 +124,7 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a" data-group="irrigationSystem">
+	<div class="row group-rate -spacing-a">
 		<div class="column column--12 ">
 			<p class="-typo-copy -text-color-gray-01">Ist ein Staubschutz, wie zum Beispiel eine Bewässerungsanlage vorhanden?</p>
 		</div>
