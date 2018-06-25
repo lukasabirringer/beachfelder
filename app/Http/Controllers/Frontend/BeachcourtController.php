@@ -28,6 +28,7 @@ class BeachcourtController extends Controller
         $units = 'metric';
         $owm = new OpenWeatherMap('b8139c4415c13e5d46c12b08d1a379d3');
         $zip = $beachcourt->postalCode;
+        
         try {
             $weather = $owm->getWeather('zip:'.$zip.',DE', $units, $lang);
         } catch(OWMException $e) {

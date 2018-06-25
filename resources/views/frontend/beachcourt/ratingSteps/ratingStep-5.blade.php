@@ -4,7 +4,7 @@
 			<h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Sicherheit</h3>
 		</div>
 	 </div>
-	 <div class="row">
+	 <div class="row ">
 		<div class="column column--12 -spacing-d">
 			<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist der Sand auf dem Spielfeld stellenweise weniger als 20 cm tief?</p>
 			<label class="input-toggle -spacing-c">

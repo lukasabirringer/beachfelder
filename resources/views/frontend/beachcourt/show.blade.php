@@ -345,21 +345,21 @@
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Was kostet die Benutzung des Feldes?</h4>
         @if ($beachcourt->isChargeable === 1)
-        	<p class="-typo-copy -text-color-gray-01 -spacing-b">Dieses Beachfeld wird für einen bestimmten Zeitraum (meist stundenweise) vermietet. Bitte informiere dich über die aktuellen Nutzungsgebühren beim Betreiber.</p>
+        	<p class="-typo-copy -text-color-gray-01 -spacing-d">Dieses Beachfeld wird für einen bestimmten Zeitraum (meist stundenweise) vermietet. Bitte informiere dich über die aktuellen Nutzungsgebühren beim Betreiber.</p>
         @elseif($beachcourt->isSingleAccess === 1)
-					<p class="-typo-copy -text-color-gray-01 -spacing-b">Um Zugang zu diesem Beachfeld zu erhalten, musst du eine einmalige Eintrittsgebühr bezahlen. Bitte informiere dich über die aktuellen Eintrittsgebühren beim Betreiber.</p>
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Um Zugang zu diesem Beachfeld zu erhalten, musst du eine einmalige Eintrittsgebühr bezahlen. Bitte informiere dich über die aktuellen Eintrittsgebühren beim Betreiber.</p>
 				@elseif($beachcourt->isMembership === 1)
-					<p class="-typo-copy -text-color-gray-01 -spacing-b">Um Zugang zu diesem Beachfeld zu erhalten, musst du Mitglied im Betreiberverein werden. Bei einer Hotelanlage musst du als Gast registriert sein.</p>
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Um Zugang zu diesem Beachfeld zu erhalten, musst du Mitglied im Betreiberverein werden. Bei einer Hotelanlage musst du als Gast registriert sein.</p>
 
 				@elseif($beachcourt->isChargeable === NULL)
-					<p class="-typo-copy -text-color-gray-01 -spacing-b">Hierüber liegen uns noch keine Informationen vor. Falls du diese Informationen besitzt, teile sie uns bitte mit.</p>
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Hierüber liegen uns noch keine Informationen vor. Falls du diese Informationen besitzt, teile sie uns bitte mit.</p>
 				@else
-					<p class="-typo-copy -text-color-gray-01 -spacing-b">Das Spiel auf diesem Feld ist kostenfrei. Geh gleich los und spiele eine Runde oder zwei!</p>
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spiel auf diesem Feld ist kostenfrei. Geh gleich los und spiele eine Runde oder zwei!</p>
         @endif
 
         @if($beachcourt->notes != NULL)
         	<h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">
           	{{ $beachcourt->notes }}
           </p>
         @endif  

@@ -82,51 +82,164 @@
       {{ csrf_field() }}
       <input type="hidden" value="{{ $beachcourt->id }}" content="text" name="beachcourtname">
 
-      <div class="tab -spacing-a" id="sand">
+      <div class="tab tab--active -spacing-a" id="tab-01">
         @include('frontend.beachcourt.ratingSteps.ratingStep-1')
+
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #sand ENDE -->
 
-      <div class="tab -spacing-a" id="net">
+      <div class="tab -spacing-a" id="tab-02">
         @include('frontend.beachcourt.ratingSteps.ratingStep-2')
+
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #net ENDE -->
 
-      <div class="tab -spacing-a" id="playground">
+      <div class="tab -spacing-a" id="tab-03">
         @include('frontend.beachcourt.ratingSteps.ratingStep-3')
+
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #playground ENDE -->
 
-      <div class="tab -spacing-a" id="environment">
+      <div class="tab -spacing-a" id="tab-04">
         @include('frontend.beachcourt.ratingSteps.ratingStep-4')
+
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #environment ENDE -->
-      <div class="tab -spacing-a" id="security">
-      	  @include('frontend.beachcourt.ratingSteps.ratingStep-4')
+      <div class="tab -spacing-a" id="tab-05">
+      	  @include('frontend.beachcourt.ratingSteps.ratingStep-5')
+
+      	  @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="submit" class="button-primary">
+      	      <span class="button-primary__label">Bewertung abgeben</span>
+      	      <span class="button-primary__label button-primary__label--hover">Bewertung abgeben</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" class="button-primary " disabled="disabled">
+	      	  	  <span class="button-primary__label">Bewertung abgeben</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Bewertung abgeben</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #security ENDE -->
-      @if (Auth::check())
-      <div class="column column--12 column--m-6 -spacing-b">
-        <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
-          <span class="button-primary__label">Schritt zurück</span>
-          <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
-        </button>
-      </div>
-    
-      <div class="column column--12 column--m-6 -spacing-b">
-        <button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)">
-          <span class="button-primary__label">Schritt weiter</span>
-          <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
-        </button>
-      </div>
-      @else
-      	<div class="column column--12 column--m-6 -spacing-b">
-      		
-      	</div>
-      	<div class="column column--12 column--m-6 -spacing-b">
-      		<button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)" disabled="disabled">
-      		  <span class="button-primary__label">Schritt weiter</span>
-      		  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
-      		</button>
-      		<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
-      		
-      	</div>
-      @endif
     </form>
   </div><!-- .row ENDE -->
 </div><!-- .content__main ENDE -->
@@ -134,52 +247,74 @@
 
 @push('scripts')
   <script>
+  	function updateParentState( clicked_radio_field ) {  
+  	  var this_radio_group = clicked_radio_field.parent().parent().parent();
 
-  	//TABS
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
+  	  this_radio_group.data('valide', 'true')  
+  	}
 
-    function showTab(n) {
-      // This function will display the specified tab of the form ...
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      // ... and fix the Previous/Next buttons:
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>Deine Bewertung abgeben</span> <span class='button-primary__label button-primary__label--hover'>Deine Bewertung abgeben</span>";
-      } else {
-        document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>weiter</span> <span class='button-primary__label button-primary__label--hover'>weiter</span>";
-      }
-    }
+  	function nextTab( this_tab, next_tab ) {
+  	  var error = [];
+  	  $( this_tab ).children().children('.group-rate').each(function( index ) {
 
-    function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
+  	    if ( $( this ).data('valide') == false ) {
+  	        error.push( $( this ) );
+  	    }    
+  	    $( this ).removeClass( "group-rate--error" );
+  	    $( this ).find(".group-rate--hint").hide();
+  	  });
+  	  if ( error == '' ){
+  	    error = 'Keine Fehler gefunden!';
+  	    if ( this_tab.attr('id') == $('.tab').last().attr('id') ) {
+  	        $( this_tab ).removeClass( "tab--active" );
+  	    } else {
+  	       $( this_tab ).removeClass( "tab--active" );
+  	       $( next_tab ).addClass( "tab--active" );
+  	    }
+  	    
+  	    
+  	  } else {
+  	    $.each( error, function() {
+  	      $( this ).addClass( "group-rate--error" );
+  	      $( this ).find(".group-rate--hint").show();
+  	    });
+  	  }
+  	}
 
-      //if (n == 1 && !validateForm()) return false;
+  	function prevTab (this_tab, prev_tab) {
+  		if ( this_tab.attr('id') == $('.tab').first().attr('id') ) {
+  		    $( this_tab ).removeClass( "tab--active" );
+  		} else {
+  		   $( this_tab ).removeClass( "tab--active" );
+  		   $( prev_tab ).addClass( "tab--active" );
+  		}
+  	}
 
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form... :
-      if (currentTab >= x.length) {
-        //...the form gets submitted:
-        document.getElementById("form-rating").submit();
+  	// Button weiter wird angeklickt
+  	$('.nextBtn').click(function() {
+  	  var this_tab = $(this).parent().parent();
+  	  var next_tab = this_tab.next('.tab');
+  	  nextTab( this_tab, next_tab );
+  	});
 
-        return false;
-      }
-      // Otherwise, display the correct tab:
-      showTab(currentTab);
-    }
+  	$('.prevBtn').click(function() {
+  	  var this_tab = $(this).parent().parent();
+  	  var prev_tab = this_tab.prev('.tab');
+  	  prevTab( this_tab, prev_tab );
+  	});
 
-    function validateForm() {
+  	// Radio-Button wird angeklickt
+  	$('.input-radio-icon__field').click(function() {
+  	  var this_radio_field = $(this);
+  	  updateParentState( this_radio_field );
+  	});
 
-    }
+  	// // Letzter Button wird zu "Fertig"
+  	// $('.tab').last().children().children('.nextBtn').html('');
+
+  	// Erster Zurück-Button wird ausgeblendet
+  	$('.tab').first().children().children('.prevBtn').hide();
+
 
     //hide the notification
     $('.notification-button').click(function() {

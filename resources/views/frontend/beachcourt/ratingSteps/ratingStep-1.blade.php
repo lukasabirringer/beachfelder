@@ -1,8 +1,11 @@
 <div class="column column--12">
-	<div class="row group-rate">
+	<div class="row group-rate" data-valide="false">
 		<div class="column column--12">
 			<h3 class="-typo-headline-03 -text-color-gray-01">Sand</h3>
 			<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Qualität des Sandes?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">
@@ -39,15 +42,18 @@
 			<p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
 					Grobe Körner > 2 mm enthalten, scharfkantig
 			</p>
-			
+
 		</div>
 	</div>
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a">
+	<div class="row group-rate -spacing-a" data-valide="false">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Ist die Spielfläche eben?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">
@@ -89,9 +95,12 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a">
+	<div class="row group-rate -spacing-a" data-valide="false">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Wie tief ist der Sand an der flachsten Stelle des Feldes?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">
@@ -124,9 +133,12 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a">
+	<div class="row group-rate -spacing-a" data-valide="false">
 		<div class="column column--12 ">
 			<p class="-typo-copy -text-color-gray-01">Ist ein Staubschutz, wie zum Beispiel eine Bewässerungsanlage vorhanden?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">

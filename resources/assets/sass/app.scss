@@ -164,6 +164,27 @@
 	}
 }
 
+.tab {
+	float: left;
+	width: 100%;
+	&--active {
+		display: block;
+	}
+}
+
+.group-rate {
+	border-radius: 4px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	&--error {
+		background: rgba(206, 64, 53, .2);
+		color: #FFF;
+	}
+
+	&--hint{ display: none; }
+}
+
 //ALGOLIA
 // Main input wrapper
 .algolia-places {width: 100%}

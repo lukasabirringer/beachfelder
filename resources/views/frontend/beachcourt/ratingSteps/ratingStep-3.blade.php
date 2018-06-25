@@ -1,8 +1,11 @@
 <div class="column column--12">
-	<div class="row group-rate">
+	 <div class="row group-rate" data-valide="false">
 		<div class="column column--12 -spacing-b">
 			<h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Spielfeld</h3>
 			<p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Beschaffenheit der Linien?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">
@@ -35,9 +38,12 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a">
+	<div class="row group-rate -spacing-a" data-valide="false">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Sind die Spielfeldmaße regelkonform?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">
@@ -70,9 +76,12 @@
 
 	@include('frontend.reusable-includes.divider')
 
-	<div class="row group-rate -spacing-a">
+	<div class="row group-rate -spacing-a" data-valide="false">
 		<div class="column column--12">
 			<p class="-typo-copy -text-color-gray-01">Besteht eine ausreichende Sicherheitszone um das Spielfeld?</p>
+			<div class="group-rate--hint -spacing-b">
+				<div class="-typo-copy -text-color-red">Um fortfahren zu können, musst du eine dieser Optionen ausgewählt haben.</div>
+			</div>
 		</div>
 		<div class="column column--12 column--m-4 -spacing-d">
 			<label class="input-radio-icon">

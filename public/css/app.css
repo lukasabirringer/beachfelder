@@ -191,6 +191,30 @@
   cursor: pointer;
 }
 
+.tab {
+  float: left;
+  width: 100%;
+}
+
+.tab--active {
+  display: block;
+}
+
+.group-rate {
+  border-radius: 4px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.group-rate--error {
+  background: rgba(206, 64, 53, 0.2);
+  color: #FFF;
+}
+
+.group-rate--hint {
+  display: none;
+}
+
 .algolia-places {
   width: 100%;
 }
