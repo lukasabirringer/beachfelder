@@ -167,7 +167,6 @@ return [
         LaraBug\ServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
          * Package Service Providers...
