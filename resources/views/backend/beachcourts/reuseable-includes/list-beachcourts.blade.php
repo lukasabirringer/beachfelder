@@ -16,8 +16,8 @@
             <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">ID</th>
             <th class="column column--12 column--m-4 -typo-copy -typo-copy--bold -text-color-green">Ort</th>
             <th class="column column--12 column--m-3 -typo-copy -typo-copy--bold -text-color-green">Koordinaten</th>
-            <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">Bewertungen</th>
-            <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">Optionen</th>
+            <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">E-Mail</th>
+            <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">Optionen</th>
         </tr>
     </thead>
     <tbody class="list">
@@ -32,8 +32,8 @@
                   {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
               </td>
               <td class="column column--12 column--m-3 rating -typo-copy -text-color-gray-01">{{ $beachcourt->latitude }}, {{ $beachcourt->longitude }} <br> <a class="link-text" href="https://www.google.com/maps/?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}" target="_blank">auf Google Maps ansehen</a></td>
-              <td class="column column--12 column--m-1 rating -typo-copy -text-color-gray-01">{{ $beachcourt->ratingCount }}</td>
-              <td class="column column--12 column--m-2">
+              <td class="column column--12 column--m-2 email -typo-copy -text-color-gray-01">{{ $beachcourt->operatorContactPersonEmail }}</td>
+              <td class="column column--12 column--m-1">
                   <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
                       <span data-feather="search"></span>
                   </a>
@@ -44,10 +44,13 @@
                   <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST" id="form--deleteField">
                     <input name="_method" type="hidden" value="DELETE">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                    <a href="#" class="link-icon -text-color-red" onclick="document.getElementById('form--deleteField').submit(); return false;">
-                        <span data-feather="trash-2"></span>
-                    </a>
+                    <button class="link-icon -text-color-red">
+                    	<span data-feather="trash-2"></span>
+                    </button>
                   </form>
+                  <!-- <a href="#" class="link-icon -text-color-red" onclick="document.getElementById('form--deleteField').submit(); return false;">
+                      <span data-feather="trash-2"></span>
+                  </a> -->
               </td>
           </tr>
             

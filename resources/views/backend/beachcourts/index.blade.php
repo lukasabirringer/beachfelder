@@ -99,7 +99,7 @@
 @push('scripts')
     <script>
         var courtList = new List('courts', {
-          valueNames: ['id', 'city', 'rating'],
+          valueNames: ['id', 'city', 'email'],
           page: 30,
           pagination: true
         });

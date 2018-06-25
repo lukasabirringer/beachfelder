@@ -36,6 +36,13 @@
         <hr class="divider">
       </div>
     </div>
+    <div class="row">
+    	<div class="column column--12 -spacing-a">
+    		<p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-d">
+    			Feld-ID: #{{ $beachcourt->id }}
+    		</p>
+    	</div>
+    </div>
     <form class="form-horizontal" action="{{ URL::route('backendBeachcourt.update', $beachcourt->id) }}" method="POST">
       <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
