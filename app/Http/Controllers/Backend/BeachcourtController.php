@@ -136,6 +136,6 @@ class BeachcourtController extends Controller
         $beachcourt = Beachcourt::findOrFail($id);
         $beachcourt->delete();
 
-        return redirect()->route('backendBeachcourt.index');
+        return redirect()->back()->with('success', 'Beachfeld wurde gelöscht');
     }
 }

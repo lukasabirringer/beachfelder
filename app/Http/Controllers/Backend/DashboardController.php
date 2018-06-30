@@ -8,6 +8,7 @@ use App\Beachcourt;
 use App\User;
 use App\Rating;
 use App\Favorite;
+use Auth;
 use DB;
 
 class DashboardController extends Controller
@@ -26,7 +27,6 @@ class DashboardController extends Controller
         $submittedBeachcourts = Beachcourt::where('submitState', 'submitted')->limit(5)->latest()->get();
 
         $messages = DB::table('contact')->limit(5)->latest()->get();
-
 
         // $users = User::limit(5)->latest()->get();
         // $subs = Beachcourt::limit(5)->latest()->get();
