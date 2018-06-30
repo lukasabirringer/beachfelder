@@ -59,7 +59,7 @@ class RatingController extends Controller
 
             //increase ratingcount
             DB::table('beachcourts')->whereid($request->beachcourtname)->increment('ratingCount');
-            $ratingcount = $beachcourt->ratingcount;
+            $ratingcount = $beachcourt->ratingCount;
             if ($ratingcount >= 10) {
             //get new averages for categories (sand, net, court, environment)
             $sandQualityAverage = $beachcourt->ratings()->avg('sandQuality'); 

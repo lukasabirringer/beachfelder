@@ -32,7 +32,7 @@
                   {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
               </td>
               <td class="column column--12 column--m-3 rating -typo-copy -text-color-gray-01">{{ $beachcourt->latitude }}, {{ $beachcourt->longitude }} <br> <a class="link-text" href="https://www.google.com/maps/?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}" target="_blank">auf Google Maps ansehen</a></td>
-              <td class="column column--12 column--m-2 email -typo-copy -text-color-gray-01">{{ $beachcourt->operatorContactPersonEmail }}</td>
+              <td class="column column--12 column--m-2 email -typo-copy -text-color-gray-01" style="overflow: hidden; text-overflow: ellipsis;">{{ $beachcourt->operatorContactPersonEmail }}</td>
               <td class="column column--12 column--m-1">
                   <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
                       <span data-feather="search"></span>

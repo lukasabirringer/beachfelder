@@ -24,12 +24,13 @@ class PhotoController extends Controller
 
             $v = Validator::make($request->all(), [
                 'photos' => 'required',
-                'photos.*' => 'image|mimes:jpeg,jpg,png|max:1000',
+                'photos.*' => 'image|mimes:jpeg,jpg,JPG,png|max:3000',
             ]);
 
             if ($v->fails())
             {
-                return redirect()->back()->withErrors($v->errors());
+                //return redirect()->back()->withErrors($v->errors());
+                return redirect()->back()->with('error', 'Dein Upload enspricht leider nicht unseren Vorgaben. Bitte überprüfe den Upload und versuche es erneut.');
             }
 
             $photos = request()->file('photos');
@@ -72,10 +73,27 @@ class PhotoController extends Controller
         }
 
         $user = Auth::user();
-
-        $email = $user->email;
+        $userName = $user->userName;
         $name = $user->firstName;
+        $beachcourt = Beachcourt::where('id', $beachcourtId)->first();
+        $beachcourtId = $beachcourt->id;
+        $beachcourtZip = $beachcourt->postalCode;
+        $beachcourtCity = $beachcourt->city;
+        $beachcourtStreet = $beachcourt->street;
+        $beachcourtHouseNumber = $beachcourt->houseNumber;
+        
+        $email = $user->email;
         $code = str_random(30);
+
+        $data = array(
+            'userName' => $userName,
+            'emailAddress' => $email,
+            'beachcourt' => $beachcourtId,
+            'beachcourtZip' => $beachcourtZip,
+            'beachcourtCity' => $beachcourtCity,
+            'beachcourtStreet' => $beachcourtStreet,
+            'beachcourtHouseNumber' => $beachcourtHouseNumber,
+        );
 
           //send confirmationen mail
         $confirmation_code = ['foo' => $code];
@@ -84,6 +102,12 @@ class PhotoController extends Controller
             $message->from('noreply@beachfelder.de', 'beachfelder.de');
             $message->to($email, $name)->subject('beachfelder.de // Vielen Dank für den Foto-Upload');
         });
+
+        Mail::send('email.photoUploadInternal', $data, function($message) use ($email) {
+            $message->from('noreply@beachfelder.de', 'beachfelder.de');
+            $message->to('presse@beachfelder.de')->subject('beachfelder.de // Neuer Bild-Upload');
+        });
+
         return redirect()->back()->with('success', 'Vielen Dank, dass du uns Bilder gesendet hast!');
     }
 
