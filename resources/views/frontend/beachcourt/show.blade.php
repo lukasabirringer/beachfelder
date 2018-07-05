@@ -2,13 +2,6 @@
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('title_and_meta')
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-	  (adsbygoogle = window.adsbygoogle || []).push({
-	    google_ad_client: "ca-pub-2244539104246669",
-	    enable_page_level_ads: true
-	  });
-	</script>
 	<title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 
@@ -406,7 +399,7 @@
       @if($beachcourt->distance <= $distance)
         @foreach ($otherBeachcourts as $otherBeachcourt)
           @if($beachcourt->latitude != $otherBeachcourt->latitude )
-            @if($otherBeachcourt-> submitState != 'submitted')
+            @if($otherBeachcourt-> submitState == 'approved')
               <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
                 <div class="beachcourt-item">
                   <div class="beachcourt-item__image">

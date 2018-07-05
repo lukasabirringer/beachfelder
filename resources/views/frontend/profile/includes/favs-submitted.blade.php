@@ -130,6 +130,9 @@
                   @if($submittedCourt->submitState === 'approved')
                     <span class="icon-text__icon" data-feather="check-circle"></span>
                     <span class="icon-text__text">Einreichungsstatus:<br>genehmigt</span>
+                  @elseif($submittedCourt->submitState === 'abgelehnt')
+                    <span class="icon-text__icon" data-feather="clock"></span>
+                    <span class="icon-text__text">Einreichungsstatus:<br>abgelehnt</span>
                   @else
                     <span class="icon-text__icon" data-feather="clock"></span>
                     <span class="icon-text__text">Einreichungsstatus:<br>in Überprüfung</span>

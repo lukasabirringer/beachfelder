@@ -8,8 +8,8 @@ use App\Beachcourt;
 use App\User;
 use App\Rating;
 use App\Favorite;
-use Auth;
 use DB;
+use Auth;
 
 class DashboardController extends Controller
 {

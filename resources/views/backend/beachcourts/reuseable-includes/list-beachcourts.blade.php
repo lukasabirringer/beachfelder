@@ -13,9 +13,10 @@
     <table class="table table-striped">
     <thead>
         <tr class="row">
-            <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">ID</th>
+            <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">ID</th>
             <th class="column column--12 column--m-4 -typo-copy -typo-copy--bold -text-color-green">Ort</th>
             <th class="column column--12 column--m-3 -typo-copy -typo-copy--bold -text-color-green">Koordinaten</th>
+            <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">Status</th>
             <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">E-Mail</th>
             <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">Optionen</th>
         </tr>
@@ -23,7 +24,7 @@
     <tbody class="list">
         @foreach ($beachcourts as $beachcourt)
           <tr>
-              <td class="column column--12 column--m-2 id -typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
+              <td class="column column--12 column--m-1 id -typo-copy -text-color-gray-01">{{ $beachcourt->id }}</td>
               <td class="column column--12 column--m-4 city -typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}
                   @if($beachcourt->district !='')
                       - {{ $beachcourt->district }}
@@ -32,6 +33,15 @@
                   {{ $beachcourt->street }} {{ $beachcourt->houseNumber }}
               </td>
               <td class="column column--12 column--m-3 rating -typo-copy -text-color-gray-01">{{ $beachcourt->latitude }}, {{ $beachcourt->longitude }} <br> <a class="link-text" href="https://www.google.com/maps/?q={{ $beachcourt->latitude }},{{ $beachcourt->longitude }}" target="_blank">auf Google Maps ansehen</a></td>
+              <td class="column column--12 column--m-1 submitState -typo-copy -text-color-gray-01" style="overflow: hidden; text-overflow: ellipsis;">
+              	@if($beachcourt->submitState === 'approved')
+              		bestätigt
+              	@elseif ($beachcourt->submitState === 'abgelehnt')
+              		abgelehnt
+              	@else
+              		eingereicht
+              	@endif
+              </td>
               <td class="column column--12 column--m-2 email -typo-copy -text-color-gray-01" style="overflow: hidden; text-overflow: ellipsis;">{{ $beachcourt->operatorContactPersonEmail }}</td>
               <td class="column column--12 column--m-1">
                   <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">

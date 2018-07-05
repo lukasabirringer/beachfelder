@@ -22,8 +22,16 @@
 	top: -1.25rem;
 }
 
+.hide-on-desktop {
+	display: block;
+}
+
 @media screen and (max-width: 768px) {
 	.hide-on-mobile {display: none; visibility: hidden;}
+}
+
+@media screen and (min-width: 500px) {
+	.hide-on-desktop {display: none; visibility: hidden;}
 }
 
 .section__button {
@@ -135,7 +143,7 @@
 
 .sidebar-filter {
 	position: fixed;
-	right: -100%;
+	right: -200%;
 	top: 0;
 	height: 100vh;
 	overflow-y: auto;
@@ -183,6 +191,110 @@
 	}
 
 	&--hint{ display: none; }
+}
+
+
+.overlay {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(255,255,255, .9);
+	position: fixed;
+	left: 0;
+	top: -100%;
+	z-index: 40;
+	padding: 7%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity .3s ease-in-out;
+
+	&--open {
+		opacity: 1;
+		top: 0;
+	}
+
+}
+
+.overlay-form {
+	width: 100%;
+}
+
+.menu-mobile {
+	display: none;
+}
+
+@media screen and (max-width: 500px) {
+	.menu-mobile {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		bottom: 15px;
+		right: 15px;
+		width: 50px;
+		height: 50px;
+		z-index: 100;
+		background: #FFF;
+		border-radius: 50%;
+		box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05);
+
+		&--search {
+			bottom: 70px;
+		}
+
+		&__icon {
+			&--close {
+				display: none;
+			}
+		}
+
+		.sidebar-filter {
+			width: 100vw;
+		}
+	}
+
+	.icon-menu {
+		&__icon {
+			cursor: pointer;
+			color: #f6f6f6;
+			width: 1.875rem;
+			height: 1.875rem;
+		}
+	}
+
+	.icon-search {
+		position: absolute;
+		left: 1.875rem;
+		top: 1.875rem;
+		color: #FFF;
+
+		&__icon {
+			width: 1.75rem;
+			height: 1.75rem;
+		}
+	}
+
+	.sidebar {
+		left: -70px;
+
+		&--mobile-visible {
+			left: 0;
+		}
+	}
+
+	.section {
+		margin-left: 0;
+		max-width: unset;
+	}
+
+	.header {
+		display: none;
+	}
+
+	.content {
+		padding: 0 7% 0 7%;
+	}
 }
 
 //ALGOLIA

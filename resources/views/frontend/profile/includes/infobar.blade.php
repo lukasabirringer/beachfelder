@@ -25,7 +25,13 @@
           <div class="column column--12 column--s-6 column--m-4">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="info"></span>
-              <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: {{ $countSubmits }}</span>
+              <span class="icon-text__text">Favoriten: {{ $countFavorites }}<br>Eingereichte Felder: 
+              	@if ($eigenesprofil == false)
+              		{{ $countSubmitsNotOwn }}
+              	@else 
+              		{{ $countSubmits }}
+              	@endif
+            	</span>
             </div>
           </div>
         </div>

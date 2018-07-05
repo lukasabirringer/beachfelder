@@ -46,17 +46,22 @@ class ProfileController extends Controller
         $myFavorites = $profileuser->favorites()->get();
 
         if ($id === auth()->id()) {
-            $eigenesprofil = 'true';
+            $eigenesprofil = true;
         } else {
-            $eigenesprofil = 'false';
+            $eigenesprofil = false;
         }
 
+        
+
         $user_id = Auth::id();
+        //dd($id);
         $countSubmits = Beachcourt::where('user_id', $user_id)->count();
+        $countSubmitsNotOwn = Beachcourt::where('user_id', $id)->count();
+
         $submittedCourts = Beachcourt::where('user_id', $id)->get();
         $countFavorites = $profileuser->favorites()->count();
 
-        return view('frontend.profile.show', compact('submittedCourts', 'profileuser', 'countFavorites', 'countSubmits', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
+        return view('frontend.profile.show', compact('submittedCourts', 'profileuser', 'countFavorites', 'countSubmits','countSubmitsNotOwn', 'myFavorites', 'profilepicture', 'user', 'eigenesprofil'));
     }
     public function edit($name){
 

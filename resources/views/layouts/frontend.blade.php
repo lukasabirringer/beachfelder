@@ -35,6 +35,54 @@
     </style>
   </head>
   <body @unless(empty($body_class)) class="{{$body_class}}" @endunless>
+  	<div class="overlay">
+    <form action="/search" method="POST" class="form overlay-form">
+      <label class="input section__input" style="overflow: visible;">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
+        <input type="hidden" class="form-control" id="form-long" name="long">
+        <input type="hidden" class="form-control" id="form-lat" name="lat">
+
+        <input type="search" class="input__field" id="address-input" placeholder="Wo suchst du ein Feld?" />
+        <span class="input__label">Wo suchst du ein Feld?</span>
+        <div class="input__border"></div>
+
+        @if ($errors->has('postcode13'))
+          <div class="message message--error -spacing-d">
+            <div class="message__icon message__icon--error">
+              <span data-feather="alert-circle"></span>
+            </div>
+            <p class="message__text message__text--error">{{ $errors->first('postcode13', 'Die Postleitzahl muss fünf Stellen besitzen.') }}</p>
+          </div>
+        @endif
+        
+        <button class="button-primary">
+        	<span class="button-primary__label">Suchen</span>
+        	<span class="button-primary__label button-primary__label--hover">Suchen</span>
+        </button>
+       
+        @if (session('status'))
+	        <div class="message message--error -spacing-d">
+	          <div class="message__icon message__icon--error">
+	            <span data-feather="alert-circle"></span>
+	          </div>
+	          <p class="message__text message__text--error">{{ session('status') }}</p>
+	        </div>
+        @endif
+
+      </label>
+    </form>
+	</div>
+
+  	<div class="menu-mobile menu-mobile--menu">
+  		<div class="menu-mobile__icon menu-mobile__icon--menu" data-feather="menu"></div>
+  		<div class="menu-mobile__icon menu-mobile__icon--close" data-feather="x"></div>
+  	</div>
+  	<div class="menu-mobile menu-mobile--search">
+  		<div class="menu-mobile__icon menu-mobile__icon--search" data-feather="search"></div>
+  		<div class="menu-mobile__icon menu-mobile__icon--close" data-feather="x"></div>
+  	</div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ5N6TZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -138,17 +186,8 @@
       feather.replace();
       //progressive image preloading
       progressively.init();
-      //tooltips
-      $('.tipso-sidebar').tipso({
-        speed : 250,
-        offsetX : -20,
-        background : '#457b8c',
-        color : '#ffffff',
-        position : 'right',
-        showArrow : false,
-        tooltipHover : true
-      });
 
+      //tooltips
       $('.tipso-favorite').tipso({
         speed : 50,
         offsetY: 5,
@@ -158,6 +197,8 @@
         showArrow : false,
         tooltipHover : true
       });
+
+      
 
       var placesAutocomplete = places({
         type: 'city',
@@ -197,6 +238,19 @@
       	$('.navigation__label').removeClass('navigation__label--visible');
       }
       );
+
+      $('.menu-mobile--search').click(function() {
+      	$(this).find('.menu-mobile__icon--search').toggle();
+      	$(this).find('.menu-mobile__icon--close').toggle();
+      	$('.overlay').toggleClass('overlay--open');
+      });
+
+      $('.menu-mobile--menu').click(function() {
+      	$(this).find('.menu-mobile__icon--menu').toggle();
+      	$(this).find('.menu-mobile__icon--close').toggle();
+
+      	$('.sidebar').toggleClass('sidebar--mobile-visible');
+      });
     </script>
 
     @stack('scripts')
