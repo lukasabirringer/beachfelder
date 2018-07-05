@@ -28,6 +28,7 @@ class BeachcourtController extends Controller
         $units = 'metric';
         $owm = new OpenWeatherMap('b8139c4415c13e5d46c12b08d1a379d3');
         $zip = $beachcourt->postalCode;
+        
         try {
             $weather = $owm->getWeather('zip:'.$zip.',DE', $units, $lang);
         } catch(OWMException $e) {
@@ -70,57 +71,38 @@ class BeachcourtController extends Controller
         }
 
         $distance = 15;
-        $otherBeachcourts = Beachcourt::where('submitState', 'approved')
-           ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
-           ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))
-           ->limit(6)
-           ->get();
+        $otherBeachcourts = Beachcourt::orderBy('submitState', 'approved')
+      ->whereBetween('latitude', array(($latitude - ($distance*0.0117)), ($latitude + ($distance*0.0117))))
+      ->whereBetween('longitude', array(($longitude - ($distance*0.0117)), ($longitude + ($distance*0.0117))))->get();
 
         foreach ($otherBeachcourts as $otherBeachcourt) {
-        //   $pi80 = M_PI / 180;
-        //   $lat1 = $latitude; $lat1 *= $pi80;
-        //   $lng1 = $longitude; $lng1 *= $pi80;
-        //   $lat2 = $otherBeachcourt->latitude; $lat2 *= $pi80;
-        //   $lng2 = $otherBeachcourt->longitude; $lng2 *= $pi80;
-        //   $r = 6372.797; // mean radius of Earth in km
-        //   $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
-        //   $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
-        //   $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-        //   $dis = $r * $c * 0.621371192 * 2;
-          
-        //   $otherBeachcourt->distance = $dis;
-        // }
-        
-        // $otherBeachcourts = $otherBeachcourts->sortBy('distance');
+            $pi80 = M_PI / 180;
+            $lat1 = $latitude;
+            $lat1 *= $pi80;
+            
+            $lng1 = $longitude;
+            $lng1 *= $pi80;
+            
+            $lat2 = $otherBeachcourt->latitude;
+            $lat2 *= $pi80;
 
-        	  $pi80 = M_PI / 180;
-        	  $lat1 = $latitude;
-        	  $lat1 *= $pi80;
-        	  
-        	  $lng1 = $longitude;
-        	  $lng1 *= $pi80;
-        	  
-        	  $lat2 = $otherBeachcourt->latitude;
-        	  $lat2 *= $pi80;
+            $lng2 = $otherBeachcourt->longitude;
+            $lng2 *= $pi80;
 
-        	  $lng2 = $otherBeachcourt->longitude;
-        	  $lng2 *= $pi80;
+            $r = 6372.797; // mean radius of Earth in km
+            $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
+            $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $dis = $r * $c * 0.621371192 * 2;
+              
+            $otherBeachcourt->distance = $dis;
 
-        	  $r = 6372.797; // mean radius of Earth in km
-        	  $dlat = $lat2 - $lat1; $dlng = $lng2 - $lng1;
-        	  $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
-        	  $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-        	  $dis = $r * $c * 0.621371192 * 2;
-        	    
-        	  $otherBeachcourt->distance = $dis;
-
-        	  if ($distance < $dis) {
-        	    $otherBeachcourts = $otherBeachcourts->keyBy('id'); 
-        	    $otherBeachcourts->forget($otherBeachcourt->id);
-        	  }
-        	}
-
-        	$otherBeachcourts = $otherBeachcourts->sortBy('distance');
+            if ($distance < $dis) {
+              $otherBeachcourts = $otherBeachcourts->keyBy('id'); 
+              $otherBeachcourts->forget($otherBeachcourt->id);
+            }
+          }
+          $otherBeachcourts = $otherBeachcourts->sortBy('distance');  
 
         if (is_dir(public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/'))) {
         $path = public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/');
@@ -135,6 +117,7 @@ class BeachcourtController extends Controller
 
         return view('frontend.beachcourt.show', compact('minusBallCount', 'filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures', 'distance'));
     }
+
     public function rate($cityslug, $latitude, $longitude)
     {
         $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();
@@ -148,8 +131,8 @@ class BeachcourtController extends Controller
          return view('frontend.beachcourt.rate', compact('beachcourt'));
         }
         return redirect()->back()->with('error', 'Du hast dieses Feld bereits bewertet - Falls das Feld verbessert wurde, informiere uns darüber und du kannst es erneut bewerten!');
-
     }
+
     public function upload($cityslug, $latitude, $longitude)
     {
         $beachcourt = Beachcourt::where('latitude', $latitude)->where('longitude', $longitude)->first();

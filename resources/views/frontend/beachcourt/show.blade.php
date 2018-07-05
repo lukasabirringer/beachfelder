@@ -2,13 +2,6 @@
 @extends('layouts.frontend', ['body_class' => 'beachcourt-detail'])
 
 @section('title_and_meta')
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-	  (adsbygoogle = window.adsbygoogle || []).push({
-	    google_ad_client: "ca-pub-2244539104246669",
-	    enable_page_level_ads: true
-	  });
-	</script>
 	<title>Beachvolleyballfeld in {{ $beachcourt->postalCode }} {{ $beachcourt->city }} | beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
  @endsection
 
@@ -43,7 +36,7 @@
           <div class="column column--12 column--s-6 column--m-3">
             <div class="icon-text -spacing-b">
               <span class="icon-text__icon" data-feather="navigation"></span>
-              <span class="icon-text__text">{{ $beachcourt->longitude }}<br>{{ $beachcourt->latitude }}</span>
+              <span class="icon-text__text">{{ $beachcourt->latitude }}<br>{{ $beachcourt->longitude }}</span>
             </div>
           </div>
           <div class="column column--12 column--s-6 column--m-3">
@@ -153,14 +146,14 @@
               @endfor
             </p>
           </div>
-          @elseif ($beachcourt->bfdeRating)
+          @elseif ( $beachcourt->bfdeRating )
           <div class="column column--6 column--s-3 -hidden--xxs">
               <p class="-typo-copy -text-color-gray-01 -spacing-b">
                 <span class="-typo-copy--bold">Sand</span>
                 @for ($i = 1; $i <= $beachcourt->bfdeRatingSand; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->bfdeRatingSand;     ?>
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingSand; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -174,7 +167,7 @@
                 @for ($i = 1; $i <= $beachcourt->bfdeRatingNet; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->bfdeRatingNet;     ?>
+                <?php $starsLeft = 5 - $beachcourt->bfdeRatingNet; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -217,7 +210,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingSand; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingSand;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingSand; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -231,7 +224,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingNet; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingNet;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingNet; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -245,7 +238,7 @@
                 @for ($i = 1; $i <= $beachcourt->ratingCourt; $i++)
                     <img src="{{ asset('images/rating-badge-petrol.svg') }}" width="16">
                 @endfor
-                <?php $starsLeft = 5 - $beachcourt->ratingCourt;     ?>
+                <?php $starsLeft = 5 - $beachcourt->ratingCourt; ?>
                 @if (count($starsLeft) > 0)
                   @for ($i = 1; $i <= $starsLeft; $i++)
                   <img src="{{ asset('images/rating-badge-gray.svg') }}" width="16">
@@ -335,7 +328,7 @@
         @endif
 
         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Ist das Feld öffentlich zugänglich?</h4>
-        @if ($beachcourt->isPublic === 0 )
+        @if ($beachcourt->isPublic === 0)
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Nein, das Feld ist <span class="-typo-copy -typo-copy--bold">nicht</span> für jedermann zugänglich.</p>
         @elseif ($beachcourt->isPublic === 1 )
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Feld ist für <span class="-typo-copy -typo-copy--bold">jedermann zugänglich</span>.</p>
@@ -343,22 +336,26 @@
           <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider darüber noch keine Daten vor.</p>
         @endif
 
-        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Kann ich auf diesem Feld kostenlos spielen?</h4>
-        @if ($beachcourt->isChargeable === 1 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">Nein, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenpflichtig</span>. Die Preise dafür kannst du beim Betreiber in Erfahrung bringen.</p>
-        @elseif ($beachcourt->isChargeable === 0 )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Ja, das Spielen auf diesem Feld ist <span class="-typo-copy -typo-copy--bold">kostenfrei</span>. Geh gleich los und spiele eine Runde oder zwei.</p>
-        @elseif ($beachcourt->isChargeable === 3)
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spielen auf diesem Feld ist im Eintrittspreis inbegriffen.</p>
-        @elseif ($beachcourt->isChargeable === NULL )
-          <p class="-typo-copy -text-color-gray-01 -spacing-d">Es liegen uns leider keine Informationen vor, ob das Spielen auf diesem Feld kostenpflichtig ist.</p>
+        <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Was kostet die Benutzung des Feldes?</h4>
+        @if ($beachcourt->isChargeable === 1)
+        	<p class="-typo-copy -text-color-gray-01 -spacing-d">Dieses Beachfeld wird für einen bestimmten Zeitraum (meist stundenweise) vermietet. Bitte informiere dich über die aktuellen Nutzungsgebühren beim Betreiber.</p>
+        @elseif($beachcourt->isSingleAccess === 1)
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Um Zugang zu diesem Beachfeld zu erhalten, musst du eine einmalige Eintrittsgebühr bezahlen. Bitte informiere dich über die aktuellen Eintrittsgebühren beim Betreiber.</p>
+				@elseif($beachcourt->isMembership === 1)
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Um Zugang zu diesem Beachfeld zu erhalten, musst du Mitglied im Betreiberverein werden. Bei einer Hotelanlage musst du als Gast registriert sein.</p>
+
+				@elseif($beachcourt->isChargeable === NULL)
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Hierüber liegen uns noch keine Informationen vor. Falls du diese Informationen besitzt, teile sie uns bitte mit.</p>
+				@else
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">Das Spiel auf diesem Feld ist kostenfrei. Geh gleich los und spiele eine Runde oder zwei!</p>
         @endif
-         @if($beachcourt->notes != NULL)
-         <h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
-          <p class="-typo-copy -text-color-gray-01 -spacing-b">
-            {{ $beachcourt->notes }}
+
+        @if($beachcourt->notes != NULL)
+        	<h4 class="-typo-headline-04 -text-color-petrol -spacing-a">Weitere Informationen</h4>
+          <p class="-typo-copy -text-color-gray-01 -spacing-d">
+          	{{ $beachcourt->notes }}
           </p>
-        @endif
+        @endif  
       </div>
     </div>
 
@@ -402,7 +399,7 @@
       @if($beachcourt->distance <= $distance)
         @foreach ($otherBeachcourts as $otherBeachcourt)
           @if($beachcourt->latitude != $otherBeachcourt->latitude )
-            @if($otherBeachcourt-> submitState != 'submitted')
+            @if($otherBeachcourt-> submitState == 'approved')
               <div class="column column--12 column--s-6 column--m-6 column--l-4 -spacing-b -flex">
                 <div class="beachcourt-item">
                   <div class="beachcourt-item__image">

@@ -35,6 +35,54 @@
     </style>
   </head>
   <body @unless(empty($body_class)) class="{{$body_class}}" @endunless>
+  	<div class="overlay">
+    <form action="/search" method="POST" class="form overlay-form">
+      <label class="input section__input" style="overflow: visible;">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
+        <input type="hidden" class="form-control" id="form-long" name="long">
+        <input type="hidden" class="form-control" id="form-lat" name="lat">
+
+        <input type="search" class="input__field" id="address-input" placeholder="Wo suchst du ein Feld?" />
+        <span class="input__label">Wo suchst du ein Feld?</span>
+        <div class="input__border"></div>
+
+        @if ($errors->has('postcode13'))
+          <div class="message message--error -spacing-d">
+            <div class="message__icon message__icon--error">
+              <span data-feather="alert-circle"></span>
+            </div>
+            <p class="message__text message__text--error">{{ $errors->first('postcode13', 'Die Postleitzahl muss fünf Stellen besitzen.') }}</p>
+          </div>
+        @endif
+        
+        <button class="button-primary">
+        	<span class="button-primary__label">Suchen</span>
+        	<span class="button-primary__label button-primary__label--hover">Suchen</span>
+        </button>
+       
+        @if (session('status'))
+	        <div class="message message--error -spacing-d">
+	          <div class="message__icon message__icon--error">
+	            <span data-feather="alert-circle"></span>
+	          </div>
+	          <p class="message__text message__text--error">{{ session('status') }}</p>
+	        </div>
+        @endif
+
+      </label>
+    </form>
+	</div>
+
+  	<div class="menu-mobile menu-mobile--menu">
+  		<div class="menu-mobile__icon menu-mobile__icon--menu" data-feather="menu"></div>
+  		<div class="menu-mobile__icon menu-mobile__icon--close" data-feather="x"></div>
+  	</div>
+  	<div class="menu-mobile menu-mobile--search">
+  		<div class="menu-mobile__icon menu-mobile__icon--search" data-feather="search"></div>
+  		<div class="menu-mobile__icon menu-mobile__icon--close" data-feather="x"></div>
+  	</div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ5N6TZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -42,20 +90,20 @@
     <div class="sidebar">
       <a href="{{ url('/') }}"><img class="sidebar__logo" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
       <ul class="navigation">
-        <li class="navigation__item tipso-sidebar" data-tipso="Startseite"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span></a></li>
+        <li class="navigation__item"><a href="{{ url('/') }}" class="navigation__link"><span data-feather="home"></span> <span class="navigation__label -typo-copy ">Home</span> </a></li>
         @if (Auth::check())
-        <li class="navigation__item tipso-sidebar" data-tipso="Dein Profl"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span></a>
+        <li class="navigation__item"><a href="{{ URL::route('profile.show', Auth::user()->userName) }}" class="navigation__link"><span data-feather="user"></span> <span class="navigation__label -typo-copy ">Dein Profil</span> </a>
         </li>
         @else
-        <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span></a></li>
+        <li class="navigation__item"><a href="{{ URL::route('login') }}" class="navigation__link"><span data-feather="user"></span> <span class="navigation__label -typo-copy ">Login</span> </a></li>
         @endif
-          <li class="navigation__item tipso-sidebar" data-tipso="neues Feld vorschlagen"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span></a></li>
-          <li class="navigation__item tipso-sidebar" data-tipso="Fragen und Antworten"><a href="{{ url('/') }}/page/faq" class="navigation__link"><span data-feather="help-circle"></span></a></li>
+          <li class="navigation__item"><a href="{{ URL::route('beachcourtsubmit.submit') }}" class="navigation__link"><span data-feather="plus-circle"></span> <span class="navigation__label -typo-copy ">Feld vorschlagen</span> </a></li>
+          <li class="navigation__item"><a href="{{ url('/') }}/page/faq" class="navigation__link"><span data-feather="help-circle"></span> <span class="navigation__label -typo-copy ">FAQ</span> </a></li>
         @if (Auth::check())
-          <li class="navigation__item tipso-sidebar" data-tipso="Ausloggen">
+          <li class="navigation__item">
             <form action="{{ URL::route('logout') }}" method="POST" class="form form--logout">
               {{ csrf_field() }}
-              <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="navigation__link">  <span data-feather="log-out"></span>
+              <a href="javascript:;" onclick="document.querySelector('.form--logout').submit();" class="navigation__link">  <span data-feather="log-out"></span> <span class="navigation__label -typo-copy ">Logout</span>
               </a>
             </form>
           </li>
@@ -138,17 +186,8 @@
       feather.replace();
       //progressive image preloading
       progressively.init();
-      //tooltips
-      $('.tipso-sidebar').tipso({
-        speed : 250,
-        offsetX : -20,
-        background : '#457b8c',
-        color : '#ffffff',
-        position : 'right',
-        showArrow : false,
-        tooltipHover : true
-      });
 
+      //tooltips
       $('.tipso-favorite').tipso({
         speed : 50,
         offsetY: 5,
@@ -158,6 +197,8 @@
         showArrow : false,
         tooltipHover : true
       });
+
+      
 
       var placesAutocomplete = places({
         type: 'city',
@@ -181,6 +222,34 @@
                 document.querySelector('#form-long').value = e.suggestion.latlng.lng || '';     
             });
          
+      });
+
+      $('.sidebar').hover(function() {
+      	$(this).addClass('sidebar--open');
+      	$('.navigation').addClass('navigation--open');
+      	setTimeout(function () {
+            $('.navigation__label').addClass('navigation__label--visible');
+        }, 500);
+      	
+      },
+      function() {
+      	$(this).removeClass('sidebar--open');
+      	$('.navigation').removeClass('navigation--open');
+      	$('.navigation__label').removeClass('navigation__label--visible');
+      }
+      );
+
+      $('.menu-mobile--search').click(function() {
+      	$(this).find('.menu-mobile__icon--search').toggle();
+      	$(this).find('.menu-mobile__icon--close').toggle();
+      	$('.overlay').toggleClass('overlay--open');
+      });
+
+      $('.menu-mobile--menu').click(function() {
+      	$(this).find('.menu-mobile__icon--menu').toggle();
+      	$(this).find('.menu-mobile__icon--close').toggle();
+
+      	$('.sidebar').toggleClass('sidebar--mobile-visible');
       });
     </script>
 

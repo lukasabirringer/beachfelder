@@ -25,17 +25,50 @@
 	<div class="beachcourt-item__info">
 		<a href="{{ URL::route('beachcourts.show', array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude)) }}" class="beachcourt-item__title">Beachfeld in {{ $beachcourt->city }}@if ($beachcourt->district != '')-{{ $beachcourt->district }}@endif 
 		</a>
-		@if ($beachcourt->rating >= 1)
-			<div class="icon-text beachcourt-item__rating -spacing-b">
-				<span class="icon-text__icon" data-feather="award"></span>
-				<span class="icon-text__text">Dieses Feld wurde mit <br> <span class="-typo-copy--bold">{{ $beachcourt->rating }}</span>/5 Bällen bewertet</span>
-			</div>
-		@else
-			<div class="icon-text beachcourt-item__rating -spacing-b">
-				<span class="icon-text__icon" data-feather="award"></span>
-				<span class="icon-text__text">Dieses Feld wurde noch <br> <span class="-typo-copy--bold">nicht </span> bewertet</span>
-			</div>
-		@endif
+    @if ($beachcourt->bfdeRating)
+    	<div class="rating -spacing-b">
+    		@for ($i = 1; $i <= $beachcourt->bfdeRating; $i++)
+    		  <div class="rating__item">
+    		    <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+    		  </div>
+    		@endfor
+    		<?php $starsLeft = 5 - $beachcourt->bfdeRating; ?>
+    		@if (count($starsLeft) > 0)
+          @for ($i = 1; $i <= $starsLeft; $i++)
+          <div class="rating__item">
+            <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+          </div>
+          @endfor
+          <p class="-typo-copy -typo-copy--small -text-color-gray-01 -text-color-gray-01">Vorläufige Bewertung von beachfelder.de</p>
+        </div>
+      @endif
+
+    @elseif ($beachcourt->ratingCount < 10)
+    	<div class="rating -spacing-b">
+      	@for ($i = 1; $i <= 5; $i++)
+      		<div class="rating__item">
+      		  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+      		</div>
+      	@endfor
+      	<p class="-typo-copy -typo-copy--small -text-color-gray-01 ">Momentan liegen noch zu wenige Bewertungen vor.</p>
+    	</div>
+    @else
+    	@for ($i = 1; $i <= $beachcourt->rating; $i++)
+      	<div class="rating__item">
+      	  <img src="{{ asset('images/rating-badge-petrol.svg') }}" alt="">
+      	</div>
+      @endfor
+      <?php $starsLeft = 5 - $beachcourt->rating; ?>
+      @if (count($starsLeft) > 0)
+      	@for ($i = 1; $i <= $starsLeft; $i++)
+      		<div class="rating__item">
+      		  <img src="{{ asset('images/rating-badge-gray.svg') }}" alt="">
+      		</div>
+      	@endfor
+      @endif
+
+    	<p class="-typo-copy -text-color-gray-01 -text-color-gray-0 -spacing-d">{{ $beachcourt->ratingCount }} Bewertungen</p>
+    @endif
 
 		<div class="icon-text -spacing-b">
 			<span class="icon-text__icon" data-feather="map-pin"></span>

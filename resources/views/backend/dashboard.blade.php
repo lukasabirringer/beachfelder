@@ -1,6 +1,18 @@
 @extends('layouts.backend')
 
 @section('content')
+	@if (\Session::has('success'))
+	  <ul class="notification">
+	    <li class="notification__item">
+	      <span class="notification__icon" data-feather="info"></span>
+	      <p class="notification__text">{!! \Session::get('success') !!}</p>
+
+	      <button class="button-secondary notification-button">
+	        <span class="button-secondary__label notification-button__label">OK</span>
+	      </button>
+	    </li>
+	  </ul>
+	@endif
 
     <div class="content__main">
         <div class="row">
@@ -14,13 +26,33 @@
             </p>
           </div>
         </div>
+        <div class="row">
+        	<div class="column column--3 -spacing-b">
+        		<a href="{{ URL::route('backendBeachcourt.create') }}" class="button-primary">
+        			<span class="button-primary__label">Neues Feld erstellen</span>
+        			<span class="button-primary__label button-primary__label--hover">Neues Feld erstellen</span>
+        		</a>
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		<a href="{{ URL::route('backendFaq.create') }}" class="button-primary">
+        			<span class="button-primary__label">Neue FAQ erstellen</span>
+        			<span class="button-primary__label button-primary__label--hover">Neue FAQ erstellen</span>
+        		</a>
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		
+        	</div>
+        	<div class="column column--3 -spacing-b">
+        		
+        	</div>
+        </div>
 
         <div class="row">
             <div class="column column--12 -spacing-a">
                 <hr class="divider">
             </div>
         </div>
-
+        
         <div class="row">
             <div class="column column--12 column--s-6 -spacing-b">
                 {{-- Anzahl (Courts, User, Bewertungen, Favoriten) --}}
@@ -72,74 +104,95 @@
         </div>
 
         <div class="row">
-            <div class="column column--12 column--s-6">
+            <div class="column column--12">
                 <h4 class="-typo-headline-04 -text-color-gray-01">Die neusten eingereichten Beachfelder</h4>
                 <div class="row">
-                    <div class="column column--12 column--s-4 -spacing-a">
+                    <div class="column column--12 column--s-1 -spacing-a">
                         <span class="-typo-copy -typo-copy--bold -text-color-gray-01">ID</span>
                     </div>
-                    <div class="column column--12 column--s-4 -spacing-a">
+                    <div class="column column--12 column--s-3 -spacing-a">
                         <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Ort</span>
                     </div>
-                    <div class="column column--12 column--s-4 -spacing-a">
+                    <div class="column column--12 column--s-2 -spacing-a">
+                        <span class="-typo-copy -typo-copy--bold -text-color-gray-01">User-ID</span>
+                    </div>
+                    <div class="column column--12 column--s-3 -spacing-a">
+                        <span class="-typo-copy -typo-copy--bold -text-color-gray-01">eingereicht am</span>
+                    </div>
+                    <div class="column column--12 column--s-3 -spacing-a">
                         <span class="-typo-copy -typo-copy--bold -text-color-gray-01"> </span>
                     </div>
                 </div>
                 @foreach ($submittedBeachcourts as $beachcourt)
                     <hr class="divider">
-                    <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST">
-                        <input name="_method" type="hidden" value="DELETE">
-                        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-
-                        <div class="row">
-                            <div class="column column--12 column--s-4">
-                                <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->id }}</span>
-                            </div>
-                            <div class="column column--12 column--s-4">
-                                <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</span>
-                            </div>
-                            <div class="column column--12 column--s-4"> 
-                                <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="link-icon -text-color-petrol">
-                                    <span data-feather="search"></span>
-                                </a>
-
-                                <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01">
-                                    <span data-feather="edit"></span>
-                                </a>
-
-                                <a href="#" class="link-icon -text-color-red" onclick="return confirm('Möchtest du das Beachfeld wirklich löschen?')">
-                                    <span data-feather="trash-2"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                @endforeach
-            </div>
-            <div class="column column--12 column--s-6">
-                <h4 class="-typo-headline-04 -text-color-gray-01">Die neusten Nachrichten</h4>
-                <div class="row">
-                    <div class="column column--12 -spacing-a">
-                        <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Anfragen über unser Kontaktformular</span>
-                    </div>
-                </div>
-                @foreach ($messages as $message)
-                    <hr class="divider">
+                    
                     <div class="row">
-                        <div class="column column--12">
-                            <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Betreff</span> 
-                            <span class="-typo-copy -text-color-gray-01">{{ $message->subject }}</span>
+                        <div class="column column--12 column--s-1">
+                            <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->id }}</span>
                         </div>
-                        <div class="column column--12">
-                            <span class="-typo-copy -typo-copy--bold -text-color-gray-01">E-Mail</span>
-                            <span class="-typo-copy -text-color-gray-01">{{ $message->userEmail }}</span>
+                        <div class="column column--12 column--s-3">
+                            <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->postalCode }} {{ $beachcourt->city }}</span>
                         </div>
-                        <div class="column column--12 -spacing-d">
-                            <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Nachricht</p>
-                            <p class="-typo-copy -text-color-gray-01">{{ $message->message }}</p>
+                        <div class="column column--12 column--s-2">
+                            <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->user_id }}</span>
                         </div>
-                    </div>
+                        <div class="column column--12 column--s-3">
+                            <span class="-typo-copy -text-color-gray-01">{{ $beachcourt->created_at }}</span>
+                        </div>
+                        <div class="column column--12 column--s-3"> 
+                            <a href="{{ URL::route('backendBeachcourt.show', $beachcourt->id) }}" class="button-primary button-primary--dark-gray">
+                                <span class="button-primary__label">Details</span>
+                                <span class="button-primary__label button-primary__label--hover">Details</span>
+                            </a>
+
+                            <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="button-primary">
+                                <span class="button-primary__label">Feld bearbeiten</span>
+                                <span class="button-primary__label button-primary__label--hover">Feld bearbeiten</span>
+                            </a>
+
+                            <form action="{{ URL::route('backendBeachcourt.destroy', $beachcourt->id) }}" method="POST" id="form--deleteField">
+                              <input name="_method" type="hidden" value="DELETE">
+                              <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                              <button class="button-primary button-primary--red">
+                              	<span class="button-primary__label">Feld löschen</span>
+                              	<span class="button-primary__label button-primary__label--hover">Feld löschen</span>
+                              </button>
+                            </form>
+                        </div>
+                      </div>
                 @endforeach
             </div>
+        </div>
+        <div class="row -spacing-a">
+        	<div class="column column--12">
+        	    <h4 class="-typo-headline-04 -text-color-gray-01">Die neusten Nachrichten</h4>
+        	    <div class="row">
+        	        <div class="column column--12 -spacing-a">
+        	            <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Anfragen über unser Kontaktformular</span>
+        	        </div>
+        	    </div>
+        	    @foreach ($messages as $message)
+        	        <hr class="divider">
+        	        <div class="row">
+        	            <div class="column column--12">
+        	                <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Betreff</span> 
+        	                <span class="-typo-copy -text-color-gray-01">{{ $message->subject }}</span>
+        	            </div>
+        	            <div class="column column--12">
+        	                <span class="-typo-copy -typo-copy--bold -text-color-gray-01">E-Mail</span>
+        	                <span class="-typo-copy -text-color-gray-01">{{ $message->userEmail }}</span>
+        	            </div>
+        	            <div class="column column--12">
+        	                <span class="-typo-copy -typo-copy--bold -text-color-gray-01">Datum</span>
+        	                <span class="-typo-copy -text-color-gray-01">{{ $message->created_at }}</span>
+        	            </div>
+        	            <div class="column column--12 -spacing-d">
+        	                <p class="-typo-copy -typo-copy--bold -text-color-gray-01">Nachricht</p>
+        	                <p class="-typo-copy -text-color-gray-01">{{ $message->message }}</p>
+        	            </div>
+        	        </div>
+        	    @endforeach
+        	</div>
         </div>
         <div class="row">
             <div class="column column--12 -spacing-a">
@@ -148,3 +201,11 @@
         </div>
     </div><!-- .content__main ENDE -->
 @endsection
+
+@push('scripts')
+    <script>
+        $('.notification-button').click(function() {
+          $(this).parent().parent('.notification').slideUp();
+        });
+    </script>
+@endpush

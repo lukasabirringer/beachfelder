@@ -55,11 +55,14 @@ class BeachcourtController extends Controller
              'state' => $request->state,
              'latitude' => $request->latitude,
              'longitude' => $request->longitude,
-             'isChargeable' => $request->chargeable,
+             'isChargeable' => $request->isChargeable,
              'courtCountOutdoor' => $request->courtCountOutdoor,
              'courtCountIndoor' => $request->courtCountIndoor,
              'submitState' => $request->submitState,
-             'isPublic' => $request->public,
+             'isPublic' => $request->isPublic,
+             'isMembership' => $request->isMembership,
+             'isSingleAccess' => $request->isSingleAccess,
+             'isswimmingLake' => $request->isswimmingLake,
              'floodlight' => $request->floodlight,
              'shower' => $request->shower,
              'operator' => $request->operator,
@@ -113,6 +116,9 @@ class BeachcourtController extends Controller
         $beachcourt->courtCountIndoor = $request->input('courtCountIndoor');
         $beachcourt->submitState = $request->input('submitState');
         $beachcourt->isPublic = $request->input('isPublic');
+        $beachcourt->isMembership = $request->input('isMembership');
+        $beachcourt->isSingleAccess = $request->input('isSingleAccess');
+        $beachcourt->isswimmingLake = $request->input('isswimmingLake');
         $beachcourt->floodlight = $request->input('floodlight');
         $beachcourt->shower = $request->input('shower');
         $beachcourt->operator = $request->input('operator');
@@ -130,6 +136,6 @@ class BeachcourtController extends Controller
         $beachcourt = Beachcourt::findOrFail($id);
         $beachcourt->delete();
 
-        return redirect()->route('backendBeachcourt.index');
+        return redirect()->back()->with('success', 'Beachfeld wurde gelöscht');
     }
 }

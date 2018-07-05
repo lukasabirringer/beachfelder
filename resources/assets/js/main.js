@@ -74,11 +74,6 @@ $(document).ready(function(){
     return false;
   });
 
-  //closes modals on search page with new value
-  $('.button__accept').click(function() {
-    $(this).parent('.flyout').removeClass('flyout--open');
-  });
-
   //show tooltip how we rate at beachcourt item
   $('.beachcourt-item__info-icon').click(function() {
     $(this).next($('.flyout')).addClass('flyout--open');

@@ -39,7 +39,7 @@
                 <table style="width: 100%;">
                     <thead>
                         <tr>
-                            <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">ID</th>
+                            <th class="column column--12 column--m-1 -typo-copy -typo-copy--bold -text-color-green">ID</th>
                             <th class="column column--12 column--m-4 -typo-copy -typo-copy--bold -text-color-green">Ort</th>
                             <th class="column column--12 column--m-4 -typo-copy -typo-copy--bold -text-color-green">Koordinaten</th>
                             <th class="column column--12 column--m-2 -typo-copy -typo-copy--bold -text-color-green">Optionen</th>
@@ -48,7 +48,7 @@
                     <tbody>
                         @foreach ($submittedBeachcourts as $beachcourt)
                           <tr>
-                              <td class="column column--12 column--m-2 -typo-copy -text-color-gray-01 column column--12 column--m-1">{{ $beachcourt->id }}</td>
+                              <td class="column column--12 column--m-1 -typo-copy -text-color-gray-01 column column--12 column--m-1">{{ $beachcourt->id }}</td>
                               <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->postalCode }} {{  $beachcourt->city }} {{  $beachcourt->district }}</td>
                               <td class="column column--12 column--m-4 -typo-copy -text-color-gray-01 column column--12 column--m-3">{{ $beachcourt->latitude }} {{ $beachcourt->longitude }}</td>
                               <td class="column column--12 column--m-2">
@@ -99,7 +99,7 @@
 @push('scripts')
     <script>
         var courtList = new List('courts', {
-          valueNames: ['id', 'city', 'rating'],
+          valueNames: ['id', 'city', 'email', 'submitState'],
           page: 30,
           pagination: true
         });

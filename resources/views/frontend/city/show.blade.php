@@ -24,7 +24,7 @@
 
     <div class="row">
       @foreach ($beachcourts as $beachcourt)
-        @if($beachcourt-> submitState != 'submitted')
+        @if($beachcourt-> submitState == 'approved')
           <div class="column column--12 column--s-6 column--m-4 -spacing-b">
             @include('frontend.reusable-includes.beachcourt-item')
           </div>

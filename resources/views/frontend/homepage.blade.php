@@ -4,11 +4,12 @@
 @section('title_and_meta')
     <title>beachfelder.de | 🏝 Deine Beachvolleyballfeld-Suchmaschine 🏝</title>
     <meta name="description" content="beachfelder.de ist die Beachvolleyballfeld-Suchmaschine mit der größten und umfangreichsten Datenbank an Feldern. Auf beachfelder.de kannst du deine Felder bewerten, dir Favoriten speichern und uns neue Beachvolleyballfelder vorschlagen." />
-   
 @endsection
 
 @section('frontpage')
   <div class="section section--start">
+  	<a href="{{ url('/') }}"><img class="sidebar__logo hide-on-desktop" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
+
     @if (Auth::check())
       <div class="profile-user hide-on-mobile section__button">
         <div class="profile-user__info">

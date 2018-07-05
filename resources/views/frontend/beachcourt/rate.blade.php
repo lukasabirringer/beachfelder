@@ -78,580 +78,168 @@
   @include('frontend.reusable-includes.divider')
 
   <div class="row">
-    <form action="{{ url('/rating/new') }}" method="POST" class="form-rating" id="form-rating" enctype="multipart/form-data">
+    <form action="{{ url('/rating/new') }}" method="POST" class="form-rating" id="form-rating" enctype="multipart/form-data" novalidate="novalidate">
       {{ csrf_field() }}
       <input type="hidden" value="{{ $beachcourt->id }}" content="text" name="beachcourtname">
 
-      <div class="tab -spacing-a" id="sand">
-        <div class="column column--12">
-          <div class="row">
-            <div class="column column--12">
-              <h3 class="-typo-headline-03 -text-color-gray-01">Sand</h3>
-              <p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Qualität des Sandes?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="125" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">sehr gut</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              		Feinkörniger, gewaschener Sand, gerundete Körner bis 2,0 mm (entspr. DVV Beach1 oder 2)
-              </p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="62.5" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">gut</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              		Feinkörnig bis 2 mm, aber scharfkantig oder nicht gewaschen (hoher Anteil kleinster Partikel)
-              </p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandQuality" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">schlecht</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              		Grobe Körner > 2 mm enthalten, scharfkantig
-              </p>
-              
-            </div>
-          </div>
+      <div class="tab tab--active -spacing-a" id="tab-01">
+        @include('frontend.beachcourt.ratingSteps.ratingStep-1')
 
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Ist die Spielfläche eben?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Ja</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              	Grundfläche eben, Sandfläche gepflegt,  Glätter vor Ort zugänglich
-              </p>              
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">es geht so</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              	Grundfläche eben, aber zu wenig geglättet, kein Glätter vor Ort
-              </p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="courtTopography" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Nein</span>
-                </div>
-              </label>
-              <p class="-typo-copy -typo-copy--small -text-color-gray-01 -spacing-c">
-              	Grundfläche geneigt oder Sandfläche sehr uneben, kein Glätter
-              </p>
-            </div>
-          </div>
-
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Wie tief ist der Sand an der flachsten Stelle des Feldes?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="112" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">mehr als 30cm</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">20-30cm</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="sandDepth" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">weniger als 20cm</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12 ">
-              <p class="-typo-copy -text-color-gray-01">Ist ein Staubschutz, wie zum Beispiel eine Bewässerungsanlage vorhanden?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Keine Staubentwicklung oder Wasseranschluss vorhanden</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Leichte Staubentwicklung, kein Wasseranschluss</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="irrigationSystem" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Starke Staubentwicklung, kein Wasseranschluss</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-
-        </div>
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #sand ENDE -->
 
-      <div class="tab -spacing-a" id="net">
-        <div class="column column--12">
-          <div class="row">
-            <div class="column column--12 -spacing-b">
-              <h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Netz</h3>
-              <p class="-typo-copy -text-color-gray-01 -spacing-c">Ist die Netzhöhe frei wählbar?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="112" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Ja, man kann alle Höhen von 2m bis 2,43m wählen</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Die Höhe stimmt, ist aber nicht verstellbar</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netHeight" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Nein, leider ist die Höhe nicht veränderbar</span>
-                </div>
-              </label>
-            </div>
-          </div>
+      <div class="tab -spacing-a" id="tab-02">
+        @include('frontend.beachcourt.ratingSteps.ratingStep-2')
 
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Wie ist die Beschaffenheit des Netzes?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Stabiles Beachnetz mit fester Einfassung</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Provisorisches Netz (zum Beispiel Hallen-Netz), Beachnetz mit Mängeln</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netType" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Schnur oder Kettennetz oder Netz fehlt</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Sind Antennen vorhanden?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Ja</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="14" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Ja, aber die Befestigung ist mangelhaft</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netAntennas" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Nein</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Lässt sich das Netz korrekt spannen?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Spannseil und Abspannung intakt</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Zu wenig Spannung, nicht justierbar</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="netTension" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Netz hängt durch, bzw. schwingt stark</span>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #net ENDE -->
 
-      <div class="tab -spacing-a" id="playground">
-        <div class="column column--12">
-          <div class="row">
-            <div class="column column--12 -spacing-b">
-              <h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Spielfeld</h3>
-              <p class="-typo-copy -text-color-gray-01 -spacing-c">Wie ist die Beschaffenheit der Linien?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="112" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">5 cm breit, im Boden verankert</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Falsche Breite oder Verankerung lose</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="boundaryLines" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Keine Linien oder Linien nicht verankert</span>
-                </div>
-              </label>
-            </div>
-          </div>
+      <div class="tab -spacing-a" id="tab-03">
+        @include('frontend.beachcourt.ratingSteps.ratingStep-3')
 
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Sind die Spielfeldmaße regelkonform?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">8 x 16 m +/- 5 cm, rechteckig</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Abweichung 5-25 cm oder nicht rechteckig gespannt</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="fieldDimensions" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Abweichung >25 cm oder geringe Abweichung + nicht rechteckig</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Besteht eine ausreichende Sicherheitszone um das Spielfeld?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="130" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">3m ringsum oder mehr</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="65" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">2 - 3m</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="securityZone" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Unter 2m oder Hindernisse im Auslaufbereich</span>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #playground ENDE -->
 
-      <div class="tab -spacing-a" id="environment">
-        <div class="column column--12">
-          <div class="row">
-            <div class="column column--12 -spacing-b">
-              <h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Umgebung</h3>
-              <p class="-typo-copy -text-color-gray-01 -spacing-c">Wie gut ist das Spielfeld gegen Wind geschützt?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="56" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Gut windgeschützt</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="28" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Windanfällig bei schlechtem Wetter</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="windProtection" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Eigentlich immer windig, ohne Schutzmaßnahmen</span>
-                </div>
-              </label>
-            </div>
-          </div>
+      <div class="tab -spacing-a" id="tab-04">
+        @include('frontend.beachcourt.ratingSteps.ratingStep-4')
 
-          @include('frontend.reusable-includes.divider')
-
-          <div class="row -spacing-a">
-            <div class="column column--12">
-              <p class="-typo-copy -text-color-gray-01">Beeinträchtigen andere Spielfelder das Spielgeschehen?</p>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="45" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="sun"></span>
-                  <span class="input-radio-icon__label">Einzelfeld, bzw. Schutz durch Ballfangzaun</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="22.5" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud"></span>
-                  <span class="input-radio-icon__label">Maximal 2 Felder nebeneinander ohne Ballfangzaun</span>
-                </div>
-              </label>
-            </div>
-            <div class="column column--12 column--m-4 -spacing-d">
-              <label class="input-radio-icon">
-                <input type="radio" class="input-radio-icon__field" name="interferenceCourt" value="0" required>
-                <div class="input-radio-icon__container">
-                  <span class="input-radio-icon__icon" data-feather="cloud-drizzle"></span>
-                  <span class="input-radio-icon__label">Mehrere Felder direkt nebeneinander ohne Ballfangzaun</span>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
+        @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="nextBtn" class="button-primary nextBtn">
+      	      <span class="button-primary__label">Schritt weiter</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" id="nextBtn" class="button-primary nextBtn" disabled="disabled">
+	      	  	  <span class="button-primary__label">Schritt weiter</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #environment ENDE -->
-      <div class="tab -spacing-a" id="security">
-      	<div class="column column--12">
-      	  <div class="row">
-      	    <div class="column column--12 -spacing-b">
-      	      <h3 class="-typo-headline-03 -text-color-gray-01 -spacing-c">Sicherheit</h3>
-      	    </div>
-      	   </div>
-      	   <div class="row">
-      	    <div class="column column--12 -spacing-d">
-      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist der Sand auf dem Spielfeld stellenweise weniger als 20 cm tief?</p>
-      	    	<label class="input-toggle -spacing-c">
-      	    		<input type="hidden" class="input-toggle__hidden" name="securitySandDepth" value="0">
-      	    		<input type="checkbox" name="securitySandDepth" class="input-toggle__field" value="0">
-      	    		<span class="input-toggle__switch"></span>
-      	    		<span class="input-toggle__label">Nein</span>
-      	    	</label>
-      	    </div>
-      	   </div>
-      	   @include('frontend.reusable-includes.divider')
-      	   <div class="row">
-      	    <div class="column column--12 -spacing-d">
-      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Ist der Sand auf dem Court durch Müll, Scherben oder Fäkalien verschmutzt?</p>
-      	    	<label class="input-toggle -spacing-c">
-      	    		<input type="hidden" class="input-toggle__hidden" name="securityJunk" value="0">
-      	    		<input type="checkbox" name="securityJunk" class="input-toggle__field" value="0">
-      	    		<span class="input-toggle__switch"></span>
-      	    		<span class="input-toggle__label">Nein</span>
-      	    	</label>
-      	    </div>
-      	   </div>
-      	   @include('frontend.reusable-includes.divider')
-      	   <div class="row">
-      	    <div class="column column--12 -spacing-d">
-      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Hat die Pfostenanlage scharfe Kanten oder nicht verkleidete Haken oder Schraubenköpfe?</p>
-      	      <label class="input-toggle -spacing-c">
-      	      	<input type="hidden" class="input-toggle__hidden" name="securityCutting" value="0">
-      	      	<input type="checkbox" name="securityCutting" class="input-toggle__field" value="0">
-      	      	<span class="input-toggle__switch"></span>
-      	      	<span class="input-toggle__label">Nein</span>
-      	      </label>
-      	    </div>
-      	   </div>
-      	   @include('frontend.reusable-includes.divider')
-      	   <div class="row">
-      	    <div class="column column--12 -spacing-d">
-      	    	<p class="-typo-copy -text-color-gray-01 -spacing-c">Gibt es Stufen, scharfkantige Bordsteine oder Mauern in der Auslaufzone?</p>
-      	      <label class="input-toggle -spacing-c">
-      	      	<input type="hidden" class="input-toggle__hidden" name="securityBricks" value="0">
-      	      	<input type="checkbox" name="securityBricks" class="input-toggle__field" value="0">
-      	      	<span class="input-toggle__switch"></span>
-      	      	<span class="input-toggle__label">Nein</span>
-      	      </label>
-      	    </div>
-      	   </div>
-      	</div>  
+      <div class="tab -spacing-a" id="tab-05">
+      	  @include('frontend.beachcourt.ratingSteps.ratingStep-5')
+
+      	  @if (Auth::check())
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn">
+      	      <span class="button-primary__label">Schritt zurück</span>
+      	      <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
+      	    </button>
+      	  </div>
+      	  
+      	  <div class="column column--12 column--m-6 -spacing-b">
+      	    <button type="submit" class="button-primary">
+      	      <span class="button-primary__label">Bewertung abgeben</span>
+      	      <span class="button-primary__label button-primary__label--hover">Bewertung abgeben</span>
+      	    </button>
+      	  </div>
+      	  @else 
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	
+	      	  </div>
+	      	  <div class="column column--12 column--m-6 -spacing-b">
+	      	  	<button type="button" class="button-primary " disabled="disabled">
+	      	  	  <span class="button-primary__label">Bewertung abgeben</span>
+	      	  	  <span class="button-primary__label button-primary__label--hover">Bewertung abgeben</span>
+	      	  	</button>
+	      	  	<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
+	      	  	
+	      	  </div>
+      	  @endif
       </div> <!-- .tab #security ENDE -->
-      @if (Auth::check())
-      <div class="column column--12 column--m-6 -spacing-b">
-        <button type="button" id="prevBtn" class="button-primary button-primary--dark-gray prevBtn" onclick="nextPrev(-1)">
-          <span class="button-primary__label">Schritt zurück</span>
-          <span class="button-primary__label button-primary__label--hover">Schritt zurück</span>
-        </button>
-      </div>
-    
-      <div class="column column--12 column--m-6 -spacing-b">
-        <button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)">
-          <span class="button-primary__label">Schritt weiter</span>
-          <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
-        </button>
-      </div>
-      @else
-      	<div class="column column--12 column--m-6 -spacing-b">
-      		
-      	</div>
-      	<div class="column column--12 column--m-6 -spacing-b">
-      		<button type="button" id="nextBtn" class="button-primary nextBtn" onclick="nextPrev(1)" disabled="disabled">
-      		  <span class="button-primary__label">Schritt weiter</span>
-      		  <span class="button-primary__label button-primary__label--hover">Schritt weiter</span>
-      		</button>
-      		<p class="-typo-copy -text-color-gray-01 -spacing-b">Um ein Feld zu bewerten, musst du dich zuvor als User registrieren und angemeldet sein. <a class="link-text" href="{{ route('register') }}">Registriere dich hier</a> oder <a class="link-text" href="{{ route('login') }}">melde dich an.</a></p>	
-      		
-      	</div>
-      @endif
     </form>
   </div><!-- .row ENDE -->
 </div><!-- .content__main ENDE -->
@@ -659,44 +247,74 @@
 
 @push('scripts')
   <script>
-    //TABS
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
+  	function updateParentState( clicked_radio_field ) {  
+  	  var this_radio_group = clicked_radio_field.parent().parent().parent();
 
-    function showTab(n) {
-      // This function will display the specified tab of the form ...
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      // ... and fix the Previous/Next buttons:
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>Deine Bewertung abgeben</span> <span class='button-primary__label button-primary__label--hover'>Deine Bewertung abgeben</span>";
-      } else {
-        document.getElementById("nextBtn").innerHTML = "<span class='button-primary__label'>weiter</span> <span class='button-primary__label button-primary__label--hover'>weiter</span>";
-      }
-    }
+  	  this_radio_group.data('valide', 'true')  
+  	}
 
-    function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form... :
-      if (currentTab >= x.length) {
-        //...the form gets submitted:
-        document.getElementById("form-rating").submit();
+  	function nextTab( this_tab, next_tab ) {
+  	  var error = [];
+  	  $( this_tab ).children().children('.group-rate').each(function( index ) {
 
-        return false;
-      }
-      // Otherwise, display the correct tab:
-      showTab(currentTab);
-    }
+  	    if ( $( this ).data('valide') == false ) {
+  	        error.push( $( this ) );
+  	    }    
+  	    $( this ).removeClass( "group-rate--error" );
+  	    $( this ).find(".group-rate--hint").hide();
+  	  });
+  	  if ( error == '' ){
+  	    error = 'Keine Fehler gefunden!';
+  	    if ( this_tab.attr('id') == $('.tab').last().attr('id') ) {
+  	        $( this_tab ).removeClass( "tab--active" );
+  	    } else {
+  	       $( this_tab ).removeClass( "tab--active" );
+  	       $( next_tab ).addClass( "tab--active" );
+  	    }
+  	    
+  	    
+  	  } else {
+  	    $.each( error, function() {
+  	      $( this ).addClass( "group-rate--error" );
+  	      $( this ).find(".group-rate--hint").show();
+  	    });
+  	  }
+  	}
+
+  	function prevTab (this_tab, prev_tab) {
+  		if ( this_tab.attr('id') == $('.tab').first().attr('id') ) {
+  		    $( this_tab ).removeClass( "tab--active" );
+  		} else {
+  		   $( this_tab ).removeClass( "tab--active" );
+  		   $( prev_tab ).addClass( "tab--active" );
+  		}
+  	}
+
+  	// Button weiter wird angeklickt
+  	$('.nextBtn').click(function() {
+  	  var this_tab = $(this).parent().parent();
+  	  var next_tab = this_tab.next('.tab');
+  	  nextTab( this_tab, next_tab );
+  	});
+
+  	$('.prevBtn').click(function() {
+  	  var this_tab = $(this).parent().parent();
+  	  var prev_tab = this_tab.prev('.tab');
+  	  prevTab( this_tab, prev_tab );
+  	});
+
+  	// Radio-Button wird angeklickt
+  	$('.input-radio-icon__field').click(function() {
+  	  var this_radio_field = $(this);
+  	  updateParentState( this_radio_field );
+  	});
+
+  	// // Letzter Button wird zu "Fertig"
+  	// $('.tab').last().children().children('.nextBtn').html('');
+
+  	// Erster Zurück-Button wird ausgeblendet
+  	$('.tab').first().children().children('.prevBtn').hide();
+
 
     //hide the notification
     $('.notification-button').click(function() {

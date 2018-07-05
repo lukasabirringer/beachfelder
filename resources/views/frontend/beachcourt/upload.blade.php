@@ -29,6 +29,10 @@
 		
 		@include('frontend.reusable-includes.divider')
 
+		@include('frontend.reusable-includes.teaser-contest')
+
+		@include('frontend.reusable-includes.divider')
+
 		<div class="row">
 			<div class="column column--12 -spacing-c">
 				<p class="-typo-copy -text-color-gray-01">
@@ -71,7 +75,7 @@
 
 		<div class="row">
 			<div class="column column--12 -spacing-d">
-				<p class="-typo-copy -text-color-gray-01">Die Bilder sollten eine Mindestbreite von 1000px haben</p>
+				<p class="-typo-copy -text-color-gray-01">Die Bilder sollten eine Mindestbreite von <span class="-typo-copy--bold">1000px</span> haben. Die maximale Dateigröße darf <span class="-typo-copy--bold">3 MB</span> nicht überschreiten. Bestenfalls ist dein Bild im <span class="-typo-copy--bold">Querformat</span> fotogafiert worden.</p>
 			</div>
 		</div>
 
@@ -85,11 +89,19 @@
 	  				<span class="input-upload__label">
 	  					<span class="input-upload__icon" data-feather="upload"></span>
 	  					<span class="input-upload__text">Bilder auswählen</span>
+	  					<p class="input-upload__text -typo-copy--small">Natürlich kannst du auch gleich mehrere Bilder auswählen</p>
 	  				</span>
 	  			</label>
-	  		
-	  			@if ($errors->has('photos'))
-	  				<div class="alert alert-danger">{{ $errors->first('photos', ':message') }}</div>
+
+	  			@if (count($errors) > 0)
+	  				@foreach ($errors->all() as $error)
+	  					<div class="message message--error -spacing-d">
+	  					  <div class="message__icon message__icon--error">
+	  					    <span data-feather="alert-circle"></span>
+	  					  </div>
+	  					  <p class="message__text message__text--error">{{ $error }}</p>
+	  					</div>
+            @endforeach
 	  			@endif
 	  		</div>
 		  	<div class="column column--12 column--m-8">

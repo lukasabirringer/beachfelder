@@ -61,8 +61,8 @@
                 <div class="column column--12 column--m-6"></div>
                 <div class="column column--12 column--m-6 -spacing-b">
                     <button type="submit" class="button-primary">
-                        <span class="button-primary__label">Passwort zurücksetzen</span>
-                        <span class="button-primary__label button-primary__label--hover">Passwort zurücksetzen</span> 
+                        <span class="button-primary__label">Passwort neu festlegen</span>
+                        <span class="button-primary__label button-primary__label--hover">Passwort neu festlegen</span> 
                     </button>
                 </div>
             </div>

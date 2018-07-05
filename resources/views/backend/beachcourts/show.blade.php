@@ -19,7 +19,7 @@
     </div>
   	<div class="row">
   		<div class="column column--12">
-  			<h1 class="title-page__title">Feld in {{ $beachcourt->city }}</h1>
+  			<h1 class="title-page__title">Feld in {{ $beachcourt->city }} <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01"><span data-feather="edit"></span></a></h1>
   		</div>
   	</div>
   	<div class="row">
@@ -112,6 +112,36 @@
           @if ( $beachcourt->floodlight === 1 ) 
             Ja
           @elseif ($beachcourt->floodlight === 0)
+            nein
+          @else
+            Nicht angegeben
+          @endif
+        </p>
+        <p class="-typo-copy -text-color-petrol">
+          <span class="-typo-copy -typo-copy--bold">Schwimmbad oder See?:</span>
+          @if ( $beachcourt->isswimmingLake === 1 ) 
+            Ja
+          @elseif ($beachcourt->isswimmingLake === 0)
+            nein
+          @else
+            Nicht angegeben
+          @endif
+        </p>
+        <p class="-typo-copy -text-color-petrol">
+          <span class="-typo-copy -typo-copy--bold">Einmalige Zutrittsgebühr:</span>
+          @if ( $beachcourt->isSingleAccess === 1 ) 
+            Ja
+          @elseif ($beachcourt->isSingleAccess === 0)
+            nein
+          @else
+            Nicht angegeben
+          @endif
+        </p>
+        <p class="-typo-copy -text-color-petrol">
+          <span class="-typo-copy -typo-copy--bold">Dauerhafte Mitgliedsgebühr:</span>
+          @if ( $beachcourt->isMembership === 1 ) 
+            Ja
+          @elseif ($beachcourt->isMembership === 0)
             nein
           @else
             Nicht angegeben

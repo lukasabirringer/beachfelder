@@ -32,16 +32,23 @@
         {{ $profileuser->userName }}
     </p>
     <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
-        PLZ
+        Wohnort
     </p>
     <p class="-typo-copy -text-color-gray-02">
-        {{ $profileuser->postalCode }}
+        {{ $profileuser->postalCode }} {{ $profileuser->city }} 
+
     </p>
     <p class="-typo-copy -typo-copy--bold -text-color-gray-01 -spacing-b">
         Geschlecht
     </p>
     <p class="-typo-copy -text-color-gray-02">
-        {{ $profileuser->sex }}
+        @if ($profileuser->sex == 'male')
+            männlich
+        @elseif ($profileuser->sex == 'female')
+            weiblich
+        @else 
+            neutral
+        @endif
     </p>
     @endif
 </div>
