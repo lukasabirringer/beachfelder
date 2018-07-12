@@ -23,7 +23,8 @@ class CityController extends Controller
 
       $beachcourts = Beachcourt::where('city', 'like' , '%' . $name . '%')->get();
       $beachcourts = $beachcourts->sortByDesc('rating');
+      $beachcourtCount = Beachcourt::where('city', 'like' , '%' . $name . '%')->count();
 
-      return view('frontend.city.show', compact('beachcourts', 'name', 'description'));
+      return view('frontend.city.show', compact('beachcourts', 'name', 'description', 'city', 'beachcourtCount'));
     }
 }

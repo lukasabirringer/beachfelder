@@ -51,7 +51,7 @@
         <input type="hidden" class="form-control" id="form-long-homepage" name="long">
         <input type="hidden" class="form-control" id="form-lat-homepage" name="lat">
 
-        <input type="search" class="input__field" id="address-input-homepage" placeholder="Wo willst du dein nächstes Match spielen?" />
+        <input type="search" class="input__field" id="address-input-homepage" placeholder="Wo willst du dein nächstes Match spielen?"/>
         <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span>
         <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
         <div class="input__border"></div>

@@ -257,7 +257,28 @@
 
 			<div class="row">
 				<div class="column column--12">
-					<p class="-typo-copy -typo-copy--bold -text-color-green -spacing-b">Möchtest du den beachfelder.de-Newsletter erhalten?</p>
+					<p class="-typo-copy -typo-copy--bold -text-color-green -spacing-a">Hast du einen Gewinncode? Dann schreib' ihn uns!</p>
+					<p class="-typo-copy -text-color-gray-01 -spacing-d">
+						Einen Code erhältst du wenn du auf eines der Techniker Beach Tour-Events gehst und einen unserer Flyer findest.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column column--12 column--s-6">
+					<label class="input -spacing-d">
+						<input type="text" name="registerCode" value="{{ old('registerCode') }}" class="input__field" placeholder="Dein 'Techniker Beach Tour' Code">
+						<span class="input__label">Dein 'Techniker Beach Tour' Code</span>
+						<div class="input__border"></div>
+					</label>
+				</div>
+				<div class="column column--12 column--s-6"></div>
+			</div>
+
+			@include('frontend.reusable-includes.divider')
+
+			<div class="row">
+				<div class="column column--12">
+					<p class="-typo-copy -typo-copy--bold -text-color-green -spacing-a">Möchtest du den beachfelder.de-Newsletter erhalten?</p>
 					<label class="input-toggle -spacing-d">
 					  <input type="hidden" class="input-toggle__hidden" name="newsletterSubscribed" value="1">
 					  <input type="checkbox" class="input-toggle__field newsletter" name="newsletterSubscribed" value="1">

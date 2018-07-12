@@ -74,11 +74,6 @@ $(document).ready(function(){
     return false;
   });
 
-  //show tooltip how we rate at beachcourt item
-  $('.beachcourt-item__info-icon').click(function() {
-    $(this).next($('.flyout')).addClass('flyout--open');
-  });
-
   //scroll to top at the rating form
   $('#nextBtn, #prevBtn').click(function(){
     $('html, body').animate({ scrollTop: 200 }, 600);
@@ -101,12 +96,6 @@ $(document).ready(function(){
   });
 });
 
-//removes active class from login page half
-$(document).keyup(function(e) {
-  if (e.keyCode == 27) {
-    $('.page-login__half').removeClass('page-login__half--active');
-  }
-});
 
 //fixed header on scroll
 $(window).scroll(function() {    
