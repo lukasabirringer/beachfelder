@@ -48,29 +48,94 @@
         </div>
 
         <div class="row">
-            <div class="column column--12 -spacing-a">
-                <hr class="divider">
-            </div>
+          <div class="column column--12 -spacing-a">
+          	<hr class="divider">
+          </div>
+        </div>
+
+        <div class="row -flex -flex--wrap">
+        	<div class="column column--12 column--m-4 -spacing-c">
+        		<a href="{{ url('backend/user') }}" style="text-decoration: none;">
+							<div class="-background-color-red -align-right" style="padding: 10px; border-radius: 3px;">
+	        			<p class="-typo-copy -text-color-white">Anzahl der User</p>
+	        			<h3 class="-typo-headline-03 -text-color-white">{{ $userCount }} User</h3>
+	        			<p class="-typo-copy -text-color-white">insgesamt</p>
+	        		</div>
+        		</a>
+        	</div>
+        	<div class="column column--12 column--m-4 -spacing-c">
+        		<div class="-background-color-green -align-right" style="padding: 10px; border-radius: 3px;">
+        			<p class="-typo-copy -text-color-white">Anzahl der Favoriten</p>
+        			<h3 class="-typo-headline-03 -text-color-white"> {{ $favsCount }} Favoriten</h3>
+        			<p class="-typo-copy -text-color-white">insgesamt</p>
+        		</div>
+        	</div>
+        	<div class="column column--12 column--m-4 -spacing-c">
+        		<div class="-background-color-petrol -align-right" style="padding: 10px; border-radius: 3px;">
+							<p class="-typo-copy -text-color-white">Anzahl der Bewertungen</p>
+        			<h3 class="-typo-headline-03 -text-color-white">{{ $ratingCount }} Bewertungen</h3>
+        			<p class="-typo-copy -text-color-white">insgesamt</p>
+        		</div>
+        	</div>
+        </div>
+
+        <div class="row">
+          <div class="column column--12 -spacing-a">
+          	<hr class="divider">
+          </div>
+        </div>
+
+				<div class="row -flex -flex--wrap">
+        	<div class="column column--12 column--s-6 column--m-3 -flex -flex--wrap -spacing-c">
+        		<a href="{{ url('backend/beachcourts') }}" style="text-decoration: none; width: 100%;">
+							<div class="-background-color-petrol -align-right" style="padding: 10px; width: 100%; border-radius: 3px;">
+								<p class="-typo-copy -text-color-white">Anzahl der Felder</p>
+								<h3 class="-typo-headline-03 -text-color-white">{{ $beachcourtCount }} Felder</h3>
+								<p class="-typo-copy -text-color-white">insgesamt</p>
+							</div>
+        		</a>
+        	</div>
+        	<div class="column column--12 column--s-6 column--m-3 -flex -flex--wrap -spacing-c">
+        		<div class="-background-color-gray-03 -align-right" style="padding: 10px; width: 100%; border-radius: 3px;">
+        			<p class="-typo-copy -text-color-petrol">Anzahl der eingereichten Felder</p>
+        			<h3 class="-typo-headline-03 -text-color-petrol"> {{ $submittedCourtsCount }} Felder</h3>
+        			<p class="-typo-copy -text-color-petrol">insgesamt</p>
+        		</div>
+        	</div>
+        	<div class="column column--12 column--s-6 column--m-3 -flex -flex--wrap -spacing-c">
+        		<div class="-background-color-gray-03 -align-right" style="padding: 10px; width: 100%; border-radius: 3px;">
+							<p class="-typo-copy -text-color-petrol">Anzahl der veröffentlichten Felder</p>
+        			<h3 class="-typo-headline-03 -text-color-petrol">{{ $approvedCourtsCount }} Felder</h3>
+        			<p class="-typo-copy -text-color-petrol">insgesamt</p>
+        		</div>
+        	</div>
+        	<div class="column column--12 column--s-6 column--m-3 -flex -flex--wrap -spacing-c">
+        		<div class="-background-color-gray-03 -align-right" style="padding: 10px; width: 100%; border-radius: 3px;">
+							<p class="-typo-copy -text-color-petrol">Anzahl der Felder ohne Rating</p>
+        			<h3 class="-typo-headline-03 -text-color-petrol">{{ $courtWithoutPicturesRating }} Felder</h3>
+        			<p class="-typo-copy -text-color-petrol">insgesamt</p>
+        		</div>
+        	</div>
         </div>
         
-        <div class="row">
+        <!-- <div class="row">
             <div class="column column--12 column--s-6 -spacing-b">
-                {{-- Anzahl (Courts, User, Bewertungen, Favoriten) --}}
-                <h4 class="-typo-headline-04 -text-color-gray-01">Allgemeines</h4>
-                <div class="icon-text -spacing-b">
-                  <span class="icon-text__icon" data-feather="users"></span>
-                  <span class="icon-text__text">User insgesamt: {{ $userCount }}</span>
-                </div>
+              {{-- Anzahl (Courts, User, Bewertungen, Favoriten) --}}
+              <h4 class="-typo-headline-04 -text-color-gray-01">Allgemeines</h4>
+              <div class="icon-text -spacing-b">
+                <span class="icon-text__icon" data-feather="users"></span>
+                <span class="icon-text__text">User insgesamt: {{ $userCount }}</span>
+              </div>
 
-                <div class="icon-text -spacing-e">
-                  <span class="icon-text__icon" data-feather="heart"></span>
-                  <span class="icon-text__text">Favoriten insgesamt: {{ $favsCount }}</span>
-                </div>
+              <div class="icon-text -spacing-e">
+                <span class="icon-text__icon" data-feather="heart"></span>
+                <span class="icon-text__text">Favoriten insgesamt: {{ $favsCount }}</span>
+              </div>
 
-                <div class="icon-text -spacing-e">
-                  <span class="icon-text__icon" data-feather="award"></span>
-                  <span class="icon-text__text">Bewertungen insgesamt: {{ $ratingCount }}</span>
-                </div>
+              <div class="icon-text -spacing-e">
+                <span class="icon-text__icon" data-feather="award"></span>
+                <span class="icon-text__text">Bewertungen insgesamt: {{ $ratingCount }}</span>
+              </div>
             </div>
             <div class="column column--12 column--s-6 -spacing-b">
                 {{-- Court Status (eingereichte, approved, keine Bilder, keine Bewertung) --}}
@@ -95,12 +160,12 @@
                   <span class="icon-text__text">Felder ohne Bewertung: {{ $courtWithoutPicturesRating }}</span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
-            <div class="column column--12 -spacing-a">
-                <hr class="divider">
-            </div>
+	        <div class="column column--12 -spacing-a">
+	        	<hr class="divider">
+	        </div>
         </div>
 
         <div class="row">

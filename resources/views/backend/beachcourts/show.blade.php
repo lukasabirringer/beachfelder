@@ -150,14 +150,21 @@
   		</div>
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Rating</h4>
-  			<span class="-typo-copy -text-color-petrol">{{ str_limit($beachcourt->rating, $limit = 3, $end = '') }} ({{ $beachcourt->ratingCount }} Stimmen)</span>
-  			<span class="-typo-copy -text-color-petrol">
-  				@if (($beachcourt->ratingCount) < 10)
-  				    Dieses Rating stammt von beachfelder.de
+  			<p class="-typo-copy -text-color-petrol">
+  				<span class="-typo-copy -typo-copy--bold">{{$beachcourtRatingCount}}</span>
+  				@if ($beachcourtRatingCount < 2)
+  					Bewertung
   				@else
-  				    Dieses Rating stammt von den Usern
+  					Bewertungen
   				@endif
-  			</span>
+  			</p>
+  			<p class="-typo-copy -text-color-petrol">
+  				@if ($beachcourtRatingCount > 10)
+						Mehr als 10 Bewertungen, daher wird Rating von Usern ausgegeben
+  					@else
+						Weniger als 10 Bewertungen, daher wird Rating von beachfelder.de oder kein Rating ausgegeben
+  				@endif
+  			</p>
   		</div>
   	</div>
 

@@ -20,6 +20,12 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.0/aos.css">
     <link rel="stylesheet" href="https://unpkg.com/progressively/dist/progressively.min.css">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ asset('images/apple-icon-57x57-precomposed.png')}}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/apple-icon-72x72-precomposed.png')}}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/apple-icon-114x114-precomposed.png')}}" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/apple-icon-144x144-precomposed.png')}}" />
+
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.min.js"></script>

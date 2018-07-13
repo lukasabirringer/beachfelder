@@ -318,8 +318,7 @@
       <div class="column column--12 column--m-6 -spacing-a">
         <h4 class="-typo-headline-04 -text-color-petrol">Betreiber des Feldes</h4>
         <p class="-typo-copy -text-color-gray-01 -spacing-d">
-          {{ $beachcourt->operator }}<br>
-          {{ $beachcourt->postalCode }} {{ $beachcourt->city }}
+          {{ $beachcourt->operator }}
         </p>
         @if($beachcourt->operatorUrl != NULL)
           <p class="-text-color-green -typo-copy">
