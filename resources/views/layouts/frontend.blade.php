@@ -120,16 +120,16 @@
     <div id="app" class="content">
       <header class="header row">
         <div class="column column--12 column--m-6">
-          <form action="/search" method="POST" class="form form--search">
+          <form action="/search" method="POST" class="form form--search-header">
 
             <label class="input" style="overflow: visible;">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" class="form-control" id="form-postcode13" name="postcode13">
-              <input type="hidden" class="form-control" id="form-long" name="long">
-              <input type="hidden" class="form-control" id="form-lat" name="lat">
+              <input type="hidden" class="form-control" id="form-postcode13-header" name="postcode13">
+              <input type="hidden" class="form-control" id="form-long-header" name="long">
+              <input type="hidden" class="form-control" id="form-lat-header" name="lat">
 
-              <input type="search" class="input__field " id="address-input" placeholder="Wo willst du dein nächstes Match spielen?" />
-              <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search').submit();"></span>
+              <input type="search" class="input__field " id="address-input-header" placeholder="Wo willst du dein nächstes Match spielen?" />
+              <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--search-header').submit();"></span>
               <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
               <div class="input__border"></div>
 
@@ -226,6 +226,30 @@
                 document.querySelector('#form-postcode13').value = e.suggestion.postcode || '';
                 document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
                 document.querySelector('#form-long').value = e.suggestion.latlng.lng || '';     
+            });
+         
+      });
+
+      var placesAutocompleteHeader = places({
+        type: 'city',
+        countries: 'de',
+        language: 'de_DE',
+        useDeviceLocation: false,
+        container: document.querySelector('#address-input-header')
+      });
+
+ 
+      $('#address-input-header').on('keyup', function() {
+		
+        var input = document.querySelector("#address-input-header");
+        var soll = document.querySelector("#form-postcode13-header");
+        
+        soll.value = input.value;
+        placesAutocompleteHeader.on('change', function(e) {
+                
+                document.querySelector('#form-postcode13-header').value = e.suggestion.postcode || '';
+                document.querySelector('#form-lat-header').value = e.suggestion.latlng.lat || '';
+                document.querySelector('#form-long-header').value = e.suggestion.latlng.lng || '';     
             });
          
       });
