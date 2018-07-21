@@ -175,6 +175,7 @@
   right: -200%;
   top: 0;
   height: 100vh;
+  width: auto;
   overflow-y: auto;
   background: #f3f3f3;
   z-index: 10;
@@ -185,6 +186,7 @@
 
 .sidebar-filter--open {
   right: 0;
+  z-index: 100;
 }
 
 .sidebar-filter__option {
