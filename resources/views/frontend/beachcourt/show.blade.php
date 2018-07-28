@@ -20,7 +20,13 @@
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
-        <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }}</h1>
+        <h1 class="title-page__title">Beachvolleyballfeld in {{ $beachcourt->city }} 
+          @if (Auth::check())
+            @if (Auth::user()->isAdmin())
+              <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01"><span data-feather="edit"></span> </a>
+            @endif
+          @endif
+          </h1>
       </div>
     </div>
 
