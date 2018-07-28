@@ -86,6 +86,8 @@ class BeachcourtController extends Controller
         $beachcourt_id = $id;
         // GET ALL RATINGS WITH THIS ID
         $beachcourtRatingCount = Rating::where('beachcourt_id', $beachcourt_id)->count();
+        
+        // GET ALL FAVORITES OF THIS FIELD
         $beachcourtFavorites = Favorite::where('beachcourt_id', $beachcourt_id)->count();
 
         return view('backend.beachcourts.show', compact('beachcourt', 'beachcourtRatingCount', 'beachcourtFavorites'));
