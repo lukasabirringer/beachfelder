@@ -21,7 +21,38 @@
   		<div class="column column--12">
   			<h1 class="title-page__title">Feld in {{ $beachcourt->city }} <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01"><span data-feather="edit"></span></a></h1>
   		</div>
-  	</div>
+    </div>
+
+    <div class="row">
+      <div class="column column--12 column--s-4 -spacing-c">
+        <div class="-background-color-green -align-right" style="padding: 10px; border-radius: 3px;">
+          <p class="-typo-copy -text-color-white">Anzahl der Favoriten</p>
+          <h3 class="-typo-headline-03 -text-color-white"> {{ $beachcourtFavorites }} User</h3>
+          <p class="-typo-copy -text-color-white">insgesamt</p>
+        </div>
+      </div>
+      <!-- <div class="column column--12 column--s-4 -spacing-c">
+        <div class="-background-color-red -align-right" style="padding: 10px; border-radius: 3px;">
+          <p class="-typo-copy -text-color-white">Durchschnittliche Bewertung</p>
+          <h3 class="-typo-headline-03 -text-color-white"> Bälle</h3>
+          <p class="-typo-copy -text-color-white">insgesamt</p>
+        </div>
+      </div> -->
+      <div class="column column--12 column--s-4 -spacing-c">
+        <div class="-background-color-petrol -align-right" style="padding: 10px; border-radius: 3px;">
+          <p class="-typo-copy -text-color-white">Anzahl der Bewertungen</p>
+          <h3 class="-typo-headline-03 -text-color-white">{{ $beachcourtRatingCount }} Bewertungen</h3>
+          <p class="-typo-copy -text-color-white">insgesamt</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column column--12">
+        <hr class="divider">
+      </div>
+    </div>
+
   	<div class="row">
   		<div class="column column--12 column--m-6 -spacing-a">
   			<h4 class="-typo-headline-04 -text-color-green">Adresse</h4>
@@ -166,7 +197,7 @@
   				@endif
   			</p>
   		</div>
-  	</div>
+    </div>
 
   	<div class="row">
   		<div class="column column--12 -spacing-a">

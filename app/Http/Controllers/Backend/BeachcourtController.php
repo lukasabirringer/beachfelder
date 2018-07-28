@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\UpdateBeachcourtRequest;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Beachcourt;
+use App\Favorite;
 use App\Rating;
 use DB;
 use File;
@@ -85,8 +86,9 @@ class BeachcourtController extends Controller
         $beachcourt_id = $id;
         // GET ALL RATINGS WITH THIS ID
         $beachcourtRatingCount = Rating::where('beachcourt_id', $beachcourt_id)->count();
+        $beachcourtFavorites = Favorite::where('beachcourt_id', $beachcourt_id)->count();
 
-        return view('backend.beachcourts.show', compact('beachcourt', 'beachcourtRatingCount'));
+        return view('backend.beachcourts.show', compact('beachcourt', 'beachcourtRatingCount', 'beachcourtFavorites'));
     }
     public function edit($id)
     {
