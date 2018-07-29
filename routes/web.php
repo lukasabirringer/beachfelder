@@ -74,4 +74,6 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/faqs/{id}', 'FaqController@destroy')->name('backendFaq.destroy');
   Route::post('/backend/faqs/erstellen', 'FaqController@store')->name('backendFaq.store');
   Route::get('/backend/faqs/{id}/bearbeiten', 'FaqController@edit')->name('backendFaq.edit');
+  //ANALYTICS
+  Route::get('/backend/analytics', 'AnalyticsController@index')->name('backendAnalytics.index');
 });
