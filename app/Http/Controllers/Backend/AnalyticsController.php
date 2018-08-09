@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Analytics;
 use Spatie\Analytics\Period;
+use App\Libraries\GoogleAnalytics;
 
 class AnalyticsController extends Controller
 {
@@ -15,6 +16,8 @@ class AnalyticsController extends Controller
     $this->data['dates'] = $analyticsData_one->pluck('date');
     $this->data['visitors'] = $analyticsData_one->pluck('visitors');
     $this->data['pageViews'] = $analyticsData_one->pluck('pageViews');
+
+    $this->data['browserjson'] = GoogleAnalytics::topbrowsers();
 
     return view('backend.analytics.index', $this->data);
   }

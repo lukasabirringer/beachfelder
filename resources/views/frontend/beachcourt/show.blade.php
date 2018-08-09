@@ -272,6 +272,31 @@
     </div>
 
     @include('frontend.reusable-includes.divider')
+    <div class="row">
+      <div class="column column--12 -spacing-a">
+        <h3 class="-typo-headline-04 -text-color-petrol">Zeige dieses Feld deinen Freunden</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column--12 column--s-3 -spacing-d">
+        <label class="input -spacing-c">
+          <input type="text" class="input__field" id="shortLink" value="{{$beachcourt->shortUrl}}" placeholder="URL" readonly>
+          <div class="input__border"></div>
+        </label>
+      </div>
+      <div class="column column--12 column--s-1 -spacing-a">
+        <button class="button-primary" onclick="myFunction()">
+          <span class="button-primary__label" data-feather="copy"></span>
+          <span class="button-primary__label button-primary__label--hover" data-feather="copy"></span>
+        </button>
+      </div>
+      <div class="column column--12 column--s-2 -spacing-a">
+      </div>
+      <div class="column column--12 column--s-6 -spacing-a">
+      </div>
+    </div>
+
+    @include('frontend.reusable-includes.divider')
 
     <div class="row -flex -flex--wrap">
       <div class="column column--12 column--m-6 -spacing-a flex">
@@ -488,6 +513,8 @@
 @endsection
 
 @push('scripts')
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 	<script>
 	  //hide the notification
     $('.notification-button').click(function() {
@@ -495,6 +522,28 @@
     });
 
 		(adsbygoogle = window.adsbygoogle || []).push({});
+
+    function myFunction() {
+      /* Get the text field */
+      var copyText = document.getElementById("shortLink");
+
+      /* Select the text field */
+      copyText.select();
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      swal({
+        position: 'top-end',
+        title: 'Link kopiert',
+        type: 'success',
+        padding: 0.625,
+        width: '250px',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
 
 	</script>
 @endpush

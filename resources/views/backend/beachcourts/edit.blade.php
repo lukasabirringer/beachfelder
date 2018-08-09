@@ -211,13 +211,22 @@
       </div>
 
       <div class="row">
-        <div class="column column--12 -spacing-b">
+        <div class="column column--12 column--m-6 -spacing-b">
             <label class="textarea">
               <textarea class="textarea__field" name="notes">{{ $beachcourt->notes }}</textarea>
               <span class="textarea__label">Notizen</span>
             </label>
             @if ($errors->has('notes'))
               <div class="alert alert-danger">{{ $errors->first('notes', ':message') }}</div>
+            @endif
+        </div>
+        <div class="column column--12 column--m-6 -spacing-b">
+            <label class="textarea">
+              <textarea class="textarea__field" name="internalNote">{{ $beachcourt->internalNote }}</textarea>
+              <span class="textarea__label">Interne Notizen</span>
+            </label>
+            @if ($errors->has('internalNote'))
+              <div class="alert alert-danger">{{ $errors->first('internalNote', ':message') }}</div>
             @endif
         </div>
       </div>
@@ -383,6 +392,12 @@
       </div>
 
       <div class="row">
+        <div class="column column--12 -spacing-a">
+          <hr class="divider">
+        </div>
+      </div>
+
+      <div class="row">
         <div class="column column--12 column--m-6 -spacing-b">
           
         </div>
@@ -394,13 +409,20 @@
         </div>
       </div>
     </form>
+    
     <div class="row">
-        <div class="column column--12 -spacing-a">
-          <hr class="divider">
-        </div>
+      <div class="column column--12 -spacing-a">
+        <hr class="divider">
       </div>
-    <div class="row">
+    </div>
 
+    <div class="row">
+      <div class="column column--12 -spacing-a">
+        <hr class="divider">
+      </div>
+    </div>
+
+    <div class="row">
         <div class="column column--12">
             <h3 class="-typo-headline-03 -text-color-green"> Rating </h3>
             rating der Community: {{ $beachcourt->rating }} ({{ $beachcourt->ratingCount }} Bewertungen) <br>
