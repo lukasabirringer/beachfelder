@@ -17,7 +17,7 @@ class AnalyticsController extends Controller
     $this->data['visitors'] = $analyticsData_one->pluck('visitors');
     $this->data['pageViews'] = $analyticsData_one->pluck('pageViews');
 
-    $this->data['browserjson'] = GoogleAnalytics::topbrowsers();
+    $this->data['browserjson'] = collect(GoogleAnalytics::topbrowsers());
 
     return view('backend.analytics.index', $this->data);
   }

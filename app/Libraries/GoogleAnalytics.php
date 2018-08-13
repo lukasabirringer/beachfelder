@@ -22,6 +22,7 @@ class GoogleAnalytics{
     static function topbrowsers()
     {
         $analyticsData = Analytics::fetchTopBrowsers(Period::days(14));
+
         $array = $analyticsData->toArray();
         foreach ($array as $k=>$v)
         {
