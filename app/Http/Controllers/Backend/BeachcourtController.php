@@ -139,8 +139,6 @@ class BeachcourtController extends Controller
         $beachcourt->operatorContactPersonEmail = $request->input('operatorContactPersonEmail');
         $beachcourt->notes = $request->input('notes');
         $beachcourt->internalNote = $request->input('internalNote');
-        $getBeachcourtURL = URL::route('beachcourts.show' , array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude));
-        $beachcourt->shortUrl = LinkShortener::linkShortener($getBeachcourtURL);
         $beachcourt->save();
 
         return redirect()->route('backendBeachcourt.index')->with('success', 'Beachfeld wurde erfolgreich geändert');

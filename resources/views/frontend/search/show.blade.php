@@ -49,8 +49,8 @@
        </div>
        <div class="row">
        	<div class="column column--12 -align-center -spacing-a">
-       		<p class="-typo-copy -text-color-gray-01">
-       			<a href="#" class="link-icon-text btn--more-filter -text-color-gray-01">
+       		<p class="-typo-copy -text-color-green">
+       			<a href="#" class="link-icon-text btn--more-filter -text-color-green">
        				<span class="link-icon-text__icon" data-feather="filter"></span><span class="link-icon-text__copy">mehr Filter</span>
        			</a>	
        		</p>

@@ -31,7 +31,7 @@
   	<div class="row">
   		<div class="column column--12">
   			<h1 class="title-page__title">Feld in {{ $beachcourt->city }} <a href="{{ URL::route('backendBeachcourt.edit', $beachcourt->id) }}" class="link-icon -text-color-gray-01"><span data-feather="edit"></span></a></h1>
-  		</div>
+      </div>
     </div>
 
     <div class="row">
@@ -220,28 +220,15 @@
         <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->internalNote }}</p>
       </div>
     </div>
-
-    <div class="row">
-      <div class="column column--12 column--m-6 -spacing-a">
-        <h4 class="-typo-headline-04 -text-color-green">Shortlink</h4>
-        @if( $beachcourt->shortUrl != '')
-          <p class="-typo-copy -text-color-gray-01 -spacing-c">{{ $beachcourt->shortUrl }}</p>
-        @else 
-          <form action="{{ URL::route('backendBeachcourt.generateShortUrl', ['id' => $beachcourt->id]) }}" method="POST">
-            <input type="hidden" name="_method" value="PATCH">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <button class="button-primary -spacing-c">
-              <span class="button-primary__label">Shortlink generieren</span>
-              <span class="button-primary__label button-primary__label--hover">Shortlink generieren</span>
-            </button>
-          </form>
+    @if( $beachcourt->shortUrl != '')
+      <div class="row">
+        <div class="column column--12 -spacing-a">
+          <h4 class="-typo-headline-04 -text-color-green">Shortlink</h4>
           
-        @endif
+            <p class="-typo-copy -text-color-gray-01 -spacing-c">{{ $beachcourt->shortUrl }}</p>  
+        </div>
       </div>
-      <div class="column column--12 column--m-6 -spacing-a">
-        
-      </div>
-    </div>
+    @endif
 
   	<div class="row">
   		<div class="column column--12 -spacing-a">
@@ -259,4 +246,4 @@
       </div>
     </div>
   </div>
-@endsection
+^@endsection
