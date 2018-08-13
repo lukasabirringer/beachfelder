@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::post('/backend/beachcourts/erstellen', 'BeachcourtController@store')->name('backendBeachcourt.store');
   Route::get('/backend/beachcourts/{id}/bearbeiten', 'BeachcourtController@edit')->name('backendBeachcourt.edit');
   Route::patch('/backend/beachcourts/{id}/rate', 'BeachcourtController@rate')->name('backendBeachcourt.rate');
+  Route::patch('/backend/beachcourts/{id}/generateShortUrl', 'BeachcourtController@generateShortUrl')->name('backendBeachcourt.generateShortUrl');
   //USER
   Route::get('/backend/user', 'UserController@index')->name('backendUser.index');
   Route::get('/backend/user/hinzufuegen', 'UserController@create')->name('backendUser.create');
@@ -74,4 +75,6 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'App\Http\Middleware\IsA
   Route::delete('/backend/faqs/{id}', 'FaqController@destroy')->name('backendFaq.destroy');
   Route::post('/backend/faqs/erstellen', 'FaqController@store')->name('backendFaq.store');
   Route::get('/backend/faqs/{id}/bearbeiten', 'FaqController@edit')->name('backendFaq.edit');
+  //ANALYTICS
+  Route::get('/backend/analytics', 'AnalyticsController@index')->name('backendAnalytics.index');
 });

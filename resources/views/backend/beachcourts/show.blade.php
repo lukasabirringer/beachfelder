@@ -1,6 +1,17 @@
 @extends('layouts.backend')
 
 @section('content')
+  @if (\Session::has('error'))
+	<ul class="notification">
+	  <li class="notification__item">
+	    <span class="notification__icon" data-feather="info"></span>
+	    <p class="notification__text">{!! \Session::get('error') !!}</p>
+	    <button class="button-secondary notification-button close" data-dismiss="alert" aria-label="close">
+	      <span class="button-secondary__label notification-button__label">OK</span>
+	    </button>
+	  </li>
+	</ul>
+	@endif
   <div class="content__main">
     <div class="row">
       <div class="column column--12">
@@ -46,7 +57,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="column column--12">
         <hr class="divider">
@@ -197,6 +208,39 @@
   				@endif
   			</p>
   		</div>
+    </div>
+
+    <div class="row">
+      <div class="column column--12 column--m-6 -spacing-a">
+        <h4 class="-typo-headline-04 -text-color-green">Notizen</h4>
+        <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->notes }}</p>
+      </div>
+      <div class="column column--12 column--m-6 -spacing-a">
+        <h4 class="-typo-headline-04 -text-color-green">Interne Notizen</h4>
+        <p class="-typo-copy -text-color-gray-01">{{ $beachcourt->internalNote }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column column--12 column--m-6 -spacing-a">
+        <h4 class="-typo-headline-04 -text-color-green">Shortlink</h4>
+        @if( $beachcourt->shortUrl != '')
+          <p class="-typo-copy -text-color-gray-01 -spacing-c">{{ $beachcourt->shortUrl }}</p>
+        @else 
+          <form action="{{ URL::route('backendBeachcourt.generateShortUrl', ['id' => $beachcourt->id]) }}" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button class="button-primary -spacing-c">
+              <span class="button-primary__label">Shortlink generieren</span>
+              <span class="button-primary__label button-primary__label--hover">Shortlink generieren</span>
+            </button>
+          </form>
+          
+        @endif
+      </div>
+      <div class="column column--12 column--m-6 -spacing-a">
+        
+      </div>
     </div>
 
   	<div class="row">

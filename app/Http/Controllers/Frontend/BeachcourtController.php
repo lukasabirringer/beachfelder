@@ -9,9 +9,11 @@ use App\Beachcourt;
 use App\Favorites;
 use App\Rating;
 use App\Photo;
+use App\Libraries\LinkShortener;
 use File;
 use DB;
 use Storage;
+use URL;
 use Auth;
 use Cmfcmf\OpenWeatherMap;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;
@@ -114,6 +116,15 @@ class BeachcourtController extends Controller
         }
         
         $minusBallCount = (($beachcourt->ratingSand + $beachcourt->ratingNet + $beachcourt->ratingCourt + $beachcourt->ratingEnvironment)/4) - $beachcourt->rating;
+        
+        //GENERATE THE SHORT URL FOR THIS BEACHCOURT
+        $beachcourtShortUrl = $beachcourt->shortUrl;
+        
+        if( $beachcourtShortUrl == ' ' || $beachcourtShortUrl == NULL ) {
+            $getBeachcourtURL = URL::route('beachcourts.show' , array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude));
+            $beachcourt->shortUrl = LinkShortener::linkShortener($getBeachcourtURL);
+            $beachcourt->save();
+        }
 
         return view('frontend.beachcourt.show', compact('minusBallCount', 'filecount', 'otherBeachcourts', 'beachcourt', 'roundedWheater', 'weather', 'icon', 'pictures', 'distance'));
     }

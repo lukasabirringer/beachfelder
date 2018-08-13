@@ -7,10 +7,12 @@ use App\Http\Requests\Backend\StoreBeachcourtRequest;
 use App\Http\Requests\Backend\UpdateBeachcourtRequest;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Libraries\LinkShortener;
 use App\Beachcourt;
 use App\Favorite;
 use App\Rating;
 use DB;
+use URL;
 use File;
 use Carbon\Carbon;
 
@@ -72,9 +74,9 @@ class BeachcourtController extends Controller
              'operatorContactPerson' => $request->operatorContactPerson,
              'operatorContactPersonPhone' => $request->operatorContactPersonPhone,
              'operatorContactPersonEmail' => $request->operatorContactPersonEmail,
+             'internalNote' => $request->internalNote,
              'notes' => $request->notes,
         ]);
-
 
         return redirect()->route('backendBeachcourt.index')->with('success', 'Beachfeld wurde erstellt');
     }
@@ -100,9 +102,7 @@ class BeachcourtController extends Controller
 	        $path = public_path('uploads/beachcourts/' . $beachcourt->id . '/slider/standard/');
 	        $files = File::allFiles($path);
 	        $filecount = count($files);
-        }
-
-        else {
+        } else {
             $filecount = 0;
         }
 
@@ -138,6 +138,9 @@ class BeachcourtController extends Controller
         $beachcourt->operatorContactPersonPhone = $request->input('operatorContactPersonPhone');
         $beachcourt->operatorContactPersonEmail = $request->input('operatorContactPersonEmail');
         $beachcourt->notes = $request->input('notes');
+        $beachcourt->internalNote = $request->input('internalNote');
+        $getBeachcourtURL = URL::route('beachcourts.show' , array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude));
+        $beachcourt->shortUrl = LinkShortener::linkShortener($getBeachcourtURL);
         $beachcourt->save();
 
         return redirect()->route('backendBeachcourt.index')->with('success', 'Beachfeld wurde erfolgreich geändert');
@@ -148,5 +151,14 @@ class BeachcourtController extends Controller
         $beachcourt->delete();
 
         return redirect()->back()->with('success', 'Beachfeld wurde gelöscht');
+    }
+
+    public function generateShortUrl($id) {
+        $beachcourt = Beachcourt::findOrFail($id);
+        $getBeachcourtURL = URL::route('beachcourts.show' , array('cityslug'=>strtolower($beachcourt->city),'latitude'=>$beachcourt->latitude,'longitude'=>$beachcourt->longitude));
+        $beachcourt->shortUrl = LinkShortener::linkShortener($getBeachcourtURL);
+        $beachcourt->save();
+
+        return redirect()->back()->with('success', 'shortlink wurde generiert');
     }
 }
