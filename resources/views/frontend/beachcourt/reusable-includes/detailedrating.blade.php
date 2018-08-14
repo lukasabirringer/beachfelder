@@ -152,9 +152,11 @@
     </div>
   </div>
   <div class="column column--12 column--s-6 -spacing-c -align-right">
-    <p class="-typo-copy -text-color-gray-01 -spacing-b" id="shortLink">
-      Zeige dieses Feld deinen Freunden mit Hilfe dieses Links: <br>
-      <span class="-typo-copy--bold -text-color-petrol">{{$beachcourt->shortUrl}}</span>
-    </p>
+    @if ($beachcourt->shortUrl != NULL )
+      <p class="-typo-copy -text-color-gray-01 -spacing-b" id="shortLink">
+        Zeige dieses Feld deinen Freunden mit Hilfe dieses Links: <br>
+        <span class="-typo-copy--bold -text-color-petrol">{{$beachcourt->shortUrl}}</span>
+      </p>
+    @endif
   </div>
 </div><!-- .row ENDE -->

@@ -23,14 +23,20 @@ class LinkShortener {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $targets); 
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
 
     $response = curl_exec($ch);
     $response = json_decode($response, true);
-    curl_close ($ch);
-
-    $shortLink = $response['shortUrl'];
-
-    return $shortLink;
+    
+    if (curl_error($ch)) {
+      $error_msg = curl_error($ch);
+    }
+    else {
+      $shortLink = $response['shortUrl'];
+      return $shortLink;
+    }
+    curl_close($ch);
+    
   }
 }
 
