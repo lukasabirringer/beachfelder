@@ -134,10 +134,12 @@
           	@endif
             <div class="owl-carousel owl-carousel--detailpage">
               @for ($i = 1; $i <= $filecount; $i++)
-                <img class="owl-lazy"
+                <a href="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg" class="image-slide__link">
+                  <img class="owl-lazy"
                      data-src="/uploads/beachcourts/{{ $beachcourt->id }}/slider/standard/slide-image-0{{ $i }}.jpg"
                      data-src-retina="/uploads/beachcourts/{{ $beachcourt->id }}/slider/retina/slide-image-0{{ $i }}-retina.jpg"
                      alt="Beachvolleyballfeld {{ $beachcourt->city }}">
+                </a>
               @endfor
             </div>
             <span class="owl-navigation-item owl-navigation-item--left" data-feather="chevron-left"></span>
@@ -335,6 +337,7 @@
 @endsection
 
 @push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.14.0/simple-lightbox.min.js"></script>
 	<script>
 	  //hide the notification
     $('.notification-button').click(function() {
@@ -342,5 +345,11 @@
     });
 
 		(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
+
+    $('.image-slide__link').simpleLightbox({
+      showCounter: false,
+      disableRightClick: true,
+      alertErrorMessage: 'Das Bild konnte leider nicht geladen werden.'
+    });
+  </script>
 @endpush
