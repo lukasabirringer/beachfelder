@@ -14,7 +14,7 @@ class HomepageController extends Controller
 {
     public function show()
     {
-        $beachcourts = Beachcourt::where('submitState', 'approved')->orderBy('created_at', 'desc')->limit(5)->get();
+        $beachcourts = Beachcourt::where('submitState', 'approved')->orderBy('id', 'desc')->limit(5)->get();
         
         $cities = City::paginate(15);
 

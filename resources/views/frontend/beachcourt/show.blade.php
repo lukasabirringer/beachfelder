@@ -51,7 +51,7 @@
               <span class="icon-text__text">Felder outdoor: {{ $beachcourt->courtCountOutdoor }}<br>Felder indoor: {{ $beachcourt->courtCountIndoor }}</span>
             </div>
           </div>
-          <div class="column column--12 column--s-6 column--m-3">
+          <div class="column column--12 column--s-6 column--m-3 -hidden--xxs">
             <div class="infobox">
               <span class="infobox__icon" data-feather="{{ $icon }}"></span>
               <span class="infobox__title">Heute</span>
