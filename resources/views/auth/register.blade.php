@@ -255,7 +255,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="column column--12">
 					<p class="-typo-copy -typo-copy--bold -text-color-green -spacing-a">Hast du einen Gewinncode? Dann schreib' ihn uns!</p>
 					<p class="-typo-copy -text-color-gray-01 -spacing-d">
@@ -272,9 +272,9 @@
 					</label>
 				</div>
 				<div class="column column--12 column--s-6"></div>
-			</div>
+			</div> -->
 
-			@include('frontend.reusable-includes.divider')
+			<!-- @include('frontend.reusable-includes.divider') -->
 
 			<div class="row">
 				<div class="column column--12">

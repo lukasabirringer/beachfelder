@@ -8,8 +8,7 @@
 
 @section('frontpage')
   <div class="section section--start">
-  	<a href="{{ url('/') }}"><img class="sidebar__logo hide-on-desktop" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
-
+    <a href="{{ url('/') }}"><img class="sidebar__logo hide-on-desktop" src="{{ asset('images/signet-beachfelder.de_white.png') }}"></a>
     @if (Auth::check())
       <div class="profile-user hide-on-mobile section__button">
         <div class="profile-user__info">
@@ -39,9 +38,8 @@
         <span class="button-secondary__label">Anmelden / Registrieren</span>
       </button>
     @endif
-			
-		<div class="section__content" style="position: absolute; bottom: 100px; padding: 20px; background: #f3f3f3; left: 50%; transform: translateX(-50%); border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.05); width: 50%;">
-			<form action="/search" method="POST" class="form form--homepage-search" style="display: flex;">
+    <div class="form--homepage-search" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 50%; background: #fff; padding: 20px; border-radius: 4px;">
+      <form action="/search" method="POST" class="form form--homepage-search" >
 	      <label class="input section__input" style="overflow: visible; width: 100%;">
 	        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	        <input type="hidden" class="form-control" id="form-postcode13-homepage" name="postcode13">
@@ -49,7 +47,7 @@
 	        <input type="hidden" class="form-control" id="form-lat-homepage" name="lat">
 
 	        <input type="search" class="input__field" id="address-input-homepage" placeholder="Wo willst du dein nächstes Match spielen?"/>
-	        <!-- <span class="input__icon" data-feather="search" onclick="document.querySelector('.form--homepage-search').submit();"></span> -->
+	        <span class="input__icon" data-feather="search" style="margin-top: 10px;" onclick="document.querySelector('.form--homepage-search').submit();"></span>
 	        <span class="input__label">Wo willst du dein nächstes Match spielen?</span>
 	        <div class="input__border"></div>
 	      </label>
@@ -77,21 +75,11 @@
 	        	<span class="button-primary__label button-primary__label--hover">Los geht's!</span>
 	        </button>
 	    </form>
-		</div>
-	   
-	  <div style="
-	  	position: absolute; width: 100%; height: 100px; bottom: 0; left: 0;
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+14,ffffff+100&0+0,1+100 */
-			background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 14%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 14%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 14%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-	  ">
-	  	
-	  </div>
-
+    </div>
     <span class="section__link" data-feather="chevrons-down"></span>
   </div>
+
+  
 @endsection
 
 @section('content')
