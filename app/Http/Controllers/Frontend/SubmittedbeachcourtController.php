@@ -136,6 +136,7 @@ class SubmittedbeachcourtController extends Controller
         Mail::send('email.submitCourt', $confirmation_code, function($message) use ($email, $name) {
             $message->from('noreply@beachfelder.de', 'beachfelder.de');
             $message->to($email, $name)->subject('beachfelder.de // Beachfeld eingereicht');
+            $message->replyTo('presse@beachfelder.de', 'beachfelder.de // Beachfeld eingereicht');
         });
 
        return redirect()->back()->with('success', 'Vielen Dank, dass du ein Beachvolleyballfeld eingereicht hast!');
