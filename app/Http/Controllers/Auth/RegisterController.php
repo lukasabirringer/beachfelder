@@ -108,7 +108,7 @@ class RegisterController extends Controller
             'postalCode' => $data['postalCode'],
             'city' => $data['city'],
             'sex' => $data['sex'],
-            'registerCode' => $data['registerCode'],
+            // 'registerCode' => $data['registerCode'],
             'birthdate' => $data['birthdate'],
             'confirmationToken' => $code,
         ]);
