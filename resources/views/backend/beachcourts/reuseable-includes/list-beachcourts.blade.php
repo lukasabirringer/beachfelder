@@ -36,7 +36,7 @@
               <td class="column column--12 column--m-1 submitState -typo-copy -text-color-gray-01" style="overflow: hidden; text-overflow: ellipsis;">
               	@if($beachcourt->submitState === 'approved')
               		bestätigt
-              	@elseif ($beachcourt->submitState === 'abgelehnt')
+              	@elseif ($beachcourt->submitState === 'declined')
               		abgelehnt
               	@else
               		eingereicht

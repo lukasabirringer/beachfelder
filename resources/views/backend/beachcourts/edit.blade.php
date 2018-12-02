@@ -262,7 +262,7 @@
             <optgroup label="neuer Status">
               <option value="submitted">eingereicht</option>
               <option value="approved">veröffentlicht</option>
-              <option value="abgelehnt">abgelehnt</option>
+              <option value="declined">abgelehnt</option>
             </optgroup>
           </select>
           @if ($errors->has('submitState'))
